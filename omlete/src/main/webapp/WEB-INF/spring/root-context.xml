@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
 		<property name="url" value="jdbc:log4jdbc:oracle:thin:@www.itwill.xyz:1521:xe"/>
@@ -13,7 +15,6 @@
 	</bean>
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
-		<!-- src/main/resources에 생성 한 경우 <property name="configLocation" value="classpath:mybatis-config.xml"/> -->
 		
 		<property name="configLocation" value="/WEB-INF/spring/mybatis-config.xml"/>
 		
@@ -24,7 +25,6 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:omlete/mapper/*.xml</value>
-				
 			</list>
 		</property>	
 	</bean>
@@ -36,4 +36,6 @@
 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
+	
+	<tx:annotation-driven/>
 </beans>
