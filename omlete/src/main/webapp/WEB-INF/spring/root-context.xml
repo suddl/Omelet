@@ -24,7 +24,7 @@
 		
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:omlete/mapper/*.xml</value>
+				<value>classpath:omlete/mapper/*.xml</value> 
 			</list>
 		</property>	
 	</bean>
