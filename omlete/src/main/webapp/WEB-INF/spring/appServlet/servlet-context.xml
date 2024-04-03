@@ -25,9 +25,25 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="3"/>	
 	</beans:bean>
 	
-	<context:component-scan base-package="xyz.itwill.omlete" />
+	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></beans:property>
+		<beans:property name="order" value="2"/>
+	</beans:bean>
+	
+	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/spring/appServlet/tiles.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<context:component-scan base-package="omlete.controller" />
+	<context:component-scan base-package="omlete.dao" />
+	<context:component-scan base-package="omlete.service" />
 	
 	
 	
