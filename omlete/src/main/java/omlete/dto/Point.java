@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class Point {
 	private int pointStatus; // 포인트 증감 상태
 	private String pointDate; // 포인트 증감 날짜
