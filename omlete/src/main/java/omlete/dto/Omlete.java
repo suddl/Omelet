@@ -1,5 +1,5 @@
 package omlete.dto;
 
-public class OmleteDTO {
+public class Omlete {
 
 }
