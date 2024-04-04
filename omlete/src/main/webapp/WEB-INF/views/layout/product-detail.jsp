@@ -91,11 +91,7 @@
                         <li class="breadcrumb-item active" aria-current="page">영화</li>
                      </ol>
                   </nav>
-                  <h2>
-                  
-                  스파이더맨: 노 웨이 홈
-                  	
-                  </h2>
+                  <h2>${contents.contentsTname}</h2>
                   <div id="overview" class="seller-overview d-flex align-items-center">
                      <div class="user-info d-flex">
                         <span class="user-info-rating d-flex">
