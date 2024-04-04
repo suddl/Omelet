@@ -3,7 +3,7 @@
 <mapper namespace="omlete.mapper.ContentsMapper">
 	<!-- 매퍼 바이딩을 사용할 경우 XML 기반의 매퍼 파일의 엘리먼트에서는 parameterType 속성 생략 가능 -->
 	<insert id="insertContents">
-		insert into contents values(#{contents_no}, #{contents_type}, #{contents_oname}, #{contents_tname}, #{contents_trailer}, #{contents_poster}, #{contents_photo}, #{contents_staff}, #{contents_overview}, #{contents_rating}, #{contents_genre}, #{contents_network}, #{contents_network_logo}, #{contents_countries}, #{contents_director}, #{contents_startdate}, #{contents_avgstar}, #{contents_enddate}, #{contents_episodes}, #{contents_seasons}, #{contents_runtime})
+		insert into contents values(#{contentsNo}, #{contentsType}, #{contentsOname}, #{contentsTname}, #{contentsTrailer}, #{contentsPoster}, #{contentsPhoto}, #{contentsStaff}, #{contentsOverview}, #{contentsRating}, #{contentsGenre}, #{contentsNetwork}, #{contentsNetworkLogo}, #{contentsCountries}, #{contentsDirector}, #{contentsStartdate}, #{contentsAvgstar}, #{contentsEnddate}, #{contentsEpisodes}, #{contentsSeasons}, #{contentsRuntime})
 	</insert>
 	
 	<!-- 검색행의 컬럼명과 DTO 클래스의 필드명이 같은 경우 resultType 속성을 사용하여 검색행을
