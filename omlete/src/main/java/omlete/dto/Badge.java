@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class Badge {
-	private int badegeNo;
-	private String badegeName;
+	private int badgeNo;
+	private String badgeName;
 	private String badgeImage;
 	private String badgeContent;
 	private int badgeStatus;
