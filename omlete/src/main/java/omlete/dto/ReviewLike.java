@@ -11,7 +11,7 @@ create table review_like(review_like_no number primary key, review_like_member n
 @Data
 @Builder
 public class ReviewLike {
-	private int review_like_no;
-	private int review_like_member;
-	private int review_like_apply_no;
+	private int reviewLikeNo;
+	private int reviewLikeMember;
+	private int reviewLikeApplyNo;
 }
