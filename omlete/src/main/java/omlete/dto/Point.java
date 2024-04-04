@@ -1,6 +1,5 @@
 package omlete.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 /*
