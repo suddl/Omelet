@@ -1,5 +1,5 @@
 package omlete.mapper;
 
-public class ReviewMapper {
+public interface ReviewMapper {
 
 }

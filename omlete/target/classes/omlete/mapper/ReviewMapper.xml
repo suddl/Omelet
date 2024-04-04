@@ -11,9 +11,10 @@
 	</insert>
 		
 	<delete id="deleteReview">
-		delete from review where reviewNo=#{reviewNo}
+		delete from review where review_no=#{reviewNo}
 	</delete>
 	
+	<!-- 
 	<update id="updateReview">
 		update review set 
 	</update>
@@ -21,4 +22,5 @@
 	<select id="">
 	
 	</select>
+	 -->
 </mapper>
