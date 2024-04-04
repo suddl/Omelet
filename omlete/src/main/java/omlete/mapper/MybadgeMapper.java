@@ -3,5 +3,5 @@ package omlete.mapper;
 import omlete.dto.Mybadge;
 
 public interface MybadgeMapper {
-	int insertMybadge(Mybadge mybadge);
+	int insertMybadge(Mybadge mybadge); 
 }
