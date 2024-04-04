@@ -13,20 +13,20 @@
 <!-- Favicon Icon -->
 <link rel="icon" type="image/png" href="images/fav.svg">
 <!-- Bootstrap core CSS -->
-<link type="text/css"  href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+<link type="text/css"  href="<c:url value="/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
 <!-- Font Awesome-->
-<link type="text/css" href="<c:url value="/resources/vendor/fontawesome/css/font-awesome.min.css"/>" rel="stylesheet">
+<link type="text/css" href="<c:url value="/vendor/fontawesome/css/font-awesome.min.css"/>" rel="stylesheet">
 <!-- Material Design Icons -->
-<link type="text/css"  href="${pageContext.request.contextPath}/resources/vendor/icons/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css">
+<link type="text/css"  href="<c:url value="/vendor/icons/css/materialdesignicons.min.css"/>" media="all" rel="stylesheet" type="text/css">
 <!-- Slick -->
-<link type="text/css" href="${pageContext.request.contextPath}/resources/vendor/slick-master/slick/slick.css" rel="stylesheet" type="text/css">
+<link type="text/css" href="<c:url value="/vendor/slick-master/slick/slick.css"/>" rel="stylesheet" type="text/css">
 <!-- Lightgallery -->
-<link type="text/css" href="${pageContext.request.contextPath}/resources/vendor/lightgallery-master/dist/css/lightgallery.min.css" rel="stylesheet">
+<link type="text/css" href="<c:url value="/vendor/lightgallery-master/dist/css/lightgallery.min.css"/>" rel="stylesheet">
 <!-- Select2 CSS -->
-<link type="text/css" href="${pageContext.request.contextPath}/resources/vendor/select2/css/select2-bootstrap.css" />
-<link type="text/css" href="${pageContext.request.contextPath}/resources/vendor/select2/css/select2.min.css" rel="stylesheet">
+<link type="text/css" href="<c:url value="/vendor/select2/css/select2-bootstrap.css"/>" />
+<link type="text/css" href="<c:url value="/vendor/select2/css/select2.min.css"/>" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link type="text/css" href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+<link type="text/css" href="<c:url value="/css/style.css"/>" rel="stylesheet">
 <title>Omlete</title>
 </head>
 <body>
@@ -41,21 +41,20 @@
 	<div id="footer">
 		<tiles:insertAttribute name="footer"/>
 	</div>
-	<%-- 
-	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	 
+	<script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Contact form JavaScript -->
     <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-    <script src="${pageContext.request.contextPath}/resources/js/jqBootstrapValidation.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/contact_me.js"></script>
+    <script src="/js/jqBootstrapValidation.js"></script>
+    <script src="/js/contact_me.js"></script>
     <!-- Slick -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/slick-master/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/vendor/slick-master/slick/slick.js" type="text/javascript" charset="utf-8"></script>
     <!-- lightgallery -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/lightgallery-master/dist/js/lightgallery-all.min.js"></script>
+    <script src="/vendor/lightgallery-master/dist/js/lightgallery-all.min.js"></script>
     <!-- select2 Js -->
-    <script src="${pageContext.request.contextPath}/resources/vendor/select2/js/select2.min.js"></script>
+    <script src="/vendor/select2/js/select2.min.js"></script>
     <!-- Custom -->
-    <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-    --%>
+    <script src="/js/custom.js"></script>
 </body>
 </html>
