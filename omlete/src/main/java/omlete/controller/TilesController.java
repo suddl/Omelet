@@ -10,4 +10,10 @@ public class TilesController {
 		return "main";
 	}
 	
+	@RequestMapping("/detail")
+	public String tiles2() {
+		return "layout/product-detail";
+	}
+	
+	
 }
