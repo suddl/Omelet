@@ -28,5 +28,5 @@ public class Contents {
 	private int contentsEpisodes;			//총 에필로그 수
 	private int contentsSeasons;			//총 시즌 수
 	private int contentsRuntime;			//상영시간
-	
+	private String contentsTagline;			//내용정리
 }
