@@ -1,7 +1,8 @@
 package omlete.dao;
 
-import java.util.List;
+import omlete.dto.Member;
 
 public interface MemberDAO {
+	int insertMember(Member member);
 
 }
