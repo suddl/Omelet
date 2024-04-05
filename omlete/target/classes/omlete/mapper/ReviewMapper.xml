@@ -39,31 +39,21 @@
 			from review where review_no = #{reviewNo}
 	</select>
 	
-	<select id="selectReviewList" resultType="review">
+	<select id="selectReviewCount" resultType="int">
+		select count(*) from review
+	</select>
+
+	<select id="selectReviewListPaging" resultType="review">
 		select * from (select rownum rn, temp.* from (select review_no, review_kind
 			, review_member, review_content, review_date, review_up, review_down
 			, review_work, review_spoiler, review_star from review review_no desc) temp)
 			where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<select id="selectReviewListFamous" resultType="review">
+	<select id="selectReviewList">
 		select * from (select rownum rn, temp.* from (select review_no, review_kind
 			, review_member, review_content, review_date, review_up, review_down
-			, review_work, review_spoiler, review_star from review review_no desc) temp where review_kind = 1)
-			where rn between #{startRow} and #{endRow}
-	</select>
-	
-	<select id="selectReviewListShort" resultType="review">
-		select * from (select rownum rn, temp.* from (select review_no, review_kind
-			, review_member, review_content, review_date, review_up, review_down
-			, review_work, review_spoiler, review_star from review review_no desc) temp where review_kind = 2)
-			where rn between #{startRow} and #{endRow}
-	</select>
-	
-	<select id="selectReviewListLong" resultType="review">
-		select * from (select rownum rn, temp.* from (select review_no, review_kind
-			, review_member, review_content, review_date, review_up, review_down
-			, review_work, review_spoiler, review_star from review review_no desc) temp where review_kind = 3)
+			, review_work, review_spoiler, review_star from review where review_kind = #{reviewKind} order by review_no) temp )
 			where rn between #{startRow} and #{endRow}
 	</select>
 	
