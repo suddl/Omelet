@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="omlete.mapper.NoticeMapper">
 	<insert id="insertNotice">
@@ -9,13 +9,8 @@
 			#{noticeDate}, #{noticeStatus}, #{noticeTerm}, #{noticeImage})
 	</insert>
 	
-	
-
-	
-	
-	
-	<!-- 검색 -->
-	<select id="search" parameterType="hashMap" resultType="BoardVO">
+	검색
+	<select id="noticeSearch" parameterType="hashMap" resultType="BoardVO">
 	    select
 	    notice_title, notice_content
 	    from notice
@@ -28,8 +23,8 @@
 	    order by notice_no desc
 	</select>
 	
-	<!-- 수정 -->
-	<update id="update" parameterType="board">
+	수정
+	<update id="noticeUpdate" parameterType="board">
 		update notice 
 		set notice_title = #{noticeTitle},
 		notice_content = #{noticeContent},
@@ -40,26 +35,26 @@
 		where notice_no = #{noticeNo}
 	</update>
 	
-	<!-- 상세보기 -->
+	상세보기
 	<select id="noticeboardDetailData" resultType="NoticeBoardVO" parameterType="number">
     select notice_no, notice_title, notice_content, notice_date, notice_term, notice_image
     from notice where notice_no=#{noticeNo}
 	</select>
 	
-	<!-- 삭제 -->
+	삭제
 	<delete id="deleteNotice">
 		delete from notice where notice_no=#{noticeNo}
 	</delete>
 	
-	<!-- 레코드수 조회 -->
+	레코드수 조회
 	<select id="selectNoticeCount" resultType="int">
 		select count(*) from notice
 	</select>
 	
-	<!-- 전체리스트 -->
+	전체리스트
 	<select id="selectNoticeList" resultType="Notice">
     	select * from (select rownum rn, notice.* from (select notice_no, notice_title, notice_content,
     		notice_count, notice_date, notice_status, notice_term, notice_image
             from Notice order by notice_no desc) notice) where rn between #{startRow} and #{endRow}
 	</select>
-</mapper>
+</mapper> -->

@@ -8,7 +8,7 @@
 		insert into badge values(${badgeNo}, ${badgeName}, ${badgeImage}, ${badgeContent})
 	</insert>
 	
-	<select id="selectBadge" resultType="Badge">
+	<select id="selectBadgeList" resultType="Badge">
 		select badge_no, badge_name, badge_image, badge_content from badge
 	</select>
 </mapper>

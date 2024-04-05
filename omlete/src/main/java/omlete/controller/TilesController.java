@@ -23,7 +23,7 @@ public class TilesController {
 	
 	@RequestMapping("/profile")
 	public String tiles3() {
-		return "mypage/profile";
+		return "mypage/badge";
 	}
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
@@ -35,5 +35,13 @@ public class TilesController {
 		return "detail/product-detail";
 	}
 	
+	@RequestMapping("/login")
+	public String tiles6() {
+		return "login/forgot-id";
+	}
 	
+	@RequestMapping("/register")
+	public String tiles7() {
+		return "login/register";
+	}
 }

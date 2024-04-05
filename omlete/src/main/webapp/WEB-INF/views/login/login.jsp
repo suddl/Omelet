@@ -38,10 +38,11 @@
                             <hr class="css-1x1brjf e1io9utx0">     
                            <div class="row">
                               <div class="col-6">
-                                 <button type="button" class="btn btn-outline-instagram btn-block fa-regular fa-comments "></i> kakao talk </button>
+                              <a href="kakaotalk://"><button type="button" class="btn btn-outline-instagram btn-block fa-regular fa-comments">kakao talk</button></a>
+                                 <!-- <button type="button" class="btn btn-outline-instagram btn-block fa-regular fa-comments "></i> kakao talk </button>
                               </div>
                               <div class="col-6">
-                                 <button type="button" class="btn btn-outline-facebook btn-block fa-regular fa-square-check"></i> naver </button>
+                                 <button type="button" class="btn btn-outline-facebook btn-block fa-regular fa-square-check"></i> naver </button> -->
                               </div>
                            </div>
                         </div>
@@ -55,4 +56,21 @@
             </div>
          </div>
       </div>
+      <script type="text/javascript">
+		$("#id").focus();
+		
+		$("#login_btn").click(function() {
+			if($("#id").val()=="") {
+				$("#id").focus();
+				return;
+			}	
+			if($("#passwd").val()=="") {
+				$("#passwd").focus();
+				return;
+			}	
+			$("#loginForm").submit();
+		});
+		
+</script>
+      
 </html>
