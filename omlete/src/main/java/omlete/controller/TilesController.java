@@ -39,4 +39,9 @@ public class TilesController {
 	public String tiles6() {
 		return "login/forgot-id";
 	}
+	
+	@RequestMapping("/register")
+	public String tiles7() {
+		return "login/register";
+	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
    <head>
@@ -25,9 +26,7 @@
                            <div>
                               <div class="user-profile-image">
                                  <label class="user-pict">
-                                 <img
-                                    src="images/user/s10.png"
-                                    class="img-fluid user-pict-img" alt="Askbootstrap">
+                                 <img src="<c:url value="/images/user/egg.png"/>"  class="img-fluid user-pict-img">
                                  <a href="#"
                                     class="user-badge-round user-badge-round-med locale-en-us top-rated-seller"></a></label>
                               </div>
@@ -61,13 +60,13 @@
                         		<p>좋아요</p>
                         		<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="myfavoriteMovie.html">- 영화</a>
+			                           <a class="nav-link active" href="#">- 영화</a>
 			                        </li>
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="myfavoriteTv.html">- TV</a>
+			                           <a class="nav-link active" href="#">- TV</a>
 			                        </li>
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="mypageGoodReviewList.html">- 리뷰</a>
+			                           <a class="nav-link active" href="#">- 리뷰</a>
 			                        </li>
 		                    	</ul>
                         	</li>
@@ -77,7 +76,7 @@
                         		<p>내 활동</p>
                         		<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="mypageWriteReviewList.html">- 작성한 리뷰</a>
+			                           <a class="nav-link active" href="#">- 작성한 리뷰</a>
 			                        </li>
 		                    	</ul>
 		                    	<ul class="nav flex-column">
@@ -119,7 +118,7 @@
                         <div class="col-md-4">
                            <div>
                               <a href="#">
-                              <img class="imgMyfavorite" src="images/list/v1.png" />
+                              <img class="imgMyfavorite" src="#" />
                               </a>
                               <a href="#">
 	                              <div class="favoriteTitle">
@@ -131,7 +130,7 @@
                         <div class="col-md-4">
                            <div>
                               <a href="#">
-                              <img class="imgMyfavorite" src="images/list/v1.png" />
+                              <img class="imgMyfavorite" src="#" />
                               </a>
                               <a href="#">
 	                              <div class="favoriteTitle">
@@ -143,7 +142,7 @@
                         <div class="col-md-4">
                            <div>
                               <a href="#">
-                              <img class="imgMyfavorite" src="images/list/v1.png" />
+                              <img class="imgMyfavorite" src="#" />
                               </a>
                               <a href="#">
 	                              <div class="favoriteTitle">
@@ -172,7 +171,7 @@
                               <div class="left">
                                  <span>
                                  <img
-                                    src="images/user/s9.png"
+                                    src="#"
                                     class="profile-pict-img img-fluid" alt="">
                                  </span>
                               </div>
