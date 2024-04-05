@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Gurdeep singh osahan">
 <meta name="author" content="Gurdeep singh osahan">
@@ -33,7 +33,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-<link href="<c:url value="/css/mypagestyle.css"/>" rel="stylesheet" />
+<!-- <link type="text/css" href="<c:url value="/css/mypagestyles.css"/>" rel="stylesheet" /> -->
 
 
 <title>Omlete</title>
