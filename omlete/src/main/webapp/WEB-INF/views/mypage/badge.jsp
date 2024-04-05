@@ -14,7 +14,7 @@
                     <div class="col-lg-6 col-xxl-4 mb-5">
                         <div class="card bg-light border-0 h-100">
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div><img src="/images/badge/welcomeBadge.png" ></div>
+                                <div><img src="images/badge/welcomeBadge.png"></div>
                                 <h2 class="fs-4 fw-bold">뱃지 이름</h2>
                                 <p class="mb-0">뱃지내용</p>
                             </div>
