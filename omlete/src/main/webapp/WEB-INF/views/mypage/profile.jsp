@@ -20,7 +20,7 @@
                               <i class="fa fa-circle"></i>online
                            </div>
                         </div>
-                        <div><a href="#" class="ambassadors-badge">Ambassador</a></div>
+                        <div><a href="#" class="ambassadors-badge">Ambassador</a></div> 
                          -->
                         <div class="user-profile-info">
                            <div>
