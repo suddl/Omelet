@@ -89,7 +89,7 @@
                   <nav aria-label="breadcrumb">
                      <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">전체</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">영화</li>
+                        <li class="breadcrumb-item active" aria-current="page">${contents.contentsType}</li>
                      </ol>
                   </nav>
                   <h2>${contents.contentsTname}</h2>
@@ -161,7 +161,7 @@
                   <div class="slider mt-4">
                      <div id="aniimated-thumbnials" class="slider-for slick-slider-single">
                         <a href="images/list/v1.png">
-                        <img class="img-fluid" src="images/user/poster.png" />
+                        <img class="img-fluid" src="${contents.contentsPoster}" />
                         </a>
                         <a href="images/list/v2.png">
                         <img class="img-fluid" src="images/list/v2.png" />
@@ -178,7 +178,7 @@
                      </div>
                      <div class="slider-nav slick-slider-single">
                         <div class="item-slick">
-                           <img class="img-fluid" src="images/poster.png"
+                           <img class="img-fluid" src="${contents.contentsPoster}"
                               alt="Alt">
                         </div>
                         <div class="item-slick">
@@ -201,38 +201,37 @@
                   </div>
                   <div id="description" class="description">
                      <h3>줄거리</h3>
-                     <p>만천하에 정체가 밝혀진 스파이더맨, 피터는 미스테리오를 살해한 혐의로 경찰 조사를 받게 되고, 자신 때문에 주변 사람들이 피해 입는 것이 두려웠던 피터는 닥터 스트레인지에게 도움을 요청한다.</p>
+                     <p>${contents.contentsOverview}</p>
                   </div>
                   <ul class="metadata">
                      <li class="metadata-attribute">
                         <p>등급</p>
                         <ul>
-                           <li><img src="images/12ages.svg"></li>
-                           <li>12세</li>
+                           <li><img src="images/12ages.svg" style="width:20px">${contents.contentsRating}세</li>
                         </ul>
                      </li>
                      <li class="metadata-attribute">
                         <p>개봉일</p>
                         <ul>
-                           <li>2021년</li>
+                           <li>${contents.contentsStartdate}년</li>
                         </ul>
                      </li>
                      <li class="metadata-attribute">
                         <p>장르</p>
                         <ul>
-                           <li>액션/SF</li>
+                           <li>${contents.contentsGenre}</li>
                         </ul>
                      </li>
                      <li class="metadata-attribute">
                         <p>국가</p>
                         <ul>
-                           <li>미국</li>
+                           <li>${contents.contentsCountries}</li>
                         </ul>
                      </li>
                      <li class="metadata-attribute">
                         <p>총시간</p>
                         <ul>
-                           <li>2시간 28분</li>
+                           <li>${contents.contentsRuntime}분</li>
                         </ul>
                      </li>
                   </ul>
