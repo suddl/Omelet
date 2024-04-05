@@ -27,6 +27,15 @@
 <link type="text/css" href="<c:url value="/vendor/select2/css/select2.min.css"/>" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link type="text/css" href="<c:url value="/css/style.css"/>" rel="stylesheet">
+
+<!-- 뱃지 부트스트랩 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="<c:url value="/css/mypagestyle.css"/>" rel="stylesheet" />
+
+
 <title>Omlete</title>
 </head>
 <body>
@@ -42,19 +51,23 @@
 		<tiles:insertAttribute name="footer"/>
 	</div>
 	 
-	<script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<c:url value="/vendor/jquery/jquery.min.js"/>"></script>
+	
+    <script src="<c:url value="/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
     <!-- Contact form JavaScript -->
     <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-    <script src="/js/jqBootstrapValidation.js"></script>
-    <script src="/js/contact_me.js"></script>
+    <script src="<c:url value="/js/jqBootstrapValidation.js"/>"></script>
+    <script src="<c:url value="/js/contact_me.js"/>"></script>
     <!-- Slick -->
-    <script src="/vendor/slick-master/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<c:url value="/vendor/slick-master/slick/slick.js"/>" type="text/javascript" charset="utf-8"></script>
     <!-- lightgallery -->
-    <script src="/vendor/lightgallery-master/dist/js/lightgallery-all.min.js"></script>
+    <script src="<c:url value="/vendor/lightgallery-master/dist/js/lightgallery-all.min.js"/>"></script>
     <!-- select2 Js -->
-    <script src="/vendor/select2/js/select2.min.js"></script>
+    <script src="<c:url value="/vendor/select2/js/select2.min.js"/>"></script>
     <!-- Custom -->
-    <script src="/js/custom.js"></script>
+    <script src="<c:url value="/js/custom.js"/>"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<c:url value="js/mypagescripts.js"/>"></script>
 </body>
 </html>
