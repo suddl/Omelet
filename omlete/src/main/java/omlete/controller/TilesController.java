@@ -21,6 +21,11 @@ public class TilesController {
 		return "main";
 	}
 	
+	@RequestMapping("/profile")
+	public String tiles3() {
+		return "mypage/profile";
+	}
+	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String tiles2(Model m, int no) {
 		
