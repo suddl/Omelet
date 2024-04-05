@@ -4,4 +4,8 @@
 	<insert id="insertMybadge">
 		insert into mybadge values(${mybadgeNo}, ${mybadgeMemberNum}, ${mybadgeStatus});
 	</insert>
+	
+	<select id="selectMybadge" resultType="Mybadge">
+		select mybadge_no, mybadge_member_num, mybadge_status, badge_name, badge_image, badge_content from mybadge join badge on mybadge_no=badge_no
+	</select>
 </mapper>
