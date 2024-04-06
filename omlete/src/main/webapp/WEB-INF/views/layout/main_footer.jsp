@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <footer class="bg-white">
    <div class="container">
       <div class="d-flex justify-content-between">
@@ -44,7 +44,7 @@
       <div class="copyright">
          <div class="logo">
             <a href="index.html">
-            	<img src="images/omelet.png">
+            	<img src="<c:url value="/images/logo/omlete_logo.png"/>">
             </a>
          </div>
          <p>© Copyright 2024 Omelet. All Rights Reserved</p>

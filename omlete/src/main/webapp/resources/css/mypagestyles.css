@@ -10134,8 +10134,9 @@ textarea.form-control-lg {
   .p-lg-4 {
     padding: 1.5rem !important;
   }
+  /* 수정 - 뱃지*/
   .p-lg-5 {
-    padding: 3rem !important;
+    padding: 1rem !important;
   }
   .px-lg-0 {
     padding-right: 0 !important;

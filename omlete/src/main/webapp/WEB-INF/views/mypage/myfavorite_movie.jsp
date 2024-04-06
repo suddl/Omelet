@@ -29,27 +29,7 @@
                <div class="row">
                   <div class="col-md-3">
                      <a href="product-detail.html">
-                     	<img class="imgMyfavorite" src="images/list/v1.png" />
-                     </a>
-                  </div>
-                  <div class="col-md-3">
-                     <a href="product-detail.html">
-                     	<img class="imgMyfavorite" src="images/list/v1.png" />
-                     </a>
-                  </div>
-                  <div class="col-md-3">
-                     <a href="product-detail.html">
-                    	<img class="imgMyfavorite" src="images/list/v1.png" />
-                     </a>
-                  </div>
-                  <div class="col-md-3">
-                     <a href="product-detail.html">
-                    	<img class="imgMyfavorite" src="images/list/v1.png" />
-                     </a>
-                  </div>
-                  <div class="col-md-3">
-                     <a href="product-detail.html">
-                     	<img class="imgMyfavorite" src="images/list/v1.png" />
+                     	<img class="imgMyfavorite" src="#" />
                      </a>
                   </div>
                </div>

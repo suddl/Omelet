@@ -11,7 +11,7 @@
 <meta name="description" content="Gurdeep singh osahan">
 <meta name="author" content="Gurdeep singh osahan">
 <!-- Favicon Icon -->
-<link rel="icon" type="image/png" href="images/fav.svg">
+<link rel="icon" type="image/png" href="<c:url value="/vendor/images/fav.svg"/>">
 <!-- Bootstrap core CSS -->
 <link type="text/css"  href="<c:url value="/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
 <!-- Font Awesome-->
@@ -33,7 +33,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-<!-- <link type="text/css" href="<c:url value="/css/mypagestyles.css"/>" rel="stylesheet" /> -->
 
 
 <title>Omlete</title>
@@ -68,6 +67,5 @@
     <script src="<c:url value="/js/custom.js"/>"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<c:url value="js/mypagescripts.js"/>"></script>
 </body>
 </html>

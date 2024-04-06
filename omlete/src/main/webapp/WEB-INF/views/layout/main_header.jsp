@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 헤더 시작 -->
 <nav class="navbar navbar-expand-lg navbar-light topbar static-top shadow-sm bg-white osahan-nav-top px-0">
    <div class="container">
       <!-- Sidebar Toggle (Topbar) -->
-      <a class="navbar-brand" href="index.html"><img src="images/omelet.png" alt=""></a>
+      <a class="navbar-brand" href="index.html"><img src="<c:url value="/images/logo/omlete_logo.png"/>" alt=""></a>
       <!-- Topbar Search -->
       <div class="container">
 	      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

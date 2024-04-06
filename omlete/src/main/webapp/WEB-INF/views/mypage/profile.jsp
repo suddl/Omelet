@@ -26,14 +26,14 @@
                            <div>
                               <div class="user-profile-image">
                                  <label class="user-pict">
-                                 <img src="<c:url value="/images/user/egg.png"/>"  class="img-fluid user-pict-img">
+                                 <img src="<c:url value="/images/user/oneEgg.png"/>"  class="img-fluid user-pict-img">
                                  <a href="#"
                                     class="user-badge-round user-badge-round-med locale-en-us top-rated-seller"></a></label>
                               </div>
                            </div>
                            <div class="user-profile-label">
                               <div class="username-line">
-                                 <a href="profile.html" class="seller-link">회원 이름</a>
+                                 <a href="#" class="seller-link">회원 이름</a>
                               </div>
                               <div class="oneliner-wrapper">
                               <!--  -->
@@ -45,7 +45,7 @@
                            </div>
                         </div>
                         <div class="buttons-wrapper">
-                           <a href="become-a-seller.html" class="btn-lrg-standard btn-contact-me js-contact-me js-open-popup-join">내 정보 수정</a>
+                           <a href="#" class="btn-lrg-standard btn-contact-me js-contact-me js-open-popup-join">내 정보 수정</a>
                            <!-- <div class="btn-lrg-standard btn-white btn-custom-order">Get a Quote</div> -->
                         </div>
                      </div>
@@ -60,13 +60,13 @@
                         		<p>좋아요</p>
                         		<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 영화</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeMovie"/>">- 영화</a>
 			                        </li>
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- TV</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeTv"/>">- TV</a>
 			                        </li>
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 리뷰</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeReview"/>">- 리뷰</a>
 			                        </li>
 		                    	</ul>
                         	</li>
@@ -76,7 +76,7 @@
                         		<p>내 활동</p>
                         		<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 작성한 리뷰</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/writeReview"/>">- 작성한 리뷰</a>
 			                        </li>
 		                    	</ul>
 		                    	<ul class="nav flex-column">
@@ -91,7 +91,7 @@
 		                    	</ul>
 		                    	<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="badge.html">- 마이 뱃지</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/mybadge"/>">- 마이 뱃지</a>
 			                        </li>
 		                    	</ul>
                         	</li>
@@ -99,7 +99,7 @@
                         	<br>
                         
                         	<li>
-                        		<a href="resign.html">탈퇴하기</a>
+                        		<a href="<c:url value="/mypage/profile/resign"/>">탈퇴하기</a>
                         	</li>
 	                        
                         </ul>
@@ -160,7 +160,7 @@
                            data-impression-collected="true">5</span></span><span><span
                            class="total-rating header-total-rating"
                            data-impression-collected="true">(리뷰 개수)</span></span></small> </h4>
-                         <a href="#">더보기</a>
+                         <a href="<c:url value="/mypage/profile/writeReview"/>">더보기</a>
                      </div>
                      
                   </div>
@@ -197,123 +197,6 @@
                                     </p>
                                  </div>
                                  <span class="publish py-3 d-inline-block w-100">댓글 작성 날짜</span>
-                              </div>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="d-flex">
-                              <div class="left">
-                                 <span>
-                                 <img
-                                    src="images/user/s8.png"
-                                    class="profile-pict-img img-fluid" alt="">
-                                 </span>
-                              </div>
-                              <div class="right">
-                                 <h4>
-                                    Askbootstrap
-                                    <span class="gig-rating text-body-2">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15"
-                                          height="15">
-                                          <path fill="currentColor"
-                                             d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z">
-                                          </path>
-                                       </svg>
-                                       5.0
-                                    </span>
-                                 </h4>
-                                 <div class="country d-flex align-items-center">
-                                    <span>
-                                    <img class="country-flag img-fluid"
-                                       src="images/flag/flag.png">
-                                    </span>
-                                    <div class="country-name font-accent">Germany</div>
-                                 </div>
-                                 <div class="review-description">
-                                    <p>
-                                       The process was smooth, after providing the required info,
-                                       Pragyesh sent me an outstanding packet of wireframes. Thank you a lot!
-                                    </p>
-                                 </div>
-                                 <span class="publish py-3 d-inline-block w-100">Published 4 weeks ago</span>
-                              </div>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="d-flex">
-                              <div class="left">
-                                 <span>
-                                 <img
-                                    src="images/user/s7.png"
-                                    class="profile-pict-img img-fluid" alt="">
-                                 </span>
-                              </div>
-                              <div class="right">
-                                 <h4>
-                                    Askbootstrap
-                                    <span class="gig-rating text-body-2">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15"
-                                          height="15">
-                                          <path fill="currentColor"
-                                             d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z">
-                                          </path>
-                                       </svg>
-                                       5.0
-                                    </span>
-                                 </h4>
-                                 <div class="country d-flex align-items-center">
-                                    <span>
-                                    <img class="country-flag img-fluid"
-                                       src="images/flag/uk.png">
-                                    </span>
-                                    <div class="country-name font-accent">UK</div>
-                                 </div>
-                                 <div class="review-description">
-                                    <p>
-                                       The process was smooth, after providing the required info,
-                                       Pragyesh sent me an outstanding packet of wireframes. Thank you a lot!
-                                    </p>
-                                 </div>
-                                 <span class="publish py-3 d-inline-block w-100">Published 4 weeks ago</span>
-                              </div>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="d-flex">
-                              <div class="left">
-                                 <span>
-                                 <img
-                                    src="images/user/s6.png"
-                                    class="profile-pict-img img-fluid" alt="">
-                                 </span>
-                              </div>
-                              <div class="right">
-                                 <h4>
-                                    Askbootstrap
-                                    <span class="gig-rating text-body-2">
-                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15"
-                                          height="15">
-                                          <path fill="currentColor"
-                                             d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z">
-                                          </path>
-                                       </svg>
-                                       5.0
-                                    </span>
-                                 </h4>
-                                 <div class="country d-flex align-items-center">
-                                    <span>
-                                    <img class="country-flag img-fluid"
-                                       src="images/flag/australia.png">
-                                    </span>
-                                    <div class="country-name font-accent">Australia</div>
-                                 </div>
-                                 <div class="review-description">
-                                    <p>
-                                       The process was smooth, after providing the required info,
-                                       Pragyesh sent me an outstanding packet of wireframes. Thank you a lot!
-                                    </p>
-                                 </div>
-                                 <span class="publish py-3 d-inline-block w-100">Published 4 weeks ago</span>
                               </div>
                            </div>
                         </li>

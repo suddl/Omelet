@@ -126,6 +126,21 @@ Version: 1.0
 .resign-ment {
 	font-size: 50px;
 }
+
+.mybadgeImg {
+	width: 150px;
+	border-radius: 50%;
+	margin-bottom: 15px;
+}
+
+.p-lg-5 {
+    padding: 1rem !important;
+    
+  }
+  
+.mb-0 {
+    margin-top: 1em !important;
+}
 /* ======================================추가======================================  */
 /* 수정 */
  .btn-outline-success {
