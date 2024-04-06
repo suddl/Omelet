@@ -8,4 +8,8 @@
 		insert into member values(#{memberNo}, #{memberId}, #{memberPasswd}, #{memberName}, #{memberPhone}, #{memberBirth}, #{memberEmail}, #{memberLevel}, 
 		#{memberBadge}, #{memberStatus}, #{memberPoint}, #{memberFavorite1}, #{memberFavorite2}, #{memberFavorite3}, #{memberReport}, #{memberNickname})
 	</insert>
+	
+	<select id="selectMember" resultType="Member">
+		select * from member where m_id=#{mId}
+	</select>
 </mapper>

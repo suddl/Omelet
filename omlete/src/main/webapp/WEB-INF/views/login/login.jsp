@@ -70,7 +70,5 @@
 			}	
 			$("#loginForm").submit();
 		});
-		
-</script>
-      
+	</script>
 </html>
