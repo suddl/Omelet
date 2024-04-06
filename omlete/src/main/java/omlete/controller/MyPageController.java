@@ -13,6 +13,12 @@ public class MyPageController {
 		return "mypage/profile";
 	}
 	
+	// 내 정보 수정
+	@RequestMapping(value = "/profile/updateInfo")
+	public String updateInfo() {
+		return "redirect:mypage/myinfo_update";
+	}
+	
 	// 내가 좋아요한 영화 작품 목록
 	@RequestMapping(value = "/profile/likeMovie")
 	public String myLikeMovie() {
@@ -49,5 +55,6 @@ public class MyPageController {
 	public String myResign() {
 		return "mypage/mypage_resign";
 	}
+	
 	
 }

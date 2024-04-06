@@ -1,32 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div class="py-5">
+   <head>
+      <meta charset="utf-8">
+   </head>
+   <body>
+      <!-- 시작!!!! -->
+      <div class="main-page second py-5">
          <div class="container">
             <div class="row">
                <div class="col-lg-4 left">
                   <div class="profile_info">
                      <div class="seller-card">
+                     	<!-- 
+                        <div>
+                           <div class="user-online-indicator is-online " data-user-id="1152855">
+                              <i class="fa fa-circle"></i>online
+                           </div>
+                        </div>
+                        <div><a href="#" class="ambassadors-badge">Ambassador</a></div> 
+                         -->
                         <div class="user-profile-info">
                            <div>
                               <div class="user-profile-image">
                                  <label class="user-pict">
-                                 <img
-                                    src="images/user/s10.png"
-                                    class="img-fluid user-pict-img" alt="Askbootstrap">
+                                 <img src="<c:url value="/images/user/oneEgg.png"/>"  class="img-fluid user-pict-img">
                                  <a href="#"
                                     class="user-badge-round user-badge-round-med locale-en-us top-rated-seller"></a></label>
                               </div>
                            </div>
                            <div class="user-profile-label">
                               <div class="username-line">
-                                 <a href="profile.html" class="seller-link">회원 이름</a>
+                                 <a href="<c:url value="/mypage/profile"/>" class="seller-link">회원 이름</a>
                               </div>
                               <div class="oneliner-wrapper">
                               <!--  -->
@@ -38,7 +45,7 @@
                            </div>
                         </div>
                         <div class="buttons-wrapper">
-                           <a href="become-a-seller.html" class="btn-lrg-standard btn-contact-me js-contact-me js-open-popup-join">내 정보 수정</a>
+                           <a href="<c:url value="/mypage/profile/updateInfo"/>" class="btn-lrg-standard btn-contact-me js-contact-me js-open-popup-join">내 정보 수정</a>
                            <!-- <div class="btn-lrg-standard btn-white btn-custom-order">Get a Quote</div> -->
                         </div>
                      </div>
@@ -53,13 +60,13 @@
                         		<p>좋아요</p>
                         		<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 영화</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeMovie"/>">- 영화</a>
 			                        </li>
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- TV</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeTv"/>">- TV</a>
 			                        </li>
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 리뷰</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeReview"/>">- 리뷰</a>
 			                        </li>
 		                    	</ul>
                         	</li>
@@ -69,7 +76,7 @@
                         		<p>내 활동</p>
                         		<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 작성한 리뷰</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/writeReview"/>">- 작성한 리뷰</a>
 			                        </li>
 		                    	</ul>
 		                    	<ul class="nav flex-column">
@@ -84,9 +91,15 @@
 		                    	</ul>
 		                    	<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 마이 뱃지</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/mybadge"/>">- 마이 뱃지</a>
 			                        </li>
 		                    	</ul>
+                        	</li>
+                        	<br>
+                        	<br>
+                        
+                        	<li>
+                        		<a href="<c:url value="/mypage/profile/resign"/>">탈퇴하기</a>
                         	</li>
 	                        
                         </ul>
@@ -94,8 +107,8 @@
                 
                   </div>
                </div>
-               <main class="col-md-8">
-                  <div class="shadow-sm rounded bg-white mb-3">
+               <div class="col-lg-8 right">
+	               <div class="shadow-sm rounded bg-white mb-3">
                      <div class="box-title border-bottom p-3">
                         <h6 class="m-0">회원 정보 수정</h6>
                         <p class="mb-0 mt-0 small">회원 정보 수정 사항 페이지 입니다.
@@ -374,10 +387,11 @@
                   <div class="mb-3 text-right">
                      <button type="submit" class="btn btn-outline-success">Cancel</button>
                      <button type="submit" class="btn btn-success">Submit</button>
-                  </div>
-               </main>
+                  </div>   
+               </div>
             </div>
          </div>
       </div>
-</body>
+      
+   </body>
 </html>

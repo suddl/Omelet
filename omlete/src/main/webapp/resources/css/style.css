@@ -137,10 +137,12 @@ Version: 1.0
     padding: 1rem !important;
     
   }
-  
+
+/*  
 .mb-0 {
     margin-top: 1em !important;
 }
+*/
 /* ======================================추가======================================  */
 /* 수정 */
  .btn-outline-success {
@@ -2507,9 +2509,10 @@ Version: 1.0
      padding: 0;
      margin: 0;
 }
+/* 수정 */
  .main-page.second .right h2 {
      color: #222325;
-     margin: 0 0 20px;
+     /*margin: 0 0 20px;*/
      font-size: 20px;
      text-transform: capitalize;
 }
