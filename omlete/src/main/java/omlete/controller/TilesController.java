@@ -44,5 +44,4 @@ public class TilesController {
 	public String tiles7() {
 		return "login/register";
 	}
-	
 }

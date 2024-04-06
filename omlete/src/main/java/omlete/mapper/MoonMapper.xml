@@ -1,0 +1,67 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="omlete.mapper.MoonMapper">
+	<insert id="insertMoon">
+		<selectKey resultType="int" keyProperty="moon_no" order="BEFORE">
+			select moon_seq.nextval from dual
+		</selectKey>
+		insert into notice values(#{moon_no}, #{moon_member}, #{moon_title}, #{moon_content},
+			#{moon_status}, #{moon_re}, #{moon_date})
+	</insert>
+	
+	검색
+	<select id="moonSearch" parameterType="hashMap" resultType="BoardVO">
+	    select
+	    moon_title, moon_content
+	    from notice
+	    <if test='searchType.equals("notice_title")'>
+	        WHERE moon_title LIKE concat('%', #{keyword}, '%')
+	    </if>
+	    <if test='searchType.equals("notice_content")'>
+	    	WHERE moon_content LIKE concat('%', #{keyword}, '%')
+	    </if>
+	    order by moon_no desc
+	</select>
+	
+	수정
+	<update id="moonUpdate" parameterType="board">
+		update moon 
+		set moon_member = #{moonMember},
+		moon_title = #{moonTitle},
+		moon_content = #{moonContent},
+		moon_status = #{moonStatus},
+		moon_re = #{moonRe},
+		moon_date = #{moonDate},
+		where moon_no = #{moonNo}
+	</update>
+	
+	
+	문의상세 페이지
+	<select id="moonboardDetailData" resultType="MoonBoardVO" parameterType="number">
+    select moon.moon_no, moon_title, moon_content, moon_date, notice_term, notice_image
+    	member.member_no
+    from moon join member where notice_no=#{noticeNo}
+	</select>
+	
+	select review_num,review_member_num,client_name,review_subject,review_content,review_image"
+					+ ",review_register,review_update,review_readcount,review_replay,review_product_num,review_order_num"
+					+ " from review_table join client_table on review_table.review_member_num=client_table.client_num"
+					+ " where review_num=?";
+	
+	삭제
+	<delete id="deleteMoon">
+		delete from moon where moon_no=#{moonNo}
+	</delete>
+	
+	레코드수 조회
+	<select id="selectMoonCount" resultType="int">
+		select count(*) from moon
+	</select>
+	
+	전체리스트
+	<select id="selectMoonList" resultType="Moon">
+    	select * from (select rownum rn, moon.* from (select moon_no, moon_member, moon_title,
+    		moon_content, moon_status, moon_re, moon_date
+            from Moon order by moon_no desc) moon) where rn between #{startRow} and #{endRow}
+	</select>
+</mapper> -->
