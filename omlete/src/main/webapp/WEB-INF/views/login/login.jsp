@@ -5,6 +5,7 @@
    <body>
       <!-- Login --> 
       <div class="bg-white">
+                     <form id="loginForm" class="form" action="${pageContext.request.contextPath }/login/member" method="post">
          <div class="container">
             <div class="row justify-content-center align-items-center d-flex vh-100">
                <div class="col-lg-4 mx-auto">
@@ -14,47 +15,51 @@
                     <h5 class="font-weight-bold mt-3">로그인</h5>
                       <!--  <p class="text-muted">로그인</p> -->
                      </div>
-                     <form action="index.html">
+                     <!-- <form action="index.html">  -->
                         <div class="form-group">
                            <label class="mb-1">아이디</label>
                            <div class="position-relative icon-form-control">
                               <i class="mdi mdi-account position-absolute"></i>
-                              <input type="email" class="form-control">
+                              <input id="id" type="text" class="form-control" name="memberId" value="${memberId}" placeholder="아이디를 입력하세요" aria-label="default input example">
                            </div>
                         </div>
                         <div class="form-group">
                            <label class="mb-1">비밀번호</label>
                            <div class="position-relative icon-form-control">
                               <i class="mdi mdi-key-variant position-absolute"></i>
-                              <input type="password" class="form-control">
+                              <input id="passwd" name="memberPassword" type="password" class="form-control" placeholder="비밀번호를 입력하세요" aria-label="default input example">
                            </div>
+                           <div id="message"class="mt-5 mb-0 text-danger">${message }</div>
                         </div>
                         <div class="custom-control custom-checkbox mb-3">
                            <input type="checkbox" class="custom-control-input" id="customCheck1">
                            <label class="custom-control-label" for="customCheck1">암호 기억하기</label>
                         </div>
-                        <button class="btn btn-success btn-block text-uppercase" type="submit"> 로그인 </button>
+                        <button class="btn btn-success btn-block text-uppercase" type="button" id="login_btn" class="btn"> 로그인 </button>
+                        <div id="message"class="mt-5 mb-0 text-danger">${message }</div>
                         <div class="text-center mt-3 border-bottom pb-3">
-                            <hr class="css-1x1brjf e1io9utx0">     
+                            <hr class="css-1x1brjf e1io9utx0">
+                            <!--      
                            <div class="row">
                               <div class="col-6">
                               <a href="kakaotalk://"><button type="button" class="btn btn-outline-instagram btn-block fa-regular fa-comments">kakao talk</button></a>
                                  <!-- <button type="button" class="btn btn-outline-instagram btn-block fa-regular fa-comments "></i> kakao talk </button>
                               </div>
                               <div class="col-6">
-                                 <button type="button" class="btn btn-outline-facebook btn-block fa-regular fa-square-check"></i> naver </button> -->
+                                 <button type="button" class="btn btn-outline-facebook btn-block fa-regular fa-square-check"></i> naver </button>
                               </div>
                            </div>
+                           -->
                         </div>
                         <div class="py-3 d-flex align-item-center">
                            <a href="forgot-id.html"> 아이디찾기 </a>/<a href="forgot-password.html"> 비밀번호 찾기 </a>
-                           <span class="ml-auto"> 새로운 계정 <a href="register.html"> 회원가입 </a></span>
                         </div>
-                     </form>
+                           <span class="ml-auto"> 새로운 계정 <a href="register.html"> 회원가입 </a></span>
                   </div>
                </div>
             </div>
          </div>
+                     </form>
       </div>
       <script type="text/javascript">
 		$("#id").focus();
@@ -69,6 +74,13 @@
 				return;
 			}	
 			$("#loginForm").submit();
+		});
+		
+		$("#join_btn").click(function() {
+			location.href="${pageContext.request.contextPath }/join/member";
+		});
+		$("#find_btn").click(function() {
+			location.href="${pageContext.request.contextPath }/member_find";
 		});
 		
 </script>
