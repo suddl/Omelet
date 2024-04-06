@@ -101,53 +101,95 @@
                         	<li>
                         		<a href="<c:url value="/mypage/profile/resign"/>">탈퇴하기</a>
                         	</li>
-	                        
                         </ul>
                      </div>
-                
                   </div>
-               </div>
-               <div class="col-lg-8 right">
-					<div class="container px-lg-5">
-                <!-- Page Features-->
-                <div class="row gx-lg-5">
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div ><img src="<c:url value="/images/badge/welcomeBadge.png"/>" class="mybadgeImg"></div>
-                                <h2 class="fs-4 fw-bold">뱃지 이름</h2>
-                                <p class="mb-0">뱃지내용뱃지내용뱃지내용뱃지내용뱃지내용뱃지내용뱃지내용뱃지내용뱃지내용</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div><img src="<c:url value="/images/badge/welcomeBadge.png"/>" class="mybadgeImg"></div>
-                                <h2 class="fs-4 fw-bold">뱃지 이름</h2>
-                                <p class="mb-0">뱃지내용</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div><img src="<c:url value="/images/badge/welcomeBadge.png"/>" class="mybadgeImg"></div>
-                                <h2 class="fs-4 fw-bold">뱃지 이름</h2>
-                                <p class="mb-0">뱃지내용</p>
-                            </div>
-                        </div>
-                        
-                    </div>
                 </div>
-            </div> 
-
+                <div class="col-lg-8 right">
+					<div class="container px-lg-5">
+		                <!-- Page Features-->
+		                <div class="row gx-lg-5">
+		                	<%-- 회원가입 관련 뱃지 --%>
+		                    <div class="col-lg-6 col-xxl-4 mb-5">
+		                        <div class="card bg-light border-0 h-100">
+		                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+		                                <div>
+		                                	<img src="<c:url value="/images/badge/welcomeBadge.png"/>" class="mybadgeImg">
+		                                </div>
+		                                <h2 class="fs-4 fw-bold">Welcome! OMELET</h2>
+		                                <p class="mb-0">첫 회원가입을 환영합니다!</p>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                    <%-- 리뷰 관련 뱃지 --%>
+		                    <div class="col-lg-6 col-xxl-4 mb-5">
+		                        <div class="card bg-light border-0 h-100">
+		                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+		                                <div>
+		                                	<img src="<c:url value="/images/badge/reviewKingBadge.png"/>" class="mybadgeImg">
+		                                </div>
+		                                <h2 class="fs-4 fw-bold">ReviewKing</h2>
+		                                <p class="mb-0">총 리뷰를 200개 이상 작성하신<br>당신은 진정한 ReviewKing!</p>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                    <%-- 영화 관련 뱃지 --%>
+		                    <div class="col-lg-6 col-xxl-4 mb-5">
+		                        <div class="card bg-light border-0 h-100">
+		                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+		                                <div>
+		                                	<img src="<c:url value="/images/badge/movieKingBadge.png"/>" class="mybadgeImg">
+		                                </div>
+		                                <h2 class="fs-4 fw-bold">당신은 MovieKing!</h2>
+		                                <p class="mb-0">영화 작품 리뷰를 100개 이상 작성하신<br> 당신은 진정한 MovieKing! </p>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                    <div class="col-lg-6 col-xxl-4 mb-5">
+		                        <div class="card bg-light border-0 h-100">
+		                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+		                                <div>
+		                                	<img src="<c:url value="/images/badge/harrypotterBadge.png"/>" class="mybadgeImg">
+		                                </div>
+		                                <h2 class="fs-4 fw-bold">호그와트 입학 준비 완료?!</h2>
+		                                <p class="mb-0">해리포터 영화 리뷰를 다 작성하므로써 <br>호그와트 입학 준비 완료!</p>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                    <%-- tv관련 뱃지 --%>
+		                    <div class="col-lg-6 col-xxl-4 mb-5">
+		                        <div class="card bg-light border-0 h-100">
+		                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+		                                <div>
+		                                	<img src="<c:url value="/images/badge/tvmaniaBadge.png"/>" class="mybadgeImg">
+		                                </div>
+		                                <h2 class="fs-4 fw-bold">TV Mania</h2>
+		                                <p class="mb-0">tv 작품 리뷰를 100개 이상 작성하신<br>당신은 진정한 TV Mania!</p>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                    <%-- 위시리스트 관련 뱃지 --%>
+		                    <div class="col-lg-6 col-xxl-4 mb-5">
+		                        <div class="card bg-light border-0 h-100">
+		                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+		                                <div>
+		                                	<img src="<c:url value="/images/badge/wishlistBadge.png"/>" class="mybadgeImg">
+		                                </div>
+		                                <h2 class="fs-4 fw-bold">wishlist</h2>
+		                                <p class="mb-0">찜하기 200개 이상<br></p>
+		                            </div>
+		                        </div>
+		                    </div>                    
+		                </div>
+            		</div> 
                </div>
             </div>
          </div>
       </div>
-      
    </body>
 </html>

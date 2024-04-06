@@ -81,7 +81,7 @@
 		                    	</ul>
 		                    	<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 작성한 문의글</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/writeMoon"/>">- 작성한 문의글</a>
 			                        </li>
 		                    	</ul>
 		                    	<ul class="nav flex-column">

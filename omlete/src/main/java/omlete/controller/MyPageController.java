@@ -16,7 +16,7 @@ public class MyPageController {
 	// 내 정보 수정
 	@RequestMapping(value = "/profile/updateInfo")
 	public String updateInfo() {
-		return "redirect:mypage/myinfo_update";
+		return "mypage/myinfo_update";
 	}
 	
 	// 내가 좋아요한 영화 작품 목록
@@ -43,6 +43,11 @@ public class MyPageController {
 		return "mypage/mypage_writeReviewList";
 	}
 	
+	// 내가 작성한 리뷰
+	@RequestMapping(value = "/profile/writeMoon")
+	public String myWriteMoon() {
+		return "mypage/mymoon_write";
+	}
 	
 	// 마이뱃지 목록
 	@RequestMapping(value = "/profile/mybadge")
