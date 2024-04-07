@@ -46,6 +46,18 @@
 	<context:component-scan base-package="omlete.dao" />
 	<context:component-scan base-package="omlete.service" />
 	
+	<beans:bean class="org.springframework.web.servlet.i18n.SessionLocaleResolver" id="localeResolver">
+		<beans:property name="defaultLocale" value="ko"/>
+	</beans:bean>
 	
-	
+	<beans:bean class="omlete.util.LoginAuthInterceptor" id="loginAuthInterceptor"/>
+	<!-- 
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/login/member"/>
+			<beans:ref bean="loginAuthInterceptor"/>
+		</interceptor>
+	</interceptors>	
+	 -->
 </beans:beans>
