@@ -28,6 +28,11 @@ public class ContentsDAOImpl implements ContentsDAO{
 	public Contents selectContents(int contentsNo) {
 		return sqlSession.getMapper(ContentsMapper.class).selectContents(contentsNo);
 	}
+	@Override
+	public List<Contents> getContentsInfoList(String type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

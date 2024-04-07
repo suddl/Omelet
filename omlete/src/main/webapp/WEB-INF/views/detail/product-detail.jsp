@@ -231,13 +231,14 @@
                      <li class="metadata-attribute">
                         <p>총시간</p>
                         <ul>
-                           <li>${contents.contentsRuntime}분</li>
+                           <li>${contents.contentsRuntime}</li>
                         </ul>
                      </li>
                   </ul>
                   <h3 id="aboutSeller">제작/출연</h3>
                   <div class="profile-card">
                      <div class="user-profile-image d-flex">
+                       <div class="profile-info"> 
                         <label class="profile-pict" for="profile_image">
                         <img
                            src="images/s2.png"
@@ -249,8 +250,9 @@
                               <a href="#" class="seller-link">톰 홀랜드</a>
                               </span>
                            </div>
-                           
                         </div>
+                       </div>
+                       <div class="profile-info"> 
                         <label class="profile-pict" for="profile_image">
                         <img
                            src="images/s2_1.png"
@@ -262,8 +264,36 @@
                               <a href="#" class="seller-link">토비 맥과이어</a>
                               </span>
                            </div>
-                           
                         </div>
+                       </div>
+                       <div class="profile-info">
+                        <label class="profile-pict" for="profile_image">
+                        <img
+                           src="images/s2.png"
+                           class="profile-pict-img img-fluid" alt="">
+                        </label>
+                        <div class="right">
+                           <div class="profile-name">
+                              <span class="user-status">
+                              <a href="#" class="seller-link">${contents.contentsDirector}</a>
+                              </span>
+                           </div>
+                        </div>
+                       </div>
+                       <div class="profile-info">
+                        <label class="profile-pict" for="profile_image">
+                        <img
+                           src="images/s2.png"
+                           class="profile-pict-img img-fluid" alt="">
+                        </label>
+                        <div class="right">
+                           <div class="profile-name">
+                              <span class="user-status">
+                              <a href="#" class="seller-link">${contents.contentsStaff}</a>
+                              </span>
+                           </div>
+                        </div>
+                       </div>
                      </div>
                      <div class="stats-desc">
                         <ul class="user-stats">
@@ -287,7 +317,6 @@
                            </div>
                         </article>
                      </div>
-                     
                   </div>
                   <div id="faq" class="faq">
                      <h3>FAQ</h3>

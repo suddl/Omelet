@@ -10,4 +10,6 @@ public interface ContentsDAO {
 	 List<Contents> selectContentsList();
 	 //작품id로 해당 작품정보 불러오기
 	 Contents selectContents(int contentsNo);
+	 //TMDB에서 작품 정보를 불러오기
+	 List<Contents> getContentsInfoList(String type);
 }
