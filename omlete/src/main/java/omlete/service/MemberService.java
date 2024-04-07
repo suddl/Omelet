@@ -1,5 +1,6 @@
 package omlete.service;
 
+import omlete.dao.MemberDAO;
 import omlete.dto.Member;
 import omlete.exception.ExistsMemberException;
 import omlete.exception.LoginAuthFailException;
