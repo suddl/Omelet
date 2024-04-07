@@ -40,8 +40,11 @@
 			<if test="memberFavorite3!=null and memberFavorite3!=''">
 				member_favorite3=#{memberFavorite3}
 			</if>
+			<if test="memberNickname!=null and memberNickname!=''">
+				member_Nickname=#{memberNickname}
+			</if>
 		</set>
-		where m_id=#{mId}
+		where member_id=#{memberId}
 	</update>
 	
 	<!-- 아이디를 전달받아 MEMBER 테이블에 저장된 해당 아이디의 회원정보 검색 -->

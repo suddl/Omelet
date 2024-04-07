@@ -42,7 +42,7 @@ public class LoginController {
 	public String memberLogin(@ModelAttribute Member member, HttpSession session) throws LoginAuthFailException {
 		Member loginMember = memberService.loginAuth(member);
 		session.setAttribute("loginMember", loginMember);
-		return "redirect:/";
+		return "login/login";
 	}
 }
 

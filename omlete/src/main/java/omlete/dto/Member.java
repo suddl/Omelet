@@ -19,5 +19,5 @@ public class Member {
 	private String memberFavorite2;
 	private String memberFavorite3;
 	private int memberReport;
-	private int memberNickname;
+	private String memberNickname;
 }
