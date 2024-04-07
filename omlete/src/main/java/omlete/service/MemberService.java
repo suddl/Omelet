@@ -1,6 +1,5 @@
 package omlete.service;
 
-import omlete.dao.MemberDAO;
 import omlete.dto.Member;
 import omlete.exception.ExistsMemberException;
 import omlete.exception.LoginAuthFailException;
@@ -16,5 +15,11 @@ public interface MemberService {
 	Member loginAuth(Member member) throws LoginAuthFailException;
 	
 	Member getEmailMember(String memberEmail) throws MemberNotFoundException;
+	
+	// 마이페이지
+	Member getMemberNo(int memberNo);
+	void modifyMemberInfo(Member member);
+	void modifyMemberResign(int memberNo);
+	void modifyMemberContents(Member member);
 
 }

@@ -138,6 +138,18 @@ Version: 1.0
     
   }
 
+
+.row-alert {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center;
+}
+
+
 /*  
 .mb-0 {
     margin-top: 1em !important;
@@ -2720,14 +2732,15 @@ Version: 1.0
      width: 18px;
      border: 1px solid #c5c6c9;
 }
+/*
  .custom-checkbox:hover input~.checkmark {
      border-color: #2cdd9b;
 }
  .custom-checkbox input:checked~.checkmark {
     /*background-color: #2196F3;
-    */
      border-color: #2cdd9b;
 }
+    */
  .custom-checkbox .checkmark:after {
      content: "";
      position: absolute;

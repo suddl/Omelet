@@ -98,7 +98,7 @@ public class MemberServiceImpl implements MemberService {
 			throw new MemberNotFoundException("아이디의 회원정보가 존재하지 않습니다.");
 		}
 		return member;
-}
+	}
 
 	@Override
 	public Member getMember(String memberId) throws MemberNotFoundException {
@@ -109,6 +109,57 @@ public class MemberServiceImpl implements MemberService {
 			throw new MemberNotFoundException("게스트 아이디의 회원정보가 존재하지 않습니다.");
 		}
 		return member;
-}
+	}
+	
+	//===========================================================================================
+	// 마이페이지
+	@Override
+	public Member getMemberNo(int memberNo) {
+		Member member = memberDAO.selectMemberNo(memberNo);
+		if(member == null) {
+			throw new MemberNotFoundException("해당 번호의 회원이 존재하지 않습니다.");
+		}
+		
+		return member;
+	}
+
+	// 회원 정보 수정
+	@Override
+	public void modifyMemberInfo(Member member) {
+		if(memberDAO.selectMemberNo(member.getMemberNo()) == null) {
+			throw new MemberNotFoundException("아이디의 회원정보를 찾을 수 없습니다.");
+		}
+		
+		if(member.getMemberPasswd() !=null && !member.getMemberPasswd().equals("")) {
+			String hashedPasword=BCrypt.hashpw(member.getMemberPasswd(),BCrypt.gensalt());
+			member.setMemberPasswd(hashedPasword);
+		}
+		
+		memberDAO.updateMemberInfo(member);
+		
+	}
+
+	// 회원 탈퇴 
+	@Override
+	public void modifyMemberResign(int memberNo) {
+		if(memberDAO.selectMemberNo(memberNo) == null) {
+			throw new MemberNotFoundException("아이디의 회원정보를 찾을 수 없습니다.");
+		}
+		
+		
+		memberDAO.updateMemberResign(memberNo);
+		
+	}
+	
+	// 회원 인생작 수정
+	@Override
+	public void modifyMemberContents(Member member) {
+		if(memberDAO.selectMemberNo(member.getMemberNo()) == null) {
+			throw new MemberNotFoundException("아이디의 회원정보를 찾을 수 없습니다.");
+		}
+		
+		memberDAO.updateMemberContents(member);
+		
+	}
 
 }

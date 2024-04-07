@@ -32,5 +32,24 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.getMapper(MemberMapper.class).selectEmailMember(memberEmail);
 	}
 	
+	@Override
+	public Member selectMemberNo(int memberNo) {
+		return sqlSession.getMapper(MemberMapper.class).selectMemberNo(memberNo);
+	}
 
+	@Override
+	public int updateMemberInfo(Member member) {
+		return sqlSession.getMapper(MemberMapper.class).updateMemberInfo(member);
+	}
+
+	@Override
+	public int updateMemberResign(int memberNo) {
+		return sqlSession.getMapper(MemberMapper.class).updateMemberResign(memberNo);
+	}
+
+	@Override
+	public int updateMemberContents(Member member) {
+		return sqlSession.getMapper(MemberMapper.class).updateMemberContents(member);
+	}
+	
 }

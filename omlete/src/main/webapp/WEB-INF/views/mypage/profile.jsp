@@ -11,6 +11,7 @@
       <div class="main-page second py-5">
          <div class="container">
             <div class="row">
+               <!-- ========================================================================================================================== -->
                <div class="col-lg-4 left">
                   <div class="profile_info">
                      <div class="seller-card">
@@ -33,11 +34,11 @@
                            </div>
                            <div class="user-profile-label">
                               <div class="username-line">
-                                 <a href="<c:url value="/mypage/profile"/>" class="seller-link">회원 이름</a>
+                                 <a href="<c:url value="/mypage/profile"/>" class="seller-link">${member.memberName }</a>
                               </div>
                               <div class="oneliner-wrapper">
                               <!--  -->
-                                 <small class="oneliner">마이뱃지 대표 칭호</small>
+                                 <!-- <small class="oneliner">마이뱃지 대표 칭호</small> -->
                                  <div class="ratings-wrapper">
                                     <!-- <p class="rating-text"><strong>5.0</strong> (1k+ reviews)</p> -->
                                  </div>
@@ -86,7 +87,7 @@
 		                    	</ul>
 		                    	<ul class="nav flex-column">
 			                        <li class="nav-item">
-			                           <a class="nav-link active" href="#">- 참여한 이벤트</a>
+			                           <a class="nav-link active" href="<c:url value="/mypage/profile/myevent"/>">- 참여한 이벤트</a>
 			                        </li>
 		                    	</ul>
 		                    	<ul class="nav flex-column">
@@ -107,6 +108,7 @@
                 
                   </div>
                </div>
+               <!-- ========================================================================================================================== -->
                <div class="col-lg-8 right">
 				  <div class="d-flex align-items-center justify-content-between mb-4">
                         <p class="top3">인생 작품 top3 <small><span></span><span></span></small> </p>
@@ -163,7 +165,8 @@
                          <a href="<c:url value="/mypage/profile/writeReview"/>">더보기</a>
                      </div>
                      
-                  </div>
+                  </div
+                  >
                   <div class="review-list">
                      <ul>
                         <li>

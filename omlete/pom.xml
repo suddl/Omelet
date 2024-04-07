@@ -61,8 +61,9 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 				
-		<!-- AspectJ - Spring AOP 기능을 제공하기 위한 라이브러리  
-		무조건 있어야함, 무조건 빌드 -->
+		<!-- AspectJ - Spring AOP 기능을 제공하기 위한 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+		<!-- => AspectJ 컴파일러에 의해 생성된 Proxy 클래스의 실행 관리 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -70,14 +71,14 @@
 		</dependency>	
 		
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
-		<!-- 핵심관심코드, 횡단관심코드를 분리시켜 프로그램을 만든후 합칠때 사용, runtime 때만 빌드 -->
+		<!-- => AspectJ 컴파일러로 핵심관심코드와 횡단관심코드가 결합된 클래스(Proxy 클래스)를
+		생성하는 Weaving 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.aspectj</groupId>
 		    <artifactId>aspectjweaver</artifactId>
-		    <version>1.9.21.2</version>
+		    <version>${org.aspectj-version}</version>
 		    <scope>runtime</scope>
 		</dependency>
-		
 		
 		<!-- Logging - 로그 관련 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
@@ -157,14 +158,6 @@
 		    <!-- <scope>test</scope> -->
 		</dependency>  
 		
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		    <version>${org.springframework-version}</version>
-		   <!--  <scope>test</scope> -->
-		</dependency>
-		
 		<!-- https://mvnrepository.com/artifact/xerces/xercesImpl -->
 		<!-- => 로그 구현체가 환경설정파일(log4j.xml)을 읽어 실행될 때 필요한 파일의 경로에
 		인식할 수 없는 문자가 존재하면 예외가 발생되어 로그 구현체 미동작되는 문제 발생 --> 
@@ -174,8 +167,9 @@
 		    <artifactId>xercesImpl</artifactId>
 		    <version>2.12.2</version>
 		</dependency>
-		     
+		
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<!-- => 클래스 작성에 필요한 메소드를 자동 생성하는 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
@@ -184,13 +178,15 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
-		<dependency>	
+		<!-- => Spring Context의 확장 기능을 제공하기 위한 라이브러리 -->
+		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+		<!-- => Java Mail 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>com.sun.mail</groupId>
 		    <artifactId>javax.mail</artifactId>
@@ -198,13 +194,16 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
+		<!-- => Oracle DBMS Server를 접속할 Driver 관련 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>com.oracle.database.jdbc</groupId>
 		    <artifactId>ojdbc11</artifactId>
 		    <version>23.3.0.23.09</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<!-- => Spring DAO 관련 기능을 제공하기 위한 라이브러리 - DataSource 관련 클래스 포함 -->
+		<!-- => 라이브러리 의존 관계에 의해 spring-tx 라이브러리(트렌젝션 처리)도 자동으로 빌드 처리 -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
@@ -212,6 +211,7 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<!-- => 전달값이 저장된 Command 객체에 대한 검증 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>javax.validation</groupId>
 		    <artifactId>validation-api</artifactId>
@@ -219,6 +219,7 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<!-- => Command 객체 필드에 저장된 전달값에 대한 검증 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.hibernate.validator</groupId>
 		    <artifactId>hibernate-validator</artifactId>
@@ -226,6 +227,7 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
+		<!-- => ViewResolver 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.apache.tiles</groupId>
 		    <artifactId>tiles-extras</artifactId>
@@ -233,6 +235,7 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<!-- => Mybatis 프레임워크를 사용하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis</artifactId>
@@ -240,6 +243,7 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<!-- => SpringMVC 프레임워크에서 Mybatis 프레임워크를 사용하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis-spring</artifactId>
@@ -247,19 +251,46 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4 -->
+		<!-- => 퍼시스턴스 프레임워크(Mybatis)에 의해 발생되는 로그 이벤트를 Spring 프레임워크의
+		로그 구현체로 기록하는 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
 		    <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 		    <version>1.16</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<!-- => Spring 프레임워크에서 테스트 프로그램에 작성에 필요한 기능을 제공하기 위한 라이브러리 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${org.springframework-version}</version>
+		    <!-- <scope>test</scope> -->
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+		<!-- => 암호화 처리 기능을 제공하기 위한 라이브러리 -->
 		<dependency>
 		    <groupId>org.mindrot</groupId>
 		    <artifactId>jbcrypt</artifactId>
 		    <version>0.4</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<!-- => 파일 업로드 기능을 제공하기 위한 라이브러리 -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.5</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<!-- => Java 객체를 JSON 형식의 문자열로 변환하는 기능을 제공하기 위한 라이브러리 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.17.0</version>
+		</dependency>
 		
 	</dependencies>
     <build>
