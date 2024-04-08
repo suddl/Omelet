@@ -26,6 +26,11 @@ public class TilesController {
 		return "mypage/badge";
 	}
 	
+	@RequestMapping("/review")
+	public String tiles4() {
+		return "review/review_list";
+	}
+	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String tiles2(Model m, int no) {
 		

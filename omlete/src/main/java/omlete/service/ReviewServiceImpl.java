@@ -37,7 +37,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public Map<String, Object> getReviewList(int pageNum) {
+	public Map<String, Object> getReviewList(int pageNum, int reviewKind) {
 		int totalSize = reviewDAO.selectReviewCount();
 		
 		Pager pager = new Pager(pageNum, totalSize, 10, 10);
@@ -45,6 +45,7 @@ public class ReviewServiceImpl implements ReviewService {
 		Map<String, Object> pageMap = new HashMap<String, Object>();
 		pageMap.put("startRow", pager.getStartRow());
 		pageMap.put("endRow", pager.getEndRow());
+		pageMap.put("reviewKind", reviewKind);
 		
 		List<Review> reviewList = reviewDAO.selectReviewList(pageMap);
 		
