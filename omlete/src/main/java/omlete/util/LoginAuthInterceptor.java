@@ -28,9 +28,9 @@ public class LoginAuthInterceptor implements HandlerInterceptor {
 			throws Exception {
 		HttpSession session=request.getSession();
 		
-		Member loginUserinfo=(Member)session.getAttribute("loginMember");
+		Member loginMember=(Member)session.getAttribute("loginMember");
 		
-		if(loginUserinfo == null) {
+		if(loginMember == null) {
 			//인위적 예외 발생 - 요청 처리 메소드 미호출
 			throw new BadRequestException("비정상적인 방식으로 페이지를 요청 하였습니다.");
 		}

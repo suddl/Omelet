@@ -51,13 +51,12 @@
 	</beans:bean>
 	
 	<beans:bean class="omlete.util.LoginAuthInterceptor" id="loginAuthInterceptor"/>
-	<!-- 
+
 	<interceptors>
 		<interceptor>
-			<mapping path="/**"/>
+			<mapping path="/mypage/*"/>
 			<exclude-mapping path="/login/member"/>
 			<beans:ref bean="loginAuthInterceptor"/>
 		</interceptor>
 	</interceptors>	
-	 -->
 </beans:beans>
