@@ -5,7 +5,7 @@
 		<selectKey resultType="int" keyProperty="memberNo" order="BEFORE" >
 		    select member_seq.nextval from dual
 		</selectKey>
-		insert into member values(#{memberNo}, #{memberId},#{memberPasswd} #{memberName},#{memberPhone}, #{memberEmail},1, 0, 1, 100, #{memberFavorite1},#{memberFavorite2},#{memberFavorite3}, 0, #{memberNickname})
+		insert into member values(#{memberNo}, #{memberId},#{memberPasswd}, #{memberName},#{memberPhone}, #{memberEmail},1, 0, 1, 100, #{memberFavorite1},#{memberFavorite2},#{memberFavorite3}, 0, #{memberNickname})
 	</insert>
 	
 	<select id="selectMemberId" resultType="Member">
