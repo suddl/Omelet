@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <body>
       <!-- Register --> 
       <div class="bg-white">
@@ -96,7 +97,7 @@
                               <input class="form-control" type="password" id="rePasswd" name="rePasswd" required>
                             </div>
                         </div>
-	                        <div class="mb-1">
+	                      <div class="mb-1">
 								<span id="repasswdNullMsg" class="msg">6자이상 비밀번호확인을 입력해 주세요.</span>
 								<span id="repasswdMatchMsg" class="msg">비밀번호와 비밀번호확인이 서로 맞지 않습니다.</span>
 							</div>
@@ -112,15 +113,6 @@
                         <div class="text-center mt-3 border-bottom pb-3">
                             <hr class="css-1x1brjf e1io9utx0">
                            <div class="row">
-                               <div class="col-6">
-                                 <button type="button" class="btn btn-outline-instagram btn-block fa-regular fa-comments "></i> kakao talk </button>
-                              </div>
-                              <div class="col-6">
-                                 <button type="button" class="btn btn-outline-facebook btn-block fa-regular fa-square-check"></i> naver </button>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="py-3 d-flex align-item-center">
                         </div>
                      </form>
                   </div>
@@ -129,91 +121,105 @@
          </div>
       </div>
       
-       <script type="text/javascript">
-	$("#id").focus();
-	var submitResult;
-	
-	$("#joinBtn").submit(function() {
-		
-		submitResult=true;
-		$(".msg").css("display","none");
+      <script type="text/javascript">
+       $(document).ready(function() {
+      // 초기에 오류 메시지 숨기기
+       $(".msg").hide();
 
-		var idReg=/^[a-zA-Z]\w{5,19}$/g;
-		if($("#id").val()=="") {//입력값이 없는 경우
-			$("#idNullMsg").css("display","block");
-			submitResult=false;
-		} else if(!idReg.test($("#id").val())) {//입력값이 형식에 맞지 않는 경우
-			$("#idValidMsg").css("display","block");
-			submitResult=false;
-		}
+     // 아이디 중복 확인 이벤트 핸들러
+      $("#id").blur(function() {
+        var memberId = $(this).val();
+        $.ajax({
+            url: "your_server_url_here", // 이 부분을 서버의 중복 확인 API URL로 수정하세요
+            method: "POST",
+            data: { memberId: memberId },
+            success: function(response) {
+                if (response.exists) {
+                    $("#idDuplMsg").text("이미 사용 중인 아이디입니다.").show();
+                } else {
+                    $("#idDuplMsg").hide();
+                }
+            },
+            error: function() {
+                // 오류 처리
+                console.error("서버 오류: 중복 확인 요청 실패");
+            }
+			        });
+		    });
 		
-		var nameReg=/^[가-힣]{2,10}$/g;
-		if($("#name").val()=="") {//입력값이 없는 경우
-			$("#nameNullMsg").css("display","block");
-			submitResult=false;
-		}else if(!nameReg.test($("#name").val())) {//입력값이 형식에 맞지 않는 경우
-			$("#nameValidMsg").css("display","block");
-			submitResult=false;
-		}
-		
-		var nameReg=/^[가-힣]{2,10}$/g;
-		if($("#nickname").val()=="") {//입력값이 없는 경우
-			$("#nameNullMsg").css("display","block");
-			submitResult=false;
-		}else if(!nameReg.test($("#nickname").val())) {//입력값이 형식에 맞지 않는 경우
-			$("#nameValidMsg").css("display","block");
-			submitResult=false;
-		} 
-		
-		var phoneReg=/01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}/;
-		if($("#phone").val()=="") {//입력값이 없는 경우
-			$("#phoneNullMsg").css("display","block");
-			submitResult=false;
-		} else if(!phoneReg.test($("#phone").val())) {//입력값이 형식에 맞지 않는 경우
-			$("#phoneValidMsg").css("display","block");
-			submitResult=false;
-		}
-		
-		var emailReg=/^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[-a-zA-Z0-9]+)+)*$/g;
-		if($("#email").val()=="") {//입력값이 없는 경우
-			$("#emailNullMsg").css("display","block");
-			submitResult=false;
-		} else if(!emailReg.test($("#email").val())) {//입력값이 형식에 맞지 않는 경우
-			$("#emailValidMsg").css("display","block");
-			submitResult=false;
-		}
-		
-		var passwdReg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;
-		if($("#passwd").val()=="") {//입력값이 없는 경우
-			$("#passwdNullMsg").css("display","block");
-			submitResult=false;
-		} else if(!passwdReg.test($("#passwd").val())) {//입력값이 형식에 맞지 않는 경우
-			$("#passwdValidMsg").css("display","block");
-			submitResult=false;
-		} 
-		
-		if($("#rePasswd").val()=="") {//입력값이 없는 경우
-			$("#repasswdNullMsg").css("display","block");
-			submitResult=false;
-		} else if($("#passwd").val()!=$("#rePasswd").val()) {//repasswd입력값과 passwd입력값이 다른 경우
-			$("#repasswdMatchMsg").css("display","block");
-			submitResult=false;
-		}
-		
-		
-		
+		    // 폼 제출 이벤트 핸들러
+		    $("#joinForm").submit(function(event) {
+		        var submitResult = true;
+		        $(".msg").hide(); // 모든 메시지 숨기기
+		        
+		        // 아이디 검사
+		        if ($("#id").val() == "") {
+		            $("#idNullMsg").show();
+		            submitResult = false;
+		        } else if (!/^[a-zA-Z]\w{5,19}$/.test($("#id").val())) {
+		            $("#idValidMsg").show();
+		            submitResult = false;
+		        }
 
-		
-		return submitResult;
-		
-	});
-	
-	
-	
-	
-	
-	
+    	        // 이름 검사
+    	        if ($("#name").val() == "") {
+    	            $("#nameNullMsg").show();
+    	            submitResult = false;
+    	        } else if (!/^[\u3131-\u3163\uac00-\ud7a3]{2,10}$/.test($("#name").val())) {
+    	            $("#nameValidMsg").show();
+    	            submitResult = false;
+    	        }
+
+
+            // 닉네임 검사
+            if ($("#nickname").val() == "") {
+                $("#nicknameNullMsg").show();
+                submitResult = false;
+            } else if (!/^[\u3131-\u3163\uac00-\ud7a3]{2,10}$/.test($("#nickname").val())) {
+                $("#nicknameValidMsg").show();
+                submitResult = false;
+            }
+
+            // 휴대폰 번호 검사
+            if ($("#phone").val() == "") {
+                $("#phoneNullMsg").show();
+                submitResult = false;
+            } else if (!/^01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}$/.test($("#phone").val())) {
+                $("#phoneValidMsg").show();
+                submitResult = false;
+            }
+
+            // 이메일 검사
+            if ($("#email").val() == "") {
+                $("#emailNullMsg").show();
+                submitResult = false;
+            } else if (!/^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})*$/.test($("#email").val())) {
+                $("#emailValidMsg").show();
+                submitResult = false;
+            }
+
+            // 비밀번호 검사
+            if ($("#passwd").val() == "") {
+                $("#passwdNullMsg").show();
+                submitResult = false;
+            } else if (!/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/.test($("#passwd").val())) {
+                $("#passwdValidMsg").show();
+                submitResult = false;
+            }
+
+            // 비밀번호 확인 검사
+            if ($("#rePasswd").val() == "") {
+                $("#repasswdNullMsg").show();
+                submitResult = false;
+            } else if ($("#passwd").val() != $("#rePasswd").val()) {
+                $("#repasswdMatchMsg").show();
+                submitResult = false;
+            }
+
+            // 제출 결과 반환
+            return submitResult;
+        });
+    });
 </script>
-      
       </body>
 </html>

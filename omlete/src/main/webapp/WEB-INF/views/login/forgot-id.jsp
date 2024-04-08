@@ -11,7 +11,7 @@
                      <div class="text-center mb-4">
                         <a href="index.html"><img src="images/logo3.png" alt=""></a>
                         <h5 class="font-weight-bold mt-3"> 아이디 찾기 </h5>
-                        <p class="text-muted"> 이메일과 비밀번호를 입력해주세요. </p>
+                        <p class="text-muted"> 이름과 이메일를 입력해주세요. </p>
                         </div>
                      <form action="index.html">
                         <div class="form-group">
