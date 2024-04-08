@@ -110,57 +110,52 @@
                         </div>
                         </div>
                         <button class="btn btn-success btn-block text-uppercase" type="submit" id="joinBtn"> 동의 및 가입 </button>
-                        <div class="text-center mt-3 border-bottom pb-3">
-                            <hr class="css-1x1brjf e1io9utx0">
-                           <div class="row">
-                        </div>
                      </form>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      
-      <script type="text/javascript">
-       $(document).ready(function() {
-      // 초기에 오류 메시지 숨기기
-       $(".msg").hide();
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // 초기에 오류 메시지 숨기기
+            $(".msg").hide();
 
-     // 아이디 중복 확인 이벤트 핸들러
-      $("#id").blur(function() {
-        var memberId = $(this).val();
-        $.ajax({
-            url: "your_server_url_here", // 이 부분을 서버의 중복 확인 API URL로 수정하세요
-            method: "POST",
-            data: { memberId: memberId },
-            success: function(response) {
-                if (response.exists) {
-                    $("#idDuplMsg").text("이미 사용 중인 아이디입니다.").show();
-                } else {
-                    $("#idDuplMsg").hide();
+            // 아이디 중복 확인 이벤트 핸들러
+            $("#id").blur(function() {
+                var memberId = $(this).val();
+                $.ajax({
+                    url: "your_server_url_here", // 서버의 중복 확인 API URL로 수정
+                    method: "POST",
+                    data: { memberId: memberId },
+                    success: function(response) {
+                        if (response.exists) {
+                            $("#idDuplMsg").text("이미 사용 중인 아이디입니다.").show(); // 중복 메시지 표시
+                        } else {
+                            $("#idDuplMsg").hide(); // 중복 메시지 숨기기
+                        }
+                    },
+                    error: function() {
+                        // 오류 처리
+                        console.error("서버 오류: 중복 확인 요청 실패");
+                    }
+                });
+            });
+
+            // 폼 제출 이벤트 핸들러
+            $("#joinForm").submit(function(event) {
+                var submitResult = true;
+                $(".msg").hide(); // 모든 메시지 숨기기
+
+                // 아이디 검사
+                if ($("#id").val() == "") {
+                    $("#idNullMsg").show();
+                    submitResult = false;
+                } else if (!/^[a-zA-Z]\w{5,19}$/.test($("#id").val())) {
+                    $("#idValidMsg").show();
+                    submitResult = false;
                 }
-            },
-            error: function() {
-                // 오류 처리
-                console.error("서버 오류: 중복 확인 요청 실패");
-            }
-			        });
-		    });
-		
-		    // 폼 제출 이벤트 핸들러
-		    $("#joinForm").submit(function(event) {
-		        var submitResult = true;
-		        $(".msg").hide(); // 모든 메시지 숨기기
-		        
-		        // 아이디 검사
-		        if ($("#id").val() == "") {
-		            $("#idNullMsg").show();
-		            submitResult = false;
-		        } else if (!/^[a-zA-Z]\w{5,19}$/.test($("#id").val())) {
-		            $("#idValidMsg").show();
-		            submitResult = false;
-		        }
-
     	        // 이름 검사
     	        if ($("#name").val() == "") {
     	            $("#nameNullMsg").show();
