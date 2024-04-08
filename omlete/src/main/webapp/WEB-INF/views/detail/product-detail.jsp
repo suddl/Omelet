@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
    <head>
@@ -154,9 +154,9 @@
 					        </label>
 					    </div>
 					  </div>
-                      <button class="c-btn c-fill-color-btn">한줄리뷰</button>
-                      <button class="c-btn c-fill-color-btn">장문리뷰</button>
-                      <button class="c-btn c-fill-color-btn">명대사리뷰</button>
+                      <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">한줄리뷰</button></a>
+                      <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">장문리뷰</button></a>
+                      <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">명대사리뷰</button></a>
                   </div>
                   <div class="slider mt-4">
                      <div id="aniimated-thumbnials" class="slider-for slick-slider-single">
