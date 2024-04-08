@@ -17,7 +17,7 @@ import omlete.service.MemberService;
 public class MyPageController {
 	private final MemberService memberService;
 	
-	
+	// 마이페이지 메인화면
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profile(Model m, int no) {
 		

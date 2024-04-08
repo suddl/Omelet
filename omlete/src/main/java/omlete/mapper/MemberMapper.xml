@@ -5,54 +5,16 @@
 		<selectKey resultType="int" keyProperty="memberNo" order="BEFORE" >
 		    select member_seq.nextval from dual
 		</selectKey>
-		insert into member(member_no, member_id, member_name, member_nickname, member_phone, member_passwd, member_level) 
-		values(#{memberNo}, #{memberId}, #{memberName}, #{memberNickname}, #{memberPhone}, #{memberPasswd},1)
+		insert into member values(#{memberNo}, #{memberId},#{memberPasswd} #{memberName},#{memberPhone}, #{memberEmail},1, 0, 1, 100, #{memberFavorite1},#{memberFavorite2},#{memberFavorite3}, 0, #{memberNickname})
 	</insert>
 	
-	<!-- 회원정보를 전달받아 MEMBER 테이블에 저장된 회원정보 변경 -->
-	<update id="updateMember">
-		update member 
-		<set>
-			<if test="memberPasswd!=null and memberPasswd!=''">
-				member_passwd=#{memberPasswd},
-			</if>
-			<if test="memberName!=null and memberName!=''">
-				member_name=#{memberName},
-			</if>
-			<if test="memberPhone!=null and memberPhone!=''">
-				member_phone=#{memberPhone},
-			</if>		
-			<if test="memberBirth!=null and memberBirth!=''">
-				member_birth=#{memberBirth},
-			</if>		
-			<if test="memberEmail!=null and memberEmail!=''">
-				member_email=#{memberEmail},
-			</if>		
-			<if test="memberStatus==0 or memberStatus==1">
-				member_status=#{memberStatus}
-			</if>
-			<if test="memberFavorite1!=null and memberFavorite1!=''">
-				member_favorite1=#{memberFavorite1}
-			</if>
-			<if test="memberFavorite2!=null and memberFavorite2!=''">
-				member_favorite2=#{memberFavorite2}
-			</if>
-			<if test="memberFavorite3!=null and memberFavorite3!=''">
-				member_favorite3=#{memberFavorite3}
-			</if>
-			<if test="memberNickname!=null and memberNickname!=''">
-				member_Nickname=#{memberNickname}
-			</if>
-		</set>
-		where member_id=#{memberId}
-	</update>
-	
-	<!-- 아이디를 전달받아 MEMBER 테이블에 저장된 해당 아이디의 회원정보 검색 -->
-	<select id="selectMember" resultType="Member">
-		select * from member where member_id=#{memberId}
+	<select id="selectMemberId" resultType="Member">
+		select member_id from member where member_name=#{memberName} and member_email=#{memberEmail} 
 	</select>
-	<select id="selectEmailMember" resultType="Member">
-		select * from member where member_email=#{memberEmail}
+	
+	<select id="selectMember" resultType="Member">
+		select member_no, member_id, member_passwd, member_name, member_phone, member_email, member_level, member_badge, member_status,
+		member_point, member_favorite1, member_favorite2, member_favorite3, member_report, member_nickname from member where member_id=#{memberId}
 	</select>
 	
 	<!-- ================================================================================================================================ -->

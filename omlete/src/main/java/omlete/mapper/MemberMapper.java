@@ -4,9 +4,8 @@ import omlete.dto.Member;
 
 public interface MemberMapper {
 	int insertMember(Member member);
-	int updateMember(Member member);
+	Member selectMemberId(Member member);
 	Member selectMember(String memberId);
-	Member selectEmailMember(String memberEmail);
 	
 	//마이페이지
 	Member selectMemberNo(int memberNo);
