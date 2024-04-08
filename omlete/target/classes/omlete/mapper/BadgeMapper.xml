@@ -11,4 +11,6 @@
 	<select id="selectBadgeList" resultType="Badge">
 		select badge_no, badge_name, badge_image, badge_content from badge
 	</select>
+	
+	
 </mapper>

@@ -14,6 +14,8 @@ public interface MemberService {
 	
 	// 마이페이지
 	Member getMemberNo(int memberNo);
+	Member getMemberId(String memberId);
+	Member getMemberNickname(String memberNickname);
 	void modifyMemberInfo(Member member);
 	void modifyMemberResign(int memberNo);
 	void modifyMemberContents(Member member);

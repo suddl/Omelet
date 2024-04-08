@@ -14,6 +14,7 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public int insertMember(Member member) {
+		System.out.println("insertMember = "+member);
 		return sqlSession.getMapper(MemberMapper.class).insertMember(member);
 	}
 	
@@ -45,6 +46,11 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int updateMemberContents(Member member) {
 		return sqlSession.getMapper(MemberMapper.class).updateMemberContents(member);
+	}
+
+	@Override
+	public Member selectMemberNickname(String memberNickname) {
+		return sqlSession.getMapper(MemberMapper.class).selectMemberNickname(memberNickname);
 	}
 
 	

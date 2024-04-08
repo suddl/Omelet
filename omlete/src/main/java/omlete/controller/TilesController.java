@@ -18,12 +18,17 @@ public class TilesController {
 	
 	@RequestMapping("/")
 	public String tiles() {
-		return "main";
+		return "main/main_body";
 	}
 	
 	@RequestMapping("/profile")
 	public String tiles3() {
 		return "mypage/badge";
+	}
+	
+	@RequestMapping("/review")
+	public String tiles4() {
+		return "review/review_list";
 	}
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
