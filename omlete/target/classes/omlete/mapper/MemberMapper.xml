@@ -11,7 +11,7 @@
 	<select id="selectMemberId" resultType="Member">
 		select member_id from member where member_name=#{memberName} and member_email=#{memberEmail} 
 	</select>
-	
+	 
 	<select id="selectMember" resultType="Member">
 		select member_no, member_id, member_passwd, member_name, member_phone, member_email, member_level, member_badge, member_status,
 		member_point, member_favorite1, member_favorite2, member_favorite3, member_report, member_nickname from member where member_id=#{memberId}
