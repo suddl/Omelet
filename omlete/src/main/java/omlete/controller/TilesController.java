@@ -18,7 +18,7 @@ public class TilesController {
 	
 	@RequestMapping("/")
 	public String tiles() {
-		return "main";
+		return "main/main_body";
 	}
 	
 	@RequestMapping("/profile")

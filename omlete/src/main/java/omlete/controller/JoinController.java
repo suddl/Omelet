@@ -4,8 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Member;
@@ -34,14 +38,32 @@ public class JoinController {
 	 * @return
 	 * @throws ExistsMemberException
 	 */
-	//로그인 성공
+	//회원가입 성공
 	@RequestMapping(value = "/member",method = RequestMethod.POST)
 	public String memberJoin(@ModelAttribute Member member) throws ExistsMemberException {
 		memberService.addMember(member);
-		return "redirect:/login/member";
+		return "redirect:/login/login";
 
 	}
-	//로그인 실패
+	
+	@RequestMapping(value = "/idCheck/{memberId}", method = RequestMethod.GET)
+	@ResponseBody
+	public String join(@PathVariable String memberId) {
+		if(memberService.getMemberId(memberId) == null) {
+			return "ok";
+		}
+		return "fail";
+	}
+	@RequestMapping(value = "/nicknameCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String checkNickname(@RequestParam String memberNickname) {
+	    if (memberService.getMemberNickname(memberNickname) == null) {
+	        return "ok";
+	    }
+	    return "fail";
+	}
+	
+	//회원가입 실패
 	@ExceptionHandler(value = ExistsMemberException.class)
 	public String MemberExceptionHandler(ExistsMemberException exception, Model model) {
 		model.addAttribute("message", exception.getMessage()); 

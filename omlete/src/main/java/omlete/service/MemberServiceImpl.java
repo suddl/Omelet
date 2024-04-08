@@ -20,8 +20,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void addMember(Member member) throws ExistsMemberException {
 		//전달받은 회원정보의 아이디가 이미 있을 경우 예외전달
-		if(memberDAO.selectMember(member.getMemberId()) == null){
+		if(memberDAO.selectMember(member.getMemberId()) != null){
 			throw new ExistsMemberException("이미 사용 중인 아이디입니다.", member);
+		}else if(memberDAO.selectMemberNickname(member.getMemberNickname()) != null){
+			throw new ExistsMemberException("이미 사용 중인 닉네임입니다.", member);
 		}
 		//아니라면 암호화된 비밀번호로 변경후
 		member.setMemberPasswd(BCrypt.hashpw(member.getMemberPasswd(),BCrypt.gensalt()));
@@ -51,8 +53,19 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return loginMember;
 	}
-
 	
+	@Override
+	public Member getMemberId(String memberId) {
+		Member member=memberDAO.selectMember(memberId);
+		return member;
+	}
+
+	@Override
+	public Member getMemberNickname(String memberNickname) {
+		Member member=memberDAO.selectMemberNickname(memberNickname);
+		return member;
+	}
+
 	//===========================================================================================
 	// 마이페이지
 	@Override
@@ -102,7 +115,4 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.updateMemberContents(member);
 		
 	}
-
-	
-
 }

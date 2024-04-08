@@ -60,14 +60,14 @@
                                          d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z">
                                       </path> 
                                     </svg> 
-                                    <img style="margin: 50px 10px 25px 10px" src="images/omelet.png">  
+                                    <img style="margin: 50px 10px 25px 10px" src="#">  
                                     <!-- 회원 이름 옆에 회원 이미지 넣기 
                                     <img style="margin: 20px" src="images/omelet.png">
                                     -->
                                     </span>
                                     <!-- 이름과 회원 이미지 사진 누를시 리뷰 쓴 회원 페이지 이동 -->
                                     <!-- 홍길동 부분에 p태그 추가 했는데 추후 다시 없애고, 리뷰 : 재밌어용 부분의 마진도 없앨지 고민 -->
-                                    <a href="profile.html"><p>홍길동</p></a>
+                                    <a href="#"><p>홍길동</p></a>
                                     <!-- 이름 옆에 별점 넣기 - div 안됨 -->
                                     <div style="float: right">
                                     <!--
@@ -219,7 +219,7 @@
          </div>
       </div>
 <script type="text/javascript">
-<%-- 업 이미지 클릭 시 발생되는 이벤트 함수 --%>
+<%-- 업 이미지 클릭 시 발생되는 이벤트 함수
 $("img").filter(".wishHeart").click(function() {
 	var productNum = $(this).attr("id");
 	var title = $(this).attr("title");
@@ -250,7 +250,7 @@ $("img").filter(".wishHeart").click(function() {
 		    }
 		});
 	}	
-})
+});
 --%>
 </script>
 </body>
