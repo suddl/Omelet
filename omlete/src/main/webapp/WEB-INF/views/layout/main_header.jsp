@@ -1,3 +1,4 @@
+<%@page import="omlete.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -5,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-light topbar static-top shadow-sm bg-white osahan-nav-top px-0">
    <div class="container">
       <!-- Sidebar Toggle (Topbar) -->
-      <a class="navbar-brand" href="index.html"><img src="<c:url value="/images/logo/omlete_logo.png"/>" alt=""></a>
+      <a class="navbar-brand" href="<c:url value="main"/>"><img src="<c:url value="/images/logo/omlete_logo.png"/>" alt=""></a>
       <!-- Topbar Search -->
       <div class="container">
 	      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,18 +55,49 @@
 	         <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
 	            <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts"></div>
 	         </li>
-	         <li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
-	            <!-- 로그인 - href 연결하기 -->
-	            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                 	로그인
-	            </a>
-	         </li>
-	         <li class="nav-item dropdown no-arrow no-caret dropdown-user">
-	            <!-- 회원가입 - href 연결하기 -->
-	            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	            회원가입 
-	            </a>
-	         </li>
+	         <c:choose><%-- //비로그인 상태의 사용자인 경우 --%>
+	         	<c:when test="${empty(loginMember) }">
+	         		<li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
+	            	<!-- 로그인 -->
+			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+			            	href="<c:url value="/login/login"/>">
+			            	로그인
+			            </a>
+		        	</li>
+		         	<li class="nav-item dropdown no-arrow no-caret dropdown-user">
+		            <!-- 회원가입 -->
+			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+			            	href="<c:url value="/login/register"/>">
+			            	회원가입
+			            </a>
+	         	</c:when>
+	         	<c:otherwise><%-- 로그인 상태의 사용자인 경우 --%>
+		         	<li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
+		            <!-- 로그아웃 -->
+			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+			            	href="<c:url value="/main/main_body"/>">
+			            	로그아웃
+			            </a>
+		         	</li>
+		         	<li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
+			            <!-- 마이페이지 -->
+			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+			            	href="<c:url value="/mypage/profile"/>">
+			            	내정보
+			            </a>
+			        </li>
+		         	<c:if test="${loginMember.status == 9} }">
+			         	<li class="nav-item dropdown no-arrow no-caret dropdown-user">
+		            		<!-- 관리자 페이지 생기면 연결하기 -->
+					        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+				            	href="<c:url value="/mypage/profile"/>">
+				            	<img alt="" src="<c:url value="/images/member_profile.svg"/>">
+				            </a>
+				        </li>
+			        </c:if>
+	         	</c:otherwise>
+	         </c:choose>
+		     
 	      </ul>
    	  </div>
    </div>
