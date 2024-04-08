@@ -59,6 +59,64 @@ Version: 1.0
      padding: 0;
 }
 /* ======================================추가======================================  */
+.tableType {
+    position: relative;
+    border-top: 2px solid #000;
+}
+.tableType.noLine2 {
+    border-color: #000;
+}
+.tableType table {
+    margin-left: -1px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 0;
+    table-layout: fixed;
+}
+
+.tableType th {
+    padding: 15px 20px 15px;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+}
+
+.tableType th:first-child, .tableType td:first-child {
+    border-left: 0;
+}
+
+.tableType thead th {
+    border-left: 1px solid #eee;
+    background: #F5F5F5;
+}
+
+.tableType.noLine2 td {
+    border-left: 0;
+    padding: 0;
+    height: 80px;
+}
+
+.tableType td {
+    padding: 21px 20px 21px;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+.col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 33%;
+}
+/* 여기까지 */
+
 .imgMyfavorite {
 	width: 100%;
 	height: 330px;
