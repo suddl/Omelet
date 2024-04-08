@@ -48,7 +48,7 @@
 							</div>
 						</div>
 						<div class="overflow-hidden border-top d-flex align-items-center p-4">
-                    	    <a class="font-weight-bold d-block" href="inquiry.html"> 1:1 상담작성 </a>
+                    	    <a class="font-weight-bold d-block" href="moon/inquiry.jsp"> 1:1 상담작성 </a>
                         	<i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
 					</div>
@@ -66,7 +66,7 @@
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
-                        <a class="font-weight-bold d-block" href="client_event.html"> 이벤트 응모 및 결과 </a>
+                        <a class="font-weight-bold d-block" href="notice/event_view.jsp"> 이벤트 응모 및 결과 </a>
                         <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
                   </div>
@@ -84,7 +84,7 @@
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
-                        <a class="font-weight-bold d-block" href="client_inquiry.html"> 궁금하다면? </a>
+                        <a class="font-weight-bold d-block" href="moon/moon_view"> 궁금하다면? </a>
                         <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
                   </div>
@@ -98,7 +98,8 @@
                      <div class="mb-3 mt-4">
                         <h4 class="font-weight-semi-bold">공지사항</h4>
                      </div>
-                     <p class="listLength">총 <strong class="num">8</strong>개</p>
+                     <%-- 게시글 목록 출력 --%>
+                     <p class="listLength">총 <strong class="num">${fileBoard.noticeNo}</strong>개</p>
                      <div class="tableList">
 						<table>
 							<colgroup>
@@ -107,16 +108,18 @@
 								<col style="width:130px;">
 							</colgroup>
 								<tbody>
+								<c:forEach var="fileBoard" items="${fileBoardList }">
 									<tr>
-										<td>12</td>
+										<td>${fileBoard.noticeNo}</td>
 										<td class="left"><a
 											href="notice1.html">
-												<span class="cateIcon"> <span>이벤트 공지</span>
-											</span> <span class="subject">콜라겐 크림 럭키드로우 이벤트 당첨자 발표</span>
+												<span class="cateIcon"> <span>${fileBoard.noticeStatus }</span>
+											</span> <span class="subject">${fileBoard.noticeTitle }</span>
 										</a></td>
-										<td>2024-03-13</td>
-										<td>100</td>
+										<td>${fileBoard.noticeDate}</td>
+										<td>${fileBoard.noticeCount}</td>
 									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>

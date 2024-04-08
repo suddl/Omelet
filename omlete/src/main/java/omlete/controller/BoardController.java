@@ -23,10 +23,22 @@ import omlete.util.Pager;
 @RequiredArgsConstructor
 public class BoardController {
 	private final BoardService boardService;
-	
+	//공지사항
 	@RequestMapping(value = "/notice_view",method = RequestMethod.GET)
-	public String memberJoin() {
+	public String noticelist() {
 		return "notice/notice_view";
+	}
+	
+	//이벤트
+	@RequestMapping(value = "/event_view",method = RequestMethod.GET)
+	public String eventlist() {
+		return "notice/event_view";
+	}
+	
+	//문의사항
+	@RequestMapping(value = "/moon_view",method = RequestMethod.GET)
+	public String moonlist() {
+		return "moon/moon_view";
 	}
 		
 	
