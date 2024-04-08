@@ -1,32 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%-- 리뷰 리스트 페이지에서는 명대사, 짧은글, 긴글 카테고리별로 볼 수 있게 하고, 한 페이지에 10개씩 볼 수 있게 페이징 처리 할 것입니다 --%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Gurdeep singh osahan">
-<meta name="author" content="Gurdeep singh osahan">
-<title>Maer - LMS & Freelance Services Marketplace for Businesses HTML Template</title>
-<!-- Favicon Icon -->
-<link rel="icon" type="image/png" href="images/fav.svg">
-<!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- Font Awesome-->
-<link href="vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet">
-<!-- Material Design Icons -->
-<link href="vendor/icons/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css">
-<!-- Slick -->
-<link href="vendor/slick-master/slick/slick.css" rel="stylesheet" type="text/css">
-<!-- Lightgallery -->
-<link href="vendor/lightgallery-master/dist/css/lightgallery.min.css" rel="stylesheet">
-<!-- Select2 CSS -->
-<link href="vendor/select2/css/select2-bootstrap.css" />
-<link href="vendor/select2/css/select2.min.css" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="css/style.css" rel="stylesheet">
-
 <!-- 추가 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style type="text/css">
@@ -116,19 +94,19 @@
                <div>
                  <ul style="padding: 0px 105px 16px; text-align: left;"> 
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="ingichoose" type="button" href="">인기</a>
+                     <a id="ingichoose" type="button" href="<c:url value=""/>">인기</a><%-- 아니에요 --%>
                    </li>
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="choishinchoose" type="button" href="">최신</a>
+                     <a id="choishinchoose" type="button" href="">최신</a><%-- 아니에요 --%>
                    </li>
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="choishinchoose" type="button" href="">명대사</a>
+                     <a id="choishinchoose" type="button" href="<c:url value="/review/list?reviewKind=1"/>">명대사</a>
                    </li>
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="choishinchoose" type="button" href="">짧은글</a>
+                     <a id="choishinchoose" type="button" href="/review/list?reviewKind=2">짧은글</a>
                    </li>
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="choishinchoose" type="button" href="">긴글</a>
+                     <a id="choishinchoose" type="button" href="/review/list?reviewKind=3">긴글</a>
                    </li>
                  </ul>
                </div>
@@ -137,36 +115,39 @@
                <div class="col-md-6">
                   <div class="box shadow-sm rounded bg-white mb-4">
                      <div class="p-4 d-flex align-items-center">
-                     <a class="writer-image">
-                     	<img style="height: 40px; width: 40px;" alt="writer-image" src="images/logo.svg">
-                     	<div class="writer-full-part">
-                     		<div class="writer-name-part">
-                     			<div class="writer-name">
-                     				<p class="name">이름</p>
-                     			</div>
-                     			<div class="star">
-                     			<img style="height: 40px; width: 40px;" alt="star-image" src="images/logo.svg">
-                     			<p>별점</p>
-                     			</div>
-                     		</div>
-                     		<p>작성 시간</p>
-                     	</div>
-                     </a>
-                        <i class="mdi mdi-message-text-outline display-4"></i>
-                        <div class="ml-4">
-                           <h5 class="font-weight-normal text-dark mb-3 mt-0">작품 제목</h5>
+					 <div>
+					 	   <a href="<c:url value="${contents.contentsNo }"/>">${contents.contentsNo }
+                           <img src="<c:url value="/images/user/oneEgg.png"/>">
+                           </a>
+					 </div>
+                        <div class="ml-4">`
+                           <p class="font-weight-normal text-dark mb-3 mt-0">작품 제목</p>
+                           <div class="writer-name">
+                              <img class="member_image" src="<c:url value="/images/user/oneEgg.png"/>">
+                              <a href="<c:url value="/mypage/profile"/>" class="seller-link">${member.memberName }</a>
+                              <div class="star">
+                              	<img alt="" src="<c:url value="/images/user/oneEgg.png"/>">
+                              </div>
+                     	   </div>
+                     	   <div class="review_subject">
+                     	      <a href="<c:url value="/mypage/profile"/>" class="seller-link">${member.memberName }</a>
+                     	   </div>
                            <p class="mb-0 text-muted">여기 부분이 리뷰의 내용입니다.
-                              ...asdfasdfkjasdkjfasdfiwefmeklflksdfiwsefk efijsdfkj sfsdlkf jsdfslkd fsdf sdflisd flksd jfsdflskdj fsdflksjd fsdlkfj 
-                              sdlkfsdfkl;j sdfkl jsdfkl; jsdlkfj sdf jsdfkl jsdfkl jd fasd fasdf asd fasd fasd fafd sd fasd fasad fs asdf sdaf asdf
-                              asd fasfd fasd  asdfafd sasd fad fsad fsad fsafd sad fs fadsfdasafsd fasd fasd asfd asd ffad s
+                              ${loginMember.reviewContent }
                            </p>
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
                         <a class="font-weight-bold d-block" href="#">
-                        	<img style="height: 40px; width: 40px;" alt="like" src="images/logo.svg">
-                        	<img style="height: 40px; width: 40px;" alt="hate" src="images/logo.svg">
-                        	<img style="height: 40px; width: 40px;" alt="jjim" src="images/logo.svg">
+                        	<button type="button" id="upBtn">
+                        		<img style="height: 40px; width: 40px;" class="like" src="<c:url value="/images/like_or_hate/thumbs-up-regular.svg"/>">
+                        	</button>
+                        	<button type="button" id="downBtn">
+	                        	<img style="height: 40px; width: 40px;" alt="hate" src="<c:url value="/images/like_or_hate/thumbs-down-regular.svg"/>">
+                        	</button>
+                        	<button type="button" id="jjim">
+	                        	<img style="height: 40px; width: 40px;" alt="jjim" src="<c:url value="/images/like_or_hate/heart-regular.svg"/>">
+                        	</button>
                         </a>
                      </div>
                   </div>
@@ -196,6 +177,45 @@
             </nav>
          </div>
       </div>
+      <script type="text/javascript">
+      //좋아요 눌렀을 때
+      $("#upBtn").click(function() {
+    	  
+      });
+      
+      
+      $("img").filter(".like").click(function() {
+    		var productNum = $(this).attr("id");
+    		var title = $(this).attr("title");
+    		
+    		<%-- 로그인 하지 않았을 시 로그인 페이지로 이동--%>
+    		if(${empty(loginMember)}) {
+    			location.href="<%=request.getContextPath()%>/main_page/main.jsp?group=login_page&worker=client_login";
+    		} else {
+    			<%-- 로그인 시 좋아요 눌렀을 시 동작되는 ajax--%>
+    			$.ajax({
+    				type: "get",
+    			    url : "<%=request.getContextPath()%>/main_page/main_like_action.jsp?productNum="+productNum+"&title="+title,
+    			    dataType : "xml",
+    			    success:function(xmlDoc){
+    			    	var code = $(xmlDoc).find("code").text();
+    			    	if(code=="success"){
+    			    		var titleName = $(xmlDoc).find("title").text();
+    			    		$("#"+productNum).attr("src", "<%=request.getContextPath()%>/images/icon/heart-red.png")
+    			    		$("#"+productNum).attr("title", titleName);
+    			    	} else{
+    			    		var titleName = $(xmlDoc).find("title").text();
+    			    		$("#"+productNum).attr("src", "<%=request.getContextPath()%>/images/icon/heart-black.png")
+    			    		$("#"+productNum).attr("title", titleName);
+    			    	}
+    			    },
+    			    error:function(xhr){
+    			    	alert("[에러] = "+xhr.status);
+    			    }
+    			});
+    		}    		
+    	})
+      </script>
       <!-- Bootstrap core JavaScript -->
       <script src="vendor/jquery/jquery.min.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

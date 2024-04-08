@@ -43,17 +43,23 @@
 		select count(*) from review
 	</select>
 
+	<!--  
 	<select id="selectReviewListPaging" resultType="review">
 		select * from (select rownum rn, temp.* from (select review_no, review_kind
 			, review_member, review_content, review_date, review_up, review_down
 			, review_work, review_spoiler, review_star from review review_no desc) temp)
 			where rn between #{startRow} and #{endRow}
 	</select>
+	-->
 	
-	<select id="selectReviewList">
+	<select id="selectReviewList" resultType="review">
 		select * from (select rownum rn, temp.* from (select review_no, review_kind
 			, review_member, review_content, review_date, review_up, review_down
-			, review_work, review_spoiler, review_star from review where review_kind = #{reviewKind} order by review_no) temp )
+			, review_work, review_spoiler, review_star from review 
+			<if test="review_kind != 0">
+				where review_kind = #{reviewKind}
+			</if>
+			order by review_no) temp )
 			where rn between #{startRow} and #{endRow}
 	</select>
 	
