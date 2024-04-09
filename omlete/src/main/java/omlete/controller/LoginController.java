@@ -69,7 +69,7 @@ public class LoginController {
 	 "member/member_find_result"; } catch (MemberNotFoundException e) {
 	 model.addAttribute("errorMessage", e.getMessage());
 	 
-	 return "member/forgot_id"; }
+	 return "member/forgot_id"; } 
 	 
 	 //member 비밀번호찾기 후 DB솔트처리.
 	 

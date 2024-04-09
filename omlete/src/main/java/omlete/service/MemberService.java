@@ -21,6 +21,6 @@ public interface MemberService {
 	void modifyMember(Member member) throws MemberNotFoundException;
 	void pwModifyMember(Member member) throws MemberNotFoundException;
 	void pwModifyMember2(Member member) throws MemberNotFoundException;
-	 */
+	 */ 
 
 }
