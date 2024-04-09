@@ -41,10 +41,12 @@ public class AdminController {
     // 관리자 메인 페이지 이동
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String adminMain(HttpSession session) {
-        Integer memberStatus = (Integer)session.getAttribute("memberStatus");
+    	/*
+    	Integer memberStatus = (Integer)session.getAttribute("memberStatus");
         if(memberStatus == null || memberStatus != 9) {
             return "exception.BadRequestException";
         }
+        */
         return "index";
     }
     /*
