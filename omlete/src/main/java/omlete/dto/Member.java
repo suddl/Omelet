@@ -9,7 +9,6 @@ public class Member {
 	private String memberPasswd;
 	private String memberName;
 	private String memberPhone;
-	private String memberBirth;
 	private String memberEmail;
 	private int memberLevel;
 	private int memberBadge;

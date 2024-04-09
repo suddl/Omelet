@@ -7,6 +7,7 @@ public interface MemberMapper {
 	Member selectMemberId(Member member);
 	Member selectMemberNickname(String memberNickname);
 	Member selectMember(String memberId);
+	Member selectMemberEmail(String memberEmail);
 	
 	//마이페이지
 	Member selectMemberNo(int memberNo);
