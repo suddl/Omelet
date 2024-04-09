@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>${data}</p>
+<h3>${data}</h3>
+
 </body>
 </html>

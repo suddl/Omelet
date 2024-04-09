@@ -10,6 +10,7 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,12 @@ import omlete.service.ContentsService;
 @RequestMapping("/detail")
 @RequiredArgsConstructor
 public class ContentsController {
+	@Autowired
 	private ContentsService contentsService;
+	@Autowired
 	private ApiService apiService;
+	@Autowired
+	//private ActorsService actorService;
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(Model m, int no) {
@@ -46,12 +51,8 @@ public class ContentsController {
 	@RequestMapping(value ="/api")
 	public Contents getInfo(Model m) {
 		int pages = 1;
-		String test;
-		System.out.println(apiService.mid());
-		
-		
-		//System.out.println(test);
-		
+		List<String> mid=apiService.getmid(pages);
+
 		List<Contents> info = null;
 		Contents vo = new Contents();
 		// 인증키 (개인이 받아와야함)
@@ -62,7 +63,6 @@ public class ContentsController {
 		String actresult = "";
 		String imgresult = "";
 		String result1 = "";
-		String mid="";
 		String name="";
 		String countryname="";
 		String actname="";
@@ -72,36 +72,15 @@ public class ContentsController {
 		//int page=0;
 		try {
 			info = new ArrayList<Contents>();
-			//URL url = new URL("https://api.themoviedb.org/3/movie/38757?api_key="
-			//		+ key + "&watch_region=KR&language=ko");
 			
-			//첫번쩨 url 페이지당 20개씩 영화정보 출력
-			URL url = new URL("https://api.themoviedb.org/3/discover/movie?api_key="
-					+ key + "&watch_region=KR&language=ko");
-	
-			BufferedReader bf;
-	
-			bf = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-	
-			result = bf.readLine();   		
-			
-	    	JSONParser jsonParser = new JSONParser();
-	    	JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
-	    	
-	    	JSONArray results = (JSONArray) jsonObject.get("results");
-	    	
-	    	String rn = null;
-	    	for(int i=0;i<results.size();i++) {
+	    	for(int i=0;i<mid.size();i++) {
 	    	
 	    		name = "";
-	    		JSONObject r = (JSONObject) results.get(i);
-	    		rn=String.valueOf(r.get("id")) ;
 	    		
-	    		mid = rn;
-	        	System.out.println("mid:"+mid);
+	        	System.out.println("mid:"+mid.get(i));
 	
 	    		//2번째 url 1가지 영화에 대한 상세정보 보여줌
-	    		URL url1 = new URL("https://api.themoviedb.org/3/movie/"+mid+"?api_key="
+	    		URL url1 = new URL("https://api.themoviedb.org/3/movie/"+mid.get(i)+"?api_key="
 	    				+ key + "&watch_region=KR&language=ko&append_to_response=credits,release_dates");
 	        	
 	        	BufferedReader bf1;
@@ -111,7 +90,7 @@ public class ContentsController {
 	    		result1 = bf1.readLine();
 	    		
 	        	
-	        	System.out.println("[영화 id로 검색]");
+	        	//System.out.println("[영화 id로 검색]");
 	        	JSONParser jsonParser1 = new JSONParser();
 	        	JSONObject jsonObject1 = (JSONObject)jsonParser1.parse(result1);
 	        	
@@ -127,6 +106,10 @@ public class ContentsController {
 	        	
 	        	JSONObject release_dates = (JSONObject)jsonObject1.get("release_dates"); 
 	        	JSONArray rdresult = (JSONArray) release_dates.get("results");
+	        	
+	        	if(jsonObject1.get("overview")==null) {
+	        		break;
+	        	}
 	        	//System.out.println("rdresult"+rdresult);
 	        	boolean fkr=false;
 	        	//System.out.println("rdresult"+rdresult);
@@ -138,11 +121,11 @@ public class ContentsController {
 	        			for(int w=0;w<release_dates1.size();w++) {				 
 	            			JSONObject rdresult1 = (JSONObject) release_dates1.get(w);
 	            			//System.out.println("certification="+rdresult1.get("certification"));
-	            			if(rdresult1.get("certification")!=null) {
+	            			if(rdresult1.get("certification")==null) {
 	            				break;
 	            			}
 	            			//System.out.println("release_dates1="+release_dates1);
-	            			vo.setContentsRating(String.valueOf(ratelist.get("release_dates")));
+	            			vo.setContentsRating(String.valueOf(ratelist.get("certification")));
 	        			}
 	        			break;
 	        			
@@ -229,18 +212,18 @@ public class ContentsController {
 	        			for(int an=0;an<also_known_as.size();an++) {
 	
 	        				if(((String) also_known_as.get(an)).matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
-	        					System.out.print("actTname:"+also_known_as.get(an));
+	        					//System.out.print("actTname:"+also_known_as.get(an));
 	        					
 	        					break;
 	        				}
 	        				
 	        			}     			
-	        			
+	        			/*
 	        			System.out.print("actname : " + castlist.get("name"));
 	        			System.out.print(" actid : " + castlist.get("id"));
 	        			System.out.println(" profile_path : " + castlist.get("profile_path"));            			        
 	        			System.out.println("=================================================");
-	        			
+	        			*/
 	        			a++;
 	        			   			
 	        		} 
@@ -262,7 +245,7 @@ public class ContentsController {
 	        	JSONParser imgjsonParser = new JSONParser();
 	        	JSONObject imgjsonObject = (JSONObject)imgjsonParser.parse(imgresult);
 	        	JSONArray backdrops = (JSONArray) imgjsonObject.get("backdrops");
-	        	System.out.print("사진=");
+	        	//System.out.print("사진=");
 	        	for(int o=0; o<3; o++) {
 	        		JSONObject imgp=(JSONObject) backdrops.get(o);
 	        		//System.out.print(imgp.get("file_path")+"\t");
@@ -302,14 +285,16 @@ public class ContentsController {
 	        	vo.setContentsRuntime(Integer.parseInt(String.valueOf(jsonObject1.get("runtime"))));
 	        	vo.setContentsTagline(String.valueOf(jsonObject1.get("tagline")));
 	        	info.add(vo);
+	        	contentsService.addContents(vo);
 	        	
-	        	m.addAttribute("data", vo);
-	    		return vo;
+	    		//return vo;
 	    	}
 	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		m.addAttribute("data", vo);
 		return vo;
 		
 	
