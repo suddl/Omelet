@@ -11,4 +11,9 @@
 	<select id="selectActorsList" resultType="Actors">
 		select actor_no, actor_name, actor_oname, actor_img from actors order by actor_no
 	</select>
+	
+	<select id="selectActors" resultType="Actors">
+		select actor_no, actor_name, actor_oname, actor_img from actors where actor_no=#{actorsNo}
+	</select>
+	
 </mapper>
