@@ -26,7 +26,9 @@ public class MemberServiceImpl implements MemberService {
 			throw new ExistsMemberException("이미 사용 중인 닉네임입니다.", member);
 		}
 		//아니라면 암호화된 비밀번호로 변경후
-		member.setMemberPasswd(BCrypt.hashpw(member.getMemberPasswd(),BCrypt.gensalt()));
+		String hashedPassword=BCrypt.hashpw(member.getMemberPasswd(), BCrypt.gensalt());
+	    member.setMemberPasswd(hashedPassword);
+	      
 		//삽입처리
 		memberDAO.insertMember(member);
 	}
@@ -44,7 +46,7 @@ public class MemberServiceImpl implements MemberService {
 		Member loginMember=memberDAO.selectMember(member.getMemberId());
 		
 		//검색된 회원정보가 없는 경우 - 아이디 인증 실패
-		if(loginMember==null || loginMember.getMemberId().equals("")) {
+		if(loginMember==null) {
 			throw new LoginAuthFailException("회원정보가 존재하지 않습니다.", member.getMemberId());
 		}
 		//전달받은 비밀번호와 검색된 회원정보의 비밀번호를 비교하여 같지 않은 경우 - 비밀번호 인증 실패

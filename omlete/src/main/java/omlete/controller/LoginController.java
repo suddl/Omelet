@@ -18,12 +18,12 @@ public class LoginController {
 
 	private final MemberService memberService;
 
-
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
 	public String memberLogin() {
 		return "login/login";
 		
 	}
+	
 	
 	@RequestMapping(value = "/forgot", method = RequestMethod.GET)
 	public String forgotId() {
@@ -37,18 +37,14 @@ public class LoginController {
 		
 	}
 	
-	@RequestMapping(value = "/myfavorite", method = RequestMethod.POST)
-	public String myfavorite() {
-		return "login/myfavorite";
-    }
-	
 	@RequestMapping(value = "/member", method = RequestMethod.POST)
-	public String memberLogin(@ModelAttribute Member member, HttpSession session) {
+	public String memberLogin(@ModelAttribute Member member, HttpSession session){
 		Member loginMember = memberService.loginAuth(member);
 		session.setAttribute("loginMember", loginMember);
 		// 로그인이 성공하면 메인 화면으로 이동
 		return "/main/main_body";
 	}
+	
 	
 	/*
 	 //member 비밀번호찾기

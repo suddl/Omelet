@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,26 +22,16 @@ public class JoinController {
 	
 	private final MemberService memberService;
 	
-	/**
-	 * 회원가입 페이지 이동
-	 * @return
-	 */
 	@RequestMapping(value = "/member",method = RequestMethod.GET)
 	public String memberJoin() {
 		return "login/register";
 	}
 	
-	/**
-	 * 회원가입 처리
-	 * @param member
-	 * @return
-	 * @throws ExistsMemberException
-	 */
 	//회원가입 성공
 	@RequestMapping(value = "/member",method = RequestMethod.POST)
-	public String memberJoin(@ModelAttribute Member member) throws ExistsMemberException {
+	public String memberJoin(@ModelAttribute Member member) {
 		memberService.addMember(member);
-		return "redirect:/login/login";
+		return "/login/myfavorite";
 
 	}
 	
