@@ -49,4 +49,9 @@ public class TilesController {
 	public String tiles7() {
 		return "login/register";
 	}
+	
+	@RequestMapping("/admin")
+	public String tiles8() {
+		return "admin/index";
+	}
 }

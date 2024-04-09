@@ -152,7 +152,7 @@ public class AdminController {
     // 공지사항으로 이동
     @RequestMapping(value = "/notice ", method = RequestMethod.GET)
     public String notice(HttpSession session) {
-        return "notice/notice";
+        return "notice";
     }
     
     // 공지사항 글쓰기
@@ -171,7 +171,7 @@ public class AdminController {
     //이벤트로 이동
     @RequestMapping(value = "/event", method = RequestMethod.GET)
     public String event(HttpSession session) {
-    	return "notice/event";
+    	return "event";
     }
     
     //이벤트 글쓰기
@@ -190,13 +190,13 @@ public class AdminController {
     //1대1 문의로 이동
     @RequestMapping(value = "/moon_view", method = RequestMethod.GET)
     public String inquiry(HttpSession session) {
-    	return "moon/moon_view";
+    	return "moon_view";
     }
     
     //1대1 문의 답변하기
     @RequestMapping(value = "/answer", method = RequestMethod.POST)
     public String writeAnswer() {
-    	return "event_answer";
+    	return "answer";
     }
     
     //1대 1문의 답변하기(예외)
@@ -217,7 +217,7 @@ public class AdminController {
     @RequestMapping(value = "/review_reported", method = RequestMethod.GET)
     public String reportedReviewList(Model m) {
     	m.addAttribute("reportedReviewList", reviewService.getReportedReviewList());
-    	return "review";
+    	return "review_reported";
     }
     
     //리뷰 삭제
