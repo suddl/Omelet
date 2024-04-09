@@ -39,7 +39,6 @@
 					<div class="box shadow-sm rounded bg-white mb-4">
 						<div class="p-4 d-flex align-items-center">
 							<i><img src="<c:url value="/images/board/inquiry.png"/>" height="50"></i>
-							<!-- <i class="mdi mdi-message-text-outline display-4"></i>-->
 							<div class="ml-4">
 								<h5 class="font-weight-normal text-dark mb-3 mt-0">1:1 문의</h5>
 								<p class="mb-0 text-muted">궁금한 점이 있으세요?
@@ -48,7 +47,7 @@
 							</div>
 						</div>
 						<div class="overflow-hidden border-top d-flex align-items-center p-4">
-                    	    <a class="font-weight-bold d-block" href="moon/inquiry.jsp"> 1:1 상담작성 </a>
+                    	    <a class="font-weight-bold d-block" href="<c:url value="/board/inquiry"/>"> 1:1 상담작성 </a>
                         	<i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
 					</div>
@@ -57,7 +56,6 @@
                   <div class="box shadow-sm rounded bg-white mb-4">
                      <div class="p-4 d-flex align-items-center">
                      	<i><img src="<c:url value="/images/board/event.png"/>" height="50"></i>
-                        <!-- <i class="mdi mdi-lock-outline display-4"></i> -->
                         <div class="ml-4">
                            <h5 class="font-weight-normal text-dark mb-3 mt-0">이벤트</h5>
                            <p class="mb-0 text-muted">참여 하세요!
@@ -66,7 +64,7 @@
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
-                        <a class="font-weight-bold d-block" href="notice/event_view.jsp"> 이벤트 응모 및 결과 </a>
+                        <a class="font-weight-bold d-block" href="<c:url value="/board/event_view"/>"> 이벤트 응모 및 결과 </a>
                         <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
                   </div>
@@ -75,8 +73,6 @@
                   <div class="box shadow-sm rounded bg-white mb-4">
                      <div class="p-4 d-flex align-items-center">
                      	<i><img src="<c:url value="/images/board/questions.png"/>" height="50"></i>
-                     	
-                        <!-- <i class="mdi mdi-lock-outline display-4"></i> -->
                         <div class="ml-4">
                            <h5 class="font-weight-normal text-dark mb-3 mt-0">문의사항</h5>
                            <p class="mb-0 text-muted">문의 답변 확인하세요.
@@ -84,7 +80,7 @@
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
-                        <a class="font-weight-bold d-block" href="moon/moon_view"> 궁금하다면? </a>
+                        <a class="font-weight-bold d-block" href="<c:url value="/board/moon_view"/>"> 궁금하다면? </a>
                         <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
                   </div>
@@ -99,7 +95,7 @@
                         <h4 class="font-weight-semi-bold">공지사항</h4>
                      </div>
                      <%-- 게시글 목록 출력 --%>
-                     <p class="listLength">총 <strong class="num">${fileBoard.noticeNo}</strong>개</p>
+                     <%-- <p class="listLength">총 <strong class="num">${fileBoard.noticeNo}</strong>개</p> --%>
                      <div class="tableList">
 						<table>
 							<colgroup>

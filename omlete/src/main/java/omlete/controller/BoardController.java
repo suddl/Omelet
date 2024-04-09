@@ -1,5 +1,6 @@
 package omlete.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Notice;
@@ -19,7 +21,7 @@ import omlete.util.Pager;
 
 
 @Controller
-@RequestMapping("/notice")
+@RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
 	private final BoardService boardService;
@@ -29,10 +31,25 @@ public class BoardController {
 		return "notice/notice_view";
 	}
 	
+	
+	
+	
+	
+	
+	//공지사항상세
+	@RequestMapping(value = "/notice",method = RequestMethod.GET)
+	public String notice() {
+		return "notice/notice";
+	}
 	//이벤트
 	@RequestMapping(value = "/event_view",method = RequestMethod.GET)
 	public String eventlist() {
 		return "notice/event_view";
+	}
+	//이벤트상세
+	@RequestMapping(value = "/event",method = RequestMethod.GET)
+	public String event() {
+		return "notice/event";
 	}
 	
 	//문의사항
@@ -40,6 +57,16 @@ public class BoardController {
 	public String moonlist() {
 		return "moon/moon_view";
 	}
+	//1:1문의
+	@RequestMapping(value = "/inquiry",method = RequestMethod.GET)
+	public String inquiry() {
+		return "moon/inquiry";
+	}
+	//1:1상세
+	@RequestMapping(value = "/answer",method = RequestMethod.GET)
+	public String answer() {
+		return "moon/answer";
+	}	
 	
 	/*
 	 * //moon전체 리스트 출력 시 페이징 처리를 위해 Json형식의 text로 Map객체 전달
