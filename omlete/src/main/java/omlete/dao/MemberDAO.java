@@ -7,6 +7,7 @@ public interface MemberDAO {
 	int insertMember(Member member);
 	Member selectMemberId(Member member);
 	Member selectMemberNickname(String memberNickname);
+	Member selectMemberEmail(String memberEmail);
 	Member selectMember(String memberId);
 	
 	// 마이페이지

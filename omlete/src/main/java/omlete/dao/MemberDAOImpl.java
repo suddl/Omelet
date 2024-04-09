@@ -53,6 +53,9 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.getMapper(MemberMapper.class).selectMemberNickname(memberNickname);
 	}
 
-	
+	@Override
+	public Member selectMemberEmail(String memberEmail) {
+		return sqlSession.getMapper(MemberMapper.class).selectMemberEmail(memberEmail);
+	}
 
 }
