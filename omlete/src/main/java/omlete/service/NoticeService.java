@@ -8,7 +8,7 @@ import omlete.dto.Notice;
 import omlete.exception.BoardNotFoundException;
 
 
-public interface BoardService {
+public interface NoticeService {
 	//moon
 	/*
 	 * void addFaq(Moon moon); void modifyFaq(Moon moon) throws
@@ -21,10 +21,10 @@ public interface BoardService {
 	//notice
 	void addNotice(Notice notice);
 	void modifyNotice(Notice notice) throws BoardNotFoundException;
-	void removeNotice(int nNo) throws BoardNotFoundException; 
+	void removeNotice(int noticeNo) throws BoardNotFoundException; 
 	int getNoticeCount();
-	Notice getNotice(int nNo) throws BoardNotFoundException;
-	List<Notice> getNoticeList(Map<String, Object> map);
-	
+	Notice getNotice(int noticeNo);
+	//List<Notice> getBoardList(Map<String, Object> map);
+	Map<String, Object> getNoticeList(int pageNum);
 	
 }

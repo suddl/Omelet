@@ -1,35 +1,43 @@
 package omlete.controller;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.context.WebApplicationContext;
 
 import lombok.RequiredArgsConstructor;
-import omlete.dto.Notice;
-import omlete.exception.BoardNotFoundException;
-import omlete.service.BoardService;
-import omlete.util.Pager;
+import omlete.service.NoticeService;
 
 
 @Controller
 @RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
-	private final BoardService boardService;
-	//공지사항
-	@RequestMapping(value = "/notice_view",method = RequestMethod.GET)
-	public String noticelist() {
-		return "notice/notice_view";
-	}
+	private final WebApplicationContext context;
+	@Autowired
+    private final NoticeService noticeService;
+	
+	/*
+	 * //공지사항
+	 * 
+	 * @RequestMapping(value = "/notice_view",method = RequestMethod.GET) public
+	 * String noticelist() { return "notice/notice_view"; }
+	 */
+	
+	 @RequestMapping("/list")
+	    public String noticeList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+	        Map<String, Object> map = noticeService.getNoticeList(pageNum);
+
+	        model.addAttribute("pager", map.get("pager"));
+	        model.addAttribute("noticeList", map.get("noticeList"));
+
+	        return "notice/notice_view";
+	    }
 	
 	
 	
@@ -126,10 +134,12 @@ public class BoardController {
 	
 
 	
-	//글번호를 전달받아 해당 글번호의 게시글을 검색하여 출력
-	@RequestMapping(value ="member_notice/view", method = RequestMethod.GET)
-	public String noticeView(@RequestParam int nno, Model model) throws BoardNotFoundException {
-		model.addAttribute("noticeview", boardService.getNotice(nno));
-		return "notice/notice_view";
-	}
+/*
+ * //글번호를 전달받아 해당 글번호의 게시글을 검색하여 출력
+ * 
+ * @RequestMapping(value ="member_notice/view", method = RequestMethod.GET)
+ * public String noticeView(@RequestParam int nno, Model model) throws
+ * BoardNotFoundException { model.addAttribute("noticeview",
+ * boardService.getNotice(nno)); return "notice/notice_view"; }
+ */
 }

@@ -2198,6 +2198,8 @@ table {
 /* 수정 */
 .tableList td {
     padding: 25px 0;
+    width: 5%;
+    height: 5px;
     border-bottom: 1px solid #D8D8D8;
     text-align: center;
     
@@ -2205,7 +2207,20 @@ table {
 
 .tableList td.left {
     text-align: left;
-    width: 1000px;
+    width: 100%;
+    height: 100px;
+}
+
+.tableList td.left1 {
+    text-align: center;
+    width: 20%;
+    height: 20px;
+}
+
+.tableList td.left2 {
+    text-align: center;
+    width: 10%;
+    height: 10px;
 }
 
 .cateIcon span {

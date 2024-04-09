@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -104,16 +105,16 @@
 								<col style="width:130px;">
 							</colgroup>
 								<tbody>
-								<c:forEach var="fileBoard" items="${fileBoardList }">
+								<c:forEach var="notice" items="${noticeList }">
 									<tr>
-										<td>${fileBoard.noticeNo}</td>
+										<td>${notice.noticeNo}</td>
 										<td class="left"><a
 											href="notice1.html">
-												<span class="cateIcon"> <span>${fileBoard.noticeStatus }</span>
-											</span> <span class="subject">${fileBoard.noticeTitle }</span>
+												<span class="cateIcon"> <span>${notice.noticeStatus }</span>
+											</span> <span class="subject">${notice.noticeTitle }</span>
 										</a></td>
-										<td>${fileBoard.noticeDate}</td>
-										<td>${fileBoard.noticeCount}</td>
+										<td class="left1">${notice.noticeDate}</td>
+										<td class="left2">${notice.noticeCount}</td>
 									</tr>
 									</c:forEach>
 								</tbody>
