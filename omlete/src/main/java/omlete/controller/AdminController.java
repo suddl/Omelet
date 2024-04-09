@@ -30,12 +30,13 @@ import omlete.service.ReviewService;
 
 @Controller
 @RequestMapping("/admin")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class AdminController {
-    private final MemberService memberService;
+    /*
+	private final MemberService memberService;
     private final ContentsService contentsService;
     private final ReviewService reviewService;
-    
+    */
     // 관리자 메인 페이지 이동
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String adminMain(HttpSession session) {
@@ -59,6 +60,7 @@ public class AdminController {
     	}
     }
     */
+    /*
     // 작품 관리(영화)
     @RequestMapping(value = "/contents/movie", method = RequestMethod.GET)
     public String movieList(Model m) {
@@ -234,4 +236,6 @@ public class AdminController {
         session.invalidate();
         return "redirect:/main/main_body";
     }
+    
+*/
 }
