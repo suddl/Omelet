@@ -3,11 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-	<style type="text/css">
-.msg {
-	color: red;
-}
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <body>
      <!-- Register --> 
@@ -30,9 +25,9 @@
                              <input class="form-control" type="text" id="id" name="memberId">
                           </div>
       	                   <div class="mb-1">
-						<span id="idNullMsg" class="msg idMsg">아이디를 입력해 주세요.</span>
-					 	<span id="idValidMsg" class="msg idMsg">아이디는 영문자로 시작되는 영문자,숫자,_의 6~20범위의 문자로만 작성 가능합니다.</span>
-					 	<span id="idDuplMsg" class="msg idMsg">아이디가 중복 되었습니다.</span>
+						<span id="idNullMsg" class="alertmsg idMsg">아이디를 입력해 주세요.</span>
+					 	<span id="idValidMsg" class="alertmsg idMsg">아이디는 영문자로 시작되는 영문자,숫자,_의 6~20범위의 문자로만 작성 가능합니다.</span>
+					 	<span id="idDuplMsg" class="alertmsg idMsg">아이디가 중복 되었습니다.</span>
 					 </div>
                        </div>
                        
@@ -43,8 +38,8 @@
                              <input class="form-control" type="text" id="name" name="memberName">
                           </div>
                           <div class="mb-1">
-						<span id="nameNullMsg" class="msg">이름을 입력해 주세요.</span>
-						<span id="nameValidMsg" class="msg">이름을 형식에 맞게 입력해 주세요.</span>
+						<span id="nameNullMsg" class="alertmsg">이름을 입력해 주세요.</span>
+						<span id="nameValidMsg" class="alertmsg">이름을 형식에 맞게 입력해 주세요.</span>
 					  </div>
                        </div>
                        
@@ -55,9 +50,9 @@
                              <input type="text" class="form-control" id="nickname" name="memberNickname">
                           </div>
                           <div class="mb-1">
-						<span id="nicknameNullMsg" class="msg">닉네임을 입력해 주세요.</span>
-						<span id="nicknameValidMsg" class="msg">닉네임을 형식에 맞게 입력해 주세요.</span>
-					 	<span id="nicknameDuplMsg" class="msg">닉네임이 중복 되었습니다.</span>
+						<span id="nicknameNullMsg" class="alertmsg">닉네임을 입력해 주세요.</span>
+						<span id="nicknameValidMsg" class="alertmsg">닉네임을 형식에 맞게 입력해 주세요.</span>
+					 	<span id="nicknameDuplMsg" class="alertmsg">닉네임이 중복 되었습니다.</span>
 					  </div>
                        </div>
                        
@@ -68,8 +63,8 @@
                              <input type="text" class="form-control" id="phone" name="memberPhone">
                           </div>
                           <div class="mb-1">
-							<span id="phoneNullMsg" class="msg">휴대폰 번호를 입력해 주세요.</span>
-							<span id="phoneValidMsg" class="msg">휴대폰 번호는 01로 시작하며, 3~4 자리의 숫자로만 입력 가능합니다.</span>	
+							<span id="phoneNullMsg" class="alertmsg">핸드폰 번호를 입력해 주세요.</span>
+							<span id="phoneValidMsg" class="alertmsg">핸드폰 번호는 01로 시작하며, 3~4 자리의 숫자로만 입력 가능합니다.</span>	
 						</div>
                        </div>
                        
@@ -80,8 +75,8 @@
                              <input type="email" class="form-control" id="email" name="memberEmail">
                           </div>
                           <div class="mb-1">
-							<span id="emailNullMsg" class="msg">이메일을 입력해 주세요.</span>
-							<span id="emailValidMsg" class="msg">이메일을 형식에 맞게 입력해 주세요.</span>
+							<span id="emailNullMsg" class="alertmsg">이메일을 입력해 주세요.</span>
+							<span id="emailValidMsg" class="alertmsg">이메일을 형식에 맞게 입력해 주세요.</span>
 						</div>	
                        </div>
                        
@@ -92,8 +87,8 @@
                              <input class="form-control" type="password" id="passwd" name="memberPasswd">
                           </div>
                           <div class="mb-1">
-							<span id="passwdNullMsg" class="msg">6자이상 비밀번호를 입력해 주세요.</span>
-							<span id="passwdValidMsg" class="msg">비밀번호는 영문자,숫자,특수문자가 반드시 하나이상 포함된 6~20 범위의 문자로만 작성 가능합니다.</span>
+							<span id="passwdNullMsg" class="alertmsg">6자이상 비밀번호를 입력해 주세요.</span>
+							<span id="passwdValidMsg" class="alertmsg">비밀번호는 영문자,숫자,특수문자가 반드시 하나이상 포함된 6~20 범위의 문자로만 작성 가능합니다.</span>
 						</div>
                           
                        </div>
@@ -105,8 +100,8 @@
                            </div>
                        </div>
                       <div class="mb-1">
-							<span id="repasswdNullMsg" class="msg">6자이상 비밀번호확인을 입력해 주세요.</span>
-							<span id="repasswdMatchMsg" class="msg">비밀번호와 비밀번호확인이 서로 맞지 않습니다.</span>
+							<span id="repasswdNullMsg" class="alertmsg">6자이상 비밀번호확인을 입력해 주세요.</span>
+							<span id="repasswdMatchMsg" class="alertmsg">비밀번호와 비밀번호확인이 서로 맞지 않습니다.</span>
 						</div>
                        
                        
@@ -125,7 +120,7 @@
    </div>
    
    <script type="text/javascript">
-	$(".msg").hide();
+	$(".alertmsg").hide();
 	var idResult=false;
 	var nickNameResult=false;
 	
@@ -172,7 +167,7 @@
     // 폼 제출 이벤트 핸들러
 	$("#joinForm").submit(function(event) {
 		var submitResult = true;
-	    $(".msg").hide(); // 모든 메시지 숨기기
+	    $(".alertmsg").hide(); // 모든 메시지 숨기기
 	
 	    
 	    // 아이디 검사
