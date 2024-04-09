@@ -46,6 +46,11 @@ public class ContentsController {
 	@RequestMapping(value ="/api")
 	public Contents getInfo(Model m) {
 		int pages = 1;
+		//String test;
+		//System.out.println(apiService.mid());
+		
+		
+		//System.out.println(test);
 		
 		List<Contents> info = null;
 		Contents vo = new Contents();
@@ -132,12 +137,12 @@ public class ContentsController {
 	        			JSONArray release_dates1 = (JSONArray)ratelist.get("release_dates");
 	        			for(int w=0;w<release_dates1.size();w++) {				 
 	            			JSONObject rdresult1 = (JSONObject) release_dates1.get(w);
-	            			System.out.println("certification="+rdresult1.get("certification"));
+	            			//System.out.println("certification="+rdresult1.get("certification"));
 	            			if(rdresult1.get("certification")!=null) {
 	            				break;
 	            			}
 	            			//System.out.println("release_dates1="+release_dates1);
-	            			
+	            			vo.setContentsRating(String.valueOf(ratelist.get("release_dates")));
 	        			}
 	        			break;
 	        			
@@ -161,7 +166,8 @@ public class ContentsController {
 	                				String certification = (String) certificationObj;
 	                	            if (!certification.isEmpty()) { // certification 값이 비어 있지 않은 경우에만 처리
 	                	                certificationValue = certification; // certification 값이 비어 있지 않으면 저장
-	                	                System.out.println("certification(없을때)="+certificationValue);
+	                	                //System.out.println("certification(없을때)="+certificationValue);
+	                	                vo.setContentsRating(certificationValue);
 	                	                break outerLoop; // 바깥쪽 루프도 종료
 	                	            }
 	                			}			                   				
@@ -185,7 +191,8 @@ public class ContentsController {
 	        		JSONObject crews=(JSONObject)crew.get(d);
 	            	if(crews.get("known_for_department").equals("Writing")) {
 	            		
-	        			System.out.println("작가:"+(String)crews.get("original_name"));
+	        			//System.out.println("작가:"+(String)crews.get("original_name"));
+	            		vo.setContentsStaff(String.valueOf(crews.get("original_name")));
 	        			break;
 	        		}
 	        	}
@@ -194,7 +201,8 @@ public class ContentsController {
 	        		JSONObject crews=(JSONObject)crew.get(d);
 	            	if(crews.get("known_for_department").equals("Directing")) {
 	            		
-	        			System.out.println("감독:"+(String)crews.get("original_name"));
+	        			//System.out.println("감독:"+(String)crews.get("original_name"));
+	            		vo.setContentsDirector(String.valueOf(crews.get("original_name")));
 	        			break;
 	        		}
 	        	}
@@ -216,12 +224,13 @@ public class ContentsController {
 	            	JSONObject actjsonObject = (JSONObject)actjsonParser.parse(actresult);
 	        		JSONArray also_known_as = (JSONArray) actjsonObject.get("also_known_as");
 	        		
-	        		System.out.print("배우 : ");
+	        		//System.out.print("배우 : ");
 	        		if(castlist.get("known_for_department").equals("Acting")) {
 	        			for(int an=0;an<also_known_as.size();an++) {
 	
 	        				if(((String) also_known_as.get(an)).matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
 	        					System.out.print("actTname:"+also_known_as.get(an));
+	        					
 	        					break;
 	        				}
 	        				
@@ -230,7 +239,7 @@ public class ContentsController {
 	        			System.out.print("actname : " + castlist.get("name"));
 	        			System.out.print(" actid : " + castlist.get("id"));
 	        			System.out.println(" profile_path : " + castlist.get("profile_path"));            			        
-	        			//System.out.println("=================================================");
+	        			System.out.println("=================================================");
 	        			
 	        			a++;
 	        			   			
@@ -256,38 +265,37 @@ public class ContentsController {
 	        	System.out.print("사진=");
 	        	for(int o=0; o<3; o++) {
 	        		JSONObject imgp=(JSONObject) backdrops.get(o);
-	        		System.out.print(imgp.get("file_path")+"\t");
+	        		//System.out.print(imgp.get("file_path")+"\t");
+	        		
 	        	
 	        	}
-	        	System.out.println();
-	        	
-	        	
-	        	
-	        	
+	        	//System.out.println();
+
 	        	JSONObject pron=(JSONObject)procoun.get(0);
 	        	countryname=(String) pron.get("name");
-	        	  
-	        	//영화정보
+	        	
+	        	/* 
+	        	//영화정보 출력
 	        	System.out.println("id : " + jsonObject1.get("id"));
 	        	System.out.println("type : 영화");
 	        	System.out.println("original_title : " + jsonObject1.get("original_title"));
 	        	System.out.println("title : " + jsonObject1.get("title"));
 	        	System.out.println("poster_path : https://image.tmdb.org/t/p/original" + jsonObject1.get("poster_path"));
 	        	System.out.println("overview : " + jsonObject1.get("overview"));
-	        	//System.out.println("genres : " + jsonObject1.get("genres"));
 	        	System.out.println("genres name: " + name);
-	        	//System.out.println("production_countries : " + jsonObject1.get("production_countries"));
 	        	System.out.println("production_countries name: " + countryname);
 	        	System.out.println("release_date : " + jsonObject1.get("release_date"));
 	        	System.out.println("runtime : " + jsonObject1.get("runtime")+"분");         	
 	        	System.out.println("tagline : " + jsonObject1.get("tagline"));
-	        	
+	        	System.out.println("=================================================");
+	        	*/
 	        	
 	        	vo.setContentsNo(Integer.parseInt(String.valueOf(jsonObject1.get("id"))));
 	        	vo.setContentsType("영화");
 	        	vo.setContentsOname(String.valueOf(jsonObject1.get("original_title")));
 	        	vo.setContentsTname(String.valueOf(jsonObject1.get("title")));
 	        	vo.setContentsPoster("https://image.tmdb.org/t/p/original"+String.valueOf(jsonObject1.get("poster_path")));
+	        	vo.setContentsOverview((String.valueOf(jsonObject1.get("overview"))));
 	        	vo.setContentsGenre(name);
 	        	vo.setContentsCountries(countryname);
 	        	vo.setContentsStartdate(String.valueOf(jsonObject1.get("release_date")));
@@ -295,15 +303,15 @@ public class ContentsController {
 	        	vo.setContentsTagline(String.valueOf(jsonObject1.get("tagline")));
 	        	info.add(vo);
 	        	
-	        	System.out.println("=================================================");
-	        	
+	        	m.addAttribute("data", vo);
+	    		return vo;
 	    	}
 	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		m.addAttribute("data", vo);
 		return vo;
+		
 	
 	}
 	

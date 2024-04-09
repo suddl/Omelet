@@ -19,8 +19,49 @@ import omlete.dto.Contents;
 
 @Service
 @RequiredArgsConstructor
-public class ApiServiceImpl implements ApiService{@Override
+public class ApiServiceImpl implements ApiService{
 	
+	@Override
+	public String mid() {	
+		// 인증키 (개인이 받아와야함)
+		String key = "2f619d605e8a65b90a65eceaec054524";
+	
+		// 파싱한 데이터를 저장할 변수
+		String result = "";
+		String mid="";
+		
+		try {
+			//URL url = new URL("https://api.themoviedb.org/3/movie/38757?api_key="
+			//		+ key + "&watch_region=KR&language=ko");
+			
+			//첫번쩨 url 페이지당 20개씩 영화정보 출력
+			URL url = new URL("https://api.themoviedb.org/3/discover/movie?api_key="
+					+ key + "&watch_region=KR&language=ko");
+	
+			BufferedReader bf;
+	
+			bf = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+	
+			result = bf.readLine();   		
+			
+	    	JSONParser jsonParser = new JSONParser();
+	    	JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
+	    	
+	    	JSONArray results = (JSONArray) jsonObject.get("results");
+	    	for(int i=0;i<results.size();i++) {
+		    	String rn = null;
+		    	JSONObject r = (JSONObject) results.get(i);
+	    		rn=String.valueOf(r.get("id")) ;
+	    		System.out.println(rn);
+	    		mid = rn;
+	    		return mid;
+	    	}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return mid;
+	}
+
 	public List<Contents> getMovieList() {
 		List<Contents> info = null;
 		
@@ -270,6 +311,8 @@ public class ApiServiceImpl implements ApiService{@Override
 		}
 		return info;
 	}
+
+
 	
 	
 }
