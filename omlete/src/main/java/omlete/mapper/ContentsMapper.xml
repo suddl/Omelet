@@ -25,4 +25,34 @@
 		, contents_countries, contents_director, contents_startdate, contents_avgstar, contents_enddate, contents_episodes
 		, contents_seasons, contents_runtime, contents_tagline from contents where contents_no=#{contentsNo}
 	</select>
+
+	<select id="selectContentsListByType" resultType="Contents">
+		select contents_no, contents_type, contents_oname, contents_tname, contents_trailer, contents_poster, contents_photo
+		, contents_staff, contents_overview, contents_rating, contents_genre, contents_network, contents_network_logo
+		, contents_countries, contents_director, contents_startdate, contents_avgstar, contents_enddate, contents_episodes
+		, contents_seasons, contents_runtime, contents_tagline from contents where contents_type=#{contentsType} 
+		order by contents_no desc
+	</select>
+	
+	<select id="selectContentCountsByGenre" resultType="Contents">
+		select contents_genre, count(*) as genre_count from contents group by contents_genre
+	</select>
+	
+	<select id="selectContentsCountByType" resultType="Contents">
+		select contents_type, count(*) as type_count from contents group by contents_type
+	</select>
+	
+	<update id= "updateContents">
+		update contents set contentsType=#{contentsType}, contentsOname=#{contentsOname}, contentsTname=#{contentsTname}
+		, contentsTrailer=#{contentsTrailer}, contentsPoster=#{contentsPoster}, contentsPhoto=#{contentsPhoto}
+		, contentsStaff=#{contentsStaff}, contentsOverview=#{contentsOverview}, contentsRating=#{contentsRating}
+		, contentsGenre=#{contentsGenre}, contentsNetwork=#{contentsNetwork}, contentsNetworkLogo=#{contentsNetworkLogo}
+		, contentsCountries=#{contentsCountries}, contentsDirector=#{contentsDirector}, contentsStartdate=#{contentsStartdate}
+		, contentsEnddate=#{contentsEnddate}, contentsEpisodes=#{contentsEpisodes}, contentsSeasons=#{contentsSeasons}
+		, contentsRuntime=#{contentsRuntime}, contentsTagline=#{contentsTagline}
+	</update>
+	
+	<delete id="deleteContents">
+		delete from contents where contents_no=#{contentsNo}
+	</delete>	
 </mapper>
