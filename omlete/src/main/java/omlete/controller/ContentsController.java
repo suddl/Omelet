@@ -1,5 +1,7 @@
 package omlete.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Contents;
+import omlete.service.ApiService;
 import omlete.service.ContentsService;
 
 @Controller
@@ -14,6 +17,7 @@ import omlete.service.ContentsService;
 @RequiredArgsConstructor
 public class ContentsController {
 	private ContentsService contentsService;
+	private ApiService apiService;
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(Model m, int no) {
@@ -31,12 +35,13 @@ public class ContentsController {
 	}
 	
 	
-	@RequestMapping("/api/getInfo")
-	public String getInfo() {
+	@RequestMapping(value ="/api")
+	public String getInfo(Model m) {
 		int pages = 1;
 		
-		
-		return "ok";
+		List<Contents> t = apiService.getMovieList();
+		m.addAttribute("data", t);
+		return "detail/api";
 	
 	}
 	

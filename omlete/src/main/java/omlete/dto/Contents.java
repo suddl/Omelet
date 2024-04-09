@@ -13,7 +13,9 @@ public class Contents {
 	private String contentsTname;			//작품 제목(한국어)
 	private String contentsTrailer;			//예고편/트레일러
 	private String contentsPoster;			//포스터
-	private String contentsPhoto;			//스틸컷
+	private String contentsPhoto1;			//스틸컷
+	private String contentsPhoto2;			//스틸컷
+	private String contentsPhoto3;			//스틸컷
 	private String contentsStaff;			//작가
 	private String contentsOverview;		//내용
 	private String contentsRating;			//연령 등급
