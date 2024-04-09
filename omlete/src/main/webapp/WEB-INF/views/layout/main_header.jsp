@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-light topbar static-top shadow-sm bg-white osahan-nav-top px-0">
    <div class="container">
       <!-- Sidebar Toggle (Topbar) -->
-      <a class="navbar-brand" href="<c:url value="main"/>"><img src="<c:url value="/images/logo/omlete_logo.png"/>" alt=""></a>
+      <a class="navbar-brand" href="<c:url value="/"/>"><img src="<c:url value="/images/logo/omlete_logo.png"/>" alt=""></a>
       <!-- Topbar Search -->
       <div class="container">
 	      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,14 +60,14 @@
 	         		<li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
 	            	<!-- 로그인 -->
 			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-			            	href="<c:url value="/login/login"/>">
+			            	onclick="location.href='<c:url value="/login/member"/>';">
 			            	로그인
 			            </a>
 		        	</li>
-		         	<li class="nav-item dropdown no-arrow no-caret dropdown-user">
+		         	<li class="nav-item dropdown no-arrow no-caret dropdown-user"> 
 		            <!-- 회원가입 -->
 			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-			            	href="<c:url value="/login/register"/>">
+			            	onclick="location.href='<c:url value="/login/register"/>';">
 			            	회원가입
 			            </a>
 	         	</c:when>
@@ -75,14 +75,14 @@
 		         	<li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
 		            <!-- 로그아웃 -->
 			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-			            	href="<c:url value="/main/main_body"/>">
+			            	onclick="location.href='<c:url value="/main/main_body"/>';">
 			            	로그아웃
 			            </a>
 		         	</li>
 		         	<li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
 			            <!-- 마이페이지 -->
 			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-			            	href="<c:url value="/mypage/profile"/>">
+			            	onclick="location.href='<c:url value="/mypage/profile"/>';">
 			            	내정보
 			            </a>
 			        </li>
@@ -90,7 +90,7 @@
 			         	<li class="nav-item dropdown no-arrow no-caret dropdown-user">
 		            		<!-- 관리자 페이지 생기면 연결하기 -->
 					        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-				            	href="<c:url value="/mypage/profile"/>">
+				            	onclick="location.href='<c:url value="#"/>';">
 				            	<img alt="" src="<c:url value="/images/member_profile.svg"/>">
 				            </a>
 				        </li>
