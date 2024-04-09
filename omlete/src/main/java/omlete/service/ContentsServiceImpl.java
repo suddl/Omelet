@@ -42,6 +42,34 @@ public class ContentsServiceImpl implements ContentsService{
 		
 		return contents;
 	}
+
+	@Override
+	public List<Contents> getContentsListByType(String contentsType) {
+		return contentsDAO.selectContentsListByType(contentsType);
+	}
+
+	@Override
+	public int getContentsCountByGenre(String contentsGenre) {
+		int contentsCount = contentsDAO.selectContentsCountByGenre(contentsGenre);
+		return contentsCount;
+	}
+
+	@Override
+	public int getContentsCountByType(String contentsType) {
+		int contentsCount = contentsDAO.selectContentsCountByGenre(contentsType);
+		return contentsCount;
+	}
+	
+	@Override
+	public void modifyContents(Contents contents) {
+		contentsDAO.updateContents(contents);		
+	}
+
+	@Override
+	public void removeContents(int contentsNo) {
+		contentsDAO.deleteContents(contentsNo);
+		
+	}
 	
 	
 }

@@ -1,8 +1,7 @@
 package omlete.controller;
 
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
-
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
@@ -32,11 +32,12 @@ import omlete.service.ReviewService;
 @RequestMapping("/admin")
 //@RequiredArgsConstructor
 public class AdminController {
-    /*
-	private final MemberService memberService;
-    private final ContentsService contentsService;
-    private final ReviewService reviewService;
-    */
+    
+	//private MemberService memberService;
+    private ContentsService contentsService;
+    private WebApplicationContext context;
+    //private ReviewService reviewService;
+    
     // 관리자 메인 페이지 이동
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String adminMain(HttpSession session) {
@@ -50,17 +51,16 @@ public class AdminController {
     //작품 관리
     @RequestMapping(value = "/contents", method = RequestMethod.GET)
     public String ContentsList(@RequestParam(value = "contentsType") String contentsType, Model m) {
-    	if("%EC%98%81%ED%99%94".equals(contentsType) ) {
-    	m.addAttribute("movieList", contentsService.getMovieList());
-    	return "contents";
-    	
-    	} else if("tv".equals(contentsType) ) {
-    		m.addAttribute("tvList", contentsService.getTvList());
-    		return "contents";
+    	if(contentsType.equals("%EC%98%81%ED%99%94") || contentsType.equals("영화")) {
+    	m.addAttribute("movieList", contentsService.getContentsCountByType("영화"));
+    	return "contents/movie";
+    	} else {
+    		m.addAttribute("tvList", contentsService.getContentsCountByType("TV"));
+    	return "contents/tv";
     	}
     }
     */
-    /*
+    
     // 작품 관리(영화)
     @RequestMapping(value = "/contents/movie", method = RequestMethod.GET)
     public String movieList(Model m) {
@@ -77,9 +77,9 @@ public class AdminController {
     
     // 작품 추가
     @RequestMapping(value = "/contents_add", method = RequestMethod.POST)
-    public String contentsAdd(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList, Model m ) {
+    public String contentsAdd(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList,  Model m ) throws IllegalStateException, IOException {
     	contentsService.addContents(contents);
-    	String uploadDirectory=context.getRealPath("/resources/images/upload");
+    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
     	
     	List<String> contentsImageList=new ArrayList<String>();
     	
@@ -92,18 +92,20 @@ public class AdminController {
     	}
     	m.addAttribute("contents", contents);
     	m.addAttribute("contentsImageList", contentsImageList);
+    	
+    	String contentsType = contents.getContentsType();
     	if(contentsType.equals("영화")) {
         return "redirect:/admin/contents/movie";
-    		} else if(contentsType.equals("TV")) {
+    		} else {
     			return "redirect:/admin/contents/tv";
     		}
     	}
     
     // 작품 수정
     @RequestMapping(value = "/contents_modify", method = RequestMethod.POST)
-    public String contentsModify(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList, Model m ) {
+    public String contentsModify(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList, Model m ) throws IllegalStateException, IOException {
         contentsService.modifyContents(contents);
-    	String uploadDirectory=context.getRealPath("/resources/images/upload");
+        String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
     	
     	List<String> contentsImageList=new ArrayList<String>();
     	
@@ -116,9 +118,11 @@ public class AdminController {
     	}
     	m.addAttribute("contents", contents);
     	m.addAttribute("contentsImageList", contentsImageList);
+    	
+    	String contentsType = contents.getContentsType();
     	if(contentsType.equals("영화")) {
         return "redirect:/admin/contents/movie";
-    		} else if(contentsType.equals("TV")) {
+    		} else {
     			return "redirect:/admin/contents/tv";
     		}
     	}
@@ -130,6 +134,7 @@ public class AdminController {
         return "redirect:/admin/contents/movies";
     }
     
+    /*
     // 회원 관리
     @RequestMapping(value = "/member", method = RequestMethod.GET)
     public String memberList(Model m) {
