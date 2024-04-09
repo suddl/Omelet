@@ -22,7 +22,8 @@ import omlete.dto.Contents;
 public class ApiServiceImpl implements ApiService{
 	
 	@Override
-	public String mid() {	
+	public List<String> getmid(int page) {	
+		List<String> list = new ArrayList();
 		
 		// 인증키 (개인이 받아와야함)
 		String key = "2f619d605e8a65b90a65eceaec054524";
@@ -53,14 +54,13 @@ public class ApiServiceImpl implements ApiService{
 		    	String rn = null;
 		    	JSONObject r = (JSONObject) results.get(i);
 	    		rn=String.valueOf(r.get("id")) ;
-	    		System.out.println(rn);
 	    		mid = rn;
-	    		return mid;
+	    		list.add(mid);
 	    	}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return mid;
+		return list;
 	}
 
 	public List<Contents> getMovieList() {

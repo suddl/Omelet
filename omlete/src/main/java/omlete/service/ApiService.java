@@ -5,6 +5,6 @@ import java.util.List;
 import omlete.dto.Contents;
 
 public interface ApiService {
-	String mid(); 
+	List<String> getmid(int page); 
 	List<Contents> getMovieList();
 }
