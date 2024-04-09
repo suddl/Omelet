@@ -110,8 +110,8 @@
 										<td>${notice.noticeNo}</td>
 										<td class="left"><a
 											href="notice1.html">
-												<span class="cateIcon"> <span>${notice.noticeStatus }</span>
-											</span> <span class="subject">${notice.noticeTitle }</span>
+												<span class="cateIcon"> <span>${notice.noticeStatus}</span>
+											</span> <span class="subject">${notice.noticeTitle}</span>
 										</a></td>
 										<td class="left1">${notice.noticeDate}</td>
 										<td class="left2">${notice.noticeCount}</td>

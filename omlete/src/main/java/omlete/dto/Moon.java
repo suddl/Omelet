@@ -21,4 +21,5 @@ public class Moon {
 	private int moonStatus;
 	private String moonRe;
 	private String moonDate;
+	private String memberNickname;
 }

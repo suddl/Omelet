@@ -29,7 +29,7 @@ public class BoardController {
 	 * String noticelist() { return "notice/notice_view"; }
 	 */
 	
-	 @RequestMapping("/list")
+	 @RequestMapping("/noticeList")
 	    public String noticeList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 	        Map<String, Object> map = noticeService.getNoticeList(pageNum);
 
@@ -37,6 +37,16 @@ public class BoardController {
 	        model.addAttribute("noticeList", map.get("noticeList"));
 
 	        return "notice/notice_view";
+	    }
+	 //이벤트
+	 @RequestMapping("/eventList")
+	    public String eventList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+	        Map<String, Object> map = noticeService.getNoticeList(pageNum);
+
+	        model.addAttribute("pager", map.get("pager"));
+	        model.addAttribute("noticeList", map.get("noticeList"));
+
+	        return "notice/event_view";
 	    }
 	
 	

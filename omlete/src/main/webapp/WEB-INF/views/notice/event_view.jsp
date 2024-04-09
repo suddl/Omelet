@@ -85,7 +85,7 @@
 						</div>
 						<div
 							class="overflow-hidden border-top d-flex align-items-center p-4">
-							<a class="font-weight-bold d-block" href="<c:url value="/board/notice_view"/>"> 궁금하다면? </a>
+							<a class="font-weight-bold d-block" href="<c:url value="/board/noticeList"/>"> 궁금하다면? </a>
 							<i class="mdi mdi-arrow-right ml-auto text-primary"></i>
 						</div>
 					</div>
@@ -100,7 +100,30 @@
             		 	</div>
 	      			    <div class="container">
     	        			<div class="row">
+    	        			<c:forEach var="notice" items="${noticeList}">
 			            		<div class="col-md-3">
+            			        	<a href="event1.html">
+                    				<img class="img-fluid" src="${notice.noticeImage}" style="width:20px">
+                    				</a>
+                    				<div class="inner-slider">
+                        				<div class="inner-wrapper">
+                        					<div class="d-flex align-items-center">
+                              					<span class="seller-name">
+                          					    <a href="event1.html">${notice.noticeTitle}
+                              					</a>
+                              					</span>
+                           					</div>
+                           					<div class="footer">
+                            					<td>${notice.noticeCount}</td>
+                              					<div class="price">
+                              						<span>${notice.noticeDate}<br> ${notice.noticeTerm}</br></span>
+                              					</div>
+                           					</div>
+                        				</div>
+                     				</div>
+                  				</div>
+                  				</c:forEach>
+                  				<div class="col-md-3">
             			        	<a href="event1.html">
                     				<img class="img-fluid" src="images/list/graveyard.jpg" />
                     				</a>
@@ -114,15 +137,35 @@
                               					</span>
                            					</div>
                            					<div class="footer">
-                            					<td>30</td>
+                            					<td>10</td>
                               					<div class="price">
                               						<span>24.3.25(일) ~ 24.3.31(일)</span>
                               					</div>
                            					</div>
                         				</div>
                      				</div>
-                  				</div>
-                  				<div class="col-md-3">
+                  				</div><div class="col-md-3">
+            			        	<a href="event1.html">
+                    				<img class="img-fluid" src="images/list/graveyard.jpg" />
+                    				</a>
+                    				<div class="inner-slider">
+                        				<div class="inner-wrapper">
+                        					<div class="d-flex align-items-center">
+                              					<span class="seller-name">
+                          					    <a href="event1.html">파묘 럭키박스 출시!
+                              					<br>1+1 행운의 주인공은?</br>
+                              					</a>
+                              					</span>
+                           					</div>
+                           					<div class="footer">
+                            					<td>10</td>
+                              					<div class="price">
+                              						<span>24.3.25(일) ~ 24.3.31(일)</span>
+                              					</div>
+                           					</div>
+                        				</div>
+                     				</div>
+                  				</div><div class="col-md-3">
             			        	<a href="event1.html">
                     				<img class="img-fluid" src="images/list/graveyard.jpg" />
                     				</a>
