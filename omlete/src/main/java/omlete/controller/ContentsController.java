@@ -23,13 +23,10 @@ import omlete.service.ContentsService;
 
 @Controller
 @RequestMapping("/detail")
-@RequiredArgsConstructor
 public class ContentsController {
-	@Autowired
-	private ContentsService contentsService;
-	@Autowired
-	private ApiService apiService;
-	@Autowired
+	private final ContentsService contentsService = null;
+	private final ApiService apiService=null;
+	
 	//private ActorsService actorService;
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
@@ -294,7 +291,7 @@ public class ContentsController {
 			e.printStackTrace();
 		}
 		
-		m.addAttribute("data", vo);
+		m.addAttribute("data", info);
 		return vo;
 		
 	
