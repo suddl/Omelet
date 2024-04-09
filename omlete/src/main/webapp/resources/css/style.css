@@ -115,6 +115,10 @@ table {
     flex: 0 0 50%;
     max-width: 33%;
 }
+.alertmsg {
+	color: red;
+}
+
 /* 여기까지 */
 
 .imgMyfavorite {
