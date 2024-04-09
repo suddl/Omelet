@@ -33,6 +33,24 @@ public class ContentsDAOImpl implements ContentsDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+	@Override
+	public List<Contents> selectContentsListByType(String contentsType) {		
+		return sqlSession.getMapper(ContentsMapper.class).selectContentsListByType(contentsType);
+	}
+	@Override
+	public int selectContentsCountByGenre(String contentsGenre) {
+		return sqlSession.getMapper(ContentsMapper.class).selectContentsCountByGenre(contentsGenre);
+	}
+	@Override
+	public int selectContentsCountByType(String contentsType) {
+		return sqlSession.getMapper(ContentsMapper.class).selectContentsCountByType(contentsType);
+	}
+	@Override
+	public int updateContents(Contents contents) {
+		return sqlSession.getMapper(ContentsMapper.class).updateContents(contents);
+	}
+	@Override
+	public int deleteContents(int contentsNo) {
+		return sqlSession.getMapper(ContentsMapper.class).deleteContents(contentsNo);
+	}
 }

@@ -196,18 +196,17 @@
 		     submitResult = false;
 		 }
 		
-		
 		// 닉네임 검사
 		if ($("#nickname").val() == "") {
 		    $("#nicknameNullMsg").show();
 		    submitResult = false;
-		} else if (!/^[\u3131-\u3163\uac00-\ud7a3]{2,10}$/.test($("#nickname").val())) {
+		} else if (!/^[\u3131-\u3163\uac00-\ud7a3a-zA-Z0-9]{2,10}$/.test($("#nickname").val())) {
 		    $("#nicknameValidMsg").show();
 		    submitResult = false;
-		} else if(nickNameResult) {
-	       	$("#nicknameDuplMsg").show();
-	        submitResult = false;
-	    }
+		} else if (nickNameResult) {
+		    $("#nicknameDuplMsg").show();
+		    submitResult = false;
+		}
 		
 		// 휴대폰 번호 검사
 		if ($("#phone").val() == "") {
