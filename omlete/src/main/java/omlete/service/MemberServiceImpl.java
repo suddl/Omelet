@@ -18,7 +18,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void addMember(Member member) throws ExistsMemberException {
+	public void addMember(Member member) {
 		//전달받은 회원정보의 아이디가 이미 있을 경우 예외전달
 		if(memberDAO.selectMember(member.getMemberId()) != null){
 			throw new ExistsMemberException("이미 사용 중인 아이디입니다.", member);
@@ -32,13 +32,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public Member getMemberId(Member member) throws MemberNotFoundException {
+	public Member getMemberId(Member member) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public Member loginAuth(Member member) throws LoginAuthFailException {
+	public Member loginAuth(Member member) {
 		//전달받은 회원정보의 아이디로 기존 회원정보를 검색하여 검색결과를 반환받아 저장
 		//Member loginMember=memberDAO.selectMember(member.getMemberId());
 		Member loginMember=memberDAO.selectMember(member.getMemberId());

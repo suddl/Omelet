@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Member;
-import omlete.exception.LoginAuthFailException;
 import omlete.service.MemberService;
 
 @Controller
@@ -44,7 +43,7 @@ public class LoginController {
     }
 	
 	@RequestMapping(value = "/member", method = RequestMethod.POST)
-	public String memberLogin(@ModelAttribute Member member, HttpSession session) throws LoginAuthFailException {
+	public String memberLogin(@ModelAttribute Member member, HttpSession session) {
 		Member loginMember = memberService.loginAuth(member);
 		session.setAttribute("loginMember", loginMember);
 		// 로그인이 성공하면 메인 화면으로 이동

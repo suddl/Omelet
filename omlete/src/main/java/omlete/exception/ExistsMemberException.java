@@ -7,7 +7,7 @@ import omlete.dto.Member;
 
 @Getter
 @Setter
-public class ExistsMemberException extends Exception {
+public class ExistsMemberException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	private Member member;

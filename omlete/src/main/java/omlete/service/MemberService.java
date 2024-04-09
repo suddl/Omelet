@@ -1,15 +1,12 @@
 package omlete.service;
 
 import omlete.dto.Member;
-import omlete.exception.ExistsMemberException;
-import omlete.exception.LoginAuthFailException;
-import omlete.exception.MemberNotFoundException;
 
 public interface MemberService {
-	void addMember(Member member) throws ExistsMemberException;
-	Member getMemberId(Member member) throws MemberNotFoundException;
+	void addMember(Member member);
+	Member getMemberId(Member member);
 	
-	Member loginAuth(Member member) throws LoginAuthFailException;
+	Member loginAuth(Member member);
 	
 	
 	// 마이페이지

@@ -7,7 +7,7 @@ import lombok.Setter;
 //실패된 경우 발생되어 처리하기 위한 예외 클래스
 @Getter
 @Setter
-public class LoginAuthFailException extends Exception {
+public class LoginAuthFailException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	//예외처리에 필요한 값을 저장하기 위한 필드
