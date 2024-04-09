@@ -107,9 +107,9 @@ public class ContentsController {
 	        	if(jsonObject1.get("overview")==null) {
 	        		break;
 	        	}
-	        	//System.out.println("rdresult"+rdresult);
+
 	        	boolean fkr=false;
-	        	//System.out.println("rdresult"+rdresult);
+	        	
 	        	for(int q=0;q<rdresult.size();q++) {
 	        		JSONObject ratelist=(JSONObject)rdresult.get(q);
 	        		if(ratelist.get("iso_3166_1").equals("KR")) {
@@ -122,7 +122,7 @@ public class ContentsController {
 	            				break;
 	            			}
 	            			//System.out.println("release_dates1="+release_dates1);
-	            			vo.setContentsRating(String.valueOf(ratelist.get("certification")));
+	            			
 	        			}
 	        			break;
 	        			
@@ -249,26 +249,10 @@ public class ContentsController {
 	        		
 	        	
 	        	}
-	        	//System.out.println();
+
 
 	        	JSONObject pron=(JSONObject)procoun.get(0);
 	        	countryname=(String) pron.get("name");
-	        	
-	        	/* 
-	        	//영화정보 출력
-	        	System.out.println("id : " + jsonObject1.get("id"));
-	        	System.out.println("type : 영화");
-	        	System.out.println("original_title : " + jsonObject1.get("original_title"));
-	        	System.out.println("title : " + jsonObject1.get("title"));
-	        	System.out.println("poster_path : https://image.tmdb.org/t/p/original" + jsonObject1.get("poster_path"));
-	        	System.out.println("overview : " + jsonObject1.get("overview"));
-	        	System.out.println("genres name: " + name);
-	        	System.out.println("production_countries name: " + countryname);
-	        	System.out.println("release_date : " + jsonObject1.get("release_date"));
-	        	System.out.println("runtime : " + jsonObject1.get("runtime")+"분");         	
-	        	System.out.println("tagline : " + jsonObject1.get("tagline"));
-	        	System.out.println("=================================================");
-	        	*/
 	        	
 	        	vo.setContentsNo(Integer.parseInt(String.valueOf(jsonObject1.get("id"))));
 	        	vo.setContentsType("영화");

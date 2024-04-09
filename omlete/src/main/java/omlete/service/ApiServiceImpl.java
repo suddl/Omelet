@@ -22,7 +22,7 @@ import omlete.dto.Contents;
 public class ApiServiceImpl implements ApiService{
 	
 	@Override
-	public List<String> getmid(int page) {	
+	public List<String> getmid(int pages) {	
 		List<String> list = new ArrayList();
 		
 		// 인증키 (개인이 받아와야함)
@@ -31,14 +31,14 @@ public class ApiServiceImpl implements ApiService{
 		// 파싱한 데이터를 저장할 변수
 		String result = "";
 		String mid="";
-		
+		pages=1;
 		try {
 			//URL url = new URL("https://api.themoviedb.org/3/movie/38757?api_key="
 			//		+ key + "&watch_region=KR&language=ko");
 			
 			//첫번쩨 url 페이지당 20개씩 영화정보 출력
 			URL url = new URL("https://api.themoviedb.org/3/discover/movie?api_key="
-					+ key + "&watch_region=KR&language=ko");
+					+ key + "&watch_region=KR&language=ko&page="+pages);
 	
 			BufferedReader bf;
 	
