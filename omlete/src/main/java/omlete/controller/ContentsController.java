@@ -46,8 +46,8 @@ public class ContentsController {
 	@RequestMapping(value ="/api")
 	public Contents getInfo(Model m) {
 		int pages = 1;
-		//String test;
-		//System.out.println(apiService.mid());
+		String test;
+		System.out.println(apiService.mid());
 		
 		
 		//System.out.println(test);

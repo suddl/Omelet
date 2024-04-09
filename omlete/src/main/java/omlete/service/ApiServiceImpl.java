@@ -23,6 +23,7 @@ public class ApiServiceImpl implements ApiService{
 	
 	@Override
 	public String mid() {	
+		
 		// 인증키 (개인이 받아와야함)
 		String key = "2f619d605e8a65b90a65eceaec054524";
 	
