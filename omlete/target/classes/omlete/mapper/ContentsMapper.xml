@@ -34,7 +34,7 @@
 		order by contents_no desc
 	</select>
 	
-	<select id="selectContentCountsByGenre" resultType="Contents">
+	<select id="selectContentsCountsByGenre" resultType="Contents">
 		select contents_genre, count(*) as genre_count from contents group by contents_genre
 	</select>
 	
