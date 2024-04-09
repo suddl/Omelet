@@ -40,7 +40,6 @@ public class BoardController {
 	public String moonlist() {
 		return "moon/moon_view";
 	}
-		
 	
 	/*
 	 * //moon전체 리스트 출력 시 페이징 처리를 위해 Json형식의 text로 Map객체 전달
