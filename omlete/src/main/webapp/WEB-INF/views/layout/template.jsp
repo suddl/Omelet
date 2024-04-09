@@ -55,8 +55,6 @@
     <script src="<c:url value="/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
     <!-- Contact form JavaScript -->
     <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-    <script src="<c:url value="/js/jqBootstrapValidation.js"/>"></script>
-    <script src="<c:url value="/js/contact_me.js"/>"></script>
     <!-- Slick -->
     <script src="<c:url value="/vendor/slick-master/slick/slick.js"/>" type="text/javascript" charset="utf-8"></script>
     <!-- lightgallery -->

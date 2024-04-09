@@ -34,7 +34,7 @@
                            </div>
                            <div class="user-profile-label">
                               <div class="username-line">
-                                 <a href="<c:url value="/mypage/profile"/>" class="seller-link">${member.memberName }</a>
+                                 <a href="<c:url value="/mypage/profile"/>" class="seller-link">${loginMember.memberName }</a>
                               </div>
                               <div class="oneliner-wrapper">
                               <!--  -->
@@ -46,7 +46,7 @@
                            </div>
                         </div>
                         <div class="buttons-wrapper">
-                           <a href="<c:url value="/mypage/profile/updateInfo"/>" class="btn-lrg-standard btn-contact-me js-contact-me js-open-popup-join">내 정보 수정</a>
+                           <a href="<c:url value="/mypage/updateInfo"/>" class="btn-lrg-standard btn-contact-me js-contact-me js-open-popup-join">내 정보 수정</a>
                            <!-- <div class="btn-lrg-standard btn-white btn-custom-order">Get a Quote</div> -->
                         </div>
                      </div>

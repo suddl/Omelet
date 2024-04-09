@@ -1,10 +1,14 @@
 package omlete.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Member;
@@ -18,16 +22,6 @@ public class MyPageController {
 	private final MemberService memberService;
 	
 	// 마이페이지 메인화면
-	/*
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profile(Model m, int no) {
-		
-		Member member = memberService.getMemberNo(no);
-		m.addAttribute("member", member);
-		
-		return "mypage/profile";
-	}
-	*/
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profile() {
 		return "mypage/profile";
@@ -35,12 +29,21 @@ public class MyPageController {
 	
 	
 	// 내 정보 수정
-	@RequestMapping(value = "/profile/updateInfo")
-	public String updateInfo(Model model, int no) {
-		Member member = memberService.getMemberNo(no); 
-		model.addAttribute("member", member);
-		
+	@RequestMapping(value = "/updateInfo", method = RequestMethod.GET)
+	public String updateInfo() {
 		return "mypage/myinfo_update";
+	}
+	
+	@RequestMapping(value = "/updateInfo", method = RequestMethod.POST)
+	public String updateInfo(@ModelAttribute Member member, HttpSession session) {
+		memberService.modifyMemberInfo(member);
+		
+		Member loginMember=(Member)session.getAttribute("loginMember");
+		if(loginMember.getMemberNo()==member.getMemberNo()) {
+			session.setAttribute("loginMember", memberService.getMemberNo(member.getMemberNo()));
+		}
+		
+		return "redirect:/mypage/profile";
 	}
 	
 	// 내가 좋아요한 영화 작품 목록
