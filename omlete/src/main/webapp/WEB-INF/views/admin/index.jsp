@@ -35,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value= "/admin/index"/>">
                 <div class="sidebar-brand-icon">
                     <%--<i class="fas fa-laugh-wink"></i>--%>
                     <img id=logo src="img/omlete.png" width=140px;>
@@ -102,7 +102,7 @@
             </li>
 			<hr class="sidebar-divider">
 			<li class="nav-item">
-                <a class="nav-link" href="<c:url value= "/main/main_body"/>">
+                <a class="nav-link" href="<c:url value= "/omlete/"/>">
                     <i class="fas fa-home"></i>
                     <span>메인 페이지</span></a>
             </li>
@@ -412,7 +412,7 @@
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                                             src="img/undraw_posting_photo.svg" alt="...">
                                     </div>
-                                    <a target="_blank" rel="nofollow" href="client.jsp">이벤트 목록 보기 &rarr;</a>
+                                    <a target="_blank" rel="nofollow" href="#">이벤트 목록 보기 &rarr;</a>
                                 </div>
                             </div>
 
