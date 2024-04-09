@@ -12,7 +12,7 @@
                <div class="col-lg-4 mx-auto">
                   <div class="osahan-login py-4">
                      <div class="text-center mb-4">
-                        <a href="#"><img src="<c:url value="/images/logo/omlete_logo.png"/>"></a>
+                         <img src="<c:url value="/images/logo/omlete_logo.png"/>" style="width: 200px; height: auto;"></a>
                     <h5 class="font-weight-bold mt-3">로그인</h5>
                       <!--  <p class="text-muted">로그인</p> -->
                      </div>
@@ -32,30 +32,15 @@
                            </div>
                            <div id="message"class="mt-5 mb-0 text-danger">${message }</div>
                         </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                           <input type="checkbox" class="custom-control-input" id="customCheck1">
-                           <label class="custom-control-label" for="customCheck1">암호 기억하기</label>
-                        </div>
                         <button class="btn btn-success btn-block text-uppercase" type="button" id="login_btn" class="btn" onclick="memberLogin();"> 로그인 </button>
                         <div id="message"class="mt-5 mb-0 text-danger">${message }</div>
                         <div class="text-center mt-3 border-bottom pb-3">
-                            <hr class="css-1x1brjf e1io9utx0">
-                            <!--      
-                           <div class="row">
-                              <div class="col-6">
-                              <a href="kakaotalk://"><button type="button" class="btn btn-outline-instagram btn-block fa-regular fa-comments">kakao talk</button></a>
-                                 <!-- <button type="button" class="btn btn-outline-instagram btn-block fa-regular fa-comments "></i> kakao talk </button>
-                              </div>
-                              <div class="col-6">
-                                 <button type="button" class="btn btn-outline-facebook btn-block fa-regular fa-square-check"></i> naver </button>
-                              </div>
-                           </div>
-                           -->
+                            <!-- <hr class="css-1x1brjf e1io9utx0"> -->
                         </div>
                         <div class="py-3 d-flex align-item-center">
-                           <a href="#"> 아이디찾기 </a>/<a href="#"> 비밀번호 찾기 </a>
+                           <a href="<c:url value="/login/forgot"/>"> 아이디/비밀번호찾기 </a>
                         </div>
-                           <span class="ml-auto"> 새로운 계정 <a href="#"> 회원가입 </a></span>
+                           <span class="ml-auto"> 새로운 계정 <a href="<c:url value="/login/register"/>"> 회원가입 </a></span>
                   </div>
                </div>
             </div>

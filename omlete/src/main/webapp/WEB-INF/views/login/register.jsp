@@ -113,7 +113,7 @@
                        <div class="form-group">
                           <label class="mb-1"> 귀하는 OMELET <a href="#">개인 정보 보호 정책 </a>및 <a href="#">쿠키정책</a> 에 <a  href="#"> 동의합니다 </a>.</label>
                        </div>
-                          <label class="mb-1"> 이미 가입하셨나요? <a href="login.html">로그인</a></label>
+                          <label class="mb-1"> 이미 가입하셨나요? <a href="<c:url value="/login/member"/>">로그인</a></label>
                        </div>
                        </div>
                        <button class="btn btn-success btn-block text-uppercase" type="submit" id="joinBtn"> 동의 및 가입 </button>
@@ -244,6 +244,13 @@
 		    $("#repasswdMatchMsg").show();
 		    submitResult = false;
 		}
+		
+		// 제출 결과 반환
+        if (submitResult) {
+            // 동의 및 가입 버튼을 누르면 가입이 정상적으로 되면서 login 폴더에 있는 myfavorite 라는 파일로 이동
+            window.location.href = "<c:url value='/login/myfavorite'/>";
+        }
+		
 		
 		// 제출 결과 반환
 		return submitResult;
