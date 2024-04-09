@@ -10,7 +10,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MainController {
 	@RequestMapping("/")
-	public String tiles() {
+	public String main() {
 		return "main/main_body";
+	}
+	
+	@RequestMapping("/main_series")
+	public String mainSerise() {
+		return "main/main_series";
 	}
 }

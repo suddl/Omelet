@@ -93,20 +93,22 @@
                <!-- 최신 리뷰, 인기 리뷰 기능 넣기 - href -->
                <div>
                  <ul style="padding: 0px 105px 16px; text-align: left;"> 
+                   <%--
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="ingichoose" type="button" href="<c:url value=""/>">인기</a><%-- 아니에요 --%>
+                     <a id="ingichoose" type="button" href="<c:url value=""/>">인기</a>X
                    </li>
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="choishinchoose" type="button" href="">최신</a><%-- 아니에요 --%>
+                     <a id="choishinchoose" type="button" href="">최신</a> X
                    </li>
+                   --%>
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
                      <a id="choishinchoose" type="button" href="<c:url value="/review/list?reviewKind=1"/>">명대사</a>
                    </li>
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="choishinchoose" type="button" href="/review/list?reviewKind=2">짧은글</a>
+                     <a id="choishinchoose" type="button" href="<c:url value="/review/list?reviewKind=2"/>">짧은글</a>
                    </li>
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                     <a id="choishinchoose" type="button" href="/review/list?reviewKind=3">긴글</a>
+                     <a id="choishinchoose" type="button" href="<c:url value="/review/list?reviewKind=3"/>">긴글</a>
                    </li>
                  </ul>
                </div>
@@ -116,17 +118,18 @@
                   <div class="box shadow-sm rounded bg-white mb-4">
                      <div class="p-4 d-flex align-items-center">
 					 <div>
-					 	   <a href="<c:url value="${contents.contentsNo }"/>">${contents.contentsNo }
-                           <img src="<c:url value="/images/user/oneEgg.png"/>">
+					 	   <%-- 이미지 --%>
+					 	   <a href="<c:url value="${contents.contentsImage }"/>">${contents.contentsImage }
+                           <img src="<c:url value="/images/user/oneEgg.png"/>" style="height: 50px; width: 50px;">
                            </a>
 					 </div>
-                        <div class="ml-4">`
-                           <p class="font-weight-normal text-dark mb-3 mt-0">작품 제목</p>
+                        <div class="ml-4">
+                           <p class="font-weight-normal text-dark mb-3 mt-0">${contents.contentsName }</p>
                            <div class="writer-name">
-                              <img class="member_image" src="<c:url value="/images/user/oneEgg.png"/>">
-                              <a href="<c:url value="/mypage/profile"/>" class="seller-link">${member.memberName }</a>
+                              <img class="member_image" src="<c:url value="/images/user/oneEgg.png"/>" style="height: 50px; width: 50px;">
+                              <a href="<c:url value="/mypage/profile"/>" class="seller-link">${member.memberBadge }</a>
                               <div class="star">
-                              	<img alt="" src="<c:url value="/images/user/oneEgg.png"/>">
+                              	<img alt="" src="<c:url value="/images/user/oneEgg.png"/>" style="height: 50px; width: 50px;"> 
                               </div>
                      	   </div>
                      	   <div class="review_subject">
@@ -140,13 +143,13 @@
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
                         <a class="font-weight-bold d-block" href="#">
                         	<button type="button" id="upBtn">
-                        		<img style="height: 40px; width: 40px;" class="like" src="<c:url value="/images/like_or_hate/thumbs-up-regular.svg"/>">
+                        		<img style="height: 20px; width: 20px;" class="like" src="<c:url value="/images/like_or_hate/thumbs-up-regular.svg"/>">
                         	</button>
                         	<button type="button" id="downBtn">
-	                        	<img style="height: 40px; width: 40px;" alt="hate" src="<c:url value="/images/like_or_hate/thumbs-down-regular.svg"/>">
+	                        	<img style="height: 20px; width: 20px;" alt="hate" src="<c:url value="/images/like_or_hate/thumbs-down-regular.svg"/>">
                         	</button>
                         	<button type="button" id="jjim">
-	                        	<img style="height: 40px; width: 40px;" alt="jjim" src="<c:url value="/images/like_or_hate/heart-regular.svg"/>">
+	                        	<img style="height: 20px; width: 20px;" alt="jjim" src="<c:url value="/images/like_or_hate/heart-regular.svg"/>">
                         	</button>
                         </a>
                      </div>

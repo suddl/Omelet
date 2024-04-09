@@ -104,6 +104,7 @@
                                  <div class="footer">
                                  <!-- 따봉 이미지로 바꾸고 본인이 누를 따봉 표시하기(update or select문 사용하기) -->
                                     <i class="fa fa-heart" aria-hidden="true"></i>
+                                    <i class="fa fa-heart" aria-hidden="true"></i> 
                                     <!-- 하트 옆에 리뷰의 댓글 달린 갯수 넣기(안넣어도 좋음) - 이미지 이동 도움 필요 -->
                                     <i style="float: left" class="fa fa-heart" aria-hidden="true"></i>
                                  </div>
