@@ -28,12 +28,11 @@
                            <label class="mb-1">비밀번호</label>
                            <div class="position-relative icon-form-control">
                               <i class="mdi mdi-key-variant position-absolute"></i>
-                              <input id="passwd" name="memberPassword" type="password" class="form-control" placeholder="비밀번호를 입력하세요" aria-label="default input example">
+                              <input id="passwd" name="memberPasswd" type="password" class="form-control" placeholder="비밀번호를 입력하세요" aria-label="default input example">
                            </div>
                            <div id="message"class="mt-5 mb-0 text-danger">${message }</div>
                         </div>
                         <button class="btn btn-success btn-block text-uppercase" type="button" id="login_btn" class="btn" onclick="memberLogin();"> 로그인 </button>
-                        <div id="message"class="mt-5 mb-0 text-danger">${message }</div>
                         <div class="text-center mt-3 border-bottom pb-3">
                             <!-- <hr class="css-1x1brjf e1io9utx0"> -->
                         </div>
@@ -50,12 +49,13 @@
       <script type="text/javascript">
       loginForm.memberId.focus();
       function memberLogin(){
+    	  
 		if ( loginForm.memberId.value == "" ) {
 			alert("아이디를 입력하십시요.");
 			f.userid.focus();
 			return;
 		} 
-		if ( loginForm.memberPassword.value == "" ) {
+		if ( loginForm.memberPasswd.value == "" ) {
 			alert("비밀번호를 입력하십시요.");
 			f.memberPassword.focus();
 			return;

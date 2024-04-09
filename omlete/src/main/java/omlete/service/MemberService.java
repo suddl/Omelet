@@ -4,7 +4,7 @@ import omlete.dto.Member;
 
 public interface MemberService {
 	void addMember(Member member);
-	Member getMemberId(Member member);
+	Member getIdMember(Member member);
 	
 	Member loginAuth(Member member);
 	

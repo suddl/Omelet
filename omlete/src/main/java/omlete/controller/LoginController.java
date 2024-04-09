@@ -42,7 +42,7 @@ public class LoginController {
 		Member loginMember = memberService.loginAuth(member);
 		session.setAttribute("loginMember", loginMember);
 		// 로그인이 성공하면 메인 화면으로 이동
-		return "/main/main_body";
+		return "redirect:/";
 	}
 	
 	
