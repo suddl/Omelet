@@ -82,4 +82,24 @@
 		</set>
 		where member_no=#{memberNo}
 	</update>
+	
+	<!-- 관리자 페이지 -->
+	<select id="selectMemberList" resultType="Member">
+		select member_no, member_id, member_name, member_phone, member_email, member_status member_level, member_report, member_nickname
+		from member order by member_no
+	</select>
+	
+	<select id="selectReportedMemberList" resultType="Member">
+		select member_no, member_id, member_name, member_phone, member_email, member_status member_level, member_report, member_nickname
+		from member where member_report=#{memerReport} order by member_no
+	</select>
+	
+	<update id="updateMemberStatus">
+		update member
+		<set>
+			<if test="memberStatus!=null and memberStatus!=''">
+				member_status=#{memberStatus}
+			</if>
+		</set>
+	</update>
 </mapper>
