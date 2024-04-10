@@ -1,5 +1,7 @@
 package omlete.mapper;
 
+import java.util.List;
+
 import omlete.dto.Member;
 
 public interface MemberMapper {
@@ -14,4 +16,9 @@ public interface MemberMapper {
 	int updateMemberInfo(Member member);
 	int updateMemberResign(int memberNo);
 	int updateMemberContents(Member member);
+	
+	//관리자 페이지
+	List<Member> selectMemberList();
+	List<Member> selectReportedMemberList();
+	int updateMeberStatus(int memberStatus);
 }

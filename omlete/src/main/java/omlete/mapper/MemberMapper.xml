@@ -91,7 +91,7 @@
 	
 	<select id="selectReportedMemberList" resultType="Member">
 		select member_no, member_id, member_name, member_phone, member_email, member_status member_level, member_report, member_nickname
-		from member where member_report=#{memerReport} order by member_no
+		from member where member_report>=20 order by member_no
 	</select>
 	
 	<update id="updateMemberStatus">

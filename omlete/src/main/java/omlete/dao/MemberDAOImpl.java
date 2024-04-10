@@ -1,5 +1,7 @@
 package omlete.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -56,6 +58,21 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public Member selectMemberEmail(String memberEmail) {
 		return sqlSession.getMapper(MemberMapper.class).selectMemberEmail(memberEmail);
+	}
+
+	@Override
+	public List<Member> selectMemberList() {
+		return sqlSession.getMapper(MemberMapper.class).selectMemberList();
+	}
+
+	@Override
+	public List<Member> selectReportedMemberList() {
+		return sqlSession.getMapper(MemberMapper.class).selectReportedMemberList();
+	}
+
+	@Override
+	public int updateMeberStatus(int memberStatus) {
+		return sqlSession.getMapper(MemberMapper.class).updateMeberStatus(memberStatus);
 	}
 
 }
