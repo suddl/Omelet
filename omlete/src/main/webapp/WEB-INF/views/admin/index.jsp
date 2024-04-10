@@ -22,7 +22,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value= "/admin/index"/>">
                 <div class="sidebar-brand-icon">
                     <%--<i class="fas fa-laugh-wink"></i>--%>
-                    <img id=logo src="img/omlete.png" width=140px;>
+                    <img id=logo src="/omlete/img/omlete.png" width=140px;>
                 </div>
                 <div class="sidebar-brand-text mx-3"><sup></sup></div>
             </a>
@@ -394,7 +394,7 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="...">
+                                            src="omlete/img/undraw_posting_photo.svg" alt="...">
                                     </div>
                                     <a target="_blank" rel="nofollow" href="#">이벤트 목록 보기 &rarr;</a>
                                 </div>
