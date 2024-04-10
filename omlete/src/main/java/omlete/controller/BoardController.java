@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.WebApplicationContext;
 
 import lombok.RequiredArgsConstructor;
+import omlete.service.MoonService;
 import omlete.service.NoticeService;
 
 
@@ -18,17 +18,12 @@ import omlete.service.NoticeService;
 @RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
-	private final WebApplicationContext context;
 	@Autowired
     private final NoticeService noticeService;
+	@Autowired
+	private final MoonService moonService;
 	
-	/*
-	 * //공지사항
-	 * 
-	 * @RequestMapping(value = "/notice_view",method = RequestMethod.GET) public
-	 * String noticelist() { return "notice/notice_view"; }
-	 */
-	
+	 //공지사항
 	 @RequestMapping("/noticeList")
 	    public String noticeList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
 	        Map<String, Object> map = noticeService.getNoticeList(pageNum);
@@ -47,6 +42,17 @@ public class BoardController {
 	        model.addAttribute("noticeList", map.get("noticeList"));
 
 	        return "notice/event_view";
+	    }
+	 
+	 //문의사항
+	 @RequestMapping("/moonList")
+	    public String moonList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+	        Map<String, Object> map = moonService.getMoonList(pageNum);
+
+	        model.addAttribute("pager", map.get("pager"));
+	        model.addAttribute("moonList", map.get("moonList"));
+
+	        return "moon/moon_view";
 	    }
 	
 	
@@ -70,11 +76,6 @@ public class BoardController {
 		return "notice/event";
 	}
 	
-	//문의사항
-	@RequestMapping(value = "/moon_view",method = RequestMethod.GET)
-	public String moonlist() {
-		return "moon/moon_view";
-	}
 	//1:1문의
 	@RequestMapping(value = "/inquiry",method = RequestMethod.GET)
 	public String inquiry() {

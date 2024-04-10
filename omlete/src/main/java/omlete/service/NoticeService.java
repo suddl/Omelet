@@ -1,30 +1,25 @@
 package omlete.service;
 
-import java.util.List;
 import java.util.Map;
 
-import omlete.dto.Moon;
 import omlete.dto.Notice;
 import omlete.exception.BoardNotFoundException;
 
 
 public interface NoticeService {
-	//moon
-	/*
-	 * void addFaq(Moon moon); void modifyFaq(Moon moon) throws
-	 * BoardNotFoundException; void removeFaq(int moonNo) throws
-	 * BoardNotFoundException; int getFaqCount(); Moon getFaq(int moonNo) throws
-	 * BoardNotFoundException; List<Moon> getMoonList(Map<String, Object> map);
-	 * List<Moon> getstatusMoonList(Map<String, Object> map); List<Moon>
-	 * getorstatusMoonList(Map<String, Object> map);
-	 */
+
 	//notice
+	//추가
 	void addNotice(Notice notice);
+	//수정
 	void modifyNotice(Notice notice) throws BoardNotFoundException;
+	//삭제
 	void removeNotice(int noticeNo) throws BoardNotFoundException; 
+	//총개수
 	int getNoticeCount();
+	//글번호 전달받아 게시글 검색
 	Notice getNotice(int noticeNo);
-	//List<Notice> getBoardList(Map<String, Object> map);
+	//리스트검색
 	Map<String, Object> getNoticeList(int pageNum);
 	
 }

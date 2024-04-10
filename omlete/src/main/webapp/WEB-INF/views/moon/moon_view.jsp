@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>  
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <body>
     
       
@@ -99,14 +101,12 @@
                      <div class="mb-3 mt-4">
                         <h4 class="font-weight-semi-bold">문의사항 목록</h4>
                      </div>
-                     <p class="listLength">총 <strong class="num">2</strong>개</p>
 						<div id="counselList">
 							<div class="tableType noLine2">
 								<table>
 									<colgroup>
 										<col style="width: 100px;">
-										<col>
-										<col style="width: 170px;">
+										<col >
 										<col style="width: 170px;">
 										<col style="width: 170px;">
 										<col style="width: 170px;">
@@ -116,56 +116,69 @@
 											<th scope="col">No.</th>
 											<th scope="col">제목</th>
 											<th scope="col">작성자</th>
-											<th scope="col">조회</th>
 											<th scope="col">등록일</th>
 											<th scope="col">답변상태</th>
 										</tr>
 									</thead>
 									<tbody>
 									<tbody style="padding-top: 10px;">
+									<c:forEach var="moon" items="${moonList }">
 										<tr>
-											<td>2</td>
+											<td>${moon.moonNO }</td>
 											<td class="left" style="text-align: center"><a
-												href="answer1.html">기타</a></td>
-											<td>홍길동</td>
-											<td>20</td>
-											<td>2024-03-30</td>
+												href="answer1.html">${moon.moonContent }</a></td>
+											<td>${moon.moonNickname}</td>
+											<td>${moon.moonDate}</td>
 											<td>답변완료</td>
 										</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
-							<!-- paging -->
-							<!-- //paging -->
 						</div>
-
-
-
-
-				<!-- End Syncing Accordion -->
                   </div>
                   <div class="footer-pagination text-center">
-            				<nav aria-label="Page navigation example">
-               					<ul class="pagination">
+       		   	  	 <nav aria-label="Page navigation example">
+               			<ul class="pagination">
+            			<!-- 다음. -->
+    						<c:choose>
+								<c:when test="${pager.startPage > pager.blockSize }">
                   					<li class="page-item">
-                     					<a class="page-link" href="#" aria-label="Previous">
-                        					<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
-                        					<!-- <span class="sr-only"></span>-->
+                     					<a class="page-link" aria-label="Previous" href="<c:url value="/file/list"/>?pageNum=${pager.prevPage}">
                      					</a>	
                   					</li>
-                  					<li class="page-item"><a class="page-link" href="#">1</a></li>
-                  					<li class="page-item active"><a class="page-link" href="#">2</a></li>
-                  					<li class="page-item"><a class="page-link" href="#">4</a></li>
-                  					<li class="page-item"><a class="page-link" href="#">5</a></li>
+                  				</c:when>
+                  				<c:otherwise>
+                        			<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+								</c:otherwise>
+                 			</c:choose>
+                  			<!-- 내용. -->
+               				<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
+								<c:choose>
+									<c:when test="${pager.pageNum != i }">
+                  						<li class="page-item"><a class="page-link" href="<c:url value="/file/list"/>?pageNum=${i}">[${i}]</a></li>
+                  					</c:when>
+                  					<c:otherwise>
+										[${i}]
+									</c:otherwise>
+                  				</c:choose>
+                  			</c:forEach>
+                  			<!-- 이전. -->
+                  			<c:choose>
+								<c:when test="${pager.endPage != pager.totalPage }">
                   					<li class="page-item">
-                     					<a class="page-link" href="#" aria-label="Next">
-                        					<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
-                        					<!-- <span class="sr-only"></span>-->
+                     					<a class="page-link" aria-label="Next" href="<c:url value="/file/list"/>?pageNum=${pager.nextPage}">
                      					</a>
                   					</li>
-               					</ul>
-            				</nav>
-         				</div>
+                  				</c:when>
+								<c:otherwise>
+                        			<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+								</c:otherwise>
+                  			</c:choose>
+               			</ul>
+            		</nav>
+         		</div>
+         		
                </div>
             </div>
          </div>

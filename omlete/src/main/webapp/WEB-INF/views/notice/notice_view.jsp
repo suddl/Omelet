@@ -124,55 +124,60 @@
                   
                   
                   
-                  <%-- 페이지 번호 출력 --%>
-					<div class="footer-pagination text-center">
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<c:choose>
-									<c:when test="${pager.startPage > pager.blockSize}">
-										<li class="page-item"><a class="page-link"
-											href="<c:url value='/file/list'/>?pageNum=${pager.prevPage}"
-											aria-label="Previous"> <span aria-hidden="true">
-											<i class="fa fa-chevron-left" aria-hidden="true"></i></span>
-										</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Previous"> <span aria-hidden="true"><i
-													class="fa fa-chevron-left" aria-hidden="true"></i></span>
-										</a></li>
-									</c:otherwise>
-								</c:choose>
-								<c:forEach var="i" begin="${pager.startPage }"
-									end="${pager.endPage }" step="1">
-									<c:choose>
-										<c:when test="${pager.pageNum != i }">
-											<li class="page-item active"><a class="page-link"
-												href="<c:url value="/file/list"/>?pageNum=${i}">${i}</a></li>
-										</c:when>
-										<c:otherwise>
-											${i}
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<c:choose>
-									<c:when test="${pager.endPage != pager.totalPage}">
-										<li class="page-item"><a class="page-link"
-											href="<c:url value='/file/list'/>?pageNum=${pager.nextPage}"
-											aria-label="Next"> <span aria-hidden="true"><i
-													class="fa fa-chevron-right" aria-hidden="true"></i></span>
-										</a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link" href="#"
-											aria-label="Next"> <span aria-hidden="true"><i
-													class="fa fa-chevron-right" aria-hidden="true"></i></span>
-										</a></li>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-						</nav>
-					</div>
+                  
+                  
+                  <<div class="footer-pagination text-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <!-- 이전 페이지로 이동 링크 -->
+            <c:choose>
+                <c:when test="${pager.startPage > pager.blockSize}">
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Previous" href="<c:url value='/file/list'/>?pageNum=${pager.prevPage}">
+                            <span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+                        </a>
+                    </li>
+                </c:when>
+                <!-- 이전 페이지로 이동 링크 없음 -->
+                <c:otherwise>
+                    <li class="page-item disabled">
+                        <span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+                    </li>
+                </c:otherwise>
+            </c:choose>
+
+            <!-- 페이지 번호 목록 -->
+            <c:forEach var="i" begin="${pager.startPage}" end="${pager.endPage}" step="1">
+                <li class="page-item">
+                    <a class="page-link" href="<c:url value='/file/list'/>?pageNum=${i}">[${i}]</a>
+                </li>
+            </c:forEach>
+
+            <!-- 다음 페이지로 이동 링크 -->
+            <c:choose>
+                <c:when test="${pager.endPage != pager.totalPage}">
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next" href="<c:url value='/file/list'/>?pageNum=${pager.nextPage}">
+                            <span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                        </a>
+                    </li>
+                </c:when>
+                <!-- 다음 페이지로 이동 링크 없음 -->
+                <c:otherwise>
+                    <li class="page-item disabled">
+                        <span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                    </li>
+                </c:otherwise>
+            </c:choose>
+        </ul>
+    </nav>
+</div>
+
+
+
+
+
+
                </div>
             </div>
          </div>
