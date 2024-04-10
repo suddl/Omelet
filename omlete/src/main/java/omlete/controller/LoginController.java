@@ -19,6 +19,7 @@ import omlete.service.MemberService;
 public class LoginController {
 
 	private final MemberService memberService;
+	
 
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
 	public String memberLogin() {

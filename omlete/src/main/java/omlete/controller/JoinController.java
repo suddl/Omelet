@@ -24,6 +24,7 @@ public class JoinController {
 	
 	private final MemberService memberService;
 	
+	
 	@RequestMapping(value = "/member",method = RequestMethod.GET)
 	public String memberJoin() {
 		return "login/register";
