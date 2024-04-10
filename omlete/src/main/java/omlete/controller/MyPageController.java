@@ -1,3 +1,4 @@
+
 package omlete.controller;
 
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Member;
@@ -33,6 +35,16 @@ public class MyPageController {
 	public String updateInfo() {
 		return "mypage/myinfo_update";
 	}
+	
+	@RequestMapping(value = "/nicknameCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String checkNickname(@RequestParam String memberNickname) {
+	    if (memberService.getMemberNickname(memberNickname) == null) {
+	        return "ok";
+	    }
+	    return "fail";
+	}
+	
 	
 	@RequestMapping(value = "/updateInfo", method = RequestMethod.POST)
 	public String updateInfo(@ModelAttribute Member member, HttpSession session) {
@@ -95,3 +107,4 @@ public class MyPageController {
 	
 	
 }
+
