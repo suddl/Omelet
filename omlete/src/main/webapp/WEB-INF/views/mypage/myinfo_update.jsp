@@ -112,8 +112,8 @@
          <div class="col-lg-8 right">
           <div class="shadow-sm rounded bg-white mb-3">
                <div class="box-title border-bottom p-3">
-                  <h6 class="m-0">회원 정보 수정</h6>
-                  <!-- <p class="mb-0 mt-0 small">회원 정보 수정 사항 페이지 입니다. </p> -->
+                  <h6 class="m-0" style="margin-bottom: 10px">회원 정보 수정</h6>
+                  <p class ="pwnUp">비밀번호와 닉네임은 변경시에만 입력해주세요. </p>
                </div>
                   <form id="updateForm" class="js-validate" name="updateForm" method="post" action="<c:url value="/mypage/updateInfo"/>" >
                <div class="box-body p-3">
@@ -179,7 +179,7 @@
                               <span class="text-danger">*</span>
                               </label>
                               <div class="form-group">
-                                 <input class="form-control" type="text" name="memberNickname" id="nickname" value="${loginMember.memberNickname }" >
+                                  <input type="text" class="form-control" id="nickname" name="memberNickname">
                               </div>
                               <div class="mb-1">
 								<span id="nicknameNullMsg" class="alertmsg">닉네임을 입력해 주세요.</span>
@@ -237,10 +237,10 @@
             
             </div>
             <div class="mb-3 text-right">
-               <button type="submit" class="btn btn-outline-success">취소</button>
+               <button type="button" class="btn btn-outline-success" onclick="resetForm()">취소</button>
                <button type="submit" class="btn btn-success">수정</button>
             </div>   
-                  </form>
+          </form>
          </div>
       </div>
    </div>
@@ -248,6 +248,27 @@
 <script type="text/javascript">
 $(".alertmsg").hide();
 var nickNameResult = false; // 닉네임 중복 결과를 저장할 변수
+
+$(document).ready(function() {
+	$("#nickname").blur(function() {
+        nickNameResult = false; // 결과 변수 초기화
+        var memberNickname = $(this).val(); // 닉네임 입력 필드의 값 가져오기
+        $.ajax({
+            method: "post", // POST 방식 사용
+            url: "<c:url value="/mypage/nicknameCheck"/>", // 닉네임 중복 확인을 위한 서버 엔드포인트
+            data: { "memberNickname": memberNickname }, // 닉네임 데이터 전송
+            dataType: "text",
+            success: function(response) {
+                if (response === "fail") {
+                	nickNameResult = true; // 중복이면 결과를 true로 설정
+                }
+            },
+            error: function() {
+                console.error("서버 오류: 중복 확인 요청 실패");
+            }
+        });
+    });
+})
 
 $("#updateForm").submit(function(event) {
     var submitResult = true;
@@ -263,14 +284,16 @@ $("#updateForm").submit(function(event) {
      }
 
     // 닉네임 검사
-    if ($("#nickname").val() == "") {
-        $("#nicknameNullMsg").show();
-        submitResult = false;
-    } else if (!/^[\u3131-\u3163\uac00-\ud7a3a-zA-Z0-9]{2,10}$/.test($("#nickname").val())) {
-        $("#nicknameValidMsg").show();
-        submitResult = false;
-    }
-
+   if ($("#nickname").val() !== "") {
+	   if (!/^[\u3131-\u3163\uac00-\ud7a3a-zA-Z0-9]{2,10}$/.test($("#nickname").val())) {
+		    $("#nicknameValidMsg").show();
+		    submitResult = false;
+		} else if (nickNameResult) {
+		    $("#nicknameDuplMsg").show();
+		    submitResult = false;
+		}
+   }
+    
     // 휴대폰 번호 검사
     if ($("#phone").val() == "") {
         $("#phoneNullMsg").show();
@@ -297,35 +320,27 @@ $("#updateForm").submit(function(event) {
         }
     }
 
-    // 닉네임 중복 검사를 포함하여 폼 제출을 기다리기
-    if ($("#nickname").val() !== "") {
-        var memberNickname = $("#nickname").val();
-        $.ajax({
-            method: "post",
-            url: "<c:url value="/mypage/nicknameCheck"/>",
-            data: { "memberNickname": memberNickname },
-            dataType: "text",
-            success: function(response) {
-                if (response === "fail") {
-                    $("#nicknameDuplMsg").show();
-                    nickNameResult = true;
-                    submitResult = false; // 닉네임 중복이면 폼 제출 막기
-                } else {
-                    $("#nicknameDuplMsg").hide();
-                    nickNameResult = false;
-                    $("#updateForm").unbind('submit').submit(); // 닉네임 중복이 아니면 폼 제출
-                }
-            },
-            error: function() {
-                console.error("서버 오류: 중복 확인 요청 실패");
-                submitResult = false; // AJAX 요청 실패 시 폼 제출 막기
-            }
-        });
-    }
 
     // 제출 결과 반환
     return submitResult;
 });
+
+var originalValues = {
+    "passwd": $("#passwd").val(),
+    "nickname": $("#nickname").val(),
+    "phone": $("#phone").val(),
+    "email": $("#email").val()
+};
+                
+function resetForm() {
+    $("#passwd").val(originalValues.passwd);
+    $("#nickname").val(originalValues.nickname);
+    $("#phone").val(originalValues.phone);
+    $("#email").val(originalValues.email);
+    
+    // 에러 메시지를 숨깁니다.
+    $(".alertmsg").hide();
+}
 </script>
 </body>
 </html>
