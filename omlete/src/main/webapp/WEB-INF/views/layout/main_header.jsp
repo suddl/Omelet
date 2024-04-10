@@ -75,7 +75,7 @@
 		         	<li class="nav-item dropdown no-arrow no-caret mr-3 dropdown-notifications">
 		            <!-- 로그아웃 -->
 			            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-			            	onclick="location.href='<c:url value="/main/main_body"/>';">
+			            	onclick="location.href='<c:url value="/login/logout"/>';">
 			            	로그아웃
 			            </a>
 		         	</li>
