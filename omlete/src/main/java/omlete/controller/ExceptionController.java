@@ -14,7 +14,7 @@ import omlete.exception.MemberNotFoundException;
 public class ExceptionController {
 	@ExceptionHandler(value = BadRequestException.class)
 	public String badRequestExceptionHandler() {
-		return "login/error";
+		return "layout/error";
 	}
 	
 	@ExceptionHandler(ExistsMemberException.class)

@@ -60,50 +60,62 @@ public class MyPageController {
 	}
 	
 	// 내가 좋아요한 영화 작품 목록
-	@RequestMapping(value = "/profile/likeMovie")
+	@RequestMapping(value = "/likeMovie")
 	public String myLikeMovie() {
 		return "mypage/myfavorite_movie";
 	}
 	
 	// 내가 좋아요한 tv 작품
-	@RequestMapping(value = "/profile/likeTv")
+	@RequestMapping(value = "/likeTv")
 	public String myLikeTv() {
 		return "mypage/myfavorite_tv";
 	}
 	
 	// 내가 좋아요한 리뷰
-	@RequestMapping(value = "/profile/likeReview")
+	@RequestMapping(value = "/likeReview")
 	public String myLikeReview() {
 		return "mypage/mypage_goodReviewList";
 	}
 	
 	// 내가 작성한 리뷰
-	@RequestMapping(value = "/profile/writeReview")
+	@RequestMapping(value = "/writeReview")
 	public String myWriteReview() {
 		return "mypage/mypage_writeReviewList";
 	}
 	
 	// 내가 작성한 문의
-	@RequestMapping(value = "/profile/writeMoon")
+	@RequestMapping(value = "/writeMoon")
 	public String myWriteMoon() {
 		return "mypage/mymoon_write";
 	}
 	
-	@RequestMapping(value = "/profile/myevent")
+	@RequestMapping(value = "/myevent")
 	public String myEvent() {
 		return "mypage/myevent";
 	}
 	
 	// 마이뱃지 목록
-	@RequestMapping(value = "/profile/mybadge")
+	@RequestMapping(value = "/mybadge")
 	public String myBadge() {
 		return "mypage/badge";
 	}
 	
 	// 탈퇴
-	@RequestMapping(value = "/profile/resign")
+	@RequestMapping(value = "/resign")
+	public String myPageResign(HttpSession session) {
+		Integer loginMemberNo = (Integer)session.getAttribute("memberNo");
+		System.out.println("(Integer)session.getAttribute(\"memberNo\") =" + (Integer)session.getAttribute("memberNo") );
+		System.out.println("loginMemberNo =" + loginMemberNo );
+		if (loginMemberNo != null) {
+	        memberService.modifyMemberResign(loginMemberNo);
+	        session.invalidate(); 
+	    }
+		return "/mypage/member_resign";
+	}
+	
+	@RequestMapping(value = "/resignMain")
 	public String myResign() {
-		return "mypage/mypage_resign";
+		return "redirect:/mypage/resign";
 	}
 	
 	

@@ -57,13 +57,11 @@
 	
 	<!-- 회원 탈퇴 -->
 	<update id="updateMemberResign">
-		update member 
-		<set>
-			<if test="memberStatus==1 or memberStatus==9">
-				member_status=0
-			</if>
-		</set>
-		where member_no=#{memberNo}
+	    update member 
+	    <set>
+	        member_status = 0
+	    </set>
+	    where member_no = #{memberNo}
 	</update>
 	
 	<!-- 인생 영화 변경 -->

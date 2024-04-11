@@ -11,11 +11,11 @@
       <div class="main-page second py-5">
          <div class="container">
             <div class="row">
-               <!-- ========================================================================================================================== -->
+                 <!-- ========================================================================================================================== -->
                <div class="col-lg-4 left">
                   <div class="profile_info">
                      <div class="seller-card">
-                     	<!-- 
+                        <!-- 
                         <div>
                            <div class="user-online-indicator is-online " data-user-id="1152855">
                               <i class="fa fa-circle"></i>online
@@ -53,56 +53,56 @@
                   </div>
                   <div class="seller-profile">
 
-					<div class="linked-accounts">
+               <div class="linked-accounts">
                         <h4 class="mypagecatrgory">목록</h4>
                         <ul>
-                        	<li>
-                        		<br>
-                        		<p>좋아요</p>
-                        		<ul class="nav flex-column">
-			                        <li class="nav-item">
-			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeMovie"/>">- 영화</a>
-			                        </li>
-			                        <li class="nav-item">
-			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeTv"/>">- TV</a>
-			                        </li>
-			                        <li class="nav-item">
-			                           <a class="nav-link active" href="<c:url value="/mypage/profile/likeReview"/>">- 리뷰</a>
-			                        </li>
-		                    	</ul>
-                        	</li>
-                        	<br>
-                        	
-                        	<li>
-                        		<p>내 활동</p>
-                        		<ul class="nav flex-column">
-			                        <li class="nav-item">
-			                           <a class="nav-link active" href="<c:url value="/mypage/profile/writeReview"/>">- 작성한 리뷰</a>
-			                        </li>
-		                    	</ul>
-		                    	<ul class="nav flex-column">
-			                        <li class="nav-item">
-			                           <a class="nav-link active" href="<c:url value="/mypage/profile/writeMoon"/>">- 작성한 문의글</a>
-			                        </li>
-		                    	</ul>
-		                    	<ul class="nav flex-column">
-			                        <li class="nav-item">
-			                           <a class="nav-link active" href="<c:url value="/mypage/profile/myevent"/>">- 참여한 이벤트</a>
-			                        </li>
-		                    	</ul>
-		                    	<ul class="nav flex-column">
-			                        <li class="nav-item">
-			                           <a class="nav-link active" href="<c:url value="/mypage/profile/mybadge"/>">- 마이 뱃지</a>
-			                        </li>
-		                    	</ul>
-                        	</li>
-                        	<br>
-                        	<br>
+                           <li>
+                              <br>
+                              <p>좋아요</p>
+                              <ul class="nav flex-column">
+                                 <li class="nav-item">
+                                    <a class="nav-link active" href="<c:url value="/mypage/likeMovie"/>">- 영화</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link active" href="<c:url value="/mypage/likeTv"/>">- TV</a>
+                                 </li>
+                                 <li class="nav-item">
+                                    <a class="nav-link active" href="<c:url value="/mypage/likeReview"/>">- 리뷰</a>
+                                 </li>
+                             </ul>
+                           </li>
+                           <br>
+                           
+                           <li>
+                              <p>내 활동</p>
+                              <ul class="nav flex-column">
+                                 <li class="nav-item">
+                                    <a class="nav-link active" href="<c:url value="/mypage/writeReview"/>">- 작성한 리뷰</a>
+                                 </li>
+                             </ul>
+                             <ul class="nav flex-column">
+                                 <li class="nav-item">
+                                    <a class="nav-link active" href="<c:url value="/mypage/writeMoon"/>">- 작성한 문의글</a>
+                                 </li>
+                             </ul>
+                             <ul class="nav flex-column">
+                                 <li class="nav-item">
+                                    <a class="nav-link active" href="<c:url value="/mypage/myevent"/>">- 참여한 이벤트</a>
+                                 </li>
+                             </ul>
+                             <ul class="nav flex-column">
+                                 <li class="nav-item">
+                                    <a class="nav-link active" href="<c:url value="/mypage/mybadge"/>">- 마이 뱃지</a>
+                                 </li>
+                             </ul>
+                           </li>
+                           <br>
+                           <br>
                         
-                        	<li>
-                        		<a href="<c:url value="/mypage/profile/resign"/>">탈퇴하기</a>
-                        	</li>
-	                        
+                           <li>
+                              <a href="<c:url value="/mypage/resign"/>">탈퇴하기</a>
+                           </li>
+                           
                         </ul>
                      </div>
                 

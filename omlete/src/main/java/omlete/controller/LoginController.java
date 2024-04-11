@@ -43,7 +43,10 @@ public class LoginController {
 	@RequestMapping(value = "/member", method = RequestMethod.POST)
 	public String memberLogin(@ModelAttribute Member member, HttpSession session){
 		Member loginMember = memberService.loginAuth(member);
+		int memberNo = loginMember.getMemberNo();
+		session.setAttribute("memberNo", memberNo);
 		session.setAttribute("loginMember", loginMember);
+		
 		// 로그인이 성공하면 메인 화면으로 이동
 		return "redirect:/";
 	}
