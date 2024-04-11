@@ -1,5 +1,7 @@
 package omlete.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,6 +23,7 @@ import omlete.service.MemberService;
 public class JoinController {
 	
 	private final MemberService memberService;
+	
 	
 	@RequestMapping(value = "/member",method = RequestMethod.GET)
 	public String memberJoin() {
@@ -52,6 +55,7 @@ public class JoinController {
 	    return "fail";
 	}
 	
+	
 	//회원가입 실패
 	@ExceptionHandler(value = ExistsMemberException.class)
 	public String MemberExceptionHandler(ExistsMemberException exception, Model model) {
@@ -60,3 +64,6 @@ public class JoinController {
 		return "login/register";
 	}
 }
+
+
+

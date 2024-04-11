@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value= "/admin/index"/>">
                 <div class="sidebar-brand-icon">
                     <%--<i class="fas fa-laugh-wink"></i>--%>
                     <img id=logo src="img/omlete.png" width=140px;>
@@ -59,16 +59,15 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="contents.jsp">영화</a>
-                        <a class="collapse-item" href="contents.jsp">TV</a>
+                        <a class="collapse-item"  href="<c:url value="/admin/contents/movie"/>?contentsType=%EC%98%81%ED%99%94">영화</a>
+                        <a class="collapse-item" href="<c:url value="/admin/contents/tv"/>?contentsType=TV">TV</a>
                     </div>
                 </div>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a class="nav-link" href="member.jsp">
-                    <i class="fas fa-user"></i>
+                <a class="nav-link" href="<c:url value="/admin/member"/>">                    <i class="fas fa-user"></i>
                     <span>회원 관리</span></a>
             </li>            
 
@@ -84,28 +83,28 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">              
-                        <a class="collapse-item" href="login.html">공지사항</a>              
-                        <a class="collapse-item" href="forgot-password.html">이벤트</a>
+                        <a class="collapse-item" href="<c:url value= "/notice/notice"/>">공지사항</a>                    
+                        <a class="collapse-item" href="<c:url value= "/notice/event"/>">이벤트</a>
                     </div>
                 </div>
             </li>
 			<hr class="sidebar-divider">
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="review.jsp">
+                <a class="nav-link" href="<c:url value= "/moon/moon_view"/>">
                     <i class="fas fa-question-circle"></i>
                     <span>1:1 문의</span></a>
             </li>
 			<hr class="sidebar-divider">
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="review.jsp">
+                <a class="nav-link" href="<c:url value= "/review/review_list"/>">
                     <i class="fas fa-comments"></i>
                     <span>리뷰 관리</span></a>
             </li>
 			<hr class="sidebar-divider">
 			<li class="nav-item">
-                <a class="nav-link" href="index.jsp">
+                <a class="nav-link" href="<c:url value= "/omlete/"/>">
                     <i class="fas fa-home"></i>
                     <span>메인 페이지</span></a>
             </li>

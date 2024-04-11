@@ -19,6 +19,7 @@ import omlete.service.MemberService;
 public class LoginController {
 
 	private final MemberService memberService;
+	
 
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
 	public String memberLogin() {
@@ -47,6 +48,12 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";	
+	}
 	
 	 //member 비밀번호찾기
 	 

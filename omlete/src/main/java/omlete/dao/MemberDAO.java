@@ -1,5 +1,7 @@
 package omlete.dao;
 
+import java.util.List;
+
 import omlete.dto.Member;
 
 public interface MemberDAO {
@@ -16,5 +18,8 @@ public interface MemberDAO {
 	int updateMemberResign(int memberNo);
 	int updateMemberContents(Member member);
 
-
+	//관리자 페이지
+	List<Member> selectMemberList();
+	List<Member> selectReportedMemberList();
+	int updateMeberStatus(int memberStatus);
 }

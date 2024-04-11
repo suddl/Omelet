@@ -7,23 +7,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>omlete(Admin)</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="vendor_admin/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="css/admin.css" rel="stylesheet">
-    
-
+ 
 </head>
 
 <body id="page-top">
@@ -35,10 +19,10 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value= "/admin/index"/>">
                 <div class="sidebar-brand-icon">
                     <%--<i class="fas fa-laugh-wink"></i>--%>
-                    <img id=logo src="img/omlete.png" width=140px;>
+                    <img id=logo src="/omlete/img/omlete.png" width=140px;>
                 </div>
                 <div class="sidebar-brand-text mx-3"><sup></sup></div>
             </a>
@@ -102,7 +86,7 @@
             </li>
 			<hr class="sidebar-divider">
 			<li class="nav-item">
-                <a class="nav-link" href="<c:url value= "/main/main_body"/>">
+                <a class="nav-link" href="<c:url value= "/omlete/"/>">
                     <i class="fas fa-home"></i>
                     <span>메인 페이지</span></a>
             </li>
@@ -410,9 +394,9 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="...">
+                                            src="omlete/img/undraw_posting_photo.svg" alt="...">
                                     </div>
-                                    <a target="_blank" rel="nofollow" href="client.jsp">이벤트 목록 보기 &rarr;</a>
+                                    <a target="_blank" rel="nofollow" href="#">이벤트 목록 보기 &rarr;</a>
                                 </div>
                             </div>
 
@@ -493,23 +477,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor_admin/jquery/jquery.min.js"></script>
-    <script src="vendor_admin/bootstrap/js_admin/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor_admin/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/admin2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor_admin/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

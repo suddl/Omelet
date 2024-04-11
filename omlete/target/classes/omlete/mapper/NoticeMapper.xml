@@ -46,8 +46,9 @@
 	
 	<!-- 최신글순으로 정렬하여 원하는 글범위의 notice list 검색 -->
 	<select id="selectNoticeList" resultType="Notice">
-		select * from (select rownum rn, board.* from (select notice_no,notice_title,notice_content,
+		select * from (select rownum rn, noticelist.* from (select notice_no,notice_title,notice_content,
 		notice_count,notice_date,notice_status,notice_term,notice_image
-			from Notice order by notice_no desc) board) where rn between #{startRow} and #{endRow}
-	</select>		
+			from Notice order by notice_no desc) noticelist) where rn between #{startRow} and #{endRow}
+	</select>
+	 
 </mapper>

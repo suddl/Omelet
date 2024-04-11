@@ -22,11 +22,6 @@
 		member_point, member_favorite1, member_favorite2, member_favorite3, member_report, member_nickname from member where member_nickname=#{memberNickname}
 	</select>
 	
-	<select id="selectMemberEmail" resultType="Member"> <!-- 아이디/비번 찾기에 필요한 이메일 -->
-		select member_no, member_id, member_passwd, member_name, member_phone, member_email, member_level, member_badge, member_status,
-		member_point, member_favorite1, member_favorite2, member_favorite3, member_report, member_nickname from member where member_Email=#{memberEmail}
-	</select>
-	
 	<!-- ================================================================================================================================ -->
 	<!-- 마이 페이지 -->
 	<select id="selectMemberNo" resultType="Member">
@@ -53,18 +48,6 @@
 			<if test="memberEmail!=null and memberEmail!=''">
 				member_email=#{memberEmail},
 			</if>		
-			<if test="memberStatus==0 or memberStatus==1">
-				member_status=#{memberStatus}
-			</if>
-			<if test="memberFavorite1!=null and memberFavorite1!=''">
-				member_favorite1=#{memberFavorite1}
-			</if>
-			<if test="memberFavorite2!=null and memberFavorite2!=''">
-				member_favorite2=#{memberFavorite2}
-			</if>
-			<if test="memberFavorite3!=null and memberFavorite3!=''">
-				member_favorite3=#{memberFavorite3}
-			</if>
 			<if test="memberNickname!=null and memberNickname!=''">
 				member_Nickname=#{memberNickname}
 			</if>
@@ -98,5 +81,25 @@
 			</if>
 		</set>
 		where member_no=#{memberNo}
+	</update>
+	
+	<!-- 관리자 페이지 -->
+	<select id="selectMemberList" resultType="Member">
+		select member_no, member_id, member_name, member_phone, member_email, member_status member_level, member_report, member_nickname
+		from member order by member_no
+	</select>
+	
+	<select id="selectReportedMemberList" resultType="Member">
+		select member_no, member_id, member_name, member_phone, member_email, member_status member_level, member_report, member_nickname
+		from member where member_report>=20 order by member_no
+	</select>
+	
+	<update id="updateMemberStatus">
+		update member
+		<set>
+			<if test="memberStatus!=null and memberStatus!=''">
+				member_status=#{memberStatus}
+			</if>
+		</set>
 	</update>
 </mapper>

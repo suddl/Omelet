@@ -27,27 +27,28 @@ import omlete.dto.Review;
 import omlete.service.ContentsService;
 import omlete.service.MemberService;
 import omlete.service.ReviewService;
-
+ 
 @Controller
 @RequestMapping("/admin")
 //@RequiredArgsConstructor
 public class AdminController {
     
-	//private MemberService memberService;
+	private MemberService memberService;
     private ContentsService contentsService;
     private WebApplicationContext context;
     //private ReviewService reviewService;
     
     // 관리자 메인 페이지 이동
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String adminMain(HttpSession session) {
+    //public String adminMain(HttpSession session) {
+    public String adminMain() {
     	/*
     	Integer memberStatus = (Integer)session.getAttribute("memberStatus");
         if(memberStatus == null || memberStatus != 9) {
             return "exception.BadRequestException";
         }
         */
-        return "index";
+        return "admin/index";
     }
     /*
     //작품 관리
@@ -67,14 +68,14 @@ public class AdminController {
     @RequestMapping(value = "/contents/movie", method = RequestMethod.GET)
     public String movieList(Model m) {
         m.addAttribute("movieList", contentsService.getContentsListByType("영화"));
-        return "contents/movie";
+        return "admin/contents/movie";
     }
     
     // 작품 관리(TV)
     @RequestMapping(value = "/contents/tv", method = RequestMethod.GET)
     public String tvList(Model m) {
         m.addAttribute("tvList", contentsService.getContentsListByType("TV"));
-        return "contents/tv";
+        return "admin/contents/tv";
     }
     
     // 작품 추가
@@ -136,21 +137,21 @@ public class AdminController {
         return "redirect:/admin/contents/movies";
     }
     
-    /*
+    
     // 회원 관리
     @RequestMapping(value = "/member", method = RequestMethod.GET)
     public String memberList(Model m) {
         m.addAttribute("memberList", memberService.getMemberList());
-        return "member";
+        return "admin/member";
     }
     
     // 회원 상태 변경
     @RequestMapping(value = "/member_modify", method = RequestMethod.POST)
     public String modifyMemberStatus(@RequestParam int memberStatus, HttpSession session) {
-        memberService.modifyMemberStatus(memberStatus);
+        memberService.modifyMeberStatus(memberStatus);
         return "redirect:/admin/member";
     }
-    
+    /*
     // 공지사항으로 이동
     @RequestMapping(value = "/notice ", method = RequestMethod.GET)
     public String notice(HttpSession session) {

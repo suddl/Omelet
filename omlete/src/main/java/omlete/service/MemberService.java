@@ -1,5 +1,7 @@
 package omlete.service;
 
+import java.util.List;
+
 import omlete.dto.Member;
 
 public interface MemberService {
@@ -22,5 +24,8 @@ public interface MemberService {
 	void pwModifyMember(Member member);
 	void pwModifyMember2(Member member); */
 	 
-  
+	//관리자 페이지
+	List<Member> getMemberList();
+	List<Member> getReportedMemberList();
+	void modifyMeberStatus(int memberStatus);
 }

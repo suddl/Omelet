@@ -62,7 +62,7 @@
                                     </svg> 
                                     <img style="margin: 50px 10px 25px 10px" src="#">  
                                     <!-- 회원 이름 옆에 회원 이미지 넣기 
-                                    <img style="margin: 20px" src="images/omlete.png">
+                                    <img style="margin: 20px" src="images/omelet.png">
                                     -->
                                     </span>
                                     <!-- 이름과 회원 이미지 사진 누를시 리뷰 쓴 회원 페이지 이동 -->

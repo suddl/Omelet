@@ -4,12 +4,6 @@
 <!DOCTYPE html>
 <html>
    <body>
-   
-
-      
-      
-      
-      
       <div class="bg-dark pt-5 pb-5">
          <div class="container">
             <div class="row">
@@ -103,7 +97,7 @@
     	        			<c:forEach var="notice" items="${noticeList}">
 			            		<div class="col-md-3">
             			        	<a href="event1.html">
-                    				<img class="img-fluid" src="${notice.noticeImage}" style="width:20px">
+                    				<img class="img-fluid" src="${pageContext.request.contextPath}/${notice.noticeImage}" style="width: 500px">
                     				</a>
                     				<div class="inner-slider">
                         				<div class="inner-wrapper">
@@ -123,70 +117,6 @@
                      				</div>
                   				</div>
                   				</c:forEach>
-                  				<div class="col-md-3">
-            			        	<a href="event1.html">
-                    				<img class="img-fluid" src="images/list/graveyard.jpg" />
-                    				</a>
-                    				<div class="inner-slider">
-                        				<div class="inner-wrapper">
-                        					<div class="d-flex align-items-center">
-                              					<span class="seller-name">
-                          					    <a href="event1.html">파묘 럭키박스 출시!
-                              					<br>1+1 행운의 주인공은?</br>
-                              					</a>
-                              					</span>
-                           					</div>
-                           					<div class="footer">
-                            					<td>10</td>
-                              					<div class="price">
-                              						<span>24.3.25(일) ~ 24.3.31(일)</span>
-                              					</div>
-                           					</div>
-                        				</div>
-                     				</div>
-                  				</div><div class="col-md-3">
-            			        	<a href="event1.html">
-                    				<img class="img-fluid" src="images/list/graveyard.jpg" />
-                    				</a>
-                    				<div class="inner-slider">
-                        				<div class="inner-wrapper">
-                        					<div class="d-flex align-items-center">
-                              					<span class="seller-name">
-                          					    <a href="event1.html">파묘 럭키박스 출시!
-                              					<br>1+1 행운의 주인공은?</br>
-                              					</a>
-                              					</span>
-                           					</div>
-                           					<div class="footer">
-                            					<td>10</td>
-                              					<div class="price">
-                              						<span>24.3.25(일) ~ 24.3.31(일)</span>
-                              					</div>
-                           					</div>
-                        				</div>
-                     				</div>
-                  				</div><div class="col-md-3">
-            			        	<a href="event1.html">
-                    				<img class="img-fluid" src="images/list/graveyard.jpg" />
-                    				</a>
-                    				<div class="inner-slider">
-                        				<div class="inner-wrapper">
-                        					<div class="d-flex align-items-center">
-                              					<span class="seller-name">
-                          					    <a href="event1.html">파묘 럭키박스 출시!
-                              					<br>1+1 행운의 주인공은?</br>
-                              					</a>
-                              					</span>
-                           					</div>
-                           					<div class="footer">
-                            					<td>10</td>
-                              					<div class="price">
-                              						<span>24.3.25(일) ~ 24.3.31(일)</span>
-                              					</div>
-                           					</div>
-                        				</div>
-                     				</div>
-                  				</div>
 	            			</div>
     			        </div>
 			            <div class="footer-pagination text-center">
@@ -195,7 +125,6 @@
                   					<li class="page-item">
                      					<a class="page-link" href="#" aria-label="Previous">
                         					<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
-                        					<!-- <span class="sr-only"></span>-->
                      					</a>	
                   					</li>
                   					<li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -205,11 +134,15 @@
                   					<li class="page-item">
                      					<a class="page-link" href="#" aria-label="Next">
                         					<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
-                        					<!-- <span class="sr-only"></span>-->
                      					</a>
                   					</li>
                					</ul>
             				</nav>
          				</div>
+         			</div>
+         		</div>
+         	</div>
+         </div>
+      </div>
    </body>
 </html>

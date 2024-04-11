@@ -1,5 +1,7 @@
 package omlete.service;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -148,4 +150,18 @@ public class MemberServiceImpl implements MemberService {
       
    }
 
+@Override
+public List<Member> getMemberList() {
+	return memberDAO.selectMemberList();
+}
+
+@Override
+public List<Member> getReportedMemberList() {
+	return memberDAO.selectReportedMemberList();
+}
+
+@Override
+public void modifyMeberStatus(int memberStatus) {
+	memberDAO.updateMeberStatus(memberStatus);
+}
 }
