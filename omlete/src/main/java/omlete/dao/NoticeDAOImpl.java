@@ -34,18 +34,19 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public int selectNoticeCount() {
 		return sqlSession.getMapper(NoticeMapper.class).selectNoticeCount();
 	}
-	//게시글 검색
-	@Override
-	public Notice selectNotice(int noticeNo) {
-		return sqlSession.getMapper(NoticeMapper.class).selectNotice(noticeNo);
-	}
 	//리스트
 	@Override
 	public List<Notice> selectNoticeList(Map<String, Object> map) {
 		return sqlSession.getMapper(NoticeMapper.class).selectNoticeList(map);
 	}
+	//조회수
 	@Override
-	public void increaseViewcnt(int noticeNo) throws Exception {
-		sqlSession.update("board.increaseViewcnt", noticeNo);
-	}
+    public void hitNum(int noticeNo) {
+        sqlSession.update("hitNum", noticeNo);
+    }
+	//상세보기
+    @Override
+    public Notice noticeDetail(int noticeNo) {
+        return sqlSession.selectOne("noticeDetail", noticeNo);
+    }
 }

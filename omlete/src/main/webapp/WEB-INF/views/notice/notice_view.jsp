@@ -105,9 +105,10 @@
 										<tr>
 											<td>${notice.noticeNo}</td>
 											<td class="left">
-											<a href="<c:url value='/board/noticeView'/>?noticeNo=${notice.noticeNo}">
+											<a href='herf=detail?seq=${notice.seq }'><td>{notice.noticeNo}"</td>
 											    <span class="cateIcon"> <span>${notice.noticeStatus}</span>
-											    </span> <span class="subject">${notice.noticeTitle}</span>
+											    </span> 
+											    <span class="subject">${notice.noticeTitle}</span>
 											</a></td>
 											<td class="left1">${notice.noticeDate}</td>
 											<td class="left2">${notice.noticeCount}</td>
