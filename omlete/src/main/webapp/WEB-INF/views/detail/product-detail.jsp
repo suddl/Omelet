@@ -45,7 +45,6 @@
  
    </head>
    <body>
-   	  
       <div class="third-menu border-top">
          <div class="container">
             <div class="row d-flex align-items-center justify-content-between">
@@ -160,20 +159,17 @@
                   </div>
                   <div class="slider mt-4">
                      <div id="aniimated-thumbnials" class="slider-for slick-slider-single">
-                        <a href="images/list/v1.png">
+                        <a href="${contents.contentsPoster}">
                         <img class="img-fluid" src="${contents.contentsPoster}" />
                         </a>
-                        <a href="images/list/v2.png">
-                        <img class="img-fluid" src="images/list/v2.png" />
+                        <a href="${contents.contentsPhoto1}">
+                        <img class="img-fluid" src="${contents.contentsPhoto1}" />
                         </a>
-                        <a href="images/list/v3.png">
-                        <img class="img-fluid" src="images/list/v3.png" />
+                        <a href="${contents.contentsPhoto2}">
+                        <img class="img-fluid" src="${contents.contentsPhoto2}" />
                         </a>
-                        <a href="images/list/v4.png">
-                        <img class="img-fluid" src="images/list/v4.png" />
-                        </a>
-                        <a href="images/list/v5.png">
-                        <img class="img-fluid" src="images/list/v5.png" />
+                        <a href="${contents.contentsPhoto3}">
+                        <img class="img-fluid" src="${contents.contentsPhoto3}" />
                         </a>
                      </div>
                      <div class="slider-nav slick-slider-single">
@@ -182,19 +178,15 @@
                               alt="Alt">
                         </div>
                         <div class="item-slick">
-                           <img class="img-fluid" src="images/list/v2.png"
+                           <img class="img-fluid" src="${contents.contentsPhoto1}"
                               alt="Alt">
                         </div>
                         <div class="item-slick">
-                           <img class="img-fluid" src="images/list/v3.png"
+                           <img class="img-fluid" src="${contents.contentsPhoto2}"
                               alt="Alt">
                         </div>
                         <div class="item-slick">
-                           <img class="img-fluid" src="images/list/v4.png"
-                              alt="Alt">
-                        </div>
-                        <div class="item-slick">
-                           <img class="img-fluid" src="images/list/v5.png"
+                           <img class="img-fluid" src="${contents.contentsPhoto3}"
                               alt="Alt">
                         </div>
                      </div>

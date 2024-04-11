@@ -39,6 +39,20 @@ public class ContentsServiceImpl implements ContentsService{
 		if(contents == null) {
 			throw new ContentsNotFoundException("해당 작품이 존재하지 않습니다.");
 		}
+		String front, url;
+		String img1, img2, img3, poster;
+		front="https://image.tmdb.org/t/p/original";
+		
+		poster=contents.getContentsPoster();
+		contents.setContentsPoster(front+poster);
+		
+		img1 = contents.getContentsPhoto1();
+		contents.setContentsPhoto1(front+img1);
+		img2 = contents.getContentsPhoto2();
+		contents.setContentsPhoto2(front+img2);
+		img3 = contents.getContentsPhoto3();
+		contents.setContentsPhoto3(front+img3);
+
 		
 		return contents;
 	}
