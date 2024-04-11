@@ -213,15 +213,12 @@ public class AdminController {
     //회원 관리
     @RequestMapping(value = "/member", method = RequestMethod.GET)
     public String memberList(Model m) {
-        if (memberService != null) {
-            List<Member> membersList = memberService.getMemberList();
-            if (membersList != null) {
-                m.addAttribute("memberList", membersList);
-            } else {
-                System.out.println("불러올 회원 정보가 없습니다.");
-            }
+        List<Member> memberList = memberService.getMemberList();
+        if (memberList != null) {
+            m.addAttribute("memberList", memberList);
         } else {
-            System.out.println("MemberService가 초기화되지 않았습니다.");
+            System.out.println("회원 정보를 가져올 수 없습니다.");
+            m.addAttribute("memberList", new ArrayList<Member>());
         }
         return "admin/member";
     }

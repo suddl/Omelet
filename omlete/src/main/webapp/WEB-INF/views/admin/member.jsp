@@ -112,6 +112,7 @@
 										<th>닉네임</th>
 									</tr>
 								</thead>
+								<c:forEach var="Member" items="${memberList}">
 								<tbody>								  
 						             <tr>
 							            <td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
@@ -126,7 +127,8 @@
 							            <td>${member.memberReport}</td>				
 							            <td>${member.memberNickname}</td>				
 								      </tr>
-								 </tbody>									
+								 </tbody>
+								 </c:forEach>									
 							</table>
                             </div>
                         </div>
