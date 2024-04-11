@@ -74,7 +74,7 @@ public class MemberServiceImpl implements MemberService {
       @Override
       public Member getMemberEmail(String memberEmail) {
     	  Member member=memberDAO.selectMemberEmail(memberEmail);
-    	  return null;
+    	  return member;
       }
       
    /*
