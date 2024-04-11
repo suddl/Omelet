@@ -38,16 +38,18 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public Map<String, Object> getReviewList(int pageNum, int reviewKind) {
-		int totalSize = reviewDAO.selectReviewCount();
+		int titleSize = reviewDAO.selectReviewCount();
+		int pageSize = 10;
+		int blockSize = 10;
 		
-		Pager pager = new Pager(pageNum, totalSize, 10, 10);
+		Pager pager = new Pager(pageNum, titleSize, pageSize, blockSize);
 		
 		Map<String, Object> pageMap = new HashMap<String, Object>();
 		pageMap.put("startRow", pager.getStartRow());
 		pageMap.put("endRow", pager.getEndRow());
 		pageMap.put("reviewKind", reviewKind);
 		
-		List<Review> reviewList = reviewDAO.selectReviewList(pageMap);
+		List<Review> reviewList = reviewDAO.selectReviewList(pageMap, reviewKind);
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("pager", pager);
@@ -55,6 +57,15 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return resultMap;
 	}
+	
+	@Override
+	public List<Review> getReviewListOrder(String orderBy) {
+		return reviewDAO.selectReviewListOrder(orderBy);
+	}
+	
+	
+	
+	
 
 	@Override
 	public int getMemberReviewCount(int reviewNo) {

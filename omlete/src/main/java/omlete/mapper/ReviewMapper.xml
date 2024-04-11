@@ -44,6 +44,9 @@
 	
 	<select id="selectReviewCount" resultType="int">
 		select count(*) from review
+		<if test="reviewKind != null">
+			where review_kind = #{reviewKind}
+		</if>
 	</select>
 
 	<!--  
@@ -55,17 +58,37 @@
 	</select>
 	-->
 	
-	<select id="selectReviewList" resultType="review">
+	<select id="selectReviewList" resultType="Review">
 		select * from (select rownum rn, temp.* from (select review_no, review_kind
 			, review_member, review_content, review_date, review_up, review_down
-			, review_work, review_spoiler, review_star,review_contents_type from review 
-			<if test="review_kind != 0">
-				where review_kind = #{reviewKind}
+			, review_work, review_spoiler, review_star from review 
+			<if test="review_kind == 1">
+				where review_kind = "1"
+			</if>
+			<if test="review_kind == 2">
+				where review_kind = "2"
+			</if>
+			<if test="review_kind == 3">
+				where review_kind = "3"
 			</if>
 			order by review_no) temp )
 			where rn between #{startRow} and #{endRow}
 	</select>
 	
+	<select id="SelectReviewListOrder" resultType="Review" parameterType="String">
+		select
+			*
+		from
+			review
+		order by
+			#{orderBy}
+	</select>
+	
+	
+	
+	
+	
+
 	<!-- ================================================================================================================= -->
 	<select id="selectReviewCountMember" resultType="int">
 		select count(*) from review where member_no=#{memberNo}
