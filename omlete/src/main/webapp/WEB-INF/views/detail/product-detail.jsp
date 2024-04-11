@@ -41,6 +41,15 @@
 	  opacity: 0.7;
 	  cursor: default;
 	}
+	
+	.b-con {
+	    text-align: right; /* 버튼을 오른쪽으로 정렬합니다 */
+	   
+	}
+	.b-con a{
+	    
+	     margin-left: 10px;
+	}
    </style>
  
    </head>
@@ -53,8 +62,6 @@
                      <li class="nav-overview selected"><a href="#overview">Overview</a></li>
                      <li class="nav-description"><a href="#description">Description</a></li>
                      <li class="nav-aboutSeller"><a href="#aboutSeller">About The Seller</a></li>
-                     <li class="nav-packagesTable"><a href="#packagesTable">Compare Packages</a></li>
-                     <li class="nav-recommendations"><a href="#recommendations">Recommendations</a></li>
                      <li class="nav-faq"><a href="#faq">FAQ</a></li>
                      <li class="nav-reviews"><a href="#reviews">Reviews</a></li>
                   </ul>
@@ -108,7 +115,7 @@
                   </div>
                   <hr>
                   <div id="overview" class="seller-overview d-flex align-items-center">
-                  	  <div class="wrap">
+                  	  <div class="wrap" style="margin-right:130px">
 					    
 					    <div class="rating">
 					        <label class="rating__label rating__label--half" for="starhalf">
@@ -153,9 +160,11 @@
 					        </label>
 					    </div>
 					  </div>
+					  <div class="b-con">
                       <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">한줄리뷰</button></a>
                       <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">장문리뷰</button></a>
                       <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">명대사리뷰</button></a>
+                  	  </div>
                   </div>
                   <div class="slider mt-4">
                      <div id="aniimated-thumbnials" class="slider-for slick-slider-single">

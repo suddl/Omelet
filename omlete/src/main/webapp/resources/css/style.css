@@ -1429,12 +1429,12 @@ table {
      color: #62646a;
 }
  .seller-overview .user-info {
-     border-left: 1px solid #c5c6c9;
+     
      margin: 0 10px;
      padding: 0 5px;
 }
  .seller-overview .user-info .user-info-rating {
-     border-right: 1px solid #c5c6c9;
+     
      padding-right: 10px;
      margin-right: 10px;
 }
