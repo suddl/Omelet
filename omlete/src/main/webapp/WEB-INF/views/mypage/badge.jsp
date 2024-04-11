@@ -117,9 +117,16 @@
                           <div class="col-lg-6 col-xxl-4 mb-5">
                               <div class="card bg-light border-0 h-100">
                                   <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                      <div>
-                                         <img src="<c:url value="/images/badge/welcomeBadge.png"/>" class="mybadgeImg">
-                                      </div>
+                                      <c:when test="${empty(loginMember) }">
+	                                      <div>
+	                                         <img src="<c:url value="/images/badge/welcomeBadge.png"/>" class="mybadgeImg">
+	                                      </div>
+                                      </c:when>
+                                      <c:otherwise>
+                                      	  <div>
+	                                         <img src="<c:url value="/images/badge/nobadge.png"/>" class="mybadgeImg">
+	                                      </div>
+                                      </c:otherwise>
                                       <h2 class="fs-4 fw-bold">Welcome! OMELET</h2>
                                       <p class="mb-0">첫 회원가입을 환영합니다!</p>
                                   </div>
