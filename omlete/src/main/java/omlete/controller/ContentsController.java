@@ -5,6 +5,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Contents;
+import omlete.dto.Member;
 import omlete.service.ApiService;
 import omlete.service.ContentsService;
 
@@ -25,8 +30,6 @@ import omlete.service.ContentsService;
 public class ContentsController {
 	private final ContentsService contentsService;	
 	private final ApiService apiService;
-	
-	//private ActorsService actorService;
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(Model m, int no) {
@@ -43,6 +46,19 @@ public class ContentsController {
 		return "review/review_write";
 	}
 	
+	//찜하기 기능
+	@RequestMapping(value = "/wish")
+	public boolean wishContents(HttpServletRequest request, HttpServletResponse response, Object handler) {	
+		HttpSession session=request.getSession();
+			
+		Member loginMember=(Member)session.getAttribute("loginMember");
+		System.out.println(loginMember);
+		if(loginMember == null) {
+			return false;				
+		}
+			
+		return true;
+	}
 	
 	@RequestMapping(value ="/api", method = RequestMethod.GET, params = {"pages"})
 	public String getInfo(Model m, @RequestParam("pages") int pages) throws IllegalAccessException {
