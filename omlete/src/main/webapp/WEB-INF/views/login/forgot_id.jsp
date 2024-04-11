@@ -11,7 +11,7 @@
                   <div class="osahan-login py-4">
                      <div class="text-center mb-4">
                            <img src="<c:url value="/images/logo/omlete_logo.png"/>" style="width: 200px; height: auto;"></a>
-                        <h5 class="font-weight-bold mt-3"> 아이디/비밀번호찾기 </h5>
+                        <h5 class="font-weight-bold mt-3"> 아이디/비밀번호찾기 </h5> 
                         <p class="text-muted"> 이름과 이메일를 입력해주세요. </p>
                         </div>
                       <form action="<c:url value="/login/find"/>" method="post">
