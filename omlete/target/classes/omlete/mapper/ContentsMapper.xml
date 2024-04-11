@@ -44,7 +44,7 @@
 	
 	<update id= "updateContents">
 		update contents set contentsType=#{contentsType}, contentsOname=#{contentsOname}, contentsTname=#{contentsTname}
-		, contentsTrailer=#{contentsTrailer}, contentsPoster=#{contentsPoster}, contentsPhoto=#{contentsPhoto}
+		, contentsTrailer=#{contentsTrailer}, contentsPoster=#{contentsPoster}, contentsPhoto1=#{contentsPhoto1}, contentsPhoto2=#{contentsPhoto2}, contentsPhoto3=#{contentsPhoto3}
 		, contentsStaff=#{contentsStaff}, contentsOverview=#{contentsOverview}, contentsRating=#{contentsRating}
 		, contentsGenre=#{contentsGenre}, contentsNetwork=#{contentsNetwork}, contentsNetworkLogo=#{contentsNetworkLogo}
 		, contentsCountries=#{contentsCountries}, contentsDirector=#{contentsDirector}, contentsStartdate=#{contentsStartdate}
