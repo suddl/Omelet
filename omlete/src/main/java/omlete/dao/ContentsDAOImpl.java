@@ -53,4 +53,11 @@ public class ContentsDAOImpl implements ContentsDAO{
 	public int deleteContents(int contentsNo) {
 		return sqlSession.getMapper(ContentsMapper.class).deleteContents(contentsNo);
 	}
+	
+	
+	
+	@Override
+	public List<Contents> selectContentsListByOrder(String orderBy) {
+		return sqlSession.getMapper(ContentsMapper.class).selectContentListByOrder(orderBy);
+	}
 }

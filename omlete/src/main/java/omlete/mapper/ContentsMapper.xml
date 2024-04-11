@@ -54,5 +54,19 @@
 	
 	<delete id="deleteContents">
 		delete from contents where contents_no=#{contentsNo}
-	</delete>	
+	</delete>
+	
+	
+	
+	
+	
+	<!-- 최신순, 오래된 순 -->
+	<select id="selectContentListByOrder" resultType="Contents" parameterType="String">
+		SELECT
+			*
+		FROM
+			contents
+		ORDER BY
+			#{orderBy}
+	</select>
 </mapper>

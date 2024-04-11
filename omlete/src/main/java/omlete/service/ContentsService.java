@@ -16,4 +16,11 @@ public interface ContentsService {
 	void modifyContents(Contents contents);
 	void removeContents(int contentsNo);
 	
+	
+	
+	
+	List<Contents> getContentsListByOrder(String orderBy);
+	
+	List<Contents> getMovieList();
+	List<Contents> getSeriseList();
 }
