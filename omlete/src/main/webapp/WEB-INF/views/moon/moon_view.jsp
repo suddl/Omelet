@@ -6,14 +6,6 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <body>
-    
-      
-      
-      
-      
-      
-      
-      
       <div class="bg-dark pt-5 pb-5">
          <div class="container">
             <div class="row">
@@ -125,8 +117,16 @@
 									<c:forEach var="moon" items="${moonList }">
 										<tr>
 											<td>${moon.moonNO }</td>
-											<td class="left" style="text-align: center"><a
-												href="answer1.html">${moon.moonContent }</a></td>
+											
+											<td class="left" style="text-align: center">
+											<a href="<c:url value="/board/read?moon_no"/>">${moon.moonContent }</a></td>
+											
+											<td>
+											<a href="/board/read?board_idx=${list.board_idx}" >
+											<c:out value="${list.board_title}" />
+											</a>
+											</td>
+											
 											<td>${moon.moonNickname}</td>
 											<td>${moon.moonDate}</td>
 											<td>답변완료</td>
@@ -137,48 +137,61 @@
 							</div>
 						</div>
                   </div>
-                  <div class="footer-pagination text-center">
-       		   	  	 <nav aria-label="Page navigation example">
-               			<ul class="pagination">
-            			<!-- 다음. -->
-    						<c:choose>
-								<c:when test="${pager.startPage > pager.blockSize }">
-                  					<li class="page-item">
-                     					<a class="page-link" aria-label="Previous" href="<c:url value="/file/list"/>?pageNum=${pager.prevPage}">
-                     					</a>	
-                  					</li>
-                  				</c:when>
-                  				<c:otherwise>
-                        			<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+         		  <div class="footer-pagination text-center">
+	            	  	<nav aria-label="Page navigation example">
+	               			<ul class="pagination">
+				            <!-- 이전 -->
+	            			<c:choose>
+	               				<c:when test="${pager.startPage > pager.blockSize }">
+	                  				<li class="page-item">
+	                     			<a class="page-link" aria-label="Previous" href="<c:url value="/board/noticeList"/>?pageNum=${pager.prevPage}">
+	                        		<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+	                     			</a>	
+	                  				</li>
+	                  			</c:when>
+	                  			<c:otherwise>
+	                  				<li class="page-item">
+	                     				<a class="page-link" aria-label="Previous" ?pageNum=${pager.prevPage}">
+	                        			<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+	                     				</a>	
+	                  				</li>
 								</c:otherwise>
-                 			</c:choose>
-                  			<!-- 내용. -->
-               				<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
+							</c:choose>
+				            <!-- 페이지 번호 목록 -->
+	            			<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
 								<c:choose>
 									<c:when test="${pager.pageNum != i }">
-                  						<li class="page-item"><a class="page-link" href="<c:url value="/file/list"/>?pageNum=${i}">[${i}]</a></li>
-                  					</c:when>
-                  					<c:otherwise>
-										[${i}]
+										<li class="page-item">
+										<a class="page-link" href="<c:url value="/board/noticeList"/>?pageNum=${i}">${i}</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item active">
+										<a class="page-link" ?pageNum=${i}">${i}</a>
+										</li>
 									</c:otherwise>
-                  				</c:choose>
-                  			</c:forEach>
-                  			<!-- 이전. -->
-                  			<c:choose>
-								<c:when test="${pager.endPage != pager.totalPage }">
-                  					<li class="page-item">
-                     					<a class="page-link" aria-label="Next" href="<c:url value="/file/list"/>?pageNum=${pager.nextPage}">
-                     					</a>
-                  					</li>
-                  				</c:when>
-								<c:otherwise>
-                        			<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+								</c:choose>
+							</c:forEach>
+							<!-- 다음 -->
+	                  		<c:choose>
+	                  			<c:when test="${pager.endPage != pager.totalPage }">
+	                  				<li class="page-item">
+	                     			<a class="page-link" aria-label="Next" href="<c:url value="/board/noticeList"/>?pageNum=${pager.nextPage}">
+	                        		<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+	                     			</a>
+	                  				</li>
+	                  			</c:when>
+	                  			<c:otherwise>
+	                  				<li class="page-item">
+	                     			<a class="page-link" aria-label="Next" ?pageNum=${pager.nextPage}">
+	                        		<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+	                     			</a>
+	                  				</li>
 								</c:otherwise>
-                  			</c:choose>
-               			</ul>
-            		</nav>
-         		</div>
-         		
+							</c:choose>
+				        </ul>
+	    			</nav>
+				</div>
                </div>
             </div>
          </div>

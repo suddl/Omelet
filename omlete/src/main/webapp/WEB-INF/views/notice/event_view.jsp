@@ -120,25 +120,60 @@
 	            			</div>
     			        </div>
 			            <div class="footer-pagination text-center">
-            				<nav aria-label="Page navigation example">
-               					<ul class="pagination">
-                  					<li class="page-item">
-                     					<a class="page-link" href="#" aria-label="Previous">
-                        					<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
-                     					</a>	
-                  					</li>
-                  					<li class="page-item"><a class="page-link" href="#">1</a></li>
-                  					<li class="page-item active"><a class="page-link" href="#">2</a></li>
-                  					<li class="page-item"><a class="page-link" href="#">4</a></li>
-                  					<li class="page-item"><a class="page-link" href="#">5</a></li>
-                  					<li class="page-item">
-                     					<a class="page-link" href="#" aria-label="Next">
-                        					<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
-                     					</a>
-                  					</li>
-               					</ul>
-            				</nav>
-         				</div>
+		            	  	<nav aria-label="Page navigation example">
+		               			<ul class="pagination">
+					            <!-- 이전 -->
+		            			<c:choose>
+		               				<c:when test="${pager.startPage > pager.blockSize }">
+		                  				<li class="page-item">
+		                     			<a class="page-link" aria-label="Previous" href="<c:url value="/board/noticeList"/>?pageNum=${pager.prevPage}">
+		                        		<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+		                     			</a>	
+		                  				</li>
+		                  			</c:when>
+		                  			<c:otherwise>
+		                  				<li class="page-item">
+		                     				<a class="page-link" aria-label="Previous" ?pageNum=${pager.prevPage}">
+		                        			<span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+		                     				</a>	
+		                  				</li>
+									</c:otherwise>
+								</c:choose>
+					            <!-- 페이지 번호 목록 -->
+		            			<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
+									<c:choose>
+										<c:when test="${pager.pageNum != i }">
+											<li class="page-item">
+											<a class="page-link" href="<c:url value="/board/noticeList"/>?pageNum=${i}">${i}</a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item active">
+											<a class="page-link" ?pageNum=${i}">${i}</a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- 다음 -->
+		                  		<c:choose>
+		                  			<c:when test="${pager.endPage != pager.totalPage }">
+		                  				<li class="page-item">
+		                     			<a class="page-link" aria-label="Next" href="<c:url value="/board/noticeList"/>?pageNum=${pager.nextPage}">
+		                        		<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+		                     			</a>
+		                  				</li>
+		                  			</c:when>
+		                  			<c:otherwise>
+		                  				<li class="page-item">
+		                     			<a class="page-link" aria-label="Next" ?pageNum=${pager.nextPage}">
+		                        		<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+		                     			</a>
+		                  				</li>
+									</c:otherwise>
+								</c:choose>
+					        </ul>
+		    			</nav>
+					</div>
          			</div>
          		</div>
          	</div>

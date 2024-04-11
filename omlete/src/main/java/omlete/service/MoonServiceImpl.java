@@ -26,12 +26,19 @@ public class MoonServiceImpl implements MoonService {
 	//리스트 없으면 예외처리
 	@Override
 	public Moon getMoon(int moonNo) {
+		return moonDAO.selectMoon(moonNo);
+	}
+	
+	/*
+	@Override
+	public Moon getMoon(int moonNo) {
 		Moon moon = moonDAO.selectMoon(moonNo);
 		if (moon == null) {
 			throw new RuntimeException("게시글을 찾을 수 없습니다.");
 		}
 		return moon;
 	}
+	*/
 	//리스트 검색
 	@Override
 	public Map<String, Object> getMoonList(int pageNum) {

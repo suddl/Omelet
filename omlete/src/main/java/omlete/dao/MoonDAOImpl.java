@@ -19,7 +19,6 @@ public class MoonDAOImpl implements MoonDAO {
 	public int insertMoon(Moon moon) {
 		return sqlSession.getMapper(MoonMapper.class).insertMoon(moon);
 	}
-
 	@Override
 	public Moon selectMoon(int moonNo) {
 		return sqlSession.getMapper(MoonMapper.class).selectMoon(moonNo);

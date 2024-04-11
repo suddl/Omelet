@@ -2,8 +2,9 @@ package omlete.service;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import omlete.dto.Notice;
-import omlete.exception.BoardNotFoundException;
 
 
 public interface NoticeService {
@@ -12,14 +13,16 @@ public interface NoticeService {
 	//추가
 	void addNotice(Notice notice);
 	//수정
-	void modifyNotice(Notice notice) throws BoardNotFoundException;
+	void modifyNotice(Notice notice);
 	//삭제
-	void removeNotice(int noticeNo) throws BoardNotFoundException; 
+	void removeNotice(int noticeNo); 
 	//총개수
 	int getNoticeCount();
-	//글번호 전달받아 게시글 검색
-	Notice getNotice(int noticeNo);
+	//상세보기
+	public Notice getNotice(int noticeNo) throws Exception;
 	//리스트검색
 	Map<String, Object> getNoticeList(int pageNum);
+	//게시글 조회
+	public void increaseViewcnt(int noticeNo, HttpSession session) throws Exception;
 	
 }

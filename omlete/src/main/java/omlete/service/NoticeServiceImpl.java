@@ -4,12 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dao.NoticeDAO;
 import omlete.dto.Notice;
-import omlete.exception.BoardNotFoundException;
 import omlete.util.Pager;
 
 @Service
@@ -18,84 +19,13 @@ public class NoticeServiceImpl implements NoticeService {
 	//private final MoonDAO moonDAO;
 	private final NoticeDAO noticeDAO;
 	
-	//moon
-	//추가
-	/*
-	 * @Transactional
-	 * 
-	 * @Override public void addMoon(Moon moon) { moonDAO.insertFaq(moon); } //수정
-	 * 
-	 * @Transactional
-	 * 
-	 * @Override public void modifyMoon(Moon moon) throws BoardNotFoundException {
-	 * if(moonDAO.selectFaq(moon.getFNo())==null) { throw new
-	 * BoardNotFoundException("해당 게시글을 찾을 수 없습니다."); }
-	 * 
-	 * moonDAO.updateFaq(moon); } //삭제
-	 * 
-	 * @Transactional
-	 * 
-	 * @Override public void removeFaq(int fNo) throws BoardNotFoundException {
-	 * if(faqDAO.selectFaq(fNo)==null) { throw new
-	 * BoardNotFoundException("해당 게시글을 찾을 수 없습니다."); } faqDAO.deleteFaq(fNo); } //전체
-	 * 갯수
-	 * 
-	 * @Override public int getFaqCount() { return faqDAO.selectFaqCount(); } //목록
-	 * 반환
-	 * 
-	 * @Override public Faq getFaq(int fNo) throws BoardNotFoundException {
-	 * if(faqDAO.selectFaq(fNo)==null) { throw new
-	 * BoardNotFoundException("해당 게시글을 찾을 수 없습니다."); } return faqDAO.selectFaq(fNo);
-	 * }
-	 */
-	
-	
-	/*
-	 * //notice //추가
-	 * 
-	 * @Transactional
-	 * 
-	 * @Override public void addNotice(Notice notice) {
-	 * noticeDAO.insertNotice(notice); } //수정
-	 * 
-	 * @Transactional
-	 * 
-	 * @Override public void modifyNotice(Notice notice) throws
-	 * BoardNotFoundException { if(noticeDAO.selectNotice(notice.getNoticeNo())
-	 * ==null) { throw new BoardNotFoundException("해당 게시글을 찾을 수 없습니다."); }
-	 * noticeDAO.updateNotice(notice); } //삭제
-	 * 
-	 * @Transactional
-	 * 
-	 * @Override public void removeNotice(int noticeNo) throws
-	 * BoardNotFoundException { if(noticeDAO.selectNotice(noticeNo)==null) { throw
-	 * new BoardNotFoundException("해당 게시글을 찾을 수 없습니다."); }
-	 * noticeDAO.deleteNotice(noticeNo); } //갯수
-	 * 
-	 * @Override 
-	 * public int getNoticeCount() { 
-	 * return noticeDAO.selectNoticeCount();
-	 * }
-	 * 
-	 * //검색?
-	 * 
-	 * @Override 
-	 * public Notice getNotice(int noticeNo) throws BoardNotFoundException
-	 * { if(noticeDAO.selectNotice(noticeNo)==null) { throw new
-	 * BoardNotFoundException("해당 게시글을 찾을 수 없습니다."); } return
-	 * noticeDAO.selectNotice(noticeNo); }
-	 */
-	
-	//리스트 없으면 예외처리
 	@Override
-    public Notice getNotice(int noticeNo) {
-        Notice notice = noticeDAO.selectNotice(noticeNo);
-        if (notice == null) {
-            throw new RuntimeException("게시글을 찾을 수 없습니다.");
-        }
-        return notice;
+    public Notice getNotice(int noticeNo) throws Exception {
+        return noticeDAO.selectNotice(noticeNo);
     }
-
+	
+	
+	//전체 목록
     @Override
     public Map<String, Object> getNoticeList(int pageNum) {
         int totalSize = noticeDAO.selectNoticeCount();
@@ -118,53 +48,63 @@ public class NoticeServiceImpl implements NoticeService {
         return resultMap;
     }
 
-
 	@Override
 	public void addNotice(Notice notice) {
 		// TODO Auto-generated method stub
 		
 	}
 
-
 	@Override
-	public void modifyNotice(Notice notice) throws BoardNotFoundException {
+	public void modifyNotice(Notice notice) {
 		// TODO Auto-generated method stub
 		
 	}
 
-
 	@Override
-	public void removeNotice(int nNo) throws BoardNotFoundException {
+	public void removeNotice(int noticeNo) {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public int getNoticeCount() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	/*
-	 * @Override public List<Faq> getstatusFaqList(Map<String, Object> map) { return
-	 * faqDAO.selectstatusFaqList(map); }
-	 */
-
-
-	/*
-	 * @Override public List<Faq> getorstatusFaqList(Map<String, Object> map) {
-	 * return faqDAO.selectorstatusFaqList(map); }
-	 */
-
-
-
-
-
-
-
-
-
+	//게시글 조회수 증가
 	
-	
+	@Override
+	public void increaseViewcnt(int noticeNo, HttpSession session) throws Exception {
+	    long update_time = 0;
+	    
+	    // 이전 조회 시간을 가져옴
+	    if (session.getAttribute("update_time") != null) {
+	        update_time = (long) session.getAttribute("update_time");
+	    }
+	    
+	    long current_time = System.currentTimeMillis();
+	    
+	    // 일정 시간이 경과한 경우에만 조회수를 증가시킴
+	    if (current_time - update_time > 5 * 1000) {
+	        // 조회수 증가
+	        noticeDAO.increaseViewcnt(noticeNo);
+	        
+	        // 세션에 현재 시간 저장
+	        session.setAttribute("update_time", current_time);
+	    }
+	    
+	}
+
+
+
+
 }
+
+
+
+
+
+
+
+	
+	

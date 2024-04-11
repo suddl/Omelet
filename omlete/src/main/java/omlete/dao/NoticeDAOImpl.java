@@ -14,34 +14,38 @@ import omlete.mapper.NoticeMapper;
 @RequiredArgsConstructor
 public class NoticeDAOImpl implements NoticeDAO {
 	private final SqlSession sqlSession;
-	
+	//추가
 	@Override
 	public int insertNotice(Notice notice) {
 		return sqlSession.getMapper(NoticeMapper.class).insertNotice(notice);
 	}
-
+	//수정
 	@Override
 	public int updateNotice(Notice notice) {
 		return sqlSession.getMapper(NoticeMapper.class).updateNotice(notice);
 	}
-
+	//삭제
 	@Override
-	public int deleteNotice(int nNo) {
-		return sqlSession.getMapper(NoticeMapper.class).deleteNotice(nNo);
+	public int deleteNotice(int noticeNo) {
+		return sqlSession.getMapper(NoticeMapper.class).deleteNotice(noticeNo);
 	}
-
+	//총개수
 	@Override
 	public int selectNoticeCount() {
 		return sqlSession.getMapper(NoticeMapper.class).selectNoticeCount();
 	}
-
+	//게시글 검색
 	@Override
-	public Notice selectNotice(int nNo) {
-		return sqlSession.getMapper(NoticeMapper.class).selectNotice(nNo);
+	public Notice selectNotice(int noticeNo) {
+		return sqlSession.getMapper(NoticeMapper.class).selectNotice(noticeNo);
 	}
-
+	//리스트
 	@Override
 	public List<Notice> selectNoticeList(Map<String, Object> map) {
 		return sqlSession.getMapper(NoticeMapper.class).selectNoticeList(map);
+	}
+	@Override
+	public void increaseViewcnt(int noticeNo) throws Exception {
+		sqlSession.update("board.increaseViewcnt", noticeNo);
 	}
 }
