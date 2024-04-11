@@ -86,4 +86,23 @@ public class ContentsServiceImpl implements ContentsService{
 	}
 	
 	
+	
+	
+	
+	
+	@Override
+	public List<Contents> getContentsListByOrder(String orderBy) {
+		return contentsDAO.selectContentsListByOrder(orderBy);
+	}
+
+	@Override
+	public List<Contents> getMovieList() {
+		return contentsDAO.selectContentsListByType("영화");
+	}
+
+	@Override
+	public List<Contents> getSeriseList() {
+		return contentsDAO.selectContentsListByType("드라마");
+	}
+	
 }

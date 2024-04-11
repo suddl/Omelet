@@ -1,6 +1,7 @@
 package omlete.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import omlete.dto.Contents;
 
@@ -26,4 +27,10 @@ public interface ContentsMapper {
 	 
 	 //작품 삭제
 	 int deleteContents(int contentsNo);
+	 
+	 
+	 
+	 
+	 List<Contents> selectContentListByOrder(String orderBy);
+	 List<Map<String, String>> selectUserinfo();
 }

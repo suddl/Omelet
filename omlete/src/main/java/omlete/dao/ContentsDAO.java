@@ -26,5 +26,10 @@ public interface ContentsDAO {
 	 int updateContents(Contents contents);
 	 
 	 //작품 삭제
-	 int deleteContents(int contentsNo);	 
+	 int deleteContents(int contentsNo);	
+	 
+	 
+	 
+	 
+	 List<Contents> selectContentsListByOrder(String orderBy);
 }
