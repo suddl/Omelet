@@ -76,30 +76,6 @@ public class MemberServiceImpl implements MemberService {
     	  Member member=memberDAO.selectMemberEmail(memberEmail);
     	  return member;
       }
-      
-   /*
-    @Override 
-    public void pwModifyMember(Member member) {
-    
-    // 랜덤한 10자리 비밀번호 생성 
-    String randomPassword = RandomStringUtils.randomAlphanumeric(10); //아니라면 암호화된 비밀번호로 변경후
-    member.setMemberPasswd(randomPassword); //삽입처리
-    memberDAO.updatePassword(member);
-
-     }
-
-   @Override
-   public Member getEmailMember(String mEmail) throws MemberNotFoundException {
-   //전달받은 아이디로 기존 회원정보를 검색하여 검색결과를 반환받아 저장
-         Member member=memberDAO.selectEmailMember(mEmail);
-         //검색된 회원정보의 아이디가 없을 경우 예외전달
-         if(member==null) {
-            throw new MemberNotFoundException("게스트 아이디의 회원정보가 존재하지 않습니다.");
-         }
-         return member;
-   }
-      
-      */
    
    //===========================================================================================
    // 마이페이지
