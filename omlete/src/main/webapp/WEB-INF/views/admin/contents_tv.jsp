@@ -122,6 +122,7 @@
 										<th>평균별점</th>
 									</tr>
 								</thead>
+								<c:forEach var="contents" items="${tvList}">
 								<tbody>								  
 								    <tr>
 								        <td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
@@ -140,6 +141,7 @@
 						                <td>${contents.contentsAvgstar}</td>
 						            </tr>
 			     			    </tbody>
+			     			    </c:forEach>
 							</table>
                             </div>
                         </div>

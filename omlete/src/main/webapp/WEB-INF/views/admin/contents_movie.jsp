@@ -108,19 +108,20 @@
                     						<input type="checkbox" id="selectAll">
 										</th>
 										<th>번호</th>
-										<th>타입</th>
-										<th>제목</th>
-										<th>출연진</th>
+										<th style="width: 150px;">타입</th>
+										<th style="width: 150px;">제목</th>
+										<th style="width: 150px;">출연진</th>
 										<th>감독</th>
-										<th>연령 등급</th>
-										<th>장르</th>
-										<th>국가</th>
-										<th>개봉일</th>
-										<th>종영일</th>
-										<th>평균별점</th>
-										<th>상영시간</th>
+										<th style="width: 150px;">연령 등급</th>
+										<th style="width: 150px;">장르</th>
+										<th style="width: 150px;">국가</th>
+										<th style="width: 150px;">개봉일</th>
+										<th style="width: 150px;">종영일</th>
+										<th style="width: 150px;">평균별점</th>
+										<th style="width: 150px;">상영시간</th>
 									</tr>
 								</thead>
+								<c:forEach var="contents" items="${movieList}">
 								<tbody>								  
 						            <tr>
 						                <td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
@@ -135,9 +136,10 @@
 						                <td>${contents.contentsStartdate}</td>
 						                <td>${contents.contentsEnddate}</td>
 						                <td>${contents.contentsAvgstar}</td>
-						                <td>${contents.contentsRunttime}</td>								             
+						                <td>${contents.contentsRuntime}</td>								             
 						            </tr>
-							    </tbody>					
+							    </tbody>
+							    </c:forEach>					
 							</table>
                             </div>
                         </div>

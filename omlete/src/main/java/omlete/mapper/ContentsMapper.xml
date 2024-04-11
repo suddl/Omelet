@@ -27,10 +27,10 @@
 	</select>
 
 	<select id="selectContentsListByType" resultType="Contents">
-		select contents_no, contents_type, contents_oname, contents_tname, contents_trailer, contents_poster, contents_photo
-		, contents_staff, contents_overview, contents_rating, contents_genre, contents_network, contents_network_logo
-		, contents_countries, contents_director, contents_startdate, contents_avgstar, contents_enddate, contents_episodes
-		, contents_seasons, contents_runtime, contents_tagline from contents where contents_type=#{contentsType} 
+		select contents_no, contents_type, contents_oname, contents_tname, contents_trailer, contents_poster, contents_photo1
+		, contents_photo2, contents_photo3, contents_staff, contents_overview, contents_rating, contents_genre, contents_network
+		, contents_network_logo, contents_countries, contents_director, contents_startdate, contents_avgstar, contents_enddate
+		, contents_episodes, contents_seasons, contents_runtime, contents_tagline from contents where contents_type=#{contentsType} 
 		order by contents_no desc
 	</select>
 	
