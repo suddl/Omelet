@@ -11,8 +11,7 @@
                     <div class="osahan-login py-4">
                         <div class="text-center mb-4">
                             <a href="index.html">
-                                <img src="<c:url value="/images/logo/omlete_logo.png"/>" alt="">
-                            </a>
+                                 <img src="<c:url value="/images/logo/omlete_logo.png"/>" style="width: 200px; height: auto;"></a>
                             <h5 class="font-weight-bold mt-3"> 아이디 비번 찾기 </h5>
                             <p class="text-muted"> 아이디와 임시 비밀번호를 확인해주세요 </p>
                         </div>
