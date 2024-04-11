@@ -17,7 +17,7 @@ public interface ContentsMapper {
 	 List<Contents> selectContentsListByType(String contentsType);
 	 
 	 //장르별 개수 출력
-	 int selectContentsCountByGenre(String contentsGenre);
+	 int selectContentsCountByGenre(String contentsGenre);	
 	 
 	 //타입별 개수 출력
 	 int selectContentsCountByType(String contentsType);

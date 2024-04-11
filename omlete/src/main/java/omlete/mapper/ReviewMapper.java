@@ -12,7 +12,7 @@ public interface ReviewMapper {
 	Review selectReview(int reviewNo);
 	int selectReviewCount();
 	List<Review> selectReviewList(Map<String, Object> map, int reviewKind);
-	List<Review> selectReviewListOrder(String orderBy);
+	List<Review> selectReviewListOrder();
 	
 	
 	//마이페이지

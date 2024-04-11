@@ -59,8 +59,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
-	public List<Review> getReviewListOrder(String orderBy) {
-		return reviewDAO.selectReviewListOrder(orderBy);
+	public List<Review> getReviewListOrder() {
+		return reviewDAO.selectReviewListOrder();
 	}
 	
 	

@@ -10,7 +10,7 @@ public interface ReviewService {
 	void modifyReview(Review review);
 	void removeReview(int reviewNo);
 	Review getReview(int reviewNo); //Review 검색
-	List<Review> getReviewListOrder(String orderBy);
+	List<Review> getReviewListOrder();
 	Map<String, Object> getReviewList(int pageNum, int reviewKind); //명대사/짧은글/긴글
 	
 	// 마이페이지

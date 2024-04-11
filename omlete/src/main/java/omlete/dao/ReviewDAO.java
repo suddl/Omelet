@@ -11,7 +11,7 @@ public interface ReviewDAO {
 	int updateReview(Review review);
 	Review selectReview(int reviewNo);
 	int selectReviewCount();
-	List<Review> selectReviewListOrder(String orderBy);
+	List<Review> selectReviewListOrder();
 	List<Review> selectReviewList(Map<String, Object> map, int reviewKind);
 	
 	

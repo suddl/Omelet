@@ -49,8 +49,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 	
 	@Override
-	public List<Review> selectReviewListOrder(String orderBy) {
-		return sqlSession.getMapper(ReviewMapper.class).selectReviewListOrder(orderBy);
+	public List<Review> selectReviewListOrder() {
+		return sqlSession.getMapper(ReviewMapper.class).selectReviewListOrder();
 	}
 
 	

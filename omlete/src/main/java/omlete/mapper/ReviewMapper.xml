@@ -75,13 +75,13 @@
 			where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<select id="SelectReviewListOrder" resultType="Review" parameterType="String">
-		select
+	<select id="SelectReviewListOrder" resultType="Review">
+		SELECT
 			*
-		from
+		FROM
 			review
-		order by
-			#{orderBy}
+		ORDER BY
+			review_no
 	</select>
 	
 	

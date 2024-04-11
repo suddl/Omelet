@@ -15,10 +15,10 @@
 	      <div class="collapse navbar-collapse" id="navbarResponsive">
 	         <ul class="navbar-nav">
 	            <li class="nav-item dropdownx">
-	               <a style="padding-right: 1.5rem" class="nav-link" href="about.html">영화</a>
+	               <a style="padding-right: 1.5rem" class="nav-link" href="<c:url value="/"/>">영화</a>
 	            </li>
 	            <li class="nav-item">
-	               <a style="padding-right: 1.5rem" class="nav-link" href="about.html">TV</a>
+	               <a style="padding-right: 1.5rem" class="nav-link" href='<c:url value="/main"/>'>TV</a>
 	            </li>
 	         </ul>
 	      </div>
