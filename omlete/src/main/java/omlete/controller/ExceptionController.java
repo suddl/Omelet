@@ -33,7 +33,7 @@ public class ExceptionController {
 	
 	@ExceptionHandler(MemberNotFoundException.class)
 	public String userinfoNotFoundExceptionHandler() {
-		return "login/error";	
+		return "layout/error";	
 	}
 	
 	/*
