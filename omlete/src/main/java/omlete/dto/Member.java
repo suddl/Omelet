@@ -19,4 +19,10 @@ public class Member {
 	private String memberFavorite3;
 	private int memberReport;
 	private String memberNickname;
+    public Member() {}
+
+    public Member(String memberName, String memberEmail) {
+    this.memberName = memberName;
+    this.memberEmail = memberEmail;
+}
 }

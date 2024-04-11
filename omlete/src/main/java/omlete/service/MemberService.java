@@ -6,7 +6,7 @@ import omlete.dto.Member;
 
 public interface MemberService {
 	void addMember(Member member);
-	Member getIdMember(Member member);
+	String getIdMember(Member member);
 	Member loginAuth(Member member);
 	
 	
@@ -20,6 +20,7 @@ public interface MemberService {
 	void modifyMemberContents(Member member);
 	
 	//비번 아이디 찾기
+	void pwModifyMember(Member member);
 	/*void modifyMember(Member member);
 	void pwModifyMember(Member member);
 	void pwModifyMember2(Member member); */
@@ -28,4 +29,5 @@ public interface MemberService {
 	List<Member> getMemberList();
 	List<Member> getReportedMemberList();
 	void modifyMeberStatus(int memberStatus);
+	
 }

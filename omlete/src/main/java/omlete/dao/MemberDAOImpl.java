@@ -20,7 +20,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
-	public Member selectMemberId(Member member) {
+	public String selectMemberId(Member member) {
 		return sqlSession.getMapper(MemberMapper.class).selectMemberId(member);
 	}
 	

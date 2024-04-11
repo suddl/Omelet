@@ -64,6 +64,3 @@ public class JoinController {
 		return "login/register";
 	}
 }
-
-
-

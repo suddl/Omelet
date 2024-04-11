@@ -7,7 +7,7 @@ import omlete.dto.Member;
 public interface MemberDAO {
 	/* 회원가입 */
 	int insertMember(Member member);
-	Member selectMemberId(Member member);
+	String selectMemberId(Member member);
 	Member selectMemberNickname(String memberNickname);
 	Member selectMemberEmail(String memberEmail);
 	Member selectMember(String memberId);

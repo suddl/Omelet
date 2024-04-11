@@ -36,9 +36,9 @@ public class MemberServiceImpl implements MemberService {
    }
    
    @Override
-   public Member getIdMember(Member member) {
-	   Member members=memberDAO.selectMemberId(member);
-       return members;
+   public String getIdMember(Member member) {
+	   String memberId=memberDAO.selectMemberId(member);
+       return memberId;
     }
    
    @Override
@@ -78,10 +78,11 @@ public class MemberServiceImpl implements MemberService {
       }
       
    /*
-    @Override public void pwModifyMember(Member member) {
+    @Override 
+    public void pwModifyMember(Member member) {
     
-    // 랜덤한 10자리 비밀번호 생성 String randomPassword =
-    RandomStringUtils.randomAlphanumeric(10); //아니라면 암호화된 비밀번호로 변경후
+    // 랜덤한 10자리 비밀번호 생성 
+    String randomPassword = RandomStringUtils.randomAlphanumeric(10); //아니라면 암호화된 비밀번호로 변경후
     member.setMemberPasswd(randomPassword); //삽입처리
     memberDAO.updatePassword(member);
 
@@ -163,5 +164,11 @@ public List<Member> getReportedMemberList() {
 @Override
 public void modifyMeberStatus(int memberStatus) {
 	memberDAO.updateMeberStatus(memberStatus);
+}
+
+@Override
+public void pwModifyMember(Member member) {
+	// TODO Auto-generated method stub
+	
 }
 }
