@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/main")
 @RequiredArgsConstructor
 public class MainController {
 	@RequestMapping("/")

@@ -11,9 +11,9 @@
                     <div class="osahan-login py-4">
                         <div class="text-center mb-4">
                             <a href="index.html">
-                                 <img src="<c:url value="/images/logo/omlete_logo.png"/>" style="width: 200px; height: auto;"></a>
+                                <img src="<c:url value="/images/logo/omlete_logo.png"/>" alt="">
                             </a>
-                            <h5 class="font-weight-bold mt-3"> 아이디/비번 찾기 </h5>
+                            <h5 class="font-weight-bold mt-3"> 아이디 비번 찾기 </h5>
                             <p class="text-muted"> 아이디와 임시 비밀번호를 확인해주세요 </p>
                         </div>
                         <div>
@@ -21,11 +21,6 @@
                             <p id="memberPasswd">임시 비밀번호 = ${memberPasswd}</p>
                             <!-- 이메일이나 다른 정보도 필요하다면 여기에 추가 -->
                             
-                            <!-- 확인 버튼 -->
-                            <form action="${pageContext.request.contextPath}/login/forgot_id_end" method="post">
-                                <input type="hidden" name="memberId" value="${memberId}" />
-                                <input type="hidden" name="memberPasswd" value="${memberPasswd}" />
-                                <input type="hidden" name="memberStatus" value="${memberStatus}" />
                             </form>
                         </div>
                     </div>
