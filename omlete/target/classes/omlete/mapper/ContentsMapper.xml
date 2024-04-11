@@ -69,4 +69,9 @@
 		ORDER BY
 			#{orderBy}
 	</select>
+	<!-- ======================================================================================= -->
+	<select id="searchFavorite" resultType="Contents">
+       select * from contents where contents_tname like '%' || #{movieName} || '%'
+    </select>
+	
 </mapper>

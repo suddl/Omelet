@@ -32,4 +32,9 @@ public interface ContentsDAO {
 	 
 	 
 	 List<Contents> selectContentsListByOrder(String orderBy);
+	 
+	//==================================================================
+		 List<Contents> searchFavorite(String movieName);
+
+
 }

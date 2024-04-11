@@ -33,4 +33,9 @@ public interface ContentsMapper {
 	 
 	 List<Contents> selectContentListByOrder(String orderBy);
 	 List<Map<String, String>> selectUserinfo();
+	 
+	//=====================================================
+		 List<Contents> searchFavorite(String movieName);
+
+
 }

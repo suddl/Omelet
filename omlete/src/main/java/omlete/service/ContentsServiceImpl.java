@@ -130,4 +130,12 @@ public class ContentsServiceImpl implements ContentsService{
 	    }
 	
 	}
+	
+	
+
+	//===========================================================
+		@Override
+		public List<Contents> getFavoriteContents(String movieName) {
+			return contentsDAO.searchFavorite(movieName);
+		}
 }

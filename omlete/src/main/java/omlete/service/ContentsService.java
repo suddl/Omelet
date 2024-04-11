@@ -23,4 +23,8 @@ public interface ContentsService {
 	
 	List<Contents> getMovieList();
 	List<Contents> getSeriseList();
-}
+	
+	//===================================================
+		List<Contents> getFavoriteContents(String movieName);
+	}
+

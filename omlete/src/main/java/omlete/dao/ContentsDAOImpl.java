@@ -60,4 +60,10 @@ public class ContentsDAOImpl implements ContentsDAO{
 	public List<Contents> selectContentsListByOrder(String orderBy) {
 		return sqlSession.getMapper(ContentsMapper.class).selectContentListByOrder(orderBy);
 	}
+	
+	@Override
+	public List<Contents> searchFavorite(String movieName) {
+		return sqlSession.getMapper(ContentsMapper.class).searchFavorite(movieName);
+	}
+
 }
