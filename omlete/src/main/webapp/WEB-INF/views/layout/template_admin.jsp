@@ -15,7 +15,7 @@
 
 <!-- Custom styles for this template-->
 <link href="../css/admin.css" rel="stylesheet">
-<title>Omlete(admin)</title>
+<title>omlete(admin)</title>
 </head>
 <body>
     <div id="header">

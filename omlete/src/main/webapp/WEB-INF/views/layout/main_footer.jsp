@@ -21,7 +21,7 @@
 	        	<a style="color:black;">고객센터 &nbsp; |</a>
 	        </td>
 			<td>
-				<a href="#" style="font-size:15px; color:black">Omelet@itwill.xyz</a>
+				<a href="#" style="font-size:15px; color:black">omlete@itwill.xyz</a>
 			</td>
 	        <br>
 	        <br>
@@ -47,7 +47,7 @@
             	<img src="<c:url value="/images/logo/omlete_logo.png"/>">
             </a>
          </div>
-         <p>© Copyright 2024 Omelet. All Rights Reserved</p>
+         <p>© Copyright 2024 omlete. All Rights Reserved</p>
          <ul class="social">
             <li>
                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>

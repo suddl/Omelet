@@ -33,7 +33,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="Gurdeep singh osahan">
       <meta name="author" content="Gurdeep singh osahan">
-      <title>Omelet - LMS & Freelance Services Marketplace for Businesses HTML Template</title>
+      <title>omlete - LMS & Freelance Services Marketplace for Businesses HTML Template</title>
       <!-- Favicon Icon -->
       <link rel="icon" type="image/png" href="images/fav.svg">
       <!-- Bootstrap core CSS -->

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Omlete - 탈퇴페이지</title>
+<title>omlete - 탈퇴페이지</title>
 </head>
 <body>
 	<div class="container-resign">

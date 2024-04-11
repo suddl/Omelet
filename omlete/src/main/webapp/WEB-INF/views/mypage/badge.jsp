@@ -116,7 +116,7 @@
 		                                <div>
 		                                	<img src="<c:url value="/images/badge/welcomeBadge.png"/>" class="mybadgeImg">
 		                                </div>
-		                                <h2 class="fs-4 fw-bold">Welcome! OMELET</h2>
+		                                <h2 class="fs-4 fw-bold">Welcome! omlete</h2>
 		                                <p class="mb-0">첫 회원가입을 환영합니다!</p>
 		                            </div>
 		                        </div>
