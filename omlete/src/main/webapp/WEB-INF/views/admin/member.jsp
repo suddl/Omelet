@@ -93,13 +93,17 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                       <a class="modifyContents" href="<c:url value= "/admin/contents_modify"/>">
+   						 <button class="modifyContents" style="float: right;">저장</button></a>                      
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
 							<table id="memberTable" border="1">
 								<thead>
 									<tr style="width: 600px;">
+										<th>
+                    						<input type="checkbox" id="selectAll">
+										</th>									
 										<th>회원 번호</th>
 										<th>아이디</th>
 										<th>이름</th>
@@ -112,17 +116,23 @@
 										<th>닉네임</th>
 									</tr>
 								</thead>
-								<c:forEach var="Member" items="${memberList}">
+								<c:forEach var="member" items="${memberList}">
 								<tbody>								  
 						             <tr>
-							            <td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
+						             	<td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
 								        <td>${member.memberNo}</td>
 								        <td>${member.memberId}</td>
 								        <td>${member.memberName}</td>					 
 							            <td>${member.memberPhone}</td>
 						                <td>${member.memberEmail}</td>
 							            <td>${member.memberLevel}</td>
-						                <td>${member.memberStatus}</td>				
+                                        <td>
+                                        	<select name="memberStatus">
+                                            	<option value="0" ${member.memberStatus == 0 ? 'selected' : ''}>0</option>
+                                                <option value="1" ${member.memberStatus == 1 ? 'selected' : ''}>1</option>
+                                                <option value="2" ${member.memberStatus == 9 ? 'selected' : ''}>9</option>
+                                            </select>
+                                        </td>				
 					   	                <td>${member.memberPoint}</td>				
 							            <td>${member.memberReport}</td>				
 							            <td>${member.memberNickname}</td>				

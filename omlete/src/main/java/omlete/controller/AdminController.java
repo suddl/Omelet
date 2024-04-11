@@ -102,17 +102,17 @@ public class AdminController {
     	contentsService.addContents(contents);
     	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
     	
-    	List<String> contentsImageList=new ArrayList<String>();
+    	List<String> contentsList=new ArrayList<String>();
     	
     	for(MultipartFile multipartFile : uploadFileList) {
-    		String contentsImageName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
-    		File file=new File(uploadDirectory, contentsImageName);
+    		String contentsName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
+    		File file=new File(uploadDirectory, contentsName);
     		multipartFile.transferTo(file);
         
-    		contentsImageList.add(uploadDirectory);
+    		contentsList.add(uploadDirectory);
     	}
     	m.addAttribute("contents", contents);
-    	m.addAttribute("contentsImageList", contentsImageList);
+    	m.addAttribute("contentsList", contentsList);
     	
     	return "redirect:/admin/contents_movie";
     		}
@@ -123,17 +123,17 @@ public class AdminController {
     	contentsService.addContents(contents);
     	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
     	
-    	List<String> contentsImageList=new ArrayList<String>();
+    	List<String> contentsList=new ArrayList<String>();
     	
     	for(MultipartFile multipartFile : uploadFileList) {
-    		String contentsImageName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
-    		File file=new File(uploadDirectory, contentsImageName);
+    		String contentsName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
+    		File file=new File(uploadDirectory, contentsName);
     		multipartFile.transferTo(file);
         
-    		contentsImageList.add(uploadDirectory);
+    		contentsList.add(uploadDirectory);
     	}
     	m.addAttribute("contents", contents);
-    	m.addAttribute("contentsImageList", contentsImageList);
+    	m.addAttribute("contentsImageList", contentsList);
     	
     	return "redirect:/admin/contents_tv";
     		}

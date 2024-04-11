@@ -96,7 +96,8 @@
                      <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3"></div>
-                        							<a class="addContents" href="<c:url value= "/admin/contents_add"/>"><button class="addContents">추가</button></a>
+                        	<a class="addContents" href="<c:url value= "/admin/contents_add_movie"/>"><button class="addContents">추가</button></a>
+                        	<button class="deleteContents" onclick="contentsDelete(${contents.contentsNo };)">삭제</button>
                         <div class="card-body" style= "height: 1000px;">
                         <div class="table-responsive">
                          <form action="<c:url value="/admin/contents_add_movie"/>" method="post" enctype="multipart/form-data">

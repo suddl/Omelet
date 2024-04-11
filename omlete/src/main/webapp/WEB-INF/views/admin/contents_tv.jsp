@@ -95,7 +95,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                         <div class="contentsBtn">
-							<a class="addContents" href="<c:url value= "/admin/contents_add"/>"><button class="addContents">추가</button></a> 
+							<a class="addContents" href="<c:url value= "/admin/contents_add_tv"/>"><button class="addContents">추가</button></a> 
                         	<button class="deleteContents" onclick="contentsDelete(${contents.contentsNo };)">삭제</button>
                         </div>
                         </div>
