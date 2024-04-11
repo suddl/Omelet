@@ -41,6 +41,11 @@ public class ActorsServiceImpl implements ActorsService{
 		if(actors == null) {
 			throw new ContentsNotFoundException("해당 배우가 존재하지 않습니다.");
 		}
+		String front, img;
+		front="https://image.tmdb.org/t/p/original";
+		
+		img=actors.getActorImg();
+		actors.setActorImg(front+img);
 		return actors;
 	}
 
