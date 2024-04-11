@@ -15,7 +15,6 @@
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
-                사이트 관리
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">

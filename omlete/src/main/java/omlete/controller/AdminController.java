@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,11 +29,12 @@ import omlete.service.ReviewService;
  
 @Controller
 @RequestMapping("/admin")
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class AdminController {
     
-	private MemberService memberService;
-    private ContentsService contentsService;
+	private final MemberService memberService;
+    private final ContentsService contentsService;
+    @Autowired
     private WebApplicationContext context;
     //private ReviewService reviewService;
     
@@ -62,19 +64,23 @@ public class AdminController {
     }
     */
     
-    // 작품 관리(영화)
+ // 작품 관리(영화)
     @RequestMapping(value = "/contents_movie", method = RequestMethod.GET)
-    //public String movieList(Model m) {
-    	public String movieList() {
-       // m.addAttribute("movieList", contentsService.getContentsListByType("영화"));
+    public String movieList(Model m) {
+        List<Contents> movieList = contentsService.getContentsListByType("영화");
+        if (movieList != null) {
+            m.addAttribute("movieList", movieList);
+        } else {
+            System.out.println("영화 정보를 가져올 수 없습니다.");
+            m.addAttribute("movieList", new ArrayList<Contents>());
+        }
         return "admin/contents_movie";
     }
     
     // 작품 관리(TV)
     @RequestMapping(value = "/contents_tv", method = RequestMethod.GET)
-    //public String tvList(Model m) {
-    	public String tvList() {
-       // m.addAttribute("tvList", contentsService.getContentsListByType("TV"));
+    public String tvList(Model m) {
+        m.addAttribute("tvList", contentsService.getContentsListByType("TV"));
         return "admin/contents_tv";
     }
     

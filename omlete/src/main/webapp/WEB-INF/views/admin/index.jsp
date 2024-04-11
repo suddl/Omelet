@@ -13,8 +13,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         
             <!-- Heading -->
-            <div class="sidebar-heading">
-                사이트 관리
+            <div class="sidebar-heading">           
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -377,7 +376,7 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="omlete/img/undraw_posting_photo.svg" alt="...">
+                                            src="../images/undraw_posting_photo.svg" alt="...">
                                     </div>
                                     <a target="_blank" rel="nofollow" href="#">이벤트 목록 보기 &rarr;</a>
                                 </div>

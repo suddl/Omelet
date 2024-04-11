@@ -1,5 +1,6 @@
 package omlete.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -97,7 +98,19 @@ public class ContentsServiceImpl implements ContentsService{
 
 	@Override
 	public List<Contents> getMovieList() {
-		return contentsDAO.selectContentsListByType("영화");
+	    List<Contents> movieList = contentsDAO.selectContentsListByType("영화");
+	    if (movieList == null) {
+	        // DAO 메서드가 null을 반환한 경우에 대한 처리
+	        return Collections.emptyList(); // 빈 리스트 반환 또는 예외 처리 등
+	    } else {
+	        // 콘텐츠 목록에 null 항목이 포함되어 있는지 확인하고 필요한 처리 수행
+	        for (Contents content : movieList) {
+	            if (content == null) {
+	                // 콘텐츠가 null인 경우에 대한 처리
+	            }
+	        }
+	        return movieList;
+	    }
 	}
 
 	@Override
