@@ -8,10 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import omlete.dao.ActorsDAO;
 import omlete.dto.Actors;
-import omlete.dto.Contents;
-import omlete.exception.ContentsNotFoundException;
+import omlete.exception.ActorsNotFoundException;
 import omlete.exception.ExistsActorsException;
-import omlete.exception.ExistsContentsException;
+
 
 
 
@@ -39,7 +38,7 @@ public class ActorsServiceImpl implements ActorsService{
 	public Actors getActors(int actorNo) {
 		Actors actors = actorsDAO.selectActors(actorNo);
 		if(actors == null) {
-			throw new ContentsNotFoundException("해당 배우가 존재하지 않습니다.");
+			throw new ActorsNotFoundException("해당 배우가 존재하지 않습니다.");
 		}
 		String front, img;
 		front="https://image.tmdb.org/t/p/original";

@@ -7,8 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dao.ActorContentsDAO;
-
 import omlete.dto.ActorContents;
+import omlete.exception.ExistsActorContentsException;
+import omlete.exception.ExistsActorsException;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +19,9 @@ public class ActorContentsServiceImpl implements ActorContentsService{
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void addActorContents(ActorContents actorC) {
-		
+		if(actorCDAO.selectActorContents(actorC.getActorContentsId()) != null) {
+			throw new ExistsActorContentsException("이미 존재하는 ActorContents입니다.", actorC);
+		}
 		actorCDAO.insertActorContents(actorC);
 	}
 
