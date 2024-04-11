@@ -4,48 +4,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>omlete(Admin)</title>
-
-    <!-- Custom fonts for this template -->
-    <link href="vendor_admin/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/admin.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor_admin/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-</head>
-
 <body id="page-top">
 
-    <!-- Page Wrapper -->
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value= "/admin/index"/>">
-                <div class="sidebar-brand-icon">
-                    <%--<i class="fas fa-laugh-wink"></i>--%>
-                    <img id=logo src="img/omlete.png" width=140px;>
-                </div>
-                <div class="sidebar-brand-text mx-3"><sup></sup></div>
-            </a>
-            <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -60,8 +26,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<c:url value="/admin/contents/movie"/>?contentsType=%EC%98%81%ED%99%94">영화</a>
-                        <a class="collapse-item" href="<c:url value="/admin/contents/tv"/>?contentsType=TV">TV</a>
+                        <a class="collapse-item" href="<c:url value="/admin/contents_movie"/>">영화</a>
+                        <a class="collapse-item" href="<c:url value="/admin/contents_tv"/>">TV</a>
                     </div>
                 </div>
             </li>
@@ -131,85 +97,90 @@
                      <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3"></div>
+                        							<a class="addContents" href="<c:url value= "/admin/contents_add"/>"><button class="addContents">추가</button></a>
                         <div class="card-body" style= "height: 1000px;">
                         <div class="table-responsive">
+                         <form action="<c:url value="/admin/contents_add_movie"/>" method="post" enctype="multipart/form-data">
 							<table id="contentsAddTable">
 									<tr>
 										<th>타입</th>
 										<td>
-											<select name="contentsType" id="contentsType" onchange="typeChanege(this)" required>
-												<option value="">--선택--</option>
-												<option value="movie">영화</option>
-												<option value="tv">TV</option>
-											</select>
-										</td>
-									</tr>
-									<tr>
-										<th>제목(영문)</th>
-										<td>
-											<input type="text" name="contentsEname" id="contentsEname" size="30" required>
+											<p>영화</p>
 										</td>
 									</tr>
 									<tr>
 										<th>제목</th>
 										<td>
-											<input type="text" name="contentsName" id="contentsName" size="30" required>
+											<input type="text" name="contentsOname" id="contentsOname" value="${contents.contentsOname}" size="30" required>
+										</td>
+									</tr>
+									<tr>
+										<th>제목(번역)</th>
+										<td>
+											<input type="text" name="contentTname" id="contentTname" value="${contents.contentsTname}" size="30" required>
 										</td>
 									</tr>
 									<tr>
 										<th>예고편/트레일러</th>
 										<td>
-											<input type="url" name="trailer" id="trailer" size="30">
+											<input type="url" name="trailer" id="trailer" value="${contents.contentsTrailer}" size="30">
 										</td>
 									</tr>
 									<tr>
 										<th>포스터</th>
 										<td>
-											<input type="file" name="poster" id="poster" required>
+											<input type="file" name="poster" id="poster" required value="${contents.contentsPoseter}">
 										</td>
 									</tr>
+									<tr>
+										<th>스틸컷1</th>
+										<td>
+											<input type="file" name="photo1" id="photo1" value="${contents.contentsPhoto1}">
+										</td>
+									</tr>
+									<tr>
+										<th>스틸컷2</th>
+										<td>
+											<input type="file" name="photo2" id="photo2" value="${contents.contentsPhoto2}">
+										</td>
+									</tr>
+									<tr>
+										<th>스틸컷3</th>
+										<td>
+											<input type="file" name="photo3" id="photo3" value="${contents.contentsPhoto3}">
+										</td>
+									</tr>
+									<tr>
+
 									<tr>
 										<th>출연진</th>
 										<td>
-											<input type="text" name="contentsCast" id="contentsCast" size="30" required>
+											<input type="text" name="contentsCast" id="contentsCast" value="${actor.actorName}" size="30" required>
 										</td>
 									</tr>
 									<tr>
-										<th>제작진</th>
+										<th>작가</th>
 										<td>
-											<input type="text" name="contentsStaff" id="contentsStaff" size="30" required>
+											<input type="text" name="contentsStaff" id="contentsStaff" value="${contents.contentsStaff}" size="30" required>
 										</td>
-									</tr>
-									<tr>
-										<th>간단 소개</th>
-										<td>
-											<textarea rows="5" cols="80" maxlength="100"></textarea>
-										</td>
-									</tr>
+									</tr>							
+																		
 									<tr>
 										<th>내용</th>
 										<td>
-											<textarea rows="5" cols="80" maxlength="300"></textarea>
+											<textarea rows="5" cols="80"  maxlength="300">${contents.contentsOverview}</textarea>
 										</td>
 									</tr>
 									<tr>
 										<th>연령 등급</th>
 										<td>
 											<select name="contentsRating" id="contentsRating" onchange="ratingChange(this)" required>
-												<option value="">--선택--</option>
-												<%--<%if(contentsType.equals("movie")) { --%>
-												<option value="all">전체 관람가</option>
-												<option value="twelve">12세 이상 관람가</option>
-												<option value="fifthteen">15세 이상 관람가</option>
-												<option value="adult">청소년 관람 불가</option>
-												<option value="limited">제한 관람가</option>
-												<%--<% } else { --%>
-												<option value="all">전체 관람가</option>
-												<option value="seven">7세 시청가</option>
-												<option value="twelve">12세 이상 시청가</option>
-												<option value="fifthteen">15세 이상 시청가</option>
-												<option value="adult">19세 이상 시청가</option>												
-												<%--<% } --%>
+												<option value="" selected>--선택--</option>
+												<option value="all" ${contents.contentsRating == 'all' ? 'selected' : ''}>전체 관람가</option>
+												<option value="twelve" ${contents.contentsRating == 'twelve' ? 'selected' : ''}>12세 이상 관람가</option>
+												<option value="fifthteen" ${contents.contentsRating == 'fifthteen' ? 'selected' : ''}>15세 이상 관람가</option>
+												<option value="adult" ${contents.contentsRating == 'adult' ? 'selected' : ''}>>청소년 관람 불가</option>
+												<option value="limited" ${contents.contentsRating == 'limited' ? 'selected' : ''}>>제한 관람가</option>
 											</select>
 										</td>
 									</tr>
@@ -217,97 +188,62 @@
 										<th>장르</th>
 										<td>
 						 				   <select name="contentsGenre" id="contentsGenre" onchange="genreChanege(this)" required>
-												<option value="">--선택--</option>
-												<%--<%if(contentsType.equlas("movie")) { --%>
-												<option value="action">액션</option>
-												<option value="comedy">코미디</option>
-												<option value="romance">로맨스</option>
-												<option value="thriller">스릴러</option>
-												<option value="horror">공포</option>
-												<option value="fantasy">SF/판타지</option>
-												<option value="animation">애니메이션</option>
-												<%--<% } else { --%>
-												<option value="drama">드라마</option>
-												<option value="documentary">다큐멘터리</option>
-												<option value="entertainment">예능</option>
-												<%--<% } --%>
-											</select>
-										<%--<%if(contentsType.equals("tv")) { --%>
-										</td>
-									</tr>
-									<tr>
-										<th>방송사</th>
-										<td>
-											<select name="broadcast" id="broadcast" onchange="brodcastChange(this)" required>
-												<option value="">--선택--</option>
-												<option value="sbs">SBS</option>
-												<option value="kbs">KBS</option>
-												<option value="mbc">MBC</option>
-												<option value="JTBC">JTBC</option>
-												<option value="netflix">Netflix</option>
-												<option value="tving">TVING</option>
-												<option value="coupang">쿠팡플레이</option>
-												<option value="disney">Disney+</option>
+												<option value="" selected>--선택--</option>
+												<option value="action" ${contents.contentsGenre == 'action' ? 'selected' : ''}>액션</option>
+												<option value="comedy" ${contents.contentsGenre == 'comedy' ? 'selected' : ''}>코미디</option>
+												<option value="romance" ${contents.contentsGenre == 'romance' ? 'selected' : ''}>로맨스</option>
+												<option value="thriller" ${contents.contentsGenre == 'thriller' ? 'selected' : ''}>스릴러</option>
+												<option value="horror" ${contents.contentsGenre == 'horror' ? 'selected' : ''}>공포</option>
+												<option value="fantasy" ${contents.contentsGenre == 'fantasy' ? 'selected' : ''}>SF/판타지</option>
+												<option value="animation" ${contents.contentsGenre == 'animation' ? 'selected' : ''}>애니메이션</option>
 											</select>
 										</td>
-									</tr>
-									<%--if(contentsType.equals("tv") {) --%>
+									</tr>									
 									<tr>
-										<th>방송사 로고</th>
-										<td>
-											<input type="file" name="brodcastLogo" id="poster" required>
-										</td>
-									</tr>
-									<%-- } --%>
-									<tr>
-										<%--<% } --%>
 										<th>국가</th>
 										<td>
-											<input type="text" name="country" id="country" size="15" required>
+											<input type="text" name="country" id="country" value="${contents.contentsCountries}" size="15" required>
 										</td>
 									</tr>
 									<tr>
 										<th>감독</th>
 										<td>
-											<input type="text" name="contentsDirector" id="contentsDirector" size="15" required>
+											<input type="text" name="contentsDirector" id="contentsDirector" value="${contents.contentsDirector}" size="15" required>
 										</td>
-									</tr>
-								
+									</tr>								
 									<tr>
 										<th>개봉일</th>
 										<td>
-											<input type="text" name="startDate" id="startDate" size="15" required>
+											<input type="text" name="startDate" id="startDate" value="${contents.contentsStartdate}" size="15" required>
 										</td>
 									</tr>
-										<%--<%if(contentsType.equals("movie")) { --%>
 									<tr>
-										<th>총 시간</th>
+										<th>종영일</th>
 										<td>
-											<input type="text" name="runningTime" id="runningTime" size="15" required>
+											<input type="text" name="endDate" id="endDate" value="${contents.contentsEnddate}" size="15" required>
 										</td>
-									</tr>
-										<%--<% } --%>
-										<%--<%if(contentsType.equals("tv") {) --%>
-									<tr>
-										<th>에피소드</th>
-										<td>
-											<input type="text" name="episode" id="episode" size="15">
-										</td>
-									</tr>
+									</tr>							
 									<tr>
 										<th>시즌</th>
 										<td>
-											<input type="text" name="season" id="season" size="15">
+											<input type="text" name="season" id="season" value="${contents.contentsSeasons}" size="15">
 										</td>
 									</tr>
 									<tr>
 										<th>상영시간</th>
 										<td>
-											<input type="text" name="runTime" id="runTime" size="15" required>
+											<input type="text" name="runTime" id="runTime" value="${contents.contentsRuntime}" size="15" required>
 										</td>
 									</tr>
 									<tr>
+										<th>태그</th>
+										<td>
+											<input type="text" name="tagline" id="tagline" value="${contents.contentsTagline}" size="15" required>
+										</td>
+									</tr>
 								</table>
+								</form>
+								<button type="submit">저장</button>
                             </div>
                         </div>
                     </div>
@@ -341,28 +277,12 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.html">logout</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor_admin/jquery/jquery.min.js"></script>
-    <script src="vendor_admin/bootstrap/js_admin/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor_admin/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/admin2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor_admin/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor_admin/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+	
 
 </body>
 

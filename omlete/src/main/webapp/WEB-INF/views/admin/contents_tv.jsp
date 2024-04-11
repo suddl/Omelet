@@ -11,7 +11,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
+        
             <!-- Heading -->
             <div class="sidebar-heading">
                 사이트 관리
@@ -33,10 +33,11 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <hr class="sidebar-divider">
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/admin/member"/>">                    
-                	<i class="fas fa-user"></i>
+                <a class="nav-link" href="<c:url value="/admin/member"/>">
+                    <i class="fas fa-user"></i>
                     <span>회원 관리</span></a>
             </li>            
+
    			<hr class="sidebar-divider">
    			
             <!-- Nav Item - Pages Collapse Menu -->
@@ -84,50 +85,62 @@
 
             <!-- Main Content -->
             <div id="content">
-            
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
+                    <h1 class="h3 mb-2 text-gray-800">작품 관리</h1>
  
-                    <!-- DataTales Example -->
+                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <div class="contentsBtn">
+							<a class="addContents" href="<c:url value= "/admin/contents_add"/>"><button class="addContents">추가</button></a> 
+                        	<button class="deleteContents" onclick="contentsDelete(${contents.contentsNo };)">삭제</button>
+                        </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
 							<table id="memberTable" border="1">
 								<thead>
 									<tr style="width: 600px;">
-										<th>회원 번호</th>
-										<th>아이디</th>
-										<th>이름</th>
-										<th>전화번호</th>									
-										<th>이메일</th>
-										<th>등급</th>
-										<th>상태</th>
-										<th>포인트</th>
-										<th>신고 수치</th>
-										<th>닉네임</th>
+										<th>
+                    						<input type="checkbox" id="selectAll">
+										</th>
+										<th>번호</th>
+										<th>타입</th>
+										<th>제목</th>
+										<th>출연진</th>
+										<th>PD</th>
+										<th>연령 등급</th>
+										<th>장르</th>
+										<th>방송사</th>
+										<th>국가</th>
+										<th>총 시간</th>
+										<th>에피소드</th>
+										<th>시즌</th>										
+										<th>평균별점</th>
 									</tr>
 								</thead>
 								<tbody>								  
-						             <tr>
-							            <td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
-								        <td>${member.memberNo}</td>
-								        <td>${member.memberId}</td>
-								        <td>${member.memberName}</td>					 
-							            <td>${member.memberPhone}</td>
-						                <td>${member.memberEmail}</td>
-							            <td>${member.memberLevel}</td>
-						                <td>${member.memberStatus}</td>				
-					   	                <td>${member.memberPoint}</td>				
-							            <td>${member.memberReport}</td>				
-							            <td>${member.memberNickname}</td>				
-								      </tr>
-								 </tbody>									
+								    <tr>
+								        <td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
+								        <td>${contents.contentsNo}</td>
+						                <td>${contents.contentsType}</td>
+						                <td>${contents.contentsOname}</td>
+						                <td>${actors.actorName}</td>
+						                <td>${contents.contentsDirector}</td>
+								        <td>${contents.contentsRating}</td>
+							            <td>${contents.contentsGenre}</td>
+						                <td>${contents.contentsNetwork}</td>
+						                <td>${contents.contentsCountries}</td>
+						                <td>${contents.contentsRunttime}</td>
+						                <td>${contents.contentsEpisodes}</td>
+						                <td>${contents.contentsSeasons}</td>
+						                <td>${contents.contentsAvgstar}</td>
+						            </tr>
+			     			    </tbody>
 							</table>
                             </div>
                         </div>
@@ -168,6 +181,33 @@
             </div>
         </div>
     </div>
+	<script type="text/javascript">
+	function contentsDelete(contentsNo) {
+		if(confirm("자료를 정말 삭제하시겠습니까?")) {
+			location.href="<c:url value="contents_delete"/>?contetsNo="+contentsNo;
+		}
+	}
+	
+    function getCheckedContentsNo() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var checkedContentsNoArray = [];
+
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                var contentsNo = checkbox.parentNode.dataset.contentsno;
+                checkedContentsNoArray.push(contentsNo);
+            }
+        });
+        return checkedContentsNoArray;
+    }
+    
+    document.getElementById("selectAll").addEventListener("change", function() {
+        var checkboxes = document.querySelectorAll("#memberTable tbody input[type='checkbox']");
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = this.checked;
+        });
+    });
+	</script>
 </body>
 
 </html>
