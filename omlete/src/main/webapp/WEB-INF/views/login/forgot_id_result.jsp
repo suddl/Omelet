@@ -5,7 +5,7 @@
 <html>
    <body>
        <div class="bg-white">
-        <div class="container">
+        <div class="container"> 
             <div class="row justify-content-center align-items-center d-flex vh-100">
                 <div class="col-lg-4 mx-auto">
                     <div class="osahan-login py-4">
