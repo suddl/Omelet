@@ -7,7 +7,7 @@
 		</selectKey>
 		insert into review values(#{reviewNo}, #{reviewKind}, #{reviewMember}
 			, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown}, #{reviewWork}
-			, #{reviewSpoiler}, #{reviewStar})
+			, #{reviewSpoiler}, #{reviewStar}, #{review_contents_type})
 	</insert>
 		
 	<delete id="deleteReview">
@@ -29,13 +29,16 @@
 			<if test="star != null or star != ''">
 				review_star = #{reviewStar}
 			</if>
+			<if test="reviewContentsType != null and reviewContentsType != ''">
+				review_contents_type = #{reviewContentsType}
+			</if>
 		</set>
 		where review_no = #{reviewNo}
 	</update>
 	
 	<select id="selectReview" resultType="review">
 		select review_no, review_kind, review_member, review_content, review_date
-			, review_up, review_down, review_work, review_spoiler, review_star
+			, review_up, review_down, review_work, review_spoiler, review_star,review_contents_type
 			from review where review_no = #{reviewNo}
 	</select>
 	
@@ -55,7 +58,7 @@
 	<select id="selectReviewList" resultType="review">
 		select * from (select rownum rn, temp.* from (select review_no, review_kind
 			, review_member, review_content, review_date, review_up, review_down
-			, review_work, review_spoiler, review_star from review 
+			, review_work, review_spoiler, review_star,review_contents_type from review 
 			<if test="review_kind != 0">
 				where review_kind = #{reviewKind}
 			</if>
@@ -63,4 +66,16 @@
 			where rn between #{startRow} and #{endRow}
 	</select>
 	
+	<!-- ================================================================================================================= -->
+	<select id="selectReviewCountMember" resultType="int">
+		select count(*) from review where member_no=#{memberNo}
+	</select>
+	
+	<select id="selectReviewCountTotalMovie" resultType="int">
+		select count(*) from review where review_contents_type='영화'
+	</select>
+	
+	<select id="selectReviewCountTotalTv" resultType="int">
+		select count(*) from review where review_contents_type='TV'
+	</select>
 </mapper>

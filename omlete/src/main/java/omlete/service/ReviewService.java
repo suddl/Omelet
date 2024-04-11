@@ -10,4 +10,9 @@ public interface ReviewService {
 	void removeReview(int reviewNo);
 	Review getReview(int reviewNo); //Review 검색
 	Map<String, Object> getReviewList(int pageNum, int reviewKind); //명대사/짧은글/긴글
+	
+	// 마이페이지
+	int getMemberReviewCount(int reviewNo);
+	int selectReviewCountTotalMovie();
+	int selectReviewCountTotalTv();
 }

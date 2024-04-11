@@ -118,6 +118,7 @@
            </div>
        </div>
    </div>
+   <%-- -->
    
    <script type="text/javascript">
 	$(".alertmsg").hide();
@@ -251,5 +252,6 @@
 	});
 
 </script>
+ --%>
 </body>
 </html>

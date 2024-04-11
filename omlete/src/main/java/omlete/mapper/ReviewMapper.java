@@ -12,4 +12,9 @@ public interface ReviewMapper {
 	Review selectReview(int reviewNo);
 	int selectReviewCount();
 	List<Review> selectReviewList(Map<String, Object> map);
+	
+	//마이페이지
+	int selectReviewCountMember(int reviewNo);
+	int selectReviewCountTotalMovie();
+	int selectReviewCountTotalTv();
 }

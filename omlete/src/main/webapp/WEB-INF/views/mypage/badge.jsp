@@ -139,9 +139,18 @@
                           <div class="col-lg-6 col-xxl-4 mb-5">
                               <div class="card bg-light border-0 h-100">
                                   <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                      <div>
-                                         <img src="<c:url value="/images/badge/reviewKingBadge.png"/>" class="mybadgeImg">
-                                      </div>
+                                      <c:choose>
+	                                      <c:when test="${meberReviewCount >=200 }">
+		                                      <div>
+		                                         <img src="<c:url value="/images/badge/reviewKingBadge.png"/>" class="mybadgeImg">
+		                                      </div>
+	                                      </c:when>
+	                                      <c:otherwise>
+	                                      	  <div>
+		                                         <img src="<c:url value="/images/badge/nobadge.png"/>" class="mybadgeImg">
+		                                      </div>
+	                                      </c:otherwise>
+                                      </c:choose>
                                       <h2 class="fs-4 fw-bold">ReviewKing</h2>
                                       <p class="mb-0">총 리뷰를 200개 이상 작성하신<br>당신은 진정한 ReviewKing!</p>
                                   </div>
@@ -152,9 +161,18 @@
                           <div class="col-lg-6 col-xxl-4 mb-5">
                               <div class="card bg-light border-0 h-100">
                                   <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                      <div>
-                                         <img src="<c:url value="/images/badge/movieKingBadge.png"/>" class="mybadgeImg">
-                                      </div>
+                                  	  <c:choose>
+	                                      <c:when test="${memberTotalMovieReview >=100 }">
+		                                      <div>
+		                                          <img src="<c:url value="/images/badge/movieKingBadge.png"/>" class="mybadgeImg">
+		                                      </div>
+	                                      </c:when>
+	                                      <c:otherwise>
+	                                      	  <div>
+		                                         <img src="<c:url value="/images/badge/nobadge.png"/>" class="mybadgeImg">
+		                                      </div>
+	                                      </c:otherwise>
+                                      </c:choose>
                                       <h2 class="fs-4 fw-bold">당신은 MovieKing!</h2>
                                       <p class="mb-0">영화 작품 리뷰를 100개 이상 작성하신<br> 당신은 진정한 MovieKing! </p>
                                   </div>
@@ -164,9 +182,18 @@
                           <div class="col-lg-6 col-xxl-4 mb-5">
                               <div class="card bg-light border-0 h-100">
                                   <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                      <div>
-                                         <img src="<c:url value="/images/badge/harrypotterBadge.png"/>" class="mybadgeImg">
-                                      </div>
+                                  	  <c:choose>
+	                                      <c:when test="${memberTotalMovieReview >=200 }">
+		                                      <div>
+		                                          <img src="<c:url value="/images/badge/harrypotterBadge.png"/>" class="mybadgeImg">
+		                                      </div>
+	                                      </c:when>
+	                                      <c:otherwise>
+	                                      	  <div>
+		                                         <img src="<c:url value="/images/badge/nobadge.png"/>" class="mybadgeImg">
+		                                      </div>
+	                                      </c:otherwise>
+                                      </c:choose>
                                       <h2 class="fs-4 fw-bold">호그와트 입학 준비 완료?!</h2>
                                       <p class="mb-0">해리포터 영화 리뷰를 다 작성하므로써 <br>호그와트 입학 준비 완료!</p>
                                   </div>
@@ -177,9 +204,18 @@
                           <div class="col-lg-6 col-xxl-4 mb-5">
                               <div class="card bg-light border-0 h-100">
                                   <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                      <div>
-                                         <img src="<c:url value="/images/badge/tvmaniaBadge.png"/>" class="mybadgeImg">
-                                      </div>
+                                  	  <c:choose>
+	                                      <c:when test="${memberTotalTVReview >=200 }">
+		                                      <div>
+		                                          <img src="<c:url value="/images/badge/tvmaniaBadge.png"/>" class="mybadgeImg">
+		                                      </div>
+	                                      </c:when>
+	                                      <c:otherwise>
+	                                      	  <div>
+		                                         <img src="<c:url value="/images/badge/nobadge.png"/>" class="mybadgeImg">
+		                                      </div>
+	                                      </c:otherwise>
+                                      </c:choose>
                                       <h2 class="fs-4 fw-bold">TV Mania</h2>
                                       <p class="mb-0">tv 작품 리뷰를 100개 이상 작성하신<br>당신은 진정한 TV Mania!</p>
                                   </div>

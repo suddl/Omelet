@@ -5,7 +5,6 @@ package omlete.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -104,8 +103,6 @@ public class MyPageController {
 	@RequestMapping(value = "/resign")
 	public String myPageResign(HttpSession session) {
 		Integer loginMemberNo = (Integer)session.getAttribute("memberNo");
-		System.out.println("(Integer)session.getAttribute(\"memberNo\") =" + (Integer)session.getAttribute("memberNo") );
-		System.out.println("loginMemberNo =" + loginMemberNo );
 		if (loginMemberNo != null) {
 	        memberService.modifyMemberResign(loginMemberNo);
 	        session.invalidate(); 

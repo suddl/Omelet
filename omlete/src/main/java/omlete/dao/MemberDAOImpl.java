@@ -16,7 +16,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public int insertMember(Member member) {
-		System.out.println("insertMember = "+member);
 		return sqlSession.getMapper(MemberMapper.class).insertMember(member);
 	}
 	

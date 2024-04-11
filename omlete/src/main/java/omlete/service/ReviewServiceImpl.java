@@ -56,4 +56,22 @@ public class ReviewServiceImpl implements ReviewService {
 		return resultMap;
 	}
 
+	@Override
+	public int getMemberReviewCount(int reviewNo) {
+		int memberReviewCount=reviewDAO.selectReviewCountMember(reviewNo);
+		return memberReviewCount;
+	}
+
+	@Override
+	public int selectReviewCountTotalMovie() {
+		int memberTotalMovieReview=reviewDAO.selectReviewCountTotalMovie();
+		return memberTotalMovieReview;
+	}
+
+	@Override
+	public int selectReviewCountTotalTv() {
+		int memberTotalTVReview=reviewDAO.selectReviewCountTotalTv();
+		return memberTotalTVReview;
+	}
+
 }
