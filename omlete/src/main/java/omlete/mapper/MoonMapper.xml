@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="omlete.mapper.MoonMapper">
+
+	<!-- moon 게시글 삽입 -->
+	<insert id="insertMoon">
+		<selectKey resultType="int" keyProperty="moonNo" order="BEFORE">
+			select moon_seq.nextval from dual
+		</selectKey>
+		insert into moon values(#{moonNo},#{moonMember},#{moonTitle},#{moonContent},#{moonStatus},#{moonRe}, to_date(#{moonDate},'RR/MM/DD'))		
+	</insert>
+	
+	
+	
+	<!-- 글번호를 전달받아 moon 게시글 검색 -->		
+	<select id="selectMoon" resultType="Moon">
+		select * from moon where moon_no=#{moonNo}
+	</select>
+	
+	<!-- moon 게시글 총개수 -->	
+	<select id="selectMoonCount" resultType="int">
+		select count(*) from moon
+	</select>
+	
+	<!-- 최신글순으로 정렬하여 원하는 글범위의 moon list 검색 -->
+	<select id="selectMoonList" resultType="Moon">
+		select * from (select rownum rn, moonlist.* from (select 
+		moon_no, moon_member, moon_title, moon_content,	moon_status, moon_re, moon_date
+			from moon order by moon_no desc) moonlist) where rn between #{startRow} and #{endRow}
+	</select>
+</mapper>
+
