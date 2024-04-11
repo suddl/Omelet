@@ -1,51 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>      
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Tables</title>
-
-    <!-- Custom fonts for this template -->
-    <link href="vendor_admin/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/admin.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor_admin/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-</head>
-
 <body id="page-top">
 
-    <!-- Page Wrapper -->
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value= "/admin/index"/>">
-                <div class="sidebar-brand-icon">
-                    <%--<i class="fas fa-laugh-wink"></i>--%>
-                    <img id=logo src="img/omlete.png" width=140px;>
-                </div>
-                <div class="sidebar-brand-text mx-3"><sup></sup></div>
-            </a>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+        
             <!-- Heading -->
             <div class="sidebar-heading">
                 사이트 관리
@@ -59,8 +25,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item"  href="<c:url value="/admin/contents/movie"/>?contentsType=%EC%98%81%ED%99%94">영화</a>
-                        <a class="collapse-item" href="<c:url value="/admin/contents/tv"/>?contentsType=TV">TV</a>
+                        <a class="collapse-item" href="<c:url value="/admin/contents_movie"/>">영화</a>
+                        <a class="collapse-item" href="<c:url value="/admin/contents_tv"/>">TV</a>
                     </div>
                 </div>
             </li>
@@ -72,9 +38,8 @@
                     <span>회원 관리</span></a>
             </li>            
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
+   			<hr class="sidebar-divider">
+   			
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -131,8 +96,8 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                         <div class="contentsBtn">
-							<a class="addContents" href="<c:url value= "/admin/contents_add"/>">추가</a> 
-                        	<button class="deleteContents">삭제</button>
+							<a class="addContents" href="<c:url value= "/admin/contents_add"/>"><button class="addContents">추가</button></a> 
+                        	<button class="deleteContents" onclick="contentsDelete(${contents.contentsNo };)">삭제</button>
                         </div>
                         </div>
                         <div class="card-body">
@@ -141,7 +106,7 @@
 								<thead>
 									<tr style="width: 600px;">
 										<th>
-                    						<input type="checkbox">
+                    						<input type="checkbox" id="selectAll">
 										</th>
 										<th>번호</th>
 										<th>타입</th>
@@ -150,15 +115,30 @@
 										<th>감독</th>
 										<th>연령 등급</th>
 										<th>장르</th>
-										<th>방송사</th>
 										<th>국가</th>
 										<th>개봉일</th>
-										<th>총 시간</th>
-										<th>평균별점</th>
 										<th>종영일</th>
+										<th>평균별점</th>
 										<th>상영시간</th>
 									</tr>
 								</thead>
+								<tbody>								  
+						            <tr>
+						                <td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
+						                <td>${contents.contentsNo}</td>
+						                <td>${contents.contentsType}</td>
+						                <td>${contents.contentsOname}</td>
+						                <td>${actors.actorName}</td>
+						                <td>${contents.contentsDirector}</td>
+						                <td>${contents.contentsRating}</td>
+						                <td>${contents.contentsGenre}</td>								                
+						                <td>${contents.contentsCountries}</td>
+						                <td>${contents.contentsStartdate}</td>
+						                <td>${contents.contentsEnddate}</td>
+						                <td>${contents.contentsAvgstar}</td>
+						                <td>${contents.contentsRunttime}</td>								             
+						            </tr>
+							    </tbody>					
 							</table>
                             </div>
                         </div>
@@ -199,23 +179,34 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+		function contentsDelete(contentsNo) {
+		if(confirm("자료를 정말 삭제하시겠습니까?")) {
+			location.href="<c:url value="contents_delete"/>?contetsNo="+contentsNo;
+    </script>
+		}
+	}
+	
+    function getCheckedContentsNo() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var checkedContentsNoArray = [];
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor_admin/jquery/jquery.min.js"></script>
-    <script src="vendor_admin/bootstrap/js_admin/bootstrap.bundle.min.js"></script>
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                var contentsNo = checkbox.parentNode.dataset.contentsno;
+                checkedContentsNoArray.push(contentsNo);
+            }
+        });
+        return checkedContentsNoArray;
+    }
+    
+    document.getElementById("selectAll").addEventListener("change", function() {
+        var checkboxes = document.querySelectorAll("#memberTable tbody input[type='checkbox']");
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = this.checked;
+        });
+    });
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor_admin/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/admin2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor_admin/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor_admin/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
 </body>
 
 </html>

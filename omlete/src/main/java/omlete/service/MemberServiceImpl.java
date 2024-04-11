@@ -156,10 +156,6 @@ public List<Member> getMemberList() {
 	return memberDAO.selectMemberList();
 }
 
-@Override
-public List<Member> getReportedMemberList() {
-	return memberDAO.selectReportedMemberList();
-}
 
 @Override
 public void modifyMeberStatus(int memberStatus) {
@@ -167,8 +163,14 @@ public void modifyMeberStatus(int memberStatus) {
 }
 
 @Override
+public List<Member> getReportedMemberList() {
+	return memberDAO.selectReportedMemberList();
+}
+
+@Override
 public void pwModifyMember(Member member) {
 	// TODO Auto-generated method stub
 	
 }
+
 }

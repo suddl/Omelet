@@ -12,8 +12,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,22 +63,36 @@ public class AdminController {
     */
     
     // 작품 관리(영화)
-    @RequestMapping(value = "/contents/movie", method = RequestMethod.GET)
-    public String movieList(Model m) {
-        m.addAttribute("movieList", contentsService.getContentsListByType("영화"));
-        return "admin/contents/movie";
+    @RequestMapping(value = "/contents_movie", method = RequestMethod.GET)
+    //public String movieList(Model m) {
+    	public String movieList() {
+       // m.addAttribute("movieList", contentsService.getContentsListByType("영화"));
+        return "admin/contents_movie";
     }
     
     // 작품 관리(TV)
-    @RequestMapping(value = "/contents/tv", method = RequestMethod.GET)
-    public String tvList(Model m) {
-        m.addAttribute("tvList", contentsService.getContentsListByType("TV"));
-        return "admin/contents/tv";
+    @RequestMapping(value = "/contents_tv", method = RequestMethod.GET)
+    //public String tvList(Model m) {
+    	public String tvList() {
+       // m.addAttribute("tvList", contentsService.getContentsListByType("TV"));
+        return "admin/contents_tv";
     }
     
-    // 작품 추가
-    @RequestMapping(value = "/contents_add", method = RequestMethod.POST)
-    public String contentsAdd(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList,  Model m ) throws IllegalStateException, IOException {
+    //작품 추가(영화)
+    @RequestMapping(value = "/contents_add_movie", method = RequestMethod.GET)
+    public String movieAdd() { 
+    	return "admin/contents_add_movie";
+    }
+    
+    //작품 추가(tv)
+    @RequestMapping(value = "/contents_add_tv", method = RequestMethod.GET)
+    public String tvAdd() {
+    	return "admin/contents_add_tv";
+    }
+    
+    // 작품 추가(영화)
+    @RequestMapping(value = "/contents_add_movie", method = RequestMethod.POST)
+    public String movieAdd(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList,  Model m ) throws IllegalStateException, IOException {
     	contentsService.addContents(contents);
     	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
     	
@@ -96,19 +108,14 @@ public class AdminController {
     	m.addAttribute("contents", contents);
     	m.addAttribute("contentsImageList", contentsImageList);
     	
-    	String contentsType = contents.getContentsType();
-    	if(contentsType.equals("영화")) {
-        return "redirect:/admin/contents/movie";
-    		} else {
-    			return "redirect:/admin/contents/tv";
+    	return "redirect:/admin/contents_movie";
     		}
-    	}
     
-    // 작품 수정
-    @RequestMapping(value = "/contents_modify", method = RequestMethod.POST)
-    public String contentsModify(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList, Model m ) throws IllegalStateException, IOException {
-        contentsService.modifyContents(contents);
-        String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
+    // 작품 추가(TV)
+    @RequestMapping(value = "/contents_add_tv", method = RequestMethod.POST)
+    public String tvAdd(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList,  Model m ) throws IllegalStateException, IOException {
+    	contentsService.addContents(contents);
+    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
     	
     	List<String> contentsImageList=new ArrayList<String>();
     	
@@ -122,35 +129,104 @@ public class AdminController {
     	m.addAttribute("contents", contents);
     	m.addAttribute("contentsImageList", contentsImageList);
     	
-    	String contentsType = contents.getContentsType();
-    	if(contentsType.equals("영화")) {
-        return "redirect:/admin/contents/movie";
-    		} else {
-    			return "redirect:/admin/contents/tv";
+    	return "redirect:/admin/contents_tv";
     		}
+
+    //작품 수정(영화)
+    @RequestMapping(value = "/contents_modifyMovie", method = RequestMethod.POST)
+    public String contentsModifyMovie(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList, Model m ) throws IllegalStateException, IOException {
+        contentsService.modifyContents(contents);
+        String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
+    	
+    	List<String> contentsList=new ArrayList<String>();
+    	
+    	for(MultipartFile multipartFile : uploadFileList) {
+    		String contentsImageName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
+    		File file=new File(uploadDirectory, contentsImageName);
+    		multipartFile.transferTo(file);
+        
+    		contentsList.add(uploadDirectory);
     	}
-    
-    // 작품 삭제
-    @RequestMapping(value = "/contents_remove/{contentsNo}", method = RequestMethod.DELETE)
-    public String contentsRemove(@PathVariable int contentsNo) {
-        contentsService.removeContents(contentsNo);
-        return "redirect:/admin/contents/movies";
+    	m.addAttribute("contents", contents);
+    	m.addAttribute("contentsList", contentsList);
+    	
+        return "redirect:/admin/contents_movie";
+    	}
+
+    //작품 수정(TV)
+    @RequestMapping(value = "/contents_modifyTV", method = RequestMethod.POST)
+    public String contentsModifyTV(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList, Model m ) throws IllegalStateException, IOException {
+    	contentsService.modifyContents(contents);
+    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
+    	
+    	List<String> contentsList=new ArrayList<String>();
+    	
+    	for(MultipartFile multipartFile : uploadFileList) {
+    		String contentsImageName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
+    		File file=new File(uploadDirectory, contentsImageName);
+    		multipartFile.transferTo(file);
+    		
+    		contentsList.add(uploadDirectory);
+    	}
+    	m.addAttribute("contents", contents);
+    	m.addAttribute("contentsist", contentsList);
+    	
+    	return "redirect:/admin/contents_tv";
     }
     
+    //작품 삭제(영화)
+    @RequestMapping(value = "/contents_deleteMovie", method = RequestMethod.DELETE)
+    public String contentsRemoveMovie(@RequestParam int contentsNo) {
+		Contents contents=contentsService.getContents(contentsNo);
+		String uploadDirectory = context.getServletContext().getRealPath("/WEB-INF/upload");
+		//서버 디렉토리에 저장된 게시글의 파일 삭제 처리
+		File file = new File(uploadDirectory, Integer.toString(contents.getContentsNo()));
+	    if (file.exists()) {
+	        file.delete(); // 파일 삭제
+	    }
+		
+		contentsService.removeContents(contentsNo);
+		return "redirect:/admin/contents_movie";		
+    }
     
-    // 회원 관리
+    //작품 삭제(TV)
+    @RequestMapping(value = "/contents_deleteTV", method = RequestMethod.DELETE)
+    public String contentsRemoveTV(@RequestParam int contentsNo) {
+    	Contents contents=contentsService.getContents(contentsNo);
+    	String uploadDirectory = context.getServletContext().getRealPath("/WEB-INF/upload");
+    	//서버 디렉토리에 저장된 게시글의 파일 삭제 처리
+    	File file = new File(uploadDirectory, Integer.toString(contents.getContentsNo()));
+    	if (file.exists()) {
+    		file.delete(); // 파일 삭제
+    	}
+    	
+    	contentsService.removeContents(contentsNo);
+    	return "redirect:/admin/contents_tv";		
+    }
+    
+    //회원 관리
     @RequestMapping(value = "/member", method = RequestMethod.GET)
     public String memberList(Model m) {
-        m.addAttribute("memberList", memberService.getMemberList());
+        if (memberService != null) {
+            List<Member> membersList = memberService.getMemberList();
+            if (membersList != null) {
+                m.addAttribute("memberList", membersList);
+            } else {
+                System.out.println("불러올 회원 정보가 없습니다.");
+            }
+        } else {
+            System.out.println("MemberService가 초기화되지 않았습니다.");
+        }
         return "admin/member";
     }
     
-    // 회원 상태 변경
+    //회원 상태 변경
     @RequestMapping(value = "/member_modify", method = RequestMethod.POST)
     public String modifyMemberStatus(@RequestParam int memberStatus, HttpSession session) {
         memberService.modifyMeberStatus(memberStatus);
         return "redirect:/admin/member";
     }
+}
     /*
     // 공지사항으로 이동
     @RequestMapping(value = "/notice ", method = RequestMethod.GET)
@@ -246,4 +322,3 @@ public class AdminController {
     }
     
 */
-}

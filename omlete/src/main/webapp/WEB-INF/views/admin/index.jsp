@@ -4,12 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
- 
-</head>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -17,17 +11,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value= "/admin/index"/>">
-                <div class="sidebar-brand-icon">
-                    <%--<i class="fas fa-laugh-wink"></i>--%>
-                    <img id=logo src="/omlete/img/omlete.png" width=140px;>
-                </div>
-                <div class="sidebar-brand-text mx-3"><sup></sup></div>
-            </a>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+        
             <!-- Heading -->
             <div class="sidebar-heading">
                 사이트 관리
@@ -41,8 +25,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item"  href="<c:url value="/admin/contents/movie"/>?contentsType=%EC%98%81%ED%99%94">영화</a>
-                        <a class="collapse-item" href="<c:url value="/admin/contents/tv"/>?contentsType=TV">TV</a>
+                        <a class="collapse-item" href="<c:url value="/admin/contents_movie"/>">영화</a>
+                        <a class="collapse-item" href="<c:url value="/admin/contents_tv"/>">TV</a>
                     </div>
                 </div>
             </li>
@@ -53,10 +37,9 @@
                     <i class="fas fa-user"></i>
                     <span>회원 관리</span></a>
             </li>            
-           
-            <hr class="sidebar-divider">
 
-       
+   			<hr class="sidebar-divider">
+   			
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -466,8 +449,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+                        <span aria-hidden="true">×</span>                                                             
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
