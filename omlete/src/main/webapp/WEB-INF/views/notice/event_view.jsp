@@ -94,23 +94,23 @@
             		 	</div>
 	      			    <div class="container">
     	        			<div class="row">
-    	        			<c:forEach var="notice" items="${noticeList}">
+    	        			<c:forEach var="noticeList" items="${noticeList}">
 			            		<div class="col-md-3">
-            			        	<a href="event1.html">
-                    				<img class="img-fluid" src="${pageContext.request.contextPath}/${notice.noticeImage}" style="width: 500px">
+            			        	<a href="<c:url value="/board/eventView?noticeNo=${noticeList.noticeNo}" />" >
+                    				<span><img class="img-fluid" src="${pageContext.request.contextPath}/${noticeList.noticeImage}" style="width: 500px"></span>
                     				</a>
                     				<div class="inner-slider">
                         				<div class="inner-wrapper">
                         					<div class="d-flex align-items-center">
                               					<span class="seller-name">
-                          					    <a href="event1.html">${notice.noticeTitle}
+                          					    <a href="<c:url value="/board/eventView?noticeNo=${noticeList.noticeNo}" />" ><span>${noticeList.noticeTitle}</span>
                               					</a>
                               					</span>
                            					</div>
                            					<div class="footer">
-                            					<td>${notice.noticeCount}</td>
+                            					<td>${noticeList.noticeCount}</td>
                               					<div class="price">
-                              						<span>${notice.noticeDate}<br> ${notice.noticeTerm}</br></span>
+                              						<span>${noticeList.noticeDate}<br> ${noticeList.noticeTerm}</br></span>
                               					</div>
                            					</div>
                         				</div>

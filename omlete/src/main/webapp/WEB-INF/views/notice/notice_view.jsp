@@ -101,17 +101,17 @@
 									<col style="width:130px;">
 								</colgroup>
 									<tbody>
-									<c:forEach var="notice" items="${noticeList }">
+									<c:forEach var="noticeList" items="${noticeList }">
 										<tr>
-											<td>${notice.noticeNo}</td>
+											<td>${noticeList.noticeNo}</td>
 											<td class="left">
-											<a href="<c:url value="/board/noticeView?noticeNo=${notice.noticeNo}" />" >
-											    <span class="cateIcon"> <span>${notice.noticeStatus}</span>
+											<a href="<c:url value="/board/noticeView?noticeNo=${noticeList.noticeNo}" />" >
+											    <span class="cateIcon"> <span>${noticeList.noticeStatus}</span>
 											    </span> 
-											    <span class="subject">${notice.noticeTitle}</span>
+											    <span class="subject">${noticeList.noticeTitle}</span>
 											</a></td>
-											<td class="left1">${notice.noticeDate}</td>
-											<td class="left2">${notice.noticeCount}</td>
+											<td class="left1">${noticeList.noticeDate}</td>
+											<td class="left2">${noticeList.noticeCount}</td>
 										</tr>
 										</c:forEach>
 										 

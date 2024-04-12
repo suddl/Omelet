@@ -51,9 +51,17 @@
 	  -->
 	
 	<!-- 글번호를 전달받아 notice 게시글 검색 -->		
-<select id="selectNotice" resultType="Notice">
-    select * from notice where notice_no=#{noticeNo}
-</select>
+	<select id="selectNotice" resultType="Notice">
+	    select notice_no,
+		notice_title,
+		notice_content,
+		notice_count,
+		notice_date,
+		notice_status,
+		notice_term,
+		notice_image
+		 from notice where notice_no=#{noticeNo}
+	</select>
 	
 	<!-- notice 게시글 총개수 -->	
 	<select id="selectNoticeCount" resultType="int">

@@ -19,6 +19,7 @@ import omlete.service.ActorContentsService;
 import omlete.dto.ActorContents;
 import omlete.dto.Actors;
 import omlete.dto.Contents;
+import omlete.exception.ExistsActorsException;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +29,7 @@ public class ApiServiceImpl implements ApiService{
 	private final ActorContentsService actorCService;
 	
 	@Override
-	public List<String> getmid(int page) {	
+	public List<String> getMoviemid(int page) {	
 		List<String> list = new ArrayList();
 		
 		
@@ -66,8 +67,46 @@ public class ApiServiceImpl implements ApiService{
 		}
 		return list;
 	}
+	
+	@Override
+	public List<String> getTvmid(int page) {
+		List<String> list = new ArrayList();
+		
+		// 인증키 (개인이 받아와야함)
+		String key = "2f619d605e8a65b90a65eceaec054524";
+	
+		// 파싱한 데이터를 저장할 변수
+		String result = "";
+		String mid="";
+		
+		try {			
+			//첫번쩨 url 페이지당 20개씩 드라마정보 출력
+			URL url = new URL("https://api.themoviedb.org/3/discover/tv?api_key="
+					+ key + "&watch_region=KR&language=ko&page="+ page);
+	
+			BufferedReader bf;
+	
+			bf = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+	
+			result = bf.readLine();   		
+			
+	    	JSONParser jsonParser = new JSONParser();
+	    	JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
+	    	
+	    	JSONArray results = (JSONArray) jsonObject.get("results");
+	    	for(int i=0;i<results.size();i++) {
+		    	String rn = null;
+		    	JSONObject r = (JSONObject) results.get(i);
+	    		rn=String.valueOf(r.get("id")) ;
+	    		mid = rn;
+	    		list.add(mid);
+	    	}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
-	@SuppressWarnings("null")
 	public String setActor(String mid) {
 		// 인증키 (개인이 받아와야함)
     	String key = "2f619d605e8a65b90a65eceaec054524";
@@ -117,12 +156,12 @@ public class ApiServiceImpl implements ApiService{
                 	JSONObject actjsonObject = (JSONObject)actjsonParser.parse(actresult);
             		JSONArray also_known_as = (JSONArray) actjsonObject.get("also_known_as");
             		
-            		System.out.print("배우 : ");
+            		//System.out.print("배우 : ");
             		if(castlist.get("known_for_department").equals("Acting")) {
             			for(int an=0;an<also_known_as.size();an++) {
 
             				if(((String) also_known_as.get(an)).matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
-            					System.out.print("actTname:"+also_known_as.get(an));
+            					//System.out.print("actTname:"+also_known_as.get(an));
             					act.setActorName(String.valueOf(also_known_as.get(an)));
             					break;
             				}else {
@@ -140,7 +179,14 @@ public class ApiServiceImpl implements ApiService{
         			actC.setActorContentsId(Integer.parseInt(mid));
         			actC.setActorId(Integer.parseInt(String.valueOf(castlist.get("id"))));
         			
-        			actorsService.addActors(act);
+        			System.out.println("act="+act);
+        			System.out.println("actC="+actC);
+        			
+        			try {
+        				actorsService.addActors(act);
+        			}catch(ExistsActorsException e){
+        				e.printStackTrace();
+        			}
         			actorCService.addActorContents(actC);
 
             		if(a==3) {
@@ -156,6 +202,8 @@ public class ApiServiceImpl implements ApiService{
 		return "good";
 	
 	}
+
+	
 
 
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
    <body>
@@ -9,9 +10,9 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12 text-center">
-                  <h1 class="mt-0 mb-3 text-white">파묘 럭키박스 출시! 이벤트 안내</h1>
+                  <h1 class="mt-0 mb-3 text-white">${data.noticeTitle}</h1>
                   <div class="breadcrumbs">
-                     <p class="mb-0 text-white"><span class="text-success">24.3.25(일) ~ 24.3.31(일)</span></p>
+                     <p class="mb-0 text-white"><span class="text-success">${data.noticeDate}까지</span></p>
                   </div>
                </div>
             </div>

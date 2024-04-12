@@ -19,7 +19,7 @@ public interface NoticeService {
 	//총개수
 	int getNoticeCount();
 	//상세보기
-	public Notice getNotice(int noticeNo) throws Exception;
+	public Notice getNotice(int noticeNo);
 	//리스트검색
 	Map<String, Object> getNoticeList(int pageNum);
 	//게시글 조회

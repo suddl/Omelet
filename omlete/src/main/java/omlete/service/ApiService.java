@@ -6,6 +6,7 @@ import omlete.dto.Actors;
 import omlete.dto.Contents;
 
 public interface ApiService {
-	List<String> getmid(int page); 
+	List<String> getMoviemid(int page); 
+	List<String> getTvmid(int page); 
 	String setActor(String mid);
 }
