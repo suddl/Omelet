@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <style type="text/css">
 #reviewchoose {
@@ -91,7 +86,7 @@ th {
 
 /* 테이블 셀 스타일링 */
 td {
-    border: 1px solid #ddd;
+    border: 1px solid gray;
     padding: 8px;
     vertical-align: top; /* 셀 내부 요소를 상단 정렬 */
 }
@@ -211,6 +206,16 @@ td {
     height: 72px; /* 3개의 행의 높이 (24px * 3) */
 }
 
+.reviewSubject {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+}
+
+.star {
+	width: auto;
+	height: 20px;
+}
+
 #upBtn {
 	height: 20px;
 	width: 20px;
@@ -228,36 +233,12 @@ td {
 
 #shingoBtn {
 	height: 20px;
-	width: 20px;
+	width: 18px;
 }
 </style>
-</head>
 <body>
-<div class="main-page best-selling">
-     <div class="view_slider recommended pt-5">
-        <div class="container">
-           <div class="sorting-div d-flex align-items-center justify-content-between">
-              <p style="font-size: 24px; font-weight: 700" class="mb-2">지금 뜨는 코멘트</p> 
-              <div class="sorting d-flex align-items-center">
-              </div>
-           </div>
-           <div>
-             <ul style="padding: 10px 105px; text-align: left;">
-               <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                 <a id="choishinchoose" type="button" href="<c:url value="/review/list?reviewKind=1"/>">명대사</a>
-               </li>
-               <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                 <a id="choishinchoose" type="button" href="<c:url value="/review/list?reviewKind=2"/>">짧은글</a>
-               </li>
-               <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
-                 <a id="choishinchoose" type="button" href="<c:url value="/review/list?reviewKind=3"/>">긴글</a>
-               </li>
-             </ul>
-           </div>
-        </div>
-     </div>
-</div> 
 <div id="qa_write">
+	<h1 class="reviewSubject">명대사 리뷰</h1>
 	<%-- 파일(리뷰 이미지)을 입력받아 전달하기 위해 form 태그의 enctype 속성값을 반드시 [multipart/form-date]로 설정 --%>
 	<table class="table_review">
 		<tr>
@@ -267,7 +248,9 @@ td {
 				</div>
 			</td>
 			<td class="td_review" style="width: 70%;">작성자</td><%-- 오른쪽에 별점 넣기 --%> 
-			<td class="td_review">별점</td>
+			<td>
+					<img class="star" src="<c:url value="/images/star.svg" />">&nbsp;
+			</td>
 		</tr>
 		<tr>
 			<td class="td_review" colspan="2">
@@ -279,13 +262,7 @@ td {
 				<div>
 					<img id="poster_image" src="images/Poster.png">
 				</div>
-			</td>
-			<%--
-			<td class="td_review">
-				<input type="text" name="qaSubject" id="qaSubject" size="40">
-				작품 제목
-			</td>
-			--%>				
+			</td>			
 			<td class="td_review" colspan="2">
 				제목
 			</td>
