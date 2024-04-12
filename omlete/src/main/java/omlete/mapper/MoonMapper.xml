@@ -11,12 +11,21 @@
 	</insert>
 	
 	
-	<!-- 글번호를 전달받아 moon 게시글 검색 -->		
+	<!-- 글번호를 전달받아 moon 게시글 검색 -->
+	<!-- 
 	<select id="selectMoon" resultType="Moon">
 	 select * from (select rownum rn, moonlist.* from (select moon_no, moon_member, moon_title, moon_content, 
   		moon_status, moon_re, moon_date, member_nickname
        		from moon join member on moon_member=member_no order by moon_no desc)
-        	moonlist) where moon_no=#{moonNo}
+        	moonlist) moon where moon_no=#{moonNo}
+	</select>
+	 -->
+	
+	<select id="selectMoon" resultType="Moon">
+    select * from (select rownum rn, moonlist.* from (select moon_no, moon_member, moon_title, moon_content, 
+        moon_status, moon_re, moon_date, member_nickname
+            from moon join member on moon_member=member_no)
+            moonlist) moon where moon_no=#{moonNo}
 	</select>
 	
 	<!-- moon 게시글 총개수 -->	

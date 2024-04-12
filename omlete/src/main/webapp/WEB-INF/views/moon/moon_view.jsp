@@ -116,10 +116,10 @@
 									<tbody style="padding-top: 10px;">
 									<c:forEach var="moonList" items="${moonList }">
 										<tr>
-											<td>${moon.moonNO }</td>
+											<td>${moonList.moonNO }</td>
 											
 											<td class="left" style="text-align: center">
-											<a href="<c:url value="/board/read?moon_no"/>">${moon.moonContent }</a></td>
+											<a href="<c:url value="/board/read?moon_no"/>">${moonList.moonContent }</a></td>
 											
 											<td>
 											<a href="/board/read?board_idx=${moonList.moonNo}" >
