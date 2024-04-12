@@ -19,9 +19,6 @@ public class ActorContentsServiceImpl implements ActorContentsService{
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void addActorContents(ActorContents actorC) {
-		if(actorCDAO.selectActorContents(actorC.getActorContentsId()) != null) {
-			throw new ExistsActorContentsException("이미 존재하는 ActorContents입니다.", actorC);
-		}
 		actorCDAO.insertActorContents(actorC);
 	}
 

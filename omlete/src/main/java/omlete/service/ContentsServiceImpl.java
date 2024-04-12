@@ -11,7 +11,6 @@ import omlete.dao.ContentsDAO;
 import omlete.dto.Contents;
 import omlete.exception.ContentsNotFoundException;
 import omlete.exception.ExistsContentsException;
-import omlete.dto.Contents;
 
 
 @Service
@@ -22,11 +21,13 @@ public class ContentsServiceImpl implements ContentsService{
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void addContents(Contents contents) {
-		if(contentsDAO.selectContents(contents.getContentsNo()) != null) {
-			throw new ExistsContentsException("이미 존재하는 작품입니다.", contents);
+		if(contentsDAO.selectContents(contents.getContentsNo()) == null) {
+			contentsDAO.insertContents(contents);	
+		}else {
+			throw new ExistsContentsException("이미 존재하는 작품입니다.", contents);		
 		}
 		
-		contentsDAO.insertContents(contents);
+
 	}
 
 	@Override

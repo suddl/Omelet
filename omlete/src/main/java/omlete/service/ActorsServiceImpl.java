@@ -23,10 +23,11 @@ public class ActorsServiceImpl implements ActorsService{
 	@Override
 	public void addActors(Actors actors) {
 		if(actorsDAO.selectActors(actors.getActorNo()) != null) {
+			
 			throw new ExistsActorsException("이미 존재하는 배우입니다.", actors);
 		}
-		
 		actorsDAO.insertActors(actors);
+		
 	}
 
 	@Override
