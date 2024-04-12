@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>  
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -113,13 +112,13 @@
 										</tr>
 									</thead>
 									<tbody>
-									<tbody style="padding-top: 10px;">
 									<c:forEach var="moonList" items="${moonList }">
+									<tbody style="padding-top: 10px;">
 										<tr>
-											<td>${moonList.moonNO }</td>
+											<td>${moonList.moonNo }</td>
 											
 											<td class="left" style="text-align: center">
-											<a href="<c:url value="/board/read?moon_no"/>">${moonList.moonContent }</a></td>
+											<a href="<c:url value="/board/moonView?moonNo=${moonList.moonContent }"/>"></a></td>
 											
 											<td>
 											<a href="/board/read?board_idx=${moonList.moonNo}" >
