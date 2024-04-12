@@ -2,6 +2,29 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%--	
+	ClientDTO loginClient = (ClientDTO)session.getAttribute("loginClient");
+
+	List<ProductDTO> pro = new ArrayList<>();
+	pro = ProductDAO.getDAO().selectBestProudct();
+	WishDTO redHeart = new WishDTO();
+	Integer wishProductNum = 0;
+	
+	//이 부분 확인하기
+	DecimalFormat format = new DecimalFormat("###,###,##0");
+	
+	
+	// 업을 누른 것인지 확인하기 위한 Boolean 변수
+	int login = 0;
+	int loginMemberNo=0;
+	if(loginMember!=null){
+		loginMemberNo = loginMember.getMemberNo();
+		login = 1;
+	}  else{
+		login = 0;
+	}
+--%>
+
 <body>
 <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-light bg-white osahan-nav-mid px-0 border-top shadow-sm">
@@ -106,11 +129,11 @@
                      <h3>최신 영화</h3>
                      <div class="view recent-slider recommended-slider">
                         
-                        <c:forEach var="serise" items="${seriseList }">
+                        <c:forEach var="movie" items="${movieList }">
                         
                         <div>
-                           <a href="<c:url value="/detail/detail?no=${serise.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${serise.contentsPoster }"/>" />
+                           <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
+                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
@@ -130,14 +153,14 @@
             <div class="container">
                <div class="row">
                   <div class="col-lg-12">
-                     <h3>높은 별점 영화</h3>
+                     <h3>(높은 별점 영화)임시 내림차순 영화</h3>
                      <div class="view recent-slider recommended-slider">
                           
-                        <c:forEach var="serise" items="${seriseList }">
+                        <c:forEach var="movie" items="${movieListD }">
                         
                         <div>
-                           <a href="<c:url value="/detail/detail?no=${serise.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${serise.contentsPoster }"/>" />
+                           <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
+                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
@@ -157,14 +180,14 @@
             <div class="container">
                <div class="row">
                   <div class="col-lg-12">
-                     <h3>많은 리뷰 영화</h3>
+                     <h3>(많은 리뷰 영화)임시 오름차순 영화</h3>
                      <div class="view recent-slider recommended-slider">
                           
-                        <c:forEach var="serise" items="${seriseList }">
+                        <c:forEach var="movie" items="${movieListA }">
                         
                         <div>
-                           <a href="<c:url value="/detail/detail?no=${serise.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${serise.contentsPoster }"/>" />
+                           <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
+                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
