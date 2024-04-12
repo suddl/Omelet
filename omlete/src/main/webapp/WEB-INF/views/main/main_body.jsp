@@ -133,7 +133,7 @@
                         
                         <div>
                            <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="https://image.tmdb.org/t/p/original+${movie.contentsPoster }" />
+                           		<img style="height: 383px" class="img-fluid" src="https://image.tmdb.org/t/p/original${movie.contentsPoster }" />
                            		${movie.contentsTname }
                            </a>
                            <div class="inner-slider"></div> 
