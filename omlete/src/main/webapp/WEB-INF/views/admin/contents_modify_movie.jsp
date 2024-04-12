@@ -91,168 +91,157 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">작품 추가</h1>
+                    <h1 class="h3 mb-2 text-gray-800">작품 수정</h1>
  
                      <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3"></div>
+                        <div class="card-header py-3"></div>                    
                         <div class="card-body" style= "height: 1000px;">
                         <div class="table-responsive">
-                        <form action="<c:url value="/admin/contents_add_tv"/>" method="post" enctype="multipart/form-data">
-							<table id="contentsAddTable" >
+                         <form action="<c:url value="/admin/contents_modify_movie"/>" method="post" enctype="multipart/form-data">
+							<table id="contentsModifyTable">
 									<tr>
 										<th>타입</th>
 										<td>
-											<input type="text" name="contentsType" id="contentsType" value="TV" readonly>
+											<input type="text" name="contentsType" id="contentsType" value="영화" readonly>
 										</td>
 									</tr>
 									<tr>
 										<th>제목</th>
 										<td>
-											<input type="text" name="contentsOname" id="contentsOname" size="30" required>
+											<input type="text" name="contentsOname" id="contentsOname" value="${contents.contentsOname}" size="30" required>
 										</td>
 									</tr>
 									<tr>
 										<th>제목(번역)</th>
 										<td>
-											<input type="text" name="contentTname" id="contentTname" size="30" required>
+											<input type="text" name="contentTname" id="contentTname" value="${contents.contentsTname}" size="30" required>
 										</td>
 									</tr>
 									<tr>
 										<th>예고편/트레일러</th>
 										<td>
-											<input type="url" name="contentsTrailer" id="contentsTrailer" size="30">
+											<input type="url" name="contentsTrailer" id="trailer" value="${contents.contentsTrailer}" size="30">
 										</td>
 									</tr>
 									<tr>
 										<th>포스터</th>
 										<td>
-											<input type="file" name="file1" id="poster">
+											<input type="file" name="file1" id="poster" required value="${contents.contentsPoseter}">
 										</td>
 									</tr>
 									<tr>
 										<th>스틸컷1</th>
 										<td>
-											<input type="file" name="file2" id="photo1">
+											<input type="file" name="file2" id="photo1" value="${contents.contentsPhoto1}">
 										</td>
 									</tr>
 									<tr>
 										<th>스틸컷2</th>
 										<td>
-											<input type="file" name="file3" id="photo2">
+											<input type="file" name="file3" id="photo2" value="${contents.contentsPhoto2}">
 										</td>
 									</tr>
 									<tr>
 										<th>스틸컷3</th>
 										<td>
-											<input type="file" name="file4" id="photo3">
+											<input type="file" name="file4" id="photo3" value="${contents.contentsPhoto3}">
 										</td>
 									</tr>
 									<tr>
+
+									<tr>
 										<th>출연진</th>
 										<td>
-											<input type="text" name="actorName" id="actorName" size="30" required>
+											<input type="text" name="actorName" id="actorName" value="${actors.acotrName}" size="30" required>
 										</td>
 									</tr>
 									<tr>
 										<th>작가</th>
 										<td>
-											<input type="text" name="contentsStaff" id="contentsStaff" size="30" required>
+											<input type="text" name="contentsStaff" id="contentsStaff" value="${contents.contentsStaff}" size="30" required>
 										</td>
 									</tr>							
+																		
 									<tr>
 										<th>내용</th>
 										<td>
-											<textarea name="contentsOverivew" rows="5" cols="80" maxlength="300"></textarea>
+											<textarea rows="5" cols="80"  maxlength="300">${contents.contentsOverview}</textarea>
 										</td>
 									</tr>
 									<tr>
 										<th>연령 등급</th>
 										<td>
-											<select name="contentsRating" id="contentsRating" onchange="contentsRatingChange(this)" required>
-												<option value="" selected>--선택--</option>												
-												<option value="전체관람가">전체 관람가</option>
-												<option value="7">7세 시청가</option>
-												<option value="12">12세 이상 시청가</option>
-												<option value="15">15세 이상 시청가</option>
-												<option value="19">19세 이상 시청가</option>																								
+											<select name="contentsRating" id="contentsRating" onchange="ratingChange(this)" required>
+												<option value="" selected>--선택--</option>
+												<option value="전체 관람가" ${contents.contentsRating == 'all' ? 'selected' : ''}>전체 관람가</option>
+												<option value="12" ${contents.contentsRating == 'twelve' ? 'selected' : ''}>12세 이상 관람가</option>
+												<option value="15" ${contents.contentsRating == 'fifthteen' ? 'selected' : ''}>15세 이상 관람가</option>
+												<option value="19" ${contents.contentsRating == 'adult' ? 'selected' : ''}>>청소년 관람 불가</option>
+												<option value="제한 관람가" ${contents.contentsRating == 'limited' ? 'selected' : ''}>>제한 관람가</option>
 											</select>
 										</td>
 									</tr>
 									<tr>
 										<th>장르</th>
 										<td>
-						 				   <select name="contentsGenre" id="contentsGenre" onchange="contentsGenreChanege(this)" required>
+						 				   <select name="contentsGenre" id="contentsGenre" onchange="genreChanege(this)" required>
 												<option value="" selected>--선택--</option>
-												<option value="드라마">드라마</option>
-												<option value="다큐멘터리">다큐멘터리</option>
-												<option value="예능">예능</option>									
-											</select>										
-										</td>
-									</tr>
-									<tr>
-										<th>방송사</th>
-										<td>
-											<select name="contentsNetwork" id="contentsNetwork" onchange="contentsNetworkChange(this)" required>
-												<option value="" selected>--선택--</option>
-												<option value="SBS">SBS</option>
-												<option value="KBS">KBS</option>
-												<option value="MBC">MBC</option>
-												<option value="JTBC">JTBC</option>
-												<option value="Netflix">Netflix</option>
-												<option value="TVING">TVING</option>
-												<option value="쿠팡플레이">쿠팡플레이</option>
-												<option value="Disney+">Disney+</option>
+												<option value="액션" ${contents.contentsGenre == 'action' ? 'selected' : ''}>액션</option>
+												<option value="코미디" ${contents.contentsGenre == 'comedy' ? 'selected' : ''}>코미디</option>
+												<option value="로맨스" ${contents.contentsGenre == 'romance' ? 'selected' : ''}>로맨스</option>
+												<option value="스릴러" ${contents.contentsGenre == 'thriller' ? 'selected' : ''}>스릴러</option>
+												<option value="공포" ${contents.contentsGenre == 'horror' ? 'selected' : ''}>공포</option>
+												<option value="SF/판타지" ${contents.contentsGenre == 'fantasy' ? 'selected' : ''}>SF/판타지</option>
+												<option value="애니메이션" ${contents.contentsGenre == 'animation' ? 'selected' : ''}>애니메이션</option>
 											</select>
 										</td>
-									</tr>
+									</tr>									
 									<tr>
-										<th>방송사 로고</th>
-										<td>
-											<input type="file" name="file5" id="contentsNetworkLogo" required>
-										</td>
-									</tr>	
-									<tr>									
 										<th>국가</th>
 										<td>
-											<input type="text" name="contentsCountries" id="contentsCountries" size="15" required>
+											<input type="text" name="contentsCountries" id="contentsCountries" value="${contents.contentsCountries}" size="15" required>
 										</td>
 									</tr>
 									<tr>
-										<th>PD</th>
+										<th>감독</th>
 										<td>
-											<input type="text" name="contentsDirector" id="contentsDirector" size="15" required>
+											<input type="text" name="contentsDirector" id="contentsDirector" value="${contents.contentsDirector}" size="15" required>
 										</td>
-									</tr>
-								
+									</tr>								
 									<tr>
-									<tr>
-										<th>에피소드</th>
+										<th>개봉일</th>
 										<td>
-											<input type="text" name="contentsEpisodes" id="contentsEpisodes" size="15">
+											<input type="text" name="contentsStartdate" id="contentsStartdate" value="${contents.contentsStartdate}" size="15" required>
 										</td>
 									</tr>
+									<tr>
+										<th>종영일</th>
+										<td>
+											<input type="text" name="contentsEnddate" id="contentsEnddate" value="${contents.contentsEnddate}" size="15">
+										</td>
+									</tr>							
 									<tr>
 										<th>시즌</th>
 										<td>
-											<input type="text" name="contentsSeasons" id="contentsSeasons" size="15">
+											<input type="text" name="contentsSeasons" id="contentsSeasons" value="${contents.contentsSeasons}" size="15">
 										</td>
 									</tr>
 									<tr>
-										<th>총 시간</th>
+										<th>상영시간</th>
 										<td>
-											<input type="text" name="contentsRuntime" id="contentsRuntime" size="15" required>
+											<input type="text" name="contentsRuntime" id="contentsRuntime" value="${contents.contentsRuntime}" size="15" required>
 										</td>
 									</tr>
 									<tr>
 										<th>태그</th>
 										<td>
-											<input type="text" name="contentsTagline" id="contentsTagline" required>
+											<input type="text" name="contentsTagline" id="contentsTagline" value="${contents.contentsTagline}" size="15" required>
 										</td>
-									</tr>									
+									</tr>
 								</table>
-								</form>
 								<button type="submit">저장</button>
+								</form>
                             </div>
                         </div>
                     </div>
