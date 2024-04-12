@@ -61,7 +61,7 @@
 	                        </div>
 	                     </div>
 	                     <div class="overflow-hidden border-top d-flex align-items-center p-4">
-	                        <a class="font-weight-bold d-block" href="<c:url value="/board/event_view"/>"> 이벤트 응모 및 결과 </a>
+	                        <a class="font-weight-bold d-block" href="<c:url value="/board/eventList"/>"> 이벤트 응모 및 결과 </a>
 	                        <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
 	                     </div>
 	                  </div>
@@ -77,7 +77,7 @@
 	                        </div>
 	                     </div>
 	                     <div class="overflow-hidden border-top d-flex align-items-center p-4">
-	                        <a class="font-weight-bold d-block" href="<c:url value="/board/moon_view"/>"> 궁금하다면? </a>
+	                        <a class="font-weight-bold d-block" href="<c:url value="/board/moonList"/>"> 궁금하다면? </a>
 	                        <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
 	                     </div>
 	                  </div>

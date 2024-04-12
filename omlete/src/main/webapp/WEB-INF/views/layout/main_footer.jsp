@@ -10,18 +10,15 @@
 				<a href="#" style="color:black">서비스 이용약관 &nbsp; |</a>
 			</td>
             <td>
-            	<a href="#" style="color:black">&nbsp; 개인정보 처리방침 &nbsp; |</a>
-            </td>
-            <td>
-            	<a href="#" style="color:black">&nbsp; 회사 안내 &nbsp; |</a>
+            	<a href="#" style="color:black">&nbsp; 개인정보 처리방침 &nbsp;</a>
             </td>
             <br>
 	        <br>
 	        <td>
-	        	<a style="color:black;">고객센터 &nbsp; |</a>
+	        	<a href="<c:url value="/board/noticeList"/>" style="color:black;">고객센터 &nbsp; |</a>
 	        </td>
 			<td>
-				<a href="#" style="font-size:15px; color:black">Omelet@itwill.xyz</a>
+				<a style="font-size:15px; color:black">Omelet@itwill.xyz</a>
 			</td>
 	        <br>
 	        <br>
@@ -29,7 +26,7 @@
 	        	<a style="color:black;">주식회사 오믈렛 &nbsp; |</a>
 	        </td>
 	        <td>
-	        	<a style="color:black;">&nbsp; 대표 오창중&박선영 &nbsp; |</a>
+	        	<a style="color:black;">&nbsp; 대표 오창중 &nbsp; |</a>
 	        </td>
 	        <td>
 	        	<a style="color:black;">&nbsp; 서울 서초구 강남대로 341</a>
