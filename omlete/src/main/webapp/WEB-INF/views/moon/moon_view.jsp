@@ -114,7 +114,7 @@
 									</thead>
 									<tbody>
 									<tbody style="padding-top: 10px;">
-									<c:forEach var="moon" items="${moonList }">
+									<c:forEach var="moonList" items="${moonList }">
 										<tr>
 											<td>${moon.moonNO }</td>
 											

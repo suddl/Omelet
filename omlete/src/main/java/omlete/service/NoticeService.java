@@ -22,7 +22,7 @@ public interface NoticeService {
 	public Notice getNotice(int noticeNo);
 	//리스트검색
 	Map<String, Object> getNoticeList(int pageNum);
-	//게시글 조회
+	//조회수 증가
 	public void increaseViewcnt(int noticeNo, HttpSession session) throws Exception;
 	
 }

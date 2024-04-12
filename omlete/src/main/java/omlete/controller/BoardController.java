@@ -71,4 +71,13 @@ public class BoardController {
 
 	        return "moon/moon_view";
 	 }
+	 
+	 //이벤트 상세 
+	 @RequestMapping(value = "/moonView", method=RequestMethod.GET)
+	 public String moonDetail(@RequestParam int moonNo, Model model) {
+		 // 뷰에 전달할 데이터
+		 model.addAttribute("data", moonService.getMoon(moonNo));
+		 
+		 return "moon/event/inquiry";
+	 }
 }
