@@ -30,15 +30,22 @@ public class JoinController {
 	private final MemberService memberService;
 	private final ContentsService contentsService;
 
+	
 	@RequestMapping(value = "/member",method = RequestMethod.GET)
 	public String memberJoin() {
 		return "login/register";
 	}
 	
+	@RequestMapping("/success")
+    public String joinSuccess() {
+        return "login/welcom";
+    }
+
+	
 	@RequestMapping(value = "/member", method = RequestMethod.POST)
 	public String memberJoin(@ModelAttribute Member member) {
 	    memberService.addMember(member);
-	    return "redirect:/join/myfavorite"; // 회원가입 성공 후 바로 인생영화 선택 페이지로 이동
+	    return "redirect:/join/success"; // 회원가입 성공 후 바로 인생영화 선택 페이지로 이동
 	}
 
 	// 인생영화 선택 페이지
