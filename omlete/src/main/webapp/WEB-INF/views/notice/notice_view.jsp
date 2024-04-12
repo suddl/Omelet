@@ -104,7 +104,7 @@
 									<c:forEach var="noticeList" items="${noticeList }">
 										<tr>
 											<td>${noticeList.noticeNo}</td>
-											<td class="left">
+											<td class="left"> 
 											<a href="<c:url value="/board/noticeView?noticeNo=${noticeList.noticeNo}" />" >
 											    <span class="cateIcon"> <span>${noticeList.noticeStatus}</span>
 											    </span> 
