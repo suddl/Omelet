@@ -80,7 +80,7 @@ public class ApiServiceImpl implements ApiService{
 		String mid="";
 		
 		try {			
-			//첫번쩨 url 페이지당 20개씩 드라마정보 출력
+			//url 페이지당 20개씩 드라마정보 출력
 			URL url = new URL("https://api.themoviedb.org/3/discover/tv?api_key="
 					+ key + "&watch_region=KR&language=ko&page="+ page);
 	
@@ -107,7 +107,7 @@ public class ApiServiceImpl implements ApiService{
 		return list;
 	}
 
-	public String setActor(String mid) {
+	public String setMovieActor(String mid) {
 		// 인증키 (개인이 받아와야함)
     	String key = "2f619d605e8a65b90a65eceaec054524";
 
@@ -120,8 +120,7 @@ public class ApiServiceImpl implements ApiService{
 
     	int a=0;
     	try {
-    			
-        		//2번째 url 1가지 영화에 대한 상세정보 보여줌
+        		//받은 mid에 대한 영화 상세정보 보여줌
         		URL url1 = new URL("https://api.themoviedb.org/3/movie/"+mid+"?api_key="
         				+ key + "&watch_region=KR&language=ko&append_to_response=credits,release_dates");
             	
@@ -199,7 +198,7 @@ public class ApiServiceImpl implements ApiService{
     	}catch(Exception e) {
     		e.printStackTrace();
     	}
-		return "good";
+		return "success";
 	
 	}
 

@@ -34,7 +34,7 @@ public class APIController {
 			throws IllegalAccessException, ExistsActorsException, ExistsContentsException, ExistsActorContentsException {
 		
 		List<String> mid=apiService.getMoviemid(page);
-		System.out.println("mid"+mid);
+
 		Contents vo = null;
 		// 인증키 (개인이 받아와야함)
 		String key = "2f619d605e8a65b90a65eceaec054524";
@@ -50,8 +50,6 @@ public class APIController {
 	    	for(int i=0;i<mid.size();i++) {
 	    		vo = new Contents();
 	    		name = "";
-	    		
-	        	System.out.println("mid:"+mid.get(i));
 	
 	    		//영화에 대한 상세정보 보여줌
 	    		URL url1 = new URL("https://api.themoviedb.org/3/movie/"+mid.get(i)+"?api_key="
@@ -202,29 +200,26 @@ public class APIController {
 	        	vo.setContentsRuntime(Integer.parseInt(String.valueOf(jsonObject.get("runtime"))));
 	        	vo.setContentsTagline(String.valueOf(jsonObject.get("tagline")));
 	        	
-	        	System.out.println("contents="+vo);
-	        	
 	        	try {
 	                contentsService.addContents(vo);
 	            } catch (ExistsContentsException e) {
 	            	e.printStackTrace();
 	            }
         	
-	        	apiService.setActor(mid.get(i));
+	        	apiService.setMovieActor(mid.get(i));
 	    	}
 	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	
-		
+
 		return "detail/api";
 	}
 	
-	@RequestMapping(value ="/tv", method = RequestMethod.GET, params = {"pages"})
-	public String getInfoTv(Model m, @RequestParam("pages") int pages) throws IllegalAccessException {
+	@RequestMapping(value ="/tv", method = RequestMethod.GET, params = {"page"})
+	public String getInfoTv(Model m, @RequestParam("page") int page) throws IllegalAccessException {
 		
-		List<String> mid=apiService.getTvmid(pages);
+		List<String> mid=apiService.getTvmid(page);
 
 		Contents vo = null;
 		// 인증키 (개인이 받아와야함)
@@ -241,12 +236,10 @@ public class APIController {
 	    	for(int i=0;i<mid.size();i++) {
 	    		vo = new Contents();
 	    		name = "";
-	    		
-	        	System.out.println("mid:"+mid.get(i));
 	
 	    		//영화에 대한 상세정보 보여줌
-	    		URL url1 = new URL("https://api.themoviedb.org/3/movie/"+mid.get(i)+"?api_key="
-	    				+ key + "&watch_region=KR&language=ko&append_to_response=credits,release_dates");
+	    		URL url1 = new URL("https://api.themoviedb.org/3/tv/"+mid.get(i)+"?api_key="
+	    				+ key + "&watch_region=KR&language=ko&append_to_response=credits, content_ratings");
 	        	
 	        	BufferedReader bf;
 	
@@ -259,9 +252,7 @@ public class APIController {
 	        	
 	        	//출연진(감독, 작가, 배우)정보를 가져옴
 	        	JSONObject credits = (JSONObject)jsonObject.get("credits");           
-	        	
-	        	
-	        	
+    	
 	        	//장르 id name 값 가져옴
 	        	JSONArray genres = (JSONArray) jsonObject.get("genres");
 	        	//제작 나라 정보를 가져옴
@@ -272,6 +263,7 @@ public class APIController {
 	        	
 	        	boolean fkr=false;
 	        	String cer=null;
+	        	
 	        	for(int q=0;q<rdresult.size();q++) {
             		JSONObject ratelist=(JSONObject)rdresult.get(q);
             		if(ratelist.get("iso_3166_1").equals("KR")) {
@@ -394,17 +386,19 @@ public class APIController {
 	        	vo.setContentsRuntime(Integer.parseInt(String.valueOf(jsonObject.get("runtime"))));
 	        	vo.setContentsTagline(String.valueOf(jsonObject.get("tagline")));
 	        	
-	        	contentsService.addContents(vo);
-	        	
-	        	apiService.setActor(mid.get(i));
-
-
+	        	try {
+	                contentsService.addContents(vo);
+	            } catch (ExistsContentsException e) {
+	            	e.printStackTrace();
+	            }
+        	
+	        	apiService.setMovieActor(mid.get(i));
 	    	}
 	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "detail/api";
 	}
 	
