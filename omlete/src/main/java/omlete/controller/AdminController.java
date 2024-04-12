@@ -30,7 +30,7 @@ import omlete.service.ReviewService;
 @Controller
 @RequestMapping("/admin")
 @RequiredArgsConstructor
-public class AdminController {
+public class AdminController { 
     
 	private final MemberService memberService;
     private final ContentsService contentsService;
@@ -98,13 +98,15 @@ public class AdminController {
     
     //작품 수정(영화)
     @RequestMapping(value = "/contents_modify_movie", method = RequestMethod.GET)
-	public String movieModify() {
+	public String movieModify(@RequestParam("contentsNo") int contentsNo, Model m) {
+    	m.addAttribute("contents", contentsService.getContents(contentsNo));
 		return "admin/contents_modify_movie";
 	}
     
     //작품 수정(TV)
     @RequestMapping(value = "/contents_modify_tv", method = RequestMethod.GET)
-    public String tvModify() {
+    public String tvModify(@RequestParam("contentsNo") int contentsNo, Model m) {
+    	m.addAttribute("contents", contentsService.getContents(contentsNo));
     	return "admin/contents_modify_tv";
     }
     
@@ -185,12 +187,13 @@ public class AdminController {
     	
     	return "redirect:/admin/contents_tv";
 	}
-
-    //작품 수정(영화)
+    
+    //작품 수정
     @RequestMapping(value = "/contents_modify_movie", method = RequestMethod.POST)
-    public String modifyMovie(@ModelAttribute Contents contents, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
+    public String modifyMovie(@ModelAttribute Contents contents,@RequestParam int contentsNo, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
     		, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,  Model m ) throws IllegalStateException, IOException {
     	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/movie");
+
     	
    		if(!file1.isEmpty()) {
    			String contentsName=UUID.randomUUID().toString()+"_"+file1.getOriginalFilename();
@@ -227,7 +230,7 @@ public class AdminController {
 
     //작품 수정(TV)
     @RequestMapping(value = "/contents_modify_tv", method = RequestMethod.POST)
-    public String modifyTV(@ModelAttribute Contents contents, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
+    public String modifyTV(@ModelAttribute Contents contents, @RequestParam int contentsNo, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
     		, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,  Model m ) throws IllegalStateException, IOException {
     	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/tv");
     	
@@ -306,11 +309,11 @@ public class AdminController {
         }
         return "admin/member";
     }
-    
+
     //회원 상태 변경
-    @RequestMapping(value = "/modify_member", method = RequestMethod.POST)
-    public String modifyMemberStatus(@RequestParam int memberStatus, HttpSession session) {
-        memberService.modifyMeberStatus(memberStatus);
+    @RequestMapping(value = "/member", method = RequestMethod.POST)
+    public String modifyMemberStatus(@RequestParam int memberStatus, HttpSession session, Model m) {
+        memberService.modifyMeberStatus(memberStatus);   	
         return "redirect:/admin/member";
     }
 }

@@ -43,13 +43,13 @@
 	</select>
 	
 	<update id= "updateContents">
-		update contents set contentsType=#{contentsType}, contentsOname=#{contentsOname}, contentsTname=#{contentsTname}
-		, contentsTrailer=#{contentsTrailer}, contentsPoster=#{contentsPoster}, contentsPhoto1=#{contentsPhoto1}, contentsPhoto2=#{contentsPhoto2}, contentsPhoto3=#{contentsPhoto3}
-		, contentsStaff=#{contentsStaff}, contentsOverview=#{contentsOverview}, contentsRating=#{contentsRating}
-		, contentsGenre=#{contentsGenre}, contentsNetwork=#{contentsNetwork}, contentsNetworkLogo=#{contentsNetworkLogo}
-		, contentsCountries=#{contentsCountries}, contentsDirector=#{contentsDirector}, contentsStartdate=#{contentsStartdate}
-		, contentsEnddate=#{contentsEnddate}, contentsEpisodes=#{contentsEpisodes}, contentsSeasons=#{contentsSeasons}
-		, contentsRuntime=#{contentsRuntime}, contentsTagline=#{contentsTagline}
+		update contents set contents_type=#{contentsType}, contents_oname=#{contentsOname}, contents_tname=#{contentsTname}
+		, contents_trailer=#{contentsTrailer}, contents_poster=#{contentsPoster}, contents_photo1=#{contentsPhoto1}, contents_photo2=#{contentsPhoto2}
+		, contents_staff=#{contentsStaff}, contents_overview=#{contentsOverview}, contents_rating=#{contentsRating}
+		, contents_photo3=#{contentsPhoto3}, contents_genre=#{contentsGenre}, contents_network=#{contentsNetwork}, contents_network_logo=#{contentsNetworkLogo}
+		, contents_countries=#{contentsCountries}, contents_director=#{contentsDirector}, contents_startdate=#{contentsStartdate}
+		, contents_enddate=#{contentsEnddate}, contents_episodes=#{contentsEpisodes}, contents_seasons=#{contentsSeasons}
+		, contents_runtime=#{contentsRuntime}, contents_tagline=#{contentsTagline}
 	</update>
 	
 	<delete id="deleteContents">

@@ -92,13 +92,10 @@
  
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                       <a class="modifyContents" href="<c:url value= "/admin/contents_modify"/>">
-   						 <button class="modifyContents" style="float: right;">저장</button></a>                      
+                        <div class="card-header py-3">                     
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <form action="<c:url value="/admin/contents_modify_member"/>" method="post" enctype="application/x-www-form-urlencoded">
 							<table id="memberTable" border="1">
 								<thead>
 									<tr style="width: 600px;">
@@ -116,7 +113,7 @@
 										<th>신고 수치</th>
 										<th>닉네임</th>
 									</tr>
-								</thead>
+								</thead>							
 								<c:forEach var="member" items="${memberList}">
 								<tbody>								  
 						             <tr>
@@ -131,7 +128,7 @@
                                         	<select name="memberStatus">
                                             	<option value="0" ${member.memberStatus == 0 ? 'selected' : ''}>0</option>
                                                 <option value="1" ${member.memberStatus == 1 ? 'selected' : ''}>1</option>
-                                                <option value="2" ${member.memberStatus == 9 ? 'selected' : ''}>9</option>
+                                                <option value="9" ${member.memberStatus == 9 ? 'selected' : ''}>9</option>
                                             </select>
                                         </td>				
 					   	                <td>${member.memberPoint}</td>				
@@ -140,9 +137,7 @@
 								      </tr>
 								 </tbody>
 								 </c:forEach>
-								 </table>
-								 <button type="submit">저장</button>\
-								 </form>								
+								 </table>										
                             </div>
                         </div>
                     </div>
@@ -182,6 +177,28 @@
             </div>
         </div>
     </div>
-</body>
+    <script>
+    $(document).ready(function(){
+        $('.updateStatusBtn').click(function(){
+            var memberId = $(this).data('member-id');
+            var newStatus = $(this).closest('tr').find('.memberStatus').val();
+            
+            $.ajax({
+                type: "POST",
+                url: "/admin/member",
+                data: { memberId: memberId, newStatus: memberStatus },
+                success: function(response){
+                    // 상태 업데이트 성공 시 해당 행의 상태 업데이트
+                    $(this).closest('tr').find('.memberStatus').val(newStatus);
+                    alert('회원 상태가 업데이트되었습니다.');
+                },
+                error: function(xhr, status, error) {
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                }
+            });
+        });
+    });
+    </script>
 
+</body>
 </html>

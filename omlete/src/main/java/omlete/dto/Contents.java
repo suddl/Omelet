@@ -1,5 +1,7 @@
 package omlete.dto;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 //회원정보를 저장하기 위한 클래스 - VO 클래스 >> DTO 클래스

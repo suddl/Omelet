@@ -101,6 +101,12 @@
                          <form action="<c:url value="/admin/contents_add_movie"/>" method="post" enctype="multipart/form-data">
 							<table id="contentsAddTable">
 									<tr>
+										<th>작품 번호</th>
+										<td>
+											<input type="hidden" name="contentsType" id="contentsType">
+										</td>
+									</tr>
+									<tr>
 										<th>타입</th>
 										<td>
 											<input type="text" name="contentsType" id="contentsType" value="영화" readonly>

@@ -106,7 +106,7 @@
 								<thead>
 									<tr style="width: 600px;">
 										<th>
-                    						<input type="checkbox" id="selectAll">
+                    						<input type="checkbox" name="contentsNo" id="selectAll" value="${contents.contentsNo}">
 										</th>
 										<th>번호</th>
 										<th style="width: 150px;">타입</th>
@@ -125,7 +125,7 @@
 								<c:forEach var="contents" items="${movieList}">
 								<tbody>								  
 						            <tr>
-						                <td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
+						                <td><input type="checkbox" name="contentsNo" value="${contents.contentsNo}"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
 						                <td>${contents.contentsNo}</td>
 						                <td>${contents.contentsType}</td>
 						                <td>${contents.contentsOname}</td>
@@ -181,14 +181,14 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-		function contentsDelete(contentsNo) {
-		if(confirm("자료를 정말 삭제하시겠습니까?")) {
-			location.href="<c:url value="contents_removeMovie"/>?contetsNo="+contentsNo;
-    </script>
-		}
-	}
-	
+<script type="text/javascript">
+    function contentsDelete(contentsNo) {
+        if(confirm("자료를 정말 삭제하시겠습니까?")) {
+            // 서버 사이드 템플릿을 사용해 URL을 생성하거나, 직접 URL을 명시해야 합니다.
+            location.href="your_server_side_url?contentsNo=" + contentsNo;
+        }
+    }
+
     function getCheckedContentsNo() {
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         var checkedContentsNoArray = [];
@@ -202,13 +202,26 @@
         return checkedContentsNoArray;
     }
     
-    document.getElementById("selectAll").addEventListener("change", function() {
+    document.getElementById("selectAll").addEventListener("change", function(event) {
         var checkboxes = document.querySelectorAll("#memberTable tbody input[type='checkbox']");
+        var isChecked = event.target.checked; // 이벤트 대상의 체크 상태를 저장
         checkboxes.forEach(function(checkbox) {
-            checkbox.checked = this.checked;
+            checkbox.checked = isChecked;
         });
     });
-
+    
+    document.querySelector('.modifyContents').addEventListener('click', function(event) {
+        event.preventDefault();  // 기본 이벤트를 방지합니다.
+        var checkedBoxes = document.querySelectorAll('input[name="contentsNo"]:checked');
+        if(checkedBoxes.length === 1) { // 수정은 한 번에 하나의 영화만 가능하도록 합니다.
+            var contentsNo = checkedBoxes[0].value;
+            var modifyUrl = '<c:url value="/admin/contents_modify_movie"/>' + '?contentsNo=' + contentsNo;
+            window.location.href = modifyUrl; // 수정 페이지로 이동합니다.
+        } else {
+            alert('하나의 영화만 선택하세요.');
+        }
+    });
+</script>
 </body>
 
 </html>
