@@ -7,6 +7,8 @@ import omlete.dto.Moon;
 public interface MoonService {
 	//추가
 	void addMoon(Moon moon);
+	//총개수
+	int getMoonCount();
 	//글번호 전달받아 게시글 검색
 	Moon getMoon(int moonNo);
 	//리스트 검색

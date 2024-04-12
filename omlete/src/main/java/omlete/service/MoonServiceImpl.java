@@ -29,21 +29,11 @@ public class MoonServiceImpl implements MoonService {
 		return moonDAO.selectMoon(moonNo);
 	}
 	
-	/*
-	@Override
-	public Moon getMoon(int moonNo) {
-		Moon moon = moonDAO.selectMoon(moonNo);
-		if (moon == null) {
-			throw new RuntimeException("게시글을 찾을 수 없습니다.");
-		}
-		return moon;
-	}
-	*/
-	//리스트 검색
+	//전체 목록
 	@Override
 	public Map<String, Object> getMoonList(int pageNum) {
 		int totalSize = moonDAO.selectMoonCount();
-		int pageSize=5;
+		int pageSize=8;
 		int blockSize=5;
 		
 		Pager pager = new Pager(pageNum, totalSize, pageSize, blockSize);
@@ -58,5 +48,11 @@ public class MoonServiceImpl implements MoonService {
 		resultMap.put("moonList", moonList);
 		
 		return resultMap;
+	}
+
+	@Override
+	public int getMoonCount() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
