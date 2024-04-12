@@ -26,7 +26,11 @@ public class MainController {
 	@RequestMapping("/")
 	public String main(Model model, HttpSession session) {
 		Member loginUser = SessionUtils.getMemberFromSession(session);
-		List<Contents> favoriteMovies = contentsService.getFavoriteMovies(loginUser);
+		List<Contents> favoriteMovies = null;
+		
+		if (loginUser != null) {
+			favoriteMovies = contentsService.getFavoriteMovies(loginUser);
+		}
 
 		model.addAttribute("latestMovies", contentsService.getLatestMovieList());
 		model.addAttribute("popularMovies", contentsService.getPopularMovieList());
