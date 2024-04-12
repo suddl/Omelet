@@ -111,7 +111,7 @@
                <!-- ========================================================================================================================== -->
                <div class="col-lg-8 right">
 				  <div class="d-flex align-items-center justify-content-between mb-4">
-                        <p class="top3">인생 작품 top3 <small><span></span><span></span></small> </p>
+                        <p class="top3">나의 인생 작품 <small><span></span><span></span></small> </p>
                          <a href="<c:url value="/join/myfavorite"/>">수정하기</a>
                      </div>
 	                  
@@ -120,11 +120,11 @@
                         <div class="col-md-4">
                            <div>
                               <a href="#">
-                              <img class="imgMyfavorite" src="#" />
+                              <img class="imgMyfavorite" src="https://image.tmdb.org/t/p/original+${favoriteContent.contentsPoster }" />
                               </a>
                               <a href="#">
 	                              <div class="favoriteTitle">
-	                              	작품 제목
+	                              	${favoriteContent.contentsTname }
 	                              </div>
                               </a>
                            </div>

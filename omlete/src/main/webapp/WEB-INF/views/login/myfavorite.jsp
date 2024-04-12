@@ -46,7 +46,8 @@
         </div>
     </div>
 <script type="text/javascript">
-function handleResultClick(contentsNo) {
+function handleResultClick(contentsNo, movieName) {
+	$("#movieName").val(movieName); 
     $("#memberFavorite1").val(contentsNo); 
     $("#searchResults").hide(); 
 }
@@ -66,7 +67,7 @@ $("#movieName").keyup(function() {
         success: function(result) {
             var html = '';
             for (var i = 0; i < result.length; i++) {
-                html += '<p onclick="handleResultClick(\'' + result[i].contentsNo + '\')">' + result[i].contentsTname + '</p>';
+                html += '<p onclick="handleResultClick(\'' + result[i].contentsNo + '\', \'' + result[i].contentsTname + '\')">' + result[i].contentsTname + '</p>';
             }
             $("#searchResults").html(html);
             $("#searchResults").show();
