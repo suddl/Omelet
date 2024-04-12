@@ -1,6 +1,8 @@
 package omlete.controller;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
+import omlete.dto.Contents;
 import omlete.dto.Member;
 import omlete.exception.ExistsMemberException;
 import omlete.service.ContentsService;
@@ -44,15 +47,16 @@ public class JoinController {
 	}
 
 	// 검색 결과를 가져와서 화면에 출력
-	@RequestMapping(value = "/myfavorite", method = RequestMethod.POST)
-	public String searchFavorite(@RequestParam String movieName, Model model) {
-	    model.addAttribute("movieName", movieName); // 검색어를 모델에 추가하여 다시 화면에 표시
-	    model.addAttribute("myfavoriteList", contentsService.getFavoriteContents(movieName));
-	    return "login/myfavorite"; // 검색 결과와 함께 인생영화 선택 페이지로 이동
+	@RequestMapping(value = "/myfavorite")
+	@ResponseBody
+	public List<Contents> searchFavoriteList(@RequestParam String movieName) {
+		List<Contents> searchList=contentsService.getFavoriteContents(movieName);
+	    return searchList;
 	}
 
 	// 인생영화 선택 완료 후 처리
 	@RequestMapping(value = "/myfavorite/input", method = RequestMethod.POST)
+	@ResponseBody
 	public String submitFavorite(@ModelAttribute Member member) {
 	    memberService.modifyMemberContents(member);
 	    return "redirect:/"; // 처리 완료 후 메인 페이지로 이동

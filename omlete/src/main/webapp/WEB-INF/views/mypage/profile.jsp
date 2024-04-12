@@ -120,31 +120,7 @@
                         <div class="col-md-4">
                            <div>
                               <a href="#">
-                              <img class="imgMyfavorite" src="#" />
-                              </a>
-                              <a href="#">
-	                              <div class="favoriteTitle">
-	                              	작품 제목
-	                              </div>
-                              </a>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div>
-                              <a href="#">
-                              <img class="imgMyfavorite" src="#" />
-                              </a>
-                              <a href="#">
-	                              <div class="favoriteTitle">
-	                              	작품 제목
-	                              </div>
-                              </a>
-                        </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div>
-                              <a href="#">
-                              <img class="imgMyfavorite" src="#" />
+                              <img class="imgMyfavorite" src="<c:url value="login/myfavorite"/>" />
                               </a>
                               <a href="#">
 	                              <div class="favoriteTitle">
