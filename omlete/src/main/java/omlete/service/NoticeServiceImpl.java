@@ -20,7 +20,7 @@ public class NoticeServiceImpl implements NoticeService {
 	private final NoticeDAO noticeDAO;
 	
 	@Override
-    public Notice getNotice(int noticeNo) throws Exception {
+    public Notice getNotice(int noticeNo) {
         return noticeDAO.selectNotice(noticeNo);
     }
 	
