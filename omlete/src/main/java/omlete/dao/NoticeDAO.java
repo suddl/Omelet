@@ -16,9 +16,9 @@ public interface NoticeDAO {
 	//총개수
 	int selectNoticeCount();
 	//조회수
-	void hitNum(int noticeNo);
-	//상세보기
-	Notice noticeDetail(int noticeNo);
+	void increaseViewcnt(int noticeNo) throws Exception;
+	//게시글검색
+	Notice selectNotice(int noticeNo);
 	//리스트
 	List<Notice> selectNoticeList(Map<String, Object> map);
 }

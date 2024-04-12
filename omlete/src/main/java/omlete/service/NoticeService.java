@@ -4,8 +4,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.ui.Model;
-
 import omlete.dto.Notice;
 
 
@@ -20,9 +18,11 @@ public interface NoticeService {
 	void removeNotice(int noticeNo); 
 	//총개수
 	int getNoticeCount();
-	//게시글 검색
-	public void noticeDetail(int noticeNo, Model model);
+	//상세보기
+	public Notice getNotice(int noticeNo) throws Exception;
 	//리스트검색
 	Map<String, Object> getNoticeList(int pageNum);
+	//게시글 조회
+	public void increaseViewcnt(int noticeNo, HttpSession session) throws Exception;
 	
 }

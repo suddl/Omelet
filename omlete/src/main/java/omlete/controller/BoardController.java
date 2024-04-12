@@ -58,8 +58,8 @@ public class BoardController {
 
 	        return "moon/moon_view";
 	 }
-	 /*
-	// 공지사항 상세 
+	 
+	//공지사항 상세 
 	 @RequestMapping(value = "/noticeView", method=RequestMethod.GET)
 	 public String noticeView(@RequestParam int noticeNo, HttpSession session) throws Exception {
 	     noticeService.increaseViewcnt(noticeNo, session);
@@ -74,7 +74,7 @@ public class BoardController {
 		
 	
 	 }
-	*/
+	
 	
 	//이벤트상세
 	@RequestMapping(value = "/event",method = RequestMethod.GET)
