@@ -3,6 +3,8 @@ package omlete.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -56,10 +58,14 @@ public class JoinController {
 
 	// 인생영화 선택 완료 후 처리
 	@RequestMapping(value = "/myfavorite/input", method = RequestMethod.POST)
-	@ResponseBody
-	public String submitFavorite(@ModelAttribute Member member) {
+	public String submitFavorite(@ModelAttribute Member member, HttpSession session) {
 	    memberService.modifyMemberContents(member);
-	    return "redirect:/"; // 처리 완료 후 메인 페이지로 이동
+	    Member loginMember=(Member)session.getAttribute("loginMember");
+		if(loginMember.getMemberNo()==member.getMemberNo()) {
+			session.setAttribute("loginMember", memberService.getMemberNo(member.getMemberNo()));
+		}
+	    
+	    return "redirect:/mypage/profile";
 	}
 
 	

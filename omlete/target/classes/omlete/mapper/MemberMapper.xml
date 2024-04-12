@@ -71,19 +71,11 @@
 	
 	<!-- 인생 영화 변경 -->
 	<update id="updateMemberContents">
-		update member 
-		<set>
-			<if test="memberFavorite1!=null and memberFavorite1!=''">
-				member_favorite1=#{memberFavorite1}
-			</if>
-			<if test="memberFavorite2!=null and memberFavorite2!=''">
-				member_favorite2=#{memberFavorite2}
-			</if>
-			<if test="memberFavorite3!=null and memberFavorite3!=''">
-				member_favorite3=#{memberFavorite3}
-			</if>
-		</set>
-		where member_no=#{memberNo}
+	    UPDATE member 
+	    <set>
+	        member_favorite1 = #{memberFavorite1}
+	    </set>
+	    WHERE member_no = #{memberNo}
 	</update>
 	
 	<!-- 관리자 페이지 -->

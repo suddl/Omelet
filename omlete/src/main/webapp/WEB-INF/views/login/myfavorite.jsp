@@ -18,8 +18,8 @@
                             <h5 class="font-weight-bold mt-3">나의 인생작품</h5>
                             <p class="text-muted">나의 인생작을 입력해주세요.</p>
                         </div>
-                        <form id="favoriteForm" action="/login/myfavorite/input" method="post">
-						    <!-- 첫 번째 작품 등록 -->
+                        <form id="favoriteForm" action="<c:url value="/join/myfavorite/input"/>" method="post">
+                        <input type="hidden" name="memberNo" value="${loginMember.memberNo }">
 						    <div class="form-group">
 						        <label class="mb-1">검색</label>
 						        <div class="position-relative icon-form-control">
