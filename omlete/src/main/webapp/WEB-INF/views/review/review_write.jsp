@@ -52,10 +52,12 @@
                      <div style="padding-left: 0px;" class="control-group form-group col-lg-4 col-md-4">
                      <button type="button" class="spoiler" id="spoiler">스포일러 체크</button>
                         <div class="controls">
-                           <input type="text" class="form-control" required>
+                           <div type="text" class="form-control">
+                           		<c:out value="${contents.contentsTname }" />
+                           </div>
                         </div>
                      </div>
-                  </div><c:out value="${contents.contentsTname }"></c:out>
+                  </div>
                   <div class="control-group form-group">
                     <header class="review-content">
                      <div class="controls">
@@ -89,7 +91,7 @@
 <script src="js/custom.js"></script>
 
 <script type="text/javascript">
-$("#noticeForm").submit(function() {	
+$("#noticeForm").submit(function() {
 	if($("#form-control").val()=="") {
 		$("#message").text("내용을 입력해 주세요.");
 		$("#form-control").focus();
