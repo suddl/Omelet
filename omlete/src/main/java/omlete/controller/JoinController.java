@@ -47,7 +47,7 @@ public class JoinController {
 	    memberService.addMember(member);
 	    return "redirect:/join/success"; // 회원가입 성공 후 바로 인생영화 선택 페이지로 이동
 	}
-
+	
 	// 인생영화 선택 페이지
 	@RequestMapping(value = "/myfavorite", method = RequestMethod.GET)
 	public String showFavoriteForm(Model model) {
@@ -65,16 +65,15 @@ public class JoinController {
 
 	// 인생영화 선택 완료 후 처리
 	@RequestMapping(value = "/myfavorite/input", method = RequestMethod.POST)
-	public String submitFavorite(@ModelAttribute Member member, HttpSession session) {
-	    memberService.modifyMemberContents(member);
-	    Member loginMember=(Member)session.getAttribute("loginMember");
-		if(loginMember.getMemberNo()==member.getMemberNo()) {
-			session.setAttribute("loginMember", memberService.getMemberNo(member.getMemberNo()));
-		}
-	    
+	public String submitFavorite(@RequestParam int memberFavorite1, HttpSession session) {
+	    Member loginMember = (Member) session.getAttribute("loginMember");
+	    if (loginMember != null) {
+	        memberService.modifyMemberContents(loginMember.getMemberNo(), memberFavorite1); 
+	        session.setAttribute("loginMember", memberService.getMemberNo(loginMember.getMemberNo())); 
+	    }
 	    return "redirect:/mypage/profile";
 	}
-
+	
 	
 	@RequestMapping(value = "/idCheck/{memberId}", method = RequestMethod.GET)
 	@ResponseBody

@@ -17,7 +17,7 @@ public interface MemberService {
     Member getMemberEmail(String memberEmail);
     void modifyMemberInfo(Member member);
 	void modifyMemberResign(int memberNo);
-	void modifyMemberContents(Member member);
+	void modifyMemberContents(int memberNo, int memberFavorite1);
 	
 	//비번 아이디 찾기
 	void pwModifyMember(Member member);

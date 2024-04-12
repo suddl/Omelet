@@ -71,11 +71,7 @@
 	
 	<!-- 인생 영화 변경 -->
 	<update id="updateMemberContents">
-	    UPDATE member 
-	    <set>
-	        member_favorite1 = #{memberFavorite1}
-	    </set>
-	    WHERE member_no = #{memberNo}
+	    UPDATE member set member_favorite1 = #{memberFavorite1} WHERE member_no = #{memberNo}
 	</update>
 	
 	<!-- 관리자 페이지 -->

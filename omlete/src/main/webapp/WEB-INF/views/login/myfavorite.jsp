@@ -19,7 +19,7 @@
                             <p class="text-muted">나의 인생작을 입력해주세요.</p>
                         </div>
                         <form id="favoriteForm" action="<c:url value="/join/myfavorite/input"/>" method="post">
-                        <input type="hidden" name="memberNo" value="${loginMember.memberNo }">
+						    <input type="hidden" name="memberNo" value="${loginMember.memberNo }">
 						    <div class="form-group">
 						        <label class="mb-1">검색</label>
 						        <div class="position-relative icon-form-control">
@@ -30,6 +30,9 @@
 						    
 						    <div id="searchResults">
 						    </div>
+						    
+						    <input type="hidden" id="memberFavorite1" name="memberFavorite1">
+						    
 						    <button class="btn btn-success btn-block text-uppercase" type="submit" id="searchButton">저장</button>
 						    <div class="py-3 d-flex align-item-center">
 						        <a href="<c:url value="/login/member"/>">로그인</a> <span class="ml-auto"> 새로운 계정
@@ -43,35 +46,35 @@
         </div>
     </div>
 <script type="text/javascript">
-$("#movieName").focus();
-	
+function handleResultClick(contentsNo) {
+    $("#memberFavorite1").val(contentsNo); 
+    $("#searchResults").hide(); 
+}
 
-//입력태그에서 키보드를 눌렀다 띈 경우에 호출될 이벤트 처리 함수 등록
 $("#movieName").keyup(function() {
-	var movieName=$("#movieName").val();
-	//alert(keyword);
-	if(movieName=="") {//입력태그에 입력값이 없는 경우
-		$("#searchResults").hide();
-		return;
-	}
-	
-	$.ajax({
-		type: "post",
-		url: "<c:url value="/join/myfavorite"/>",
-		data: {"movieName":movieName},
-		dataType: "json",
-		success: function(result) {
-			var html = '';
+    var movieName = $("#movieName").val();
+    if (movieName == "") { 
+        $("#searchResults").hide();
+        return;
+    }
+    
+    $.ajax({
+        type: "post",
+        url: "<c:url value="/join/myfavorite"/>",
+        data: {"movieName": movieName},
+        dataType: "json",
+        success: function(result) {
+            var html = '';
             for (var i = 0; i < result.length; i++) {
-            	 html += '<p onclick="handleResultClick(\'' + result[i].contentsTname + '\')">' + result[i].contentsTname + '</p>';
+                html += '<p onclick="handleResultClick(\'' + result[i].contentsNo + '\')">' + result[i].contentsTname + '</p>';
             }
             $("#searchResults").html(html);
             $("#searchResults").show();
-		},
-		error: function(xhr) {
-			alert("에러코드 = "+xhr.status);
-		}
-	});
+        },
+        error: function(xhr) {
+            alert("에러코드 = " + xhr.status);
+        }
+    });
 });
 </script>
 </body>
