@@ -16,7 +16,7 @@ public interface MemberDAO {
 	Member selectMemberNo(int memberNo);
 	int updateMemberInfo(Member member);
 	int updateMemberResign(int memberNo);
-	int updateMemberContents(Member member);
+	int updateMemberContents(int memberNo, int memberFavorite1);
 
 	//관리자 페이지
 	List<Member> selectMemberList();

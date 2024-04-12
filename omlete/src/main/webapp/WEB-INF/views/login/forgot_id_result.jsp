@@ -21,13 +21,13 @@
                             <!-- 이메일이나 다른 정보도 필요하다면 여기에 추가 -->
                             </form>
                         </div>
-                    </div>
                     <button class="btn btn-success btn-block text-uppercase" type="button" onclick="window.location.href='<c:url value="/login/member"/>'">로그인</button>
                     <div class="py-3 d-flex align-item-center">
                         <span class="ml-auto"> 새로운 계정 <a href="<c:url value="/login/register"/>"> 회원가입 </a></span>
                     </div>
                 </div>
             </div>
+          </div>
         </div>
     </div>
 </body>

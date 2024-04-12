@@ -90,98 +90,182 @@ public class AdminController {
     	return "admin/contents_add_movie";
     }
     
-    //작품 추가(tv)
+    //작품 추가(TV)
     @RequestMapping(value = "/contents_add_tv", method = RequestMethod.GET)
     public String tvAdd() {
     	return "admin/contents_add_tv";
     }
     
+    //작품 수정(영화)
+    @RequestMapping(value = "/contents_modify_movie", method = RequestMethod.GET)
+	public String movieModify() {
+		return "admin/contents_modify_movie";
+	}
+    
+    //작품 수정(TV)
+    @RequestMapping(value = "/contents_modify_tv", method = RequestMethod.GET)
+    public String tvModify() {
+    	return "admin/contents_modify_tv";
+    }
+    
     // 작품 추가(영화)
     @RequestMapping(value = "/contents_add_movie", method = RequestMethod.POST)
-    public String movieAdd(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList,  Model m ) throws IllegalStateException, IOException {
-    	contentsService.addContents(contents);
-    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
+    public String addMovie(@ModelAttribute Contents contents, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
+    		, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,  Model m ) throws IllegalStateException, IOException {
+    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/movie");
     	
-    	List<String> contentsList=new ArrayList<String>();
-    	
-    	for(MultipartFile multipartFile : uploadFileList) {
-    		String contentsName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
-    		File file=new File(uploadDirectory, contentsName);
-    		multipartFile.transferTo(file);
+   		if(!file1.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file1.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file1.transferTo(file);
+   			contents.setContentsPoster(contentsName);
+   		}
+   		
+   		if(!file2.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file2.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file2.transferTo(file);
+   			contents.setContentsPhoto1(contentsName);
+   		}
+   		
+   		if(!file3.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file3.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file3.transferTo(file);
+   			contents.setContentsPhoto2(contentsName);
+   		}
+   		
+   		if(!file4.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file4.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file4.transferTo(file);
+   			contents.setContentsPhoto3(contentsName);
+  		}
         
-    		contentsList.add(uploadDirectory);
-    	}
-    	m.addAttribute("contents", contents);
-    	m.addAttribute("contentsList", contentsList);
+   		contentsService.addContents(contents);
     	
     	return "redirect:/admin/contents_movie";
-    		}
+	}
     
     // 작품 추가(TV)
     @RequestMapping(value = "/contents_add_tv", method = RequestMethod.POST)
-    public String tvAdd(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList,  Model m ) throws IllegalStateException, IOException {
-    	contentsService.addContents(contents);
-    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
+    public String addTV(@ModelAttribute Contents contents, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
+    		, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,  Model m ) throws IllegalStateException, IOException {
+    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/tv");
     	
-    	List<String> contentsList=new ArrayList<String>();
-    	
-    	for(MultipartFile multipartFile : uploadFileList) {
-    		String contentsName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
-    		File file=new File(uploadDirectory, contentsName);
-    		multipartFile.transferTo(file);
+   		if(!file1.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file1.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file1.transferTo(file);
+   			contents.setContentsPoster(contentsName);
+   		}
+   		
+   		if(!file2.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file2.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file2.transferTo(file);
+   			contents.setContentsPhoto1(contentsName);
+   		}
+   		
+   		if(!file3.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file3.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file3.transferTo(file);
+   			contents.setContentsPhoto2(contentsName);
+   		}
+   		
+   		if(!file4.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file4.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file4.transferTo(file);
+   			contents.setContentsPhoto3(contentsName);
+  		}
         
-    		contentsList.add(uploadDirectory);
-    	}
-    	m.addAttribute("contents", contents);
-    	m.addAttribute("contentsImageList", contentsList);
+   		contentsService.addContents(contents);
     	
     	return "redirect:/admin/contents_tv";
-    		}
+	}
 
     //작품 수정(영화)
-    @RequestMapping(value = "/contents_modifyMovie", method = RequestMethod.POST)
-    public String contentsModifyMovie(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList, Model m ) throws IllegalStateException, IOException {
-        contentsService.modifyContents(contents);
-        String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
+    @RequestMapping(value = "/contents_modify_movie", method = RequestMethod.POST)
+    public String modifyMovie(@ModelAttribute Contents contents, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
+    		, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,  Model m ) throws IllegalStateException, IOException {
+    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/movie");
     	
-    	List<String> contentsList=new ArrayList<String>();
-    	
-    	for(MultipartFile multipartFile : uploadFileList) {
-    		String contentsImageName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
-    		File file=new File(uploadDirectory, contentsImageName);
-    		multipartFile.transferTo(file);
+   		if(!file1.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file1.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file1.transferTo(file);
+   			contents.setContentsPoster(contentsName);
+   		}
+   		
+   		if(!file2.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file2.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file2.transferTo(file);
+   			contents.setContentsPhoto1(contentsName);
+   		}
+   		
+   		if(!file3.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file3.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file3.transferTo(file);
+   			contents.setContentsPhoto2(contentsName);
+   		}
+   		
+   		if(!file4.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file4.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file4.transferTo(file);
+   			contents.setContentsPhoto3(contentsName);
+  		}
         
-    		contentsList.add(uploadDirectory);
-    	}
-    	m.addAttribute("contents", contents);
-    	m.addAttribute("contentsList", contentsList);
+   		contentsService.modifyContents(contents);
     	
-        return "redirect:/admin/contents_movie";
-    	}
+    	return "redirect:/admin/contents_movie";
+	}
 
     //작품 수정(TV)
-    @RequestMapping(value = "/contents_modifyTV", method = RequestMethod.POST)
-    public String contentsModifyTV(@ModelAttribute Contents contents, @RequestParam List<MultipartFile> uploadFileList, Model m ) throws IllegalStateException, IOException {
-    	contentsService.modifyContents(contents);
-    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
+    @RequestMapping(value = "/contents_modify_tv", method = RequestMethod.POST)
+    public String modifyTV(@ModelAttribute Contents contents, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
+    		, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,  Model m ) throws IllegalStateException, IOException {
+    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/tv");
     	
-    	List<String> contentsList=new ArrayList<String>();
-    	
-    	for(MultipartFile multipartFile : uploadFileList) {
-    		String contentsImageName=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
-    		File file=new File(uploadDirectory, contentsImageName);
-    		multipartFile.transferTo(file);
-    		
-    		contentsList.add(uploadDirectory);
-    	}
-    	m.addAttribute("contents", contents);
-    	m.addAttribute("contentsist", contentsList);
+   		if(!file1.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file1.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file1.transferTo(file);
+   			contents.setContentsPoster(contentsName);
+   		}
+   		
+   		if(!file2.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file2.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file2.transferTo(file);
+   			contents.setContentsPhoto1(contentsName);
+   		}
+   		
+   		if(!file3.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file3.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file3.transferTo(file);
+   			contents.setContentsPhoto2(contentsName);
+   		}
+   		
+   		if(!file4.isEmpty()) {
+   			String contentsName=UUID.randomUUID().toString()+"_"+file4.getOriginalFilename();
+   			File file=new File(uploadDirectory, contentsName);
+   			file4.transferTo(file);
+   			contents.setContentsPhoto3(contentsName);
+  		}
+        
+   		contentsService.modifyContents(contents);
     	
     	return "redirect:/admin/contents_tv";
-    }
+	}
     
     //작품 삭제(영화)
-    @RequestMapping(value = "/contents_deleteMovie", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/contents_remove_movie", method = RequestMethod.DELETE)
     public String contentsRemoveMovie(@RequestParam int contentsNo) {
 		Contents contents=contentsService.getContents(contentsNo);
 		String uploadDirectory = context.getServletContext().getRealPath("/WEB-INF/upload");
@@ -196,7 +280,7 @@ public class AdminController {
     }
     
     //작품 삭제(TV)
-    @RequestMapping(value = "/contents_deleteTV", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/contents_remove_tv", method = RequestMethod.DELETE)
     public String contentsRemoveTV(@RequestParam int contentsNo) {
     	Contents contents=contentsService.getContents(contentsNo);
     	String uploadDirectory = context.getServletContext().getRealPath("/WEB-INF/upload");
@@ -224,7 +308,7 @@ public class AdminController {
     }
     
     //회원 상태 변경
-    @RequestMapping(value = "/member_modify", method = RequestMethod.POST)
+    @RequestMapping(value = "/modify_member", method = RequestMethod.POST)
     public String modifyMemberStatus(@RequestParam int memberStatus, HttpSession session) {
         memberService.modifyMeberStatus(memberStatus);
         return "redirect:/admin/member";

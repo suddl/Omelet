@@ -95,8 +95,9 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                         <div class="contentsBtn">
-							<a class="addContents" href="<c:url value= "/admin/contents_add_movie"/>"><button class="addContents">추가</button></a> 
-                        	<button class="deleteContents" onclick="contentsDelete(${contents.contentsNo };)">삭제</button>
+							<a class="addContents" href="<c:url value= "/admin/contents_add_movie"/>"><button class="addContents">추가</button></a>
+							<a class="modifyContents" href="<c:url value= "/admin/contents_modify_movie"/>"><button class="modifyContents">수정</button></a> 
+                        	<a class="removeContents" href="<c:url value= "/admin/contents_remove_movie"/>"><button class="removeContents">삭제</button></a>
                         </div>
                         </div>
                         <div class="card-body">
@@ -183,7 +184,7 @@
     <script type="text/javascript">
 		function contentsDelete(contentsNo) {
 		if(confirm("자료를 정말 삭제하시겠습니까?")) {
-			location.href="<c:url value="contents_delete"/>?contetsNo="+contentsNo;
+			location.href="<c:url value="contents_removeMovie"/>?contetsNo="+contentsNo;
     </script>
 		}
 	}

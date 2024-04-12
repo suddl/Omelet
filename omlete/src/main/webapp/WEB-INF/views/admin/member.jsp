@@ -98,6 +98,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <form action="<c:url value="/admin/contents_modify_member"/>" method="post" enctype="application/x-www-form-urlencoded">
 							<table id="memberTable" border="1">
 								<thead>
 									<tr style="width: 600px;">
@@ -138,8 +139,10 @@
 							            <td>${member.memberNickname}</td>				
 								      </tr>
 								 </tbody>
-								 </c:forEach>									
-							</table>
+								 </c:forEach>
+								 </table>
+								 <button type="submit">저장</button>\
+								 </form>								
                             </div>
                         </div>
                     </div>

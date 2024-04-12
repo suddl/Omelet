@@ -106,12 +106,11 @@
                        
                        
                        <div class="form-group">
-                          <label class="mb-1"> 귀하는 OMELET <a href="#">개인 정보 보호 정책 </a>및 <a href="#">쿠키정책</a> 에 <a  href="#"> 동의합니다 </a>.</label>
                        </div>
                           <label class="mb-1"> 이미 가입하셨나요? <a href="<c:url value="/login/member"/>">로그인</a></label>
                        </div>
                        </div>
-                       <button class="btn btn-success btn-block text-uppercase" type="submit" id="joinBtn"> 동의 및 가입 </button>
+                       <button class="btn btn-success btn-block text-uppercase" type="submit" id="joinBtn"> 가입 </button>
                     </form>
                    </div>
                </div>

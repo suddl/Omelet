@@ -142,12 +142,8 @@ public class MemberServiceImpl implements MemberService {
    
    // 회원 인생작 수정
    @Override
-   public void modifyMemberContents(Member member) {
-      if(memberDAO.selectMemberNo(member.getMemberNo()) == null) {
-         throw new MemberNotFoundException("아이디의 회원정보를 찾을 수 없습니다.");
-      }
-      
-      memberDAO.updateMemberContents(member);
+   public void modifyMemberContents(int memberNo, int memberFavorite1) {
+      memberDAO.updateMemberContents(memberNo, memberFavorite1);
       
    }
 

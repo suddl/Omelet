@@ -1,6 +1,10 @@
 package omlete.controller;
 
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
+import omlete.dto.Contents;
 import omlete.dto.Member;
 import omlete.exception.ExistsMemberException;
 import omlete.service.ContentsService;
@@ -25,17 +30,24 @@ public class JoinController {
 	private final MemberService memberService;
 	private final ContentsService contentsService;
 
+	
 	@RequestMapping(value = "/member",method = RequestMethod.GET)
 	public String memberJoin() {
 		return "login/register";
 	}
 	
+	@RequestMapping("/success")
+    public String joinSuccess() {
+        return "login/welcom";
+    }
+
+	
 	@RequestMapping(value = "/member", method = RequestMethod.POST)
 	public String memberJoin(@ModelAttribute Member member) {
 	    memberService.addMember(member);
-	    return "redirect:/join/myfavorite"; // 회원가입 성공 후 바로 인생영화 선택 페이지로 이동
+	    return "redirect:/join/success"; // 회원가입 성공 후 바로 인생영화 선택 페이지로 이동
 	}
-
+	
 	// 인생영화 선택 페이지
 	@RequestMapping(value = "/myfavorite", method = RequestMethod.GET)
 	public String showFavoriteForm(Model model) {
@@ -44,20 +56,24 @@ public class JoinController {
 	}
 
 	// 검색 결과를 가져와서 화면에 출력
-	@RequestMapping(value = "/myfavorite", method = RequestMethod.POST)
-	public String searchFavorite(@RequestParam String movieName, Model model) {
-	    model.addAttribute("movieName", movieName); // 검색어를 모델에 추가하여 다시 화면에 표시
-	    model.addAttribute("myfavoriteList", contentsService.getFavoriteContents(movieName));
-	    return "login/myfavorite"; // 검색 결과와 함께 인생영화 선택 페이지로 이동
+	@RequestMapping(value = "/myfavorite")
+	@ResponseBody
+	public List<Contents> searchFavoriteList(@RequestParam String movieName) {
+		List<Contents> searchList=contentsService.getFavoriteContents(movieName);
+	    return searchList;
 	}
 
 	// 인생영화 선택 완료 후 처리
 	@RequestMapping(value = "/myfavorite/input", method = RequestMethod.POST)
-	public String submitFavorite(@ModelAttribute Member member) {
-	    memberService.modifyMemberContents(member);
-	    return "redirect:/"; // 처리 완료 후 메인 페이지로 이동
+	public String submitFavorite(@RequestParam int memberFavorite1, HttpSession session) {
+	    Member loginMember = (Member) session.getAttribute("loginMember");
+	    if (loginMember != null) {
+	        memberService.modifyMemberContents(loginMember.getMemberNo(), memberFavorite1); 
+	        session.setAttribute("loginMember", memberService.getMemberNo(loginMember.getMemberNo())); 
+	    }
+	    return "redirect:/mypage/profile";
 	}
-
+	
 	
 	@RequestMapping(value = "/idCheck/{memberId}", method = RequestMethod.GET)
 	@ResponseBody

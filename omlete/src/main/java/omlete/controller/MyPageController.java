@@ -5,6 +5,7 @@ package omlete.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
+import omlete.dto.Contents;
 import omlete.dto.Member;
+import omlete.service.ContentsService;
 import omlete.service.MemberService;
 
 
@@ -21,14 +24,19 @@ import omlete.service.MemberService;
 @RequiredArgsConstructor
 public class MyPageController {
 	private final MemberService memberService;
-	
+	private final ContentsService contentsService;
 	
 	// 마이페이지 메인화면
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profile() {
+	public String profile(Model model, HttpSession session) {
+		Member loginMember = (Member) session.getAttribute("loginMember");
+	    if (loginMember != null) {
+	        int memberFavorite1 = loginMember.getMemberFavorite1(); 
+	        Contents favoriteContent = contentsService.getContents(memberFavorite1); 
+	        model.addAttribute("favoriteContent", favoriteContent); 
+	    }
 		return "mypage/profile";
 	}
-	
 	
 	// 내 정보 수정
 	@RequestMapping(value = "/updateInfo", method = RequestMethod.GET)

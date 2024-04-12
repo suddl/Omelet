@@ -2,6 +2,8 @@ package omlete.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import omlete.dto.Member;
 
 public interface MemberMapper {
@@ -15,7 +17,7 @@ public interface MemberMapper {
 	Member selectMemberNo(int memberNo);
 	int updateMemberInfo(Member member);
 	int updateMemberResign(int memberNo);
-	int updateMemberContents(Member member);
+	int updateMemberContents(@Param("memberNo") int memberNo, @Param("memberFavorite1") int memberFavorite1);
 	
 	//관리자 페이지
 	List<Member> selectMemberList();

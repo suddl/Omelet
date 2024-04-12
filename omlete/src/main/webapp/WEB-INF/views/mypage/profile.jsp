@@ -111,8 +111,8 @@
                <!-- ========================================================================================================================== -->
                <div class="col-lg-8 right">
 				  <div class="d-flex align-items-center justify-content-between mb-4">
-                        <p class="top3">인생 작품 top3 <small><span></span><span></span></small> </p>
-                         <a href="#">수정하기</a>
+                        <p class="top3">나의 인생 작품 <small><span></span><span></span></small> </p>
+                         <a href="<c:url value="/join/myfavorite"/>">수정하기</a>
                      </div>
 	                  
                   <div class="recommended">
@@ -120,35 +120,11 @@
                         <div class="col-md-4">
                            <div>
                               <a href="#">
-                              <img class="imgMyfavorite" src="#" />
+                              <img class="imgMyfavorite" src="https://image.tmdb.org/t/p/original+${favoriteContent.contentsPoster }" />
                               </a>
                               <a href="#">
 	                              <div class="favoriteTitle">
-	                              	작품 제목
-	                              </div>
-                              </a>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div>
-                              <a href="#">
-                              <img class="imgMyfavorite" src="#" />
-                              </a>
-                              <a href="#">
-	                              <div class="favoriteTitle">
-	                              	작품 제목
-	                              </div>
-                              </a>
-                        </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div>
-                              <a href="#">
-                              <img class="imgMyfavorite" src="#" />
-                              </a>
-                              <a href="#">
-	                              <div class="favoriteTitle">
-	                              	작품 제목
+	                              	${favoriteContent.contentsTname }
 	                              </div>
                               </a>
                            </div>
@@ -162,7 +138,7 @@
                            data-impression-collected="true">5</span></span><span><span
                            class="total-rating header-total-rating"
                            data-impression-collected="true">(리뷰 개수)</span></span></small> </h4>
-                         <a href="<c:url value="/mypage/profile/writeReview"/>">더보기</a>
+                         <a href="<c:url value="/mypage/writeReview"/>">더보기</a>
                      </div>
                      
                   </div
