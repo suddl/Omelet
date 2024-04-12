@@ -2,3 +2,5 @@
 /.metadata
 */target/**
 /omlete/target
+/omlete/.settings
+omlete/.classpath
