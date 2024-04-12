@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import omlete.dto.Member;
 import omlete.exception.MemberNotFoundException;
 import omlete.service.MemberService;
+import java.security.SecureRandom;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,6 +21,10 @@ import omlete.service.MemberService;
 public class LoginController {
 
 	private final MemberService memberService;
+    private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String DIGITS = "0123456789";
+    private static final String ALL = UPPER + DIGITS; // 영어 대문자와 숫자만 포함
+    private static SecureRandom random = new SecureRandom();
 	
 
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
@@ -100,14 +105,15 @@ public class LoginController {
 	}
 	
 
-	    // 10자리 숫자 랜덤 비밀번호 생성 메소드
-	    private String generateRandomPassword(int length) {
-	        StringBuilder newPassword = new StringBuilder();
-	        for (int i = 0; i < length; i++) {
-	            newPassword.append((int) (Math.random() * 10));
-	        }
-	        return newPassword.toString();
-	    }
+		    // 10자리 숫자 랜덤 비밀번호 생성 메소드
+		private String generateRandomPassword(int length) {
+		    StringBuilder newPassword = new StringBuilder();
+		    for (int i = 0; i < length; i++) {
+		        int index = random.nextInt(ALL.length());
+		        newPassword.append(ALL.charAt(index));
+		    }
+		    return newPassword.toString();
+		}
 
 	    @RequestMapping(value = "/forgot_id_end", method = RequestMethod.POST)
 	    public String forgotIdEnd(@ModelAttribute Member member) {
