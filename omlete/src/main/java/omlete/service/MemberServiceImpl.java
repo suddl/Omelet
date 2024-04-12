@@ -114,6 +114,7 @@ public class MemberServiceImpl implements MemberService {
    }
 
    // 회원 정보 수정
+   @Transactional(rollbackFor = Exception.class)
    @Override
    public void modifyMemberInfo(Member member) {
       if(memberDAO.selectMemberNo(member.getMemberNo()) == null) {
@@ -130,6 +131,7 @@ public class MemberServiceImpl implements MemberService {
    }
 
    // 회원 탈퇴 
+   @Transactional(rollbackFor = Exception.class)
    @Override
    public void modifyMemberResign(int memberNo) {
       if(memberDAO.selectMemberNo(memberNo) == null) {
@@ -141,32 +143,33 @@ public class MemberServiceImpl implements MemberService {
    }
    
    // 회원 인생작 수정
+   @Transactional(rollbackFor = Exception.class)
    @Override
    public void modifyMemberContents(int memberNo, int memberFavorite1) {
       memberDAO.updateMemberContents(memberNo, memberFavorite1);
       
    }
-
-@Override
-public List<Member> getMemberList() {
-	return memberDAO.selectMemberList();
-}
-
-
-@Override
-public void modifyMeberStatus(int memberStatus) {
-	memberDAO.updateMeberStatus(memberStatus);
-}
-
-@Override
-public List<Member> getReportedMemberList() {
-	return memberDAO.selectReportedMemberList();
-}
-
-@Override
-public void pwModifyMember(Member member) {
-	// TODO Auto-generated method stub
 	
-}
+	@Override
+	public List<Member> getMemberList() {
+		return memberDAO.selectMemberList();
+	}
+	
+	
+	@Override
+	public void modifyMeberStatus(int memberStatus) {
+		memberDAO.updateMeberStatus(memberStatus);
+	}
+	
+	@Override
+	public List<Member> getReportedMemberList() {
+		return memberDAO.selectReportedMemberList();
+	}
+	
+	@Override
+	public void pwModifyMember(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
