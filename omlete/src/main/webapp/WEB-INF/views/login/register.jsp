@@ -110,7 +110,7 @@
                           <label class="mb-1"> 이미 가입하셨나요? <a href="<c:url value="/login/member"/>">로그인</a></label>
                        </div>
                        </div>
-                       <button class="btn btn-success btn-block text-uppercase" type="submit" id="joinBtn"> 동의 및 가입 </button>
+                       <button class="btn btn-success btn-block text-uppercase" type="submit" id="joinBtn"> 가입 </button>
                     </form>
                    </div>
                </div>
