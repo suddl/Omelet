@@ -63,7 +63,7 @@
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
-                        <a class="font-weight-bold d-block" href="<c:url value="/board/event_view"/>"> 이벤트 응모 및 결과 </a>
+                        <a class="font-weight-bold d-block" href="<c:url value="/board/eventList"/>"> 이벤트 응모 및 결과 </a>
                         <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
                   </div>
@@ -79,7 +79,7 @@
 						</div>
 						<div
 							class="overflow-hidden border-top d-flex align-items-center p-4">
-							<a class="font-weight-bold d-block" href="<c:url value="/board/notice_view"/>"> 궁금하다면? </a>
+							<a class="font-weight-bold d-block" href="<c:url value="/board/noticeList"/>"> 궁금하다면? </a>
 							<i class="mdi mdi-arrow-right ml-auto text-primary"></i>
 						</div>
 					</div>
@@ -122,13 +122,13 @@
 											<a href="<c:url value="/board/read?moon_no"/>">${moon.moonContent }</a></td>
 											
 											<td>
-											<a href="/board/read?board_idx=${list.board_idx}" >
-											<c:out value="${list.board_title}" />
+											<a href="/board/read?board_idx=${moonList.moonNo}" >
+											<c:out value="${moonList.moonTitle}" />
 											</a>
 											</td>
 											
-											<td>${moon.moonNickname}</td>
-											<td>${moon.moonDate}</td>
+											<td>${moonList.moonNickname}</td>
+											<td>${moonList.moonDate}</td>
 											<td>답변완료</td>
 										</tr>
 										</c:forEach>
@@ -158,7 +158,7 @@
 								</c:otherwise>
 							</c:choose>
 				            <!-- 페이지 번호 목록 -->
-	            			<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }" step="1">
+	            			<c:forEach var="i" begin="${pager.startRow }" end="${pager.endRow }" step="1">
 								<c:choose>
 									<c:when test="${pager.pageNum != i }">
 										<li class="page-item">
@@ -174,7 +174,7 @@
 							</c:forEach>
 							<!-- 다음 -->
 	                  		<c:choose>
-	                  			<c:when test="${pager.endPage != pager.totalPage }">
+	                  			<c:when test="${pager.startRow != pager.endRow }">
 	                  				<li class="page-item">
 	                     			<a class="page-link" aria-label="Next" href="<c:url value="/board/noticeList"/>?pageNum=${pager.nextPage}">
 	                        		<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>

@@ -62,7 +62,7 @@
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
-                        <a class="font-weight-bold d-block" href="<c:url value="/board/moon_view"/>"> 궁금하다면? </a>
+                        <a class="font-weight-bold d-block" href="<c:url value="/board/moonList"/>"> 궁금하다면? </a>
                         <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
                   </div>
@@ -144,7 +144,7 @@
 									<c:choose>
 										<c:when test="${pager.pageNum != i }">
 											<li class="page-item">
-											<a class="page-link" href="<c:url value="/board/noticeList"/>?pageNum=${i}">${i}</a>
+											<a class="page-link" href="<c:url value="/board/eventList"/>?pageNum=${i}">${i}</a>
 											</li>
 										</c:when>
 										<c:otherwise>
@@ -158,7 +158,7 @@
 		                  		<c:choose>
 		                  			<c:when test="${pager.endPage != pager.totalPage }">
 		                  				<li class="page-item">
-		                     			<a class="page-link" aria-label="Next" href="<c:url value="/board/noticeList"/>?pageNum=${pager.nextPage}">
+		                     			<a class="page-link" aria-label="Next" href="<c:url value="/board/eventList"/>?pageNum=${pager.nextPage}">
 		                        		<span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 		                     			</a>
 		                  				</li>

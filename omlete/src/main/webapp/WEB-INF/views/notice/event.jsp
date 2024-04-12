@@ -24,15 +24,12 @@
          <div class="container">
             <div class="row align-items-center">
                <div class="pl-4 col-lg-5 col-md-5 pr-4">
-                  <img class="rounded img-fluid" src="images/list/graveyard.jpg" alt="Card image cap">
+                  <!-- <img class="rounded img-fluid" src="images/list/graveyard.jpg" alt="Card image cap"> -->
+                  <img class="img-fluid" src="${pageContext.request.contextPath}/${data.noticeImage}" style="width: 500px">
                </div>
                <div class="col-lg-6 col-md-6 pl-5 pr-5">
-                  <h2 class="mb-5">The leading global marketplace for learning and instruction
+                  <h2 class="mb-5">${data.noticeContent}
                   </h2>
-                  <h5 class="mt-2">Our Vision</h5>
-                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,</p>
-                  <h5 class="mt-4">Our Goal</h5>
-                  <p>When looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,</p>
                </div>
             </div>
          </div>

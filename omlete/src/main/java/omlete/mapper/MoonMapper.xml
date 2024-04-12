@@ -13,7 +13,15 @@
 	
 	<!-- 글번호를 전달받아 moon 게시글 검색 -->		
 	<select id="selectMoon" resultType="Moon">
-		select * from moon where moon_no=#{moonNo}
+		select 
+		moon_no,
+		moon_member,
+		moon_title,
+		moon_content,
+		moon_status,
+		moon_re,
+		moon_date,
+		 from moon where moon_no=#{moonNo}
 	</select>
 	
 	<!-- moon 게시글 총개수 -->	
