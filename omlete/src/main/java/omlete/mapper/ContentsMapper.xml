@@ -85,7 +85,7 @@
 			ORDER BY
 				CONTENTS_STARTDATE DESC
 			)
-		WHERE ROWNUM <![CDATA[<=]]> 20;    	
+		WHERE ROWNUM <![CDATA[<=]]> 20	
     </select>
     
     <select id="selectContentsOrderByAvgstar" resultType="Contents">
@@ -99,7 +99,7 @@
 			ORDER BY
 				CONTENTS_AVGSTAR DESC
 			)
-		WHERE ROWNUM <![CDATA[<=]]> 20;    	
+		WHERE ROWNUM <![CDATA[<=]]> 20
     </select>
     
     <select id="selectFavoriteContentsByUser" resultType="Contents" parameterType="int">
@@ -114,7 +114,7 @@
   			WHERE
   				w.WISH_CLIENT_NO = #{memberNo}
 			)
-		WHERE ROWNUM <![CDATA[<=]]> 20;    	
+		WHERE ROWNUM <![CDATA[<=]]> 20
     </select>
 	
 </mapper>

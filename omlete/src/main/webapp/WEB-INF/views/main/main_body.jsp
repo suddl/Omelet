@@ -33,35 +33,41 @@
 							<div>
 								<div style="width: 300px" class="inner-slider">
 									<div class="inner-wrapper">
+									
+									
+									
 										<div id="qa_write">
-		<h1>리뷰 작성</h1>
-		<div>
-			<a href="#">
-				<table class="table_review">
-					<tr>
-						<td style="width: 15%;"><img style="padding-left: 3px;"
-							src=""/> nameas</td>
-						<td></td>
-						<td style="width: 20%;">행 1, 열 3</td>
-					</tr>
-					<tr>
-						<td style="height: 80px;" rowspan="2"><img style="" alt=""
-							src=""/></td>
-						<td>행 2, 열 2</td>
-						<td rowspan="2">행 2, 열 3</td>
-					</tr>
-					<tr>
-						<td style="height: 80px;">행 3, 열 1</td>
-					</tr>
-					<tr>
-						<td>좋아싫어 찜</td>
-						<td></td>
-						<td>신고</td>
-					</tr>
-				</table>
-			</a>
-		</div>
-	</div>
+											<h1>리뷰 작성</h1>
+											<div>
+												<a href="#">
+													<table class="table_review">
+														<tr>
+															<td style="width: 15%;"><img
+																style="padding-left: 3px;" src="" /> nameas</td>
+															<td></td>
+															<td style="width: 20%;">행 1, 열 3</td>
+														</tr>
+														<tr>
+															<td style="height: 80px;" rowspan="2"><img style=""
+																alt="" src="" /></td>
+															<td>행 2, 열 2</td>
+															<td rowspan="2">행 2, 열 3</td>
+														</tr>
+														<tr>
+															<td style="height: 80px;">행 3, 열 1</td>
+														</tr>
+														<tr>
+															<td>좋아싫어 찜</td>
+															<td></td>
+															<td>신고</td>
+														</tr>
+													</table>
+												</a>
+											</div>
+										</div>
+
+
+
 									</div>
 								</div>
 							</div>
@@ -78,10 +84,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<h3>최신 영화</h3>
+					
+<!-- 					favoriteMovies 가 모델에 있는지 NULL 검사 후 해당 뷰 생성 -->
+						<h3>내가 찜한 영화</h3>
 						<div class="view recent-slider recommended-slider">
 
-							<c:forEach var="movie" items="${movieList }">
+							<c:forEach var="movie" items="${latestMovies }">
 
 								<div>
 									<a
@@ -108,10 +116,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<h3>(높은 별점 영화)임시 내림차순 영화</h3>
+						<h3>최신 영화</h3>
 						<div class="view recent-slider recommended-slider">
 
-							<c:forEach var="movie" items="${movieListD }">
+							<c:forEach var="movie" items="${latestMovies }">
 
 								<div>
 									<a
@@ -137,10 +145,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<h3>(많은 리뷰 영화)임시 오름차순 영화</h3>
+						<h3>인기 영화</h3>
 						<div class="view recent-slider recommended-slider">
 
-							<c:forEach var="movie" items="${movieListA }">
+							<c:forEach var="movie" items="${popularMovies }">
 
 								<div>
 									<a
