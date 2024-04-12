@@ -17,7 +17,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public int insertReview(Review review) {
-		return sqlSession.getMapper(ReviewMapper.class).insertReview(review);		
+		return sqlSession.getMapper(ReviewMapper.class).insertReview(review);
 	}
 
 	@Override
@@ -30,34 +30,29 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.getMapper(ReviewMapper.class).updateReview(review);
 	}
 
-	//리뷰 검색
+	// 리뷰 검색
 	@Override
 	public Review selectReview(int reviewNo) {
 		return sqlSession.getMapper(ReviewMapper.class).selectReview(reviewNo);
 	}
 
-	//리뷰 페이징 처리 관련
+	// 리뷰 페이징 처리 관련
 	@Override
 	public int selectReviewCount() {
 		return sqlSession.getMapper(ReviewMapper.class).selectReviewCount();
 	}
 
-	//리뷰 명대사/짧은글/긴글
+	// 리뷰 명대사/짧은글/긴글
 	@Override
 	public List<Review> selectReviewList(Map<String, Object> map, int reviewKind) {
 		return sqlSession.getMapper(ReviewMapper.class).selectReviewList(map, reviewKind);
 	}
-	
+
 	@Override
 	public List<Review> selectReviewListOrder() {
 		return sqlSession.getMapper(ReviewMapper.class).selectReviewListOrder();
 	}
 
-	
-	
-	
-
-	
 	// =====================================================================================
 	@Override
 	public int selectReviewCountMember(int reviewNo) {
@@ -73,6 +68,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public int selectReviewCountTotalTv() {
 		return sqlSession.getMapper(ReviewMapper.class).selectReviewCountTotalTv();
 
+	}
+
+	@Override
+	public List<Review> selectLatestReviewList() {
+		return sqlSession.getMapper(ReviewMapper.class).selectLatestReviewList();
 	}
 
 }

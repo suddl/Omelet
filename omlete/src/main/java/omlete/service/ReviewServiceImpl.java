@@ -85,4 +85,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return memberTotalTVReview;
 	}
 
+	@Override
+	public List<Review> getLatestReviewList() {
+		
+		return reviewDAO.selectLatestReviewList();
+	}
+
 }

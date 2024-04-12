@@ -21,37 +21,40 @@ import omlete.util.SessionUtils;
 @RequiredArgsConstructor
 public class MainController {
 	private final ContentsService contentsService;
-	private final ReviewService reviewService; 
-	
+	private final ReviewService reviewService;
+
 	@RequestMapping("/")
 	public String main(Model model, HttpSession session) {
 		Member loginUser = SessionUtils.getMemberFromSession(session);
 		List<Contents> favoriteMovies = contentsService.getFavoriteMovies(loginUser);
-		
+
 		model.addAttribute("latestMovies", contentsService.getLatestMovieList());
-		model.addAttribute("popularMovies", contentsService.getPopularMovieList());		
-		
+		model.addAttribute("popularMovies", contentsService.getPopularMovieList());
+		model.addAttribute("latestReviews", reviewService.getLatestReviewList());
+
 		if (CollectionUtils.isNotEmpty(favoriteMovies)) {
 			model.addAttribute("favoriteMovies", favoriteMovies);
-		}		
-		
+		}
+
 		return "main/main_body";
 	}
-	
+
 	@RequestMapping(value = "/serise", method = RequestMethod.GET)
 	public String mainSerise(Model model) {
 		/*
-		model.addAttribute("seriseList", contentsService.getSeriseList());
-		model.addAttribute("seriseListD", contentsService.getContentsListByOrder("DESC"));
-		model.addAttribute("seriseListA", contentsService.getContentsListByOrder("ASC"));
-		
-		//model.addAttribute("reviewListOrder", reviewService.getReviewListOrder());
-		*/
-		
+		 * model.addAttribute("seriseList", contentsService.getSeriseList());
+		 * model.addAttribute("seriseListD",
+		 * contentsService.getContentsListByOrder("DESC"));
+		 * model.addAttribute("seriseListA",
+		 * contentsService.getContentsListByOrder("ASC"));
+		 * 
+		 * //model.addAttribute("reviewListOrder", reviewService.getReviewListOrder());
+		 */
+
 		model.addAttribute("movieList", contentsService.getMovieList());
 		model.addAttribute("movieListD", contentsService.getContentsListByOrder("DESC"));
 		model.addAttribute("movieListA", contentsService.getContentsListByOrder("ASC"));
-		
+
 		return "main/main_series";
 	}
 }

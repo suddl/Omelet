@@ -2,18 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="omlete.mapper.ReviewMapper">
 	<insert id="insertReview">
-		<selectKey resultType="int" keyProperty="reviewNo" order="BEFORE">
+		<selectKey resultType="int" keyProperty="reviewNo"
+			order="BEFORE">
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review values(#{reviewNo}, #{reviewKind}, #{reviewMember}
-			, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown}, #{reviewWork}
-			, #{reviewSpoiler}, #{reviewStar}, #{review_contents_type})
+		, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown},
+		#{reviewWork}
+		, #{reviewSpoiler}, #{reviewStar}, #{review_contents_type})
 	</insert>
-		
+
 	<delete id="deleteReview">
 		delete from review where review_no=#{reviewNo}
 	</delete>
-	
+
 	<update id="updateReview">
 		update review
 		<set>
@@ -35,13 +37,15 @@
 		</set>
 		where review_no = #{reviewNo}
 	</update>
-	
+
 	<select id="selectReview" resultType="review">
-		select review_no, review_kind, review_member, review_content, review_date
-			, review_up, review_down, review_work, review_spoiler, review_star,review_contents_type
-			from review where review_no = #{reviewNo}
+		select review_no,
+		review_kind, review_member, review_content, review_date
+		, review_up, review_down, review_work, review_spoiler,
+		review_star,review_contents_type
+		from review where review_no = #{reviewNo}
 	</select>
-	
+
 	<select id="selectReviewCount" resultType="int">
 		select count(*) from review
 		<if test="reviewKind != null">
@@ -49,56 +53,66 @@
 		</if>
 	</select>
 
-	<!--  
-	<select id="selectReviewListPaging" resultType="review">
-		select * from (select rownum rn, temp.* from (select review_no, review_kind
-			, review_member, review_content, review_date, review_up, review_down
-			, review_work, review_spoiler, review_star from review review_no desc) temp)
-			where rn between #{startRow} and #{endRow}
-	</select>
-	-->
-	
+	<!-- <select id="selectReviewListPaging" resultType="review"> select * from 
+		(select rownum rn, temp.* from (select review_no, review_kind , review_member, 
+		review_content, review_date, review_up, review_down , review_work, review_spoiler, 
+		review_star from review review_no desc) temp) where rn between #{startRow} 
+		and #{endRow} </select> -->
+
 	<select id="selectReviewList" resultType="Review">
-		select * from (select rownum rn, temp.* from (select review_no, review_kind
-			, review_member, review_content, review_date, review_up, review_down
-			, review_work, review_spoiler, review_star from review 
-			<if test="review_kind == 1">
-				where review_kind = "1"
-			</if>
-			<if test="review_kind == 2">
-				where review_kind = "2"
-			</if>
-			<if test="review_kind == 3">
-				where review_kind = "3"
-			</if>
-			order by review_no) temp )
-			where rn between #{startRow} and #{endRow}
+		select * from (select rownum rn, temp.* from (select review_no,
+		review_kind
+		, review_member, review_content, review_date, review_up, review_down
+		, review_work, review_spoiler, review_star from review
+		<if test="review_kind == 1">
+			where review_kind = "1"
+		</if>
+		<if test="review_kind == 2">
+			where review_kind = "2"
+		</if>
+		<if test="review_kind == 3">
+			where review_kind = "3"
+		</if>
+		order by review_no) temp )
+		where rn between #{startRow} and #{endRow}
 	</select>
-	
+
 	<select id="SelectReviewListOrder" resultType="Review">
 		SELECT
-			*
+		*
 		FROM
-			review
+		review
 		ORDER BY
-			review_no
+		review_no
 	</select>
-	
-	
-	
-	
-	
+
+
+
+
+
 
 	<!-- ================================================================================================================= -->
 	<select id="selectReviewCountMember" resultType="int">
-		select count(*) from review where member_no=#{memberNo}
+		select count(*)
+		from review where member_no=#{memberNo}
 	</select>
-	
+
 	<select id="selectReviewCountTotalMovie" resultType="int">
-		select count(*) from review where review_contents_type='영화'
+		select
+		count(*) from review where review_contents_type='영화'
+	</select>
+
+	<select id="selectReviewCountTotalTv" resultType="int">
+		select count(*)
+		from review where review_contents_type='TV'
 	</select>
 	
-	<select id="selectReviewCountTotalTv" resultType="int">
-		select count(*) from review where review_contents_type='TV'
+	<select id="selectLatestReviewList" resultType="Review">
+		SELECT
+			*
+		FROM
+			REVIEW
+		ORDER BY
+			REVIEW_DATE DESC
 	</select>
 </mapper>

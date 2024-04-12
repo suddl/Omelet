@@ -7,7 +7,7 @@ import omlete.exception.BadRequestException;
 
 public class SessionUtils {
 	
-    public static Member getMemberFromSession(HttpSession session) {
+	public static Member getMemberFromSession(HttpSession session) {
         Member loginMember = (Member) session.getAttribute("loginMember");
 
         if (loginMember == null) {
