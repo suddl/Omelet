@@ -73,5 +73,48 @@
 	<select id="searchFavorite" resultType="Contents">
        select * from contents where contents_tname like '%' || #{movieName} || '%'
     </select>
+    
+    <select id="selectContentsOrderByStartDate" resultType="Contents">
+    	SELECT
+    		*
+   		FROM (
+	    	SELECT
+	    		*
+	   		FROM
+	  			CONTENTS
+			ORDER BY
+				CONTENTS_STARTDATE DESC
+			)
+		WHERE ROWNUM <![CDATA[<=]]> 20;    	
+    </select>
+    
+    <select id="selectContentsOrderByAvgstar" resultType="Contents">
+    	SELECT
+    		*
+   		FROM (
+	    	SELECT
+	    		*
+	   		FROM
+	  			CONTENTS
+			ORDER BY
+				CONTENTS_AVGSTAR DESC
+			)
+		WHERE ROWNUM <![CDATA[<=]]> 20;    	
+    </select>
+    
+    <select id="selectFavoriteContentsByUser" resultType="Contents" parameterType="int">
+    	SELECT
+    		*
+   		FROM (
+	    	SELECT
+	    		*
+	   		FROM
+	  			CONTENTS c
+  			LEFT JOIN WISH w ON c.CONTENTS_NO = w.WISH_NO
+  			WHERE
+  				w.WISH_CLIENT_NO = #{memberNo}
+			)
+		WHERE ROWNUM <![CDATA[<=]]> 20;    	
+    </select>
 	
 </mapper>
