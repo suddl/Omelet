@@ -20,6 +20,9 @@
 	            <li class="nav-item">
 	               <a style="padding-right: 1.5rem" class="nav-link" href='<c:url value="/main"/>'>TV</a>
 	            </li>
+	            <li class="nav-item">
+	               <a style="padding-right: 1.5rem" class="nav-link" href='<c:url value="/board/noticeList"/>'>공지사항</a>
+	            </li>
 	         </ul>
 	      </div>
 	      <!-- Topbar Navbar -->
