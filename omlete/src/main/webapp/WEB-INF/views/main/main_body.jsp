@@ -2,29 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--	
-	ClientDTO loginClient = (ClientDTO)session.getAttribute("loginClient");
-
-	List<ProductDTO> pro = new ArrayList<>();
-	pro = ProductDAO.getDAO().selectBestProudct();
-	WishDTO redHeart = new WishDTO();
-	Integer wishProductNum = 0;
-	
-	//이 부분 확인하기
-	DecimalFormat format = new DecimalFormat("###,###,##0");
-	
-	
-	// 업을 누른 것인지 확인하기 위한 Boolean 변수
-	int login = 0;
-	int loginMemberNo=0;
-	if(loginMember!=null){
-		loginMemberNo = loginMember.getMemberNo();
-		login = 1;
-	}  else{
-		login = 0;
-	}
---%>
-
 <body>
 <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-light bg-white osahan-nav-mid px-0 border-top shadow-sm">
@@ -133,7 +110,8 @@
                         
                         <div>
                            <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
+                           		<img style="height: 383px" class="img-fluid" src="https://image.tmdb.org/t/p/original${movie.contentsPoster }" />
+                           		${movie.contentsTname }
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
@@ -160,7 +138,7 @@
                         
                         <div>
                            <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
+                           		<img style="height: 383px" class="img-fluid" src="https://image.tmdb.org/t/p/original${movie.contentsPoster }"  />
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
@@ -187,7 +165,7 @@
                         
                         <div>
                            <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
+                           		<img style="height: 383px" class="img-fluid" src="https://image.tmdb.org/t/p/original${movie.contentsPoster }"/>
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
