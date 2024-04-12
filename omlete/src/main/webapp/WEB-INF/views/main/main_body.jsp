@@ -133,7 +133,8 @@
                         
                         <div>
                            <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
+                           		<img style="height: 383px" class="img-fluid" src="https://image.tmdb.org/t/p/original+${movie.contentsPoster }" />
+                           		${movie.contentsTname }
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
@@ -160,7 +161,7 @@
                         
                         <div>
                            <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
+                           		<img style="height: 383px" class="img-fluid" src="${movie.contentsPoster }" />
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
@@ -187,7 +188,7 @@
                         
                         <div>
                            <a href="<c:url value="/detail/detail?no=${movie.contentsNo}" />">
-                           		<img style="height: 383px" class="img-fluid" src="<c:out value="${movie.contentsPoster }"/>" />
+                           		<img style="height: 383px" class="img-fluid" src="https://image.tmdb.org/t/p/original+${movie.contentsPoster }" />
                            </a>
                            <div class="inner-slider"></div> 
                         </div>
