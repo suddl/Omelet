@@ -37,6 +37,7 @@ public class BoardController {
 
 	        return "notice/notice_view";
 	 }
+
 	 //이벤트
 	 @RequestMapping("/eventList")
 	    public String eventList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
@@ -62,11 +63,11 @@ public class BoardController {
 	//공지사항 상세 
 	 @RequestMapping(value = "/noticeView", method=RequestMethod.GET)
 	 public String noticeView(@RequestParam int noticeNo, HttpSession session) throws Exception {
-	     noticeService.increaseViewcnt(noticeNo, session);
+	     //noticeService.increaseViewcnt(noticeNo, session);
 	     
 	     ModelAndView mav = new ModelAndView();
 	     
-	     mav.setViewName("board/view");
+	     //mav.setViewName("board/view");
 	     
 	     mav.addObject("notice", noticeService.getNotice(noticeNo));
 	     

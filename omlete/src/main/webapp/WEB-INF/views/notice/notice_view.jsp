@@ -105,7 +105,7 @@
 										<tr>
 											<td>${notice.noticeNo}</td>
 											<td class="left">
-											<a href="/notice/read?board_idx=${notice.notice_no}" ><c:out value="${notice.notice_title}" />
+											<a href="<c:url value="/board/noticeView?noticeNo=${notice.noticeNo}" />" >
 											    <span class="cateIcon"> <span>${notice.noticeStatus}</span>
 											    </span> 
 											    <span class="subject">${notice.noticeTitle}</span>
