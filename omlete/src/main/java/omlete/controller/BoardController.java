@@ -2,16 +2,23 @@ package omlete.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
+import omlete.dto.Member;
+import omlete.dto.Point;
+import omlete.service.EventUserService;
 import omlete.service.MoonService;
 import omlete.service.NoticeService;
+import omlete.service.PointService;
 
 
 @Controller
@@ -22,6 +29,8 @@ public class BoardController {
     private final NoticeService noticeService;
 	@Autowired
 	private final MoonService moonService;
+	private final PointService pointService;
+	private final EventUserService eventUserService;
 	
 	 //공지사항
 	 @RequestMapping("/noticeList")
@@ -52,6 +61,7 @@ public class BoardController {
 
 	        return "notice/event_view";
 	 }
+	 
 	 //이벤트 상세 
 	 @RequestMapping(value = "/eventView", method=RequestMethod.GET)
 	 public String eventDetail(@RequestParam int noticeNo, Model model) {
@@ -60,6 +70,19 @@ public class BoardController {
 		 
 		 return "notice/event";
 	 }
+	 
+	@RequestMapping(value = "/applyEvent", method = RequestMethod.POST)
+	public String applyEvent(@RequestParam int noticeNo, @ModelAttribute Point point, HttpSession session) {
+	    // 포인트 차감 로직 추가
+	    Member loginMember = (Member) session.getAttribute("loginMember");
+	    if (loginMember != null) {
+	    	point.setPointMember(loginMember.getMemberNo());
+	    	
+	        pointService.addPoint(point);
+	    }
+	    eventUserService.addEventUser(noticeNo, loginMember.getMemberNo());
+	    return "redirect:/board/eventView?noticeNo=" + noticeNo;
+	}
 	 
 	 //문의사항
 	 @RequestMapping("/moonList")
