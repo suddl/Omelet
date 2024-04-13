@@ -126,6 +126,11 @@ table {
     
 }
 
+.header_logo {
+	width: 150px;
+	height: 60px;	
+}
+
 /* 여기까지 */
 
 .imgMyfavorite {
@@ -510,7 +515,7 @@ table {
      width: 100%;
 }
  .osahan-nav-top a.navbar-brand img {
-     height: 26px;
+     /*height: 26px;*/
 }
  .osahan-nav-mid {
      padding-top: 0px;

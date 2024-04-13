@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-light topbar static-top shadow-sm bg-white osahan-nav-top px-0">
    <div class="container">
       <!-- Sidebar Toggle (Topbar) -->
-      <a class="navbar-brand" href="<c:url value="/"/>"><img src="<c:url value="/images/logo/omlete_logo.png"/>" alt=""></a>
+      <a class="navbar-brand" href="<c:url value="/"/>"><img src="<c:url value="/images/logo/omletelogo.png"/>" class="header_logo"></a>
       <!-- Topbar Search -->
       <div class="container">
 	      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
