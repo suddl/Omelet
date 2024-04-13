@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
    <body>
-
       <!-- Inner Header -->
       <section class="py-5 bg-dark inner-header">
          <div class="container">
@@ -45,11 +44,5 @@
             </div>
          </div>
       </div>
-      
-      
-
-      
-      
-     
    </body>
 </html>

@@ -46,7 +46,7 @@
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
-                        <a class="font-weight-bold d-block" href="<c:url value="/board/inquiry"/>"> 1:1 상담작성 </a>
+                        <a class="font-weight-bold d-block" href="<c:url value="/board/inquiry"/>"> 1:1 상담작성 하러가기 </a>
                         <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
                   </div>

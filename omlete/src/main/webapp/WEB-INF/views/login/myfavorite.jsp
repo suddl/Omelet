@@ -48,6 +48,12 @@
         </div>
     </div>
 <script type="text/javascript">
+$("#favoriteForm").submit(function(event) {
+    if ($("#memberFavorite1").val() == "") {
+        event.preventDefault(); // 폼 제출을 중단합니다.
+        $("#errorMessage").text("반드시 작품을 선택하세요.");
+    }
+});
 function handleResultClick(contentsNo, movieName) {
 	$("#movieName").val(movieName); 
     $("#memberFavorite1").val(contentsNo); 

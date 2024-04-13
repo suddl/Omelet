@@ -15,8 +15,6 @@ public class Member {
 	private int memberStatus;
 	private int memberPoint;
 	private int memberFavorite1;
-	private int memberFavorite2;
-	private int memberFavorite3;
 	private int memberReport;
 	private String memberNickname;
     public Member() {}

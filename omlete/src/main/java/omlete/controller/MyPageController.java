@@ -29,13 +29,21 @@ public class MyPageController {
 	// 마이페이지 메인화면
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profile(Model model, HttpSession session) {
-		Member loginMember = (Member) session.getAttribute("loginMember");
+	    Member loginMember = (Member) session.getAttribute("loginMember");
 	    if (loginMember != null) {
-	        int memberFavorite1 = loginMember.getMemberFavorite1(); 
-	        Contents favoriteContent = contentsService.getContents(memberFavorite1); 
-	        model.addAttribute("favoriteContent", favoriteContent); 
+	        Integer memberFavorite1 = loginMember.getMemberFavorite1(); // int 대신 Integer 사용
+	        if (memberFavorite1 != null) { // memberFavorite1이 null이 아닐 때만 처리
+	            Contents favoriteContent = contentsService.getContents(memberFavorite1); 
+	            if (favoriteContent != null) { // getContents의 반환값이 null이 아닐 때만 처리
+	                model.addAttribute("favoriteContent", favoriteContent);
+	            } else {
+	                // favoriteContent가 null이면 이동할 페이지를 반환하도록 처리
+	                return "login/myfavorite"; // 예시로 대체 페이지로 이동하도록 설정
+	            }
+	        }
 	    }
-		return "mypage/profile";
+	    // 나머지 경우에는 기본적으로 마이페이지로 이동
+	    return "mypage/profile";
 	}
 	
 	// 내 정보 수정
