@@ -1,0 +1,27 @@
+/* mainPage.css */
+.review-title {
+	font-size : 14px;
+	font-weight : bold;
+}
+
+.review-title-img-wrapper {
+	width : auto;
+}
+
+.clamp-text-3 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* 표시할 최대 줄 수 */
+        -webkit-box-orient: vertical;
+}
+
+.clamp-text-1 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* 표시할 최대 줄 수 */
+        -webkit-box-orient: vertical;
+}
+
+.hr-3 {
+	margin : 5px 0px;
+}
