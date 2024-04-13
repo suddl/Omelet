@@ -1,183 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <body>
-<section class="py-5">
-         <div class="view_slider recommended">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-12">
-                     <h3>내가 신청했던 이벤트 목록</h3>
-                     <div class="view recent-slider recommended-slider">
-                        
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="inner-slider">
-                              <div class="inner-wrapper">
-                                  <a href="product-detail.html">
-                         			<img class="img-fluid" src="images/list/v2.png" />
-                        		  </a>
-                                  <div class="footer">
-                                    <div class="price">
-                                       <a href="#">
-                                      파묘 시사회
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                        
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
+	<section class="py-5">
+		<div class="view_slider recommended">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+					<h3>내가 신청했던 이벤트 목록</h3>
+						<c:if test="${empty eventUserList}">
+							<p>아직 신청한 내역이 없습니다.</p>
+						</c:if>
+						<c:forEach var="event" items="${eventUserList }">
+							<div class="view recent-slider recommended-slider">
+								<div>
+									<div class="inner-slider">
+										<div class="inner-wrapper">
+											<a href="<c:url value="/board/eventView"/>?noticeNo=${event.eventNo}">
+												<img class="img-fluid" src="<c:url value="/"/>${event.noticeImage}" />
+											</a>
+											<div class="footer">
+												<div class="price">
+													<a href="#">
+														${event.noticeTitle}
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<div class="py-5">
          <div class="container">
@@ -238,67 +98,5 @@
             </div>
          </div>
       </div>
-	<div class="freelance-projects py-5">
-         <h3>신청한 이벤트 목록</h3>
-         <div class="container">
-            <div class="row freelance-slider">
-               <div class="col">
-                  <div class="freelancer">
-                     <img src="#">
-                     <div class="freelancer-footer">
-                        <img src="#">
-                        <h5>Logo Design
-                           <span>by <i>John</i></span>
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="freelancer">
-                     <img src="#">
-                     <div class="freelancer-footer">
-                        <img src="#">
-                        <h5>Web &amp; Mobile Design
-                           <span>by <i>John</i></span>
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="freelancer">
-                     <img src="#">
-                     <div class="freelancer-footer">
-                        <img src="#">
-                        <h5>Packaging Design
-                           <span>by <i>John</i></span>
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="freelancer">
-                     <img src="#">
-                     <div class="freelancer-footer">
-                        <img src="#">
-                        <h5>Brand Style Guides
-                           <span>by <i>John</i></span>
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="col">
-                  <div class="freelancer">
-                     <img src="#">
-                     <div class="freelancer-footer">
-                        <img src="#">
-                        <h5>Illustration
-                           <span>by <i>John</i></span>
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      </body>
+</body>
 </html>

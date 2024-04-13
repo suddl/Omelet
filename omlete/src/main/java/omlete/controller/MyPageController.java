@@ -17,6 +17,7 @@ import omlete.dto.Contents;
 import omlete.dto.Member;
 import omlete.exception.ContentsNotFoundException;
 import omlete.service.ContentsService;
+import omlete.service.EventUserService;
 import omlete.service.MemberService;
 
 
@@ -26,6 +27,7 @@ import omlete.service.MemberService;
 public class MyPageController {
 	private final MemberService memberService;
 	private final ContentsService contentsService;
+	private final EventUserService eventUserService;
 	
 	// 마이페이지 메인화면
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
@@ -101,8 +103,16 @@ public class MyPageController {
 		return "mypage/mymoon_write";
 	}
 	
+	// 내가 참여한 이벤트
 	@RequestMapping(value = "/myevent")
-	public String myEvent() {
+	public String myEvent(@ModelAttribute Member member, HttpSession session, Model model) {
+		Member loginMember=(Member)session.getAttribute("loginMember");
+		if(loginMember.getMemberNo()==member.getMemberNo()) {
+			session.setAttribute("loginMember", memberService.getMemberNo(member.getMemberNo()));
+		}
+		
+		model.addAttribute("eventUserList", eventUserService.getEventUserList(loginMember.getMemberNo()));
+		
 		return "mypage/myevent";
 	}
 	
