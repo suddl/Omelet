@@ -33,12 +33,14 @@
 						    
 						    <input type="hidden" id="memberFavorite1" name="memberFavorite1">
 						    
-						    <button class="btn btn-success btn-block text-uppercase" type="submit" id="searchButton">저장</button>
+
+                            <button class="btn btn-success btn-block text-uppercase" type="submit" id="searchButton" disabled>저장</button>	
+                            <div id="errorMessage" style="color: red;"></div>					   
 						    <div class="py-3 d-flex align-item-center">
-						        <a href="<c:url value="/login/member"/>">로그인</a> <span class="ml-auto"> 새로운 계정
-						            <a href="<c:url value="/login/register"/>"> 회원가입 </a>
-						        </span>
-						    </div>
+                                <a href="<c:url value="/login/member"/>">로그인</a> <span class="ml-auto"> 새로운 계정
+                                    <a href="<c:url value="/login/register"/>"> 회원가입 </a>
+                                </span>
+                            </div>
 						</form>
                     </div>
                 </div>
@@ -50,13 +52,18 @@ function handleResultClick(contentsNo, movieName) {
 	$("#movieName").val(movieName); 
     $("#memberFavorite1").val(contentsNo); 
     $("#searchResults").hide(); 
+    $("#searchButton").prop("disabled", false);
 }
 
 $("#movieName").keyup(function() {
     var movieName = $("#movieName").val();
     if (movieName == "") { 
         $("#searchResults").hide();
+        $("#searchButton").prop("disabled", true); // 작품을 입력하지 않으면 저장 버튼 비활성화
+        $("#errorMessage").text("반드시 작품을 선택하세요.");
         return;
+    }else {
+        $("#errorMessage").text(""); // 입력이 있을 때 메시지 제거
     }
     
     $.ajax({
