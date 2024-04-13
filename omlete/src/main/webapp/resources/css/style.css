@@ -541,12 +541,13 @@ table {
      padding: 0;
      -webkit-box-pack: center;
      justify-content: center;
-     overflow: hidden;
+     /*overflow: hidden;
      border-radius: 100%;
+     */
      flex-shrink: 0;
      height: calc( (1rem * 1.5) + (0.5rem * 2) + (2px) ) !important;
      width: calc( (1rem * 1.5) + (0.5rem * 2) + (2px) ) !important;
-     background: #f1f2f5;
+     /*background: #f1f2f5;*/
 }
  .btn i-feather, .btn .feather {
      height: 1rem;
