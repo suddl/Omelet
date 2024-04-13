@@ -111,27 +111,28 @@
 											<th scope="col">답변상태</th>
 										</tr>
 									</thead>
-									<tbody>
-									<c:forEach var="moonList" items="${moonList }">
+									<tboby>
 									<tbody style="padding-top: 10px;">
+									<c:forEach var="moonList" items="${moon }">
 										<tr>
-											<td>${moonList.moonNo }</td>
+											<td>${moonList.moonNO}</td>
 											
 											<td class="left" style="text-align: center">
-											<a href="<c:url value="/board/moonView?moonNo=${moonList.moonContent }"/>"></a></td>
+											<a href="<c:url value="/board/moonView?moonNo=${moonList.moonNo }"/>"></a></td>
 											
 											<td>
-											<a href="/board/read?board_idx=${moonList.moonNo}" >
+											<a href="/board/moonView?moonNO=${moonList.moonNo}" >
 											<c:out value="${moonList.moonTitle}" />
 											</a>
 											</td>
 											
 											<td>${moonList.moonNickname}</td>
 											<td>${moonList.moonDate}</td>
-											<td>답변완료</td>
+											<td>${moonList.moonTitle}</td>
 										</tr>
 										</c:forEach>
 									</tbody>
+										</tboby>
 								</table>
 							</div>
 						</div>
