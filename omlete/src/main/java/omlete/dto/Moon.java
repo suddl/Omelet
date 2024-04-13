@@ -16,7 +16,7 @@ moon_date date);
 public class Moon {
 	private int moonNo;
 	private int moonMember;
-	private String moontitle;
+	private String moonTitle;
 	private String moonContent;
 	private int moonStatus;
 	private String moonRe;

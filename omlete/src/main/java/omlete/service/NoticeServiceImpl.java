@@ -29,7 +29,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public Map<String, Object> getNoticeList(int pageNum) {
         int totalSize = noticeDAO.selectNoticeCount();
-        int pageSize = 5;
+        int pageSize = 8;
         int blockSize = 5;
 
         Pager pager = new Pager(pageNum, totalSize, pageSize, blockSize);
