@@ -12,8 +12,8 @@ public class PointServiceImpl implements PointService {
 	private final PointDAO pointDAO;
 
 	@Override
-	public void addPoint(Point point) {
-		int pointValue = 0;
+	public int addPoint(Point point) {
+	    int pointValue = 0;
 	    if (point.getPointStatus() == 0) {
 	        pointValue = -50;
 	    } else if (point.getPointStatus() == 1) {
@@ -21,6 +21,7 @@ public class PointServiceImpl implements PointService {
 	    }
 	    point.setPointExtent(pointValue);
 	    pointDAO.insertPoint(point);
+	    return point.getPointExtent(); // 수정된 포인트 값을 반환
 	}
 
 }

@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import omlete.dto.Member;
 import omlete.dto.Point;
 import omlete.service.EventUserService;
+import omlete.service.MemberService;
 import omlete.service.MoonService;
 import omlete.service.NoticeService;
 import omlete.service.PointService;
@@ -31,6 +32,7 @@ public class BoardController {
 	private final MoonService moonService;
 	private final PointService pointService;
 	private final EventUserService eventUserService;
+	private final MemberService memberService;
 	
 	 //공지사항
 	 @RequestMapping("/noticeList")
@@ -72,13 +74,19 @@ public class BoardController {
 	 }
 	 
 	@RequestMapping(value = "/applyEvent", method = RequestMethod.POST)
-	public String applyEvent(@RequestParam int noticeNo, @ModelAttribute Point point, HttpSession session) {
+	public String applyEvent(@RequestParam int noticeNo, @ModelAttribute Point point, HttpSession session, Model model) {
 	    // 포인트 차감 로직 추가
 	    Member loginMember = (Member) session.getAttribute("loginMember");
 	    if (loginMember != null) {
 	    	point.setPointMember(loginMember.getMemberNo());
 	    	
 	        pointService.addPoint(point);
+	        int modifiedPoint = pointService.addPoint(point);
+	        int memberTotalPoint=modifiedPoint+loginMember.getMemberPoint();
+	        memberService.modifyMemberPoint(loginMember.getMemberNo(), memberTotalPoint);
+	        session.setAttribute("loginMember", memberService.getMemberNo(loginMember.getMemberNo())); 
+	        
+	        model.addAttribute("loginMember", loginMember);
 	    }
 	    eventUserService.addEventUser(noticeNo, loginMember.getMemberNo());
 	    return "redirect:/board/eventView?noticeNo=" + noticeNo;

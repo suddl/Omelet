@@ -172,4 +172,10 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public void modifyMemberPoint(int memberNo, int memberPoint) {
+		memberDAO.updateMemberPoint(memberNo, memberPoint);
+		
+	}
+
 }
