@@ -112,21 +112,21 @@
 										</tr>
 									</thead>
 								    <tbody style="padding-top: 10px;">
-									    <c:forEach var="moonList" items="${moonList}">
-									        <tr>
-									            <td>${moonList.moonNo}</td>
-									            <td class="left" style="text-align: center">
-									                <a href="<c:url value='/board/moonView?moonNo=${moonList.moonNo}'/>">
-									                <span>${moonList.moonTitle}</span>
-									                </a>
-									            </td>
-									            <td>${moonList.memberNickname}</td>
-									            <td>${moonList.moonDate}</td>
-									            <!-- <td>${moon.moonContent}</td>  -->
-									        </tr>
-									    </c:forEach>
-									</tbody>
-								</table>
+								    <c:forEach var="moon" items="${moonList}">
+								        <tr>
+								            <td>${moon.moonNo}</td>
+								            <td class="left" style="text-align: center">
+								                <a href="<c:url value='/board/moonView?moonNo=${moon.moonNo}'/>">
+								                    <span>${moon.moonTitle}</span>
+								                </a>
+								            </td>
+								            <td>${moon.memberNickname}</td>
+								            <td>${moon.moonDate}</td>
+								            <!-- <td>${moon.moonContent}</td>  -->
+								        </tr>
+								    </c:forEach>
+								</tbody>
+																</table>
 							</div>
 						</div>
                   </div>

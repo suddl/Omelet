@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <body>
       <!-- Inner Header -->
       <section class="section-padding bg-dark py-5 inner-header">
@@ -35,7 +37,7 @@
                      <div class="control-group form-group col-lg-4 col-md-4">
                         <div class="controls">
                            <label>문의 제목 <span class="text-danger">*</span></label>
-                           <input type="text" class="form-control" required>
+                           <span class="form-control" required>${data.moonTitle}</span>
                         </div>
                      </div>
                   </div>
@@ -47,17 +49,23 @@
                      <div class="control-group form-group col-lg-4 col-md-4">
                         <div class="controls">
                            <label>작성자 <span class="text-danger">*</span></label>
-                           <input type="text" class="form-control" required>
+                           <span class="form-control" required>${data.memberNickname}</span>
                         </div>
                      </div>
                   </div>
                   <div class="control-group form-group">
                      <div class="controls">
                         <label>문의 내용 <span class="text-danger">*</span></label>
-                        <textarea rows="10" cols="100" class="form-control"></textarea>
+                           <span rows="10" cols="100" class="form-control">${data.moonContent}</span>
                      </div>
                   </div>
-                  <button type="submit" class="btn btn-success">확인</button>
+                 <button type="button" class="btn btn-success" onclick="redirectToMoonList()">확인</button>
+				<script>
+				function redirectToMoonList() {
+				    var newPageUrl = "<c:url value='/board/moonList'/>";
+				    window.location.href = newPageUrl;
+				}
+				</script>
                </form>
             </div>
          </div>
