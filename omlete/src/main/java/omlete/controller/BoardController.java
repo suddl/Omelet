@@ -80,7 +80,6 @@ public class BoardController {
 	    if (loginMember != null) {
 	    	point.setPointMember(loginMember.getMemberNo());
 	    	
-	        pointService.addPoint(point);
 	        int modifiedPoint = pointService.addPoint(point);
 	        int memberTotalPoint=modifiedPoint+loginMember.getMemberPoint();
 	        memberService.modifyMemberPoint(loginMember.getMemberNo(), memberTotalPoint);

@@ -13,26 +13,26 @@
 						<c:if test="${empty eventUserList}">
 							<p>아직 신청한 내역이 없습니다.</p>
 						</c:if>
-						<c:forEach var="event" items="${eventUserList }">
-							<div class="view recent-slider recommended-slider">
-								<div>
-									<div class="inner-slider">
-										<div class="inner-wrapper">
-											<a href="<c:url value="/board/eventView"/>?noticeNo=${event.eventNo}">
-												<img class="img-fluid" src="<c:url value="/"/>${event.noticeImage}" />
-											</a>
-											<div class="footer">
-												<div class="price">
-													<a href="#">
-														${event.noticeTitle}
-													</a>
+						<div class="view recent-slider recommended-slider">
+				  			<c:forEach var="event" items="${eventUserList }">
+									<div>
+										<div class="inner-slider">
+											<div class="inner-wrapper">
+												<a href="<c:url value="/board/eventView"/>?noticeNo=${event.eventNo}">
+													<img class="img-fluid" src="<c:url value="/"/>${event.noticeImage}" />
+												</a>
+												<div class="footer">
+													<div class="price">
+														<a href="#">
+															${event.noticeTitle}
+														</a>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-						</c:forEach>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -47,6 +47,7 @@
                      <div class="box-title border-bottom p-3">
                         <h6 class="m-0">이벤트신청 내역</h6>
                      </div>
+                     
                      <div class="box-body p-0">
                         <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                            <div class="dropdown-list-image mr-3 d-flex align-items-center bg-danger justify-content-center rounded-circle text-white">DRM</div>
@@ -68,31 +69,8 @@
                               <div class="text-right text-muted pt-1">3d</div>
                            </span>
                         </div>
-                        <div class="p-3 d-flex align-items-center osahan-post-header">
-                           <div class="dropdown-list-image mr-3">
-                              <img class="rounded-circle" src="#" alt="">
-                           </div>
-                           <div class="font-weight-bold mr-3">
-                              <div>
-                                 <div class="text-truncate">DAILY RUNDOWN: MONDAY</div>
-                              	 <div class="small">Nunc purus metus, aliquam vitae venenatis sit amet, porta non est. </div>
-                              </div>
-                           </div>
-                           <span class="ml-auto mb-auto">
-                              <div class="btn-group">
-                                 <button type="button" class="btn btn-light btn-sm rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 <i class="mdi mdi-dots-vertical"></i>
-                                 </button>
-                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" type="button"><i class="mdi mdi-delete"></i> Delete</button>
-                                    <button class="dropdown-item" type="button"><i class="mdi mdi-close"></i> Turn Off</button>
-                                 </div>
-                              </div>
-                              <br>
-                              <div class="text-right text-muted pt-1">4d</div>
-                           </span>
-                        </div>
                      </div>
+                     
                   </div>
                </div>
             </div>
