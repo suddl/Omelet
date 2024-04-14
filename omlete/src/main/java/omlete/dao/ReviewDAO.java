@@ -27,5 +27,7 @@ public interface ReviewDAO {
 
 	int selectReviewCountTotalTv();
 
-	List<Review> selectLatestReviewList();
+	List<Review> selectReviewMemberList(Map<String, Object> map);
+	int selectReviewCountMemberReview(int reviewMember);
+
 }

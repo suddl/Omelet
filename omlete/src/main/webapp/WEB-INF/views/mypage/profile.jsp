@@ -149,7 +149,7 @@
                               <div class="left">
                                  <span>
                                  <img
-                                    src="#"
+                                    src="<c:url value="/images/user/oneEgg.png"/>"
                                     class="profile-pict-img img-fluid" alt="">
                                  </span>
                               </div>

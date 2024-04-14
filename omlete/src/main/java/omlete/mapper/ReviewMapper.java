@@ -20,12 +20,14 @@ public interface ReviewMapper {
 
 	List<Review> selectReviewListOrder();
 
-	// 마이페이지
 	int selectReviewCountMember(int reviewNo);
 
 	int selectReviewCountTotalMovie();
 
 	int selectReviewCountTotalTv();
 
-	List<Review> selectLatestReviewList();
+	
+	List<Review> selectReviewMemberList(Map<String, Object> map);
+	int selectReviewCountMemberReview(int reviewMember);
+	
 }

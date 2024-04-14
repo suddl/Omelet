@@ -23,7 +23,9 @@ public class Review {
 	private String reviewDate;
 	private int reviewUp;
 	private int reviewDown;
-	private int reviewWork;
+	private int reviewWork; 
 	private int reviewSpoiler;
 	private int reviewStar;
+	private String memberNickname;
+	private String contentsTname; 
 }

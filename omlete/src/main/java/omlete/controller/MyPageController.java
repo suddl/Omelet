@@ -22,6 +22,7 @@ import omlete.service.ContentsService;
 import omlete.service.EventUserService;
 import omlete.service.MemberService;
 import omlete.service.MoonService;
+import omlete.service.ReviewService;
 
 
 @Controller
@@ -32,6 +33,7 @@ public class MyPageController {
 	private final ContentsService contentsService;
 	private final EventUserService eventUserService;
 	private final MoonService moonService;
+	private final ReviewService reviewService;
 	
 	// 마이페이지 메인화면
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
@@ -96,7 +98,13 @@ public class MyPageController {
 	
 	// 내가 작성한 리뷰
 	@RequestMapping(value = "/writeReview")
-	public String myWriteReview() {
+	public String myWriteReview(@RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
+		Member loginMember = (Member) session.getAttribute("loginMember");
+	    Map<String, Object> map = reviewService.getReviewMemberList(loginMember.getMemberNo(), pageNum);
+
+	    model.addAttribute("pager", map.get("pager"));
+	    model.addAttribute("reviewList", map.get("reviewList"));
+		
 		return "mypage/mypage_writeReviewList";
 	}
 	
