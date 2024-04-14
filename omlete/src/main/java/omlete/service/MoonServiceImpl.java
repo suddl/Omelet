@@ -75,6 +75,7 @@ public class MoonServiceImpl implements MoonService {
 	    Pager pager = new Pager(pageNum, totalSize, pageSize, blockSize);
 
 	    Map<String, Object> pageMap = new HashMap<>();
+	    pageMap.put("moonMember", moonMember); // moonMember 값을 설정
 	    pageMap.put("startRow", pager.getStartRow());
 	    pageMap.put("endRow", pager.getEndRow());
 	    List<Moon> moonList = moonDAO.selectMoonMemberList(pageMap);
