@@ -9,4 +9,8 @@ public class EventUser {
 	private int eventMember;
 	private String noticeTitle;
 	private String noticeImage;
+	private int pointStatus;
+	private String pointDate;
+	private int pointExtent;
+	private String pointContent;
 }

@@ -24,4 +24,9 @@ public class EventUserDAOImpl implements EventUserDAO {
 		return sqlSession.getMapper(EventUserMapper.class).selectEventUserList(memberNo);
 	}
 
+	@Override
+	public List<EventUser> selectEventUserRecordList(int memberNo) {
+		return sqlSession.getMapper(EventUserMapper.class).selectEventUserRecordList(memberNo);
+	}
+
 }

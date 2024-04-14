@@ -60,7 +60,6 @@ public class MyPageController {
 	    return "fail";
 	}
 	
-	
 	@RequestMapping(value = "/updateInfo", method = RequestMethod.POST)
 	public String updateInfo(@ModelAttribute Member member, HttpSession session) {
 		memberService.modifyMemberInfo(member);
@@ -112,6 +111,7 @@ public class MyPageController {
 		}
 		
 		model.addAttribute("eventUserList", eventUserService.getEventUserList(loginMember.getMemberNo()));
+		model.addAttribute("eventUserRecordList", eventUserService.getEventUserRecordList(loginMember.getMemberNo()));
 		
 		return "mypage/myevent";
 	}
