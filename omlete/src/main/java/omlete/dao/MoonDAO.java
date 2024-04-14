@@ -16,5 +16,6 @@ public interface MoonDAO {
 	List<Moon> selectMoonList(Map<String, Object> map);
 
 	// 마이페이지
+	int selectMoonMemberCount(int moonMember);
 	List<Moon> selectMoonMemberList(Map<String, Object> map);
 }

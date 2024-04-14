@@ -2,6 +2,8 @@
 package omlete.controller;
 
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ import omlete.exception.ContentsNotFoundException;
 import omlete.service.ContentsService;
 import omlete.service.EventUserService;
 import omlete.service.MemberService;
+import omlete.service.MoonService;
 
 
 @Controller
@@ -28,6 +31,7 @@ public class MyPageController {
 	private final MemberService memberService;
 	private final ContentsService contentsService;
 	private final EventUserService eventUserService;
+	private final MoonService moonService;
 	
 	// 마이페이지 메인화면
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
@@ -98,8 +102,14 @@ public class MyPageController {
 	
 	// 내가 작성한 문의
 	@RequestMapping(value = "/writeMoon")
-	public String myWriteMoon() {
-		return "mypage/mymoon_write";
+	public String myWriteMoon(@RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
+	    Member loginMember = (Member) session.getAttribute("loginMember");
+	    Map<String, Object> map = moonService.getMoonMemberList(loginMember.getMemberNo(), pageNum);
+
+	    model.addAttribute("pager", map.get("pager"));
+	    model.addAttribute("moonList", map.get("moonList"));
+
+	    return "mypage/mymoon_write";
 	}
 	
 	// 내가 참여한 이벤트

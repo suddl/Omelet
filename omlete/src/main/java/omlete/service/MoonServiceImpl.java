@@ -65,9 +65,10 @@ public class MoonServiceImpl implements MoonService {
 		return 0;
 	}
 
+	
 	@Override
 	public Map<String, Object> getMoonMemberList(int moonMember, int pageNum) {
-		int totalSize = moonDAO.selectMoonCount(); // 올바른 메서드 호출로 수정
+		int totalSize = moonDAO.selectMoonMemberCount(moonMember); // 올바른 메서드 호출로 수정
 	    int pageSize = 8;
 	    int blockSize = 5;
 
@@ -84,4 +85,5 @@ public class MoonServiceImpl implements MoonService {
 
 	    return resultMap;
 	}
+	
 }
