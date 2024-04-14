@@ -14,7 +14,7 @@
                <div class="col-lg-8 left">
                   <div id="reviews" class="review-section">
                      <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h4 class="m-0"> 작성한 리뷰 수 : 몇개 </h4>
+                        <h4 class="m-0"> 작성한 리뷰 수 : ${reviewCount } 개 </h4>
                         <div class="dropdown">
 	                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                        정렬
@@ -48,7 +48,7 @@
                                              d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z">
                                           </path>
                                        </svg>
-                                       5.0
+                                       ${review.reviewStar }
                                     </span>
                                  </h4>
                                  <div class="country d-flex align-items-center">
@@ -92,5 +92,72 @@
             </div>
          </div>
       </div>
+<!-- 
+<script type="text/javascript">
+var page = 1;
+
+reviewListDisplay(page);
+
+function reviewListDisplay(pageNum) {
+    page = pageNum;
+    $.ajax({
+        type: "get",
+        url: "<c:url value='/rest/review_list'/>",
+        data: { "pageNum": pageNum },
+        dataType: "json",
+        success: function(result) {
+            if (result.reviewList.length == 0) {
+                $("#reviewListDiv").html("<p>작성된 리뷰가 없습니다.</p>");
+                return;
+            }
+
+            var html = "<ul>";
+            $(result.reviewList).each(function() {
+                html += "<li>";
+                html += "<div>";
+                html += "<span>" + this.memberNickname + "</span>";
+                html += "<p>" + this.reviewContent + "</p>";
+                html += "<span class='publish'>" + this.reviewDate.substring(0, 10) + "</span>";
+                html += "</div>";
+                html += "</li>";
+            });
+            html += "</ul>";
+
+            $("#reviewListDiv").html(html);
+            pageNumberDisplay(result.pager);
+        },
+        error: function(xhr) {
+            alert("에러코드(리뷰 목록 검색) = " + xhr.status);
+        }
+    });
+}
+
+function pageNumberDisplay(pager) {
+    var html = "";
+
+    if (pager.startPage > pager.blockSize) {
+        html += "<a href='javascript:reviewListDisplay(" + pager.prevPage + ");'>[이전]</a>";
+    } else {
+        html += "[이전]";
+    }
+
+    for (i = pager.startPage; i <= pager.endPage; i++) {
+        if (pager.pageNum != i) {
+            html += "<a href='javascript:reviewListDisplay(" + i + ");'>[" + i + "]</a>";
+        } else {
+            html += "[" + i + "]";
+        }
+    }
+
+    if (pager.endPage != pager.totalPage) {
+        html += "<a href='javascript:reviewListDisplay(" + pager.nextPage + ");'>[다음]</a>";
+    } else {
+        html += "[다음]";
+    }
+
+    $("#pageNumDiv").html(html);
+}
+</script>
+ -->
 </body>
 </html>

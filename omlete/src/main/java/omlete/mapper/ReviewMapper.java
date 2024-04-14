@@ -20,7 +20,7 @@ public interface ReviewMapper {
 
 	List<Review> selectReviewListOrder();
 
-	int selectReviewCountMember(int reviewNo);
+	int selectReviewCountMember(int reviewMember);
 
 	int selectReviewCountTotalMovie();
 
@@ -28,6 +28,5 @@ public interface ReviewMapper {
 
 	
 	List<Review> selectReviewMemberList(Map<String, Object> map);
-	int selectReviewCountMemberReview(int reviewMember);
 	
 }

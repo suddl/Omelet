@@ -104,6 +104,7 @@ public class MyPageController {
 
 	    model.addAttribute("pager", map.get("pager"));
 	    model.addAttribute("reviewList", map.get("reviewList"));
+	    model.addAttribute("reviewCount", reviewService.getMemberReviewCount(loginMember.getMemberNo()));
 		
 		return "mypage/mypage_writeReviewList";
 	}

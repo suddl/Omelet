@@ -21,13 +21,12 @@ public interface ReviewDAO {
 	List<Review> selectReviewList(Map<String, Object> map, int reviewKind);
 
 	// 마이페이지
-	int selectReviewCountMember(int reviewNo);
+	int selectReviewCountMember(int reviewMember);
 
 	int selectReviewCountTotalMovie();
 
 	int selectReviewCountTotalTv();
 
 	List<Review> selectReviewMemberList(Map<String, Object> map);
-	int selectReviewCountMemberReview(int reviewMember);
 
 }

@@ -112,7 +112,4 @@
 		 where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<select id="selectReviewCountMemberReview" resultType="int">
-		select count(*) from review where review_member = #{reviewMember}
-	</select>
 </mapper>

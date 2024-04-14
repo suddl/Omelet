@@ -75,9 +75,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.getMapper(ReviewMapper.class).selectReviewMemberList(map);
 	}
 
-	@Override
-	public int selectReviewCountMemberReview(int reviewMember) {
-		return sqlSession.getMapper(ReviewMapper.class).selectReviewCountMemberReview(reviewMember);
-	}
 
 }

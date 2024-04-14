@@ -87,7 +87,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public Map<String, Object> getReviewMemberList(int reviewMember, int pageNum) {
-		int totalSize = reviewDAO.selectReviewCountMemberReview(reviewMember);
+		int totalSize = reviewDAO.selectReviewCountMember(reviewMember);
 	    int pageSize = 8;
 	    int blockSize = 5;
 
@@ -105,5 +105,6 @@ public class ReviewServiceImpl implements ReviewService {
 
 	    return resultMap;
 	}
+
 
 }
