@@ -21,7 +21,7 @@
 	
 	<!-- moon 게시글 총개수 -->	
 	<select id="selectMoonCount" resultType="int">
-		select count(*) from moon
+    	SELECT COUNT(*) FROM moon
 	</select>
 	
 	<!-- 최신글순으로 정렬하여 원하는 글범위의 moon list 검색 -->

@@ -24,5 +24,4 @@ public class Notice {
 	private int noticeStatus;
 	private String noticeTerm;
 	private String noticeImage;
-	
 }

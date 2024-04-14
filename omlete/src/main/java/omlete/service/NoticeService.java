@@ -20,8 +20,10 @@ public interface NoticeService {
 	int getNoticeCount();
 	//상세보기
 	public Notice getNotice(int noticeNo);
-	//리스트검색
+	//문의리스트검색
 	Map<String, Object> getNoticeList(int pageNum);
+	//이벤트리스트검색
+	Map<String, Object> getNoticeList2(int pageNum);
 	//조회수 증가
 	public void increaseViewcnt(int noticeNo, HttpSession session) throws Exception;
 	

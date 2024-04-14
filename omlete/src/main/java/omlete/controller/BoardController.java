@@ -53,16 +53,16 @@ public class BoardController {
 		 return "notice/notice";
 	 }
 	 
-	 //이벤트
-	 @RequestMapping("/eventList")
-	    public String eventList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
-	        Map<String, Object> map = noticeService.getNoticeList(pageNum);
+	//이벤트
+		 @RequestMapping("/eventList")
+		    public String eventList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+		        Map<String, Object> map = noticeService.getNoticeList2(pageNum);
 
-	        model.addAttribute("pager", map.get("pager"));
-	        model.addAttribute("noticeList", map.get("noticeList"));
+		        model.addAttribute("pager", map.get("pager"));
+		        model.addAttribute("noticeList2", map.get("noticeList2"));
 
-	        return "notice/event_view";
-	 }
+		        return "notice/event_view";
+		 }
 	 
 	 //이벤트 상세 
 	 @RequestMapping(value = "/eventView", method=RequestMethod.GET)
