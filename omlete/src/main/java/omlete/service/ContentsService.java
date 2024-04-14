@@ -27,6 +27,9 @@ public interface ContentsService {
 	List<Contents> getMovieList();
 
 	List<Contents> getSeriseList();
+	
+	//리뷰 작성 시 제목 받아오기
+	String selectContentsTitleByTname(String contentsTname);
 
 	// ===================================================
 	List<Contents> getFavoriteContents(String movieName);

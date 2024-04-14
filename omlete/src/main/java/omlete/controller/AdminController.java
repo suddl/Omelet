@@ -36,6 +36,7 @@ import omlete.dto.Contents;
 import omlete.dto.Member;
 import omlete.dto.Review;
 import omlete.service.ContentsService;
+import omlete.service.EventUserService;
 import omlete.service.MemberService;
 import omlete.service.MoonService;
 import omlete.service.NoticeService;
@@ -407,6 +408,7 @@ public class AdminController {
 		 
 		 return "admin/inquiry";
 	 } 
+	 
 }
     /*
 
@@ -482,20 +484,4 @@ public class AdminController {
     	reviewService.removeReview(reviewNo);
     	return "review";
     }
-    
-    // 메인 페이지 이동
-    @RequestMapping(value = "/main_body", method = RequestMethod.GET)
-    public String main(HttpSession session) {
-        Integer memberStatus = (Integer)session.getAttribute("memberStatus");
-
-        return "main/main_body";
-    }
-    
-    // 로그아웃
-    @RequestMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/main/main_body";
-    }
-    
 */

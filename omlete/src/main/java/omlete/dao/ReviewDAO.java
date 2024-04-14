@@ -16,11 +16,11 @@ public interface ReviewDAO {
 	Review selectReview(int reviewNo);
 	Review selectReviewByMemberno(int memberNo,int contentsNo);
 
-	int selectReviewCount();
+	int selectReviewCount(int reviewKind);
 
 	List<Review> selectReviewListOrder();
 
-	List<Review> selectReviewList(Map<String, Object> map, int reviewKind);
+	List<Review> selectReviewList(Map<String, Object> map);
 
 	// 마이페이지
 	int selectReviewCountMember(int reviewMember);

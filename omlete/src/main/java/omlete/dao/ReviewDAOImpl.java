@@ -51,14 +51,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	// 리뷰 페이징 처리 관련
 	@Override
-	public int selectReviewCount() {
-		return sqlSession.getMapper(ReviewMapper.class).selectReviewCount();
+	public int selectReviewCount(int reviewKind) {
+		return sqlSession.getMapper(ReviewMapper.class).selectReviewCount(reviewKind);
 	}
 
 	// 리뷰 명대사/짧은글/긴글
 	@Override
-	public List<Review> selectReviewList(Map<String, Object> map, int reviewKind) {
-		return sqlSession.getMapper(ReviewMapper.class).selectReviewList(map, reviewKind);
+	public List<Review> selectReviewList(Map<String, Object> map) {
+		return sqlSession.getMapper(ReviewMapper.class).selectReviewList(map);
 	}
 
 	@Override

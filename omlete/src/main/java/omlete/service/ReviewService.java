@@ -18,8 +18,11 @@ public interface ReviewService {
 	
 	List<Review> getReviewListOrder();
 
-	Map<String, Object> getReviewList(int pageNum, int reviewKind); // 명대사/짧은글/긴글
+	Map<String, Object> getReviewList(int reviewKind, int pageNum); // 명대사/짧은글/긴글
 
+	int selectReviewCount(int reviewKind);
+	
+	
 	// 마이페이지
 	int getMemberReviewCount(int reviewMember);
 

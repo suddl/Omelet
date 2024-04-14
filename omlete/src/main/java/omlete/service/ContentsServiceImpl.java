@@ -151,4 +151,17 @@ public class ContentsServiceImpl implements ContentsService {
 
 		return contentsDAO.getFavoriteMovies(loginUser);
 	}
+
+
+
+	
+	
+	
+	//리뷰 작성 시 제목 받아오기
+	@Override
+	public String selectContentsTitleByTname(String contentsTname) {
+		
+		return contentsDAO.selectContentsTitleByTname(contentsTname);
+	}
+	
 }

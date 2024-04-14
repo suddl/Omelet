@@ -53,7 +53,7 @@
                      <button type="button" class="spoiler" id="spoiler">스포일러 체크</button>
                         <div class="controls">
                            <div type="text" class="form-control">
-                           		<c:out value="${contents.contentsTname }" />
+                           		<c:out value="${contentsTname }" />
                            </div>
                         </div>
                      </div>

@@ -34,6 +34,11 @@ public interface ContentsMapper {
 	List<Contents> selectContentListByOrder(String orderBy);
 
 	List<Map<String, String>> selectUserinfo();
+	
+	//리뷰 작성시 작품 제목 받아오기
+	String selectContentsTitleByTname(String contentsTname);
+	
+	
 
 	// =====================================================
 	List<Contents> searchFavorite(String movieName);

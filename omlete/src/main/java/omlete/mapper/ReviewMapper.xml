@@ -7,8 +7,13 @@
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review values(#{reviewNo}, #{reviewKind}, #{reviewMember}
+<<<<<<< HEAD
 		, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown},#{reviewWork}
 		, #{reviewSpoiler}, #{reviewStar}, #{reviewContentsType})
+=======
+		, #{reviewContent}, sysdate, #{reviewUp}, #{reviewDown},#{reviewWork}
+		, #{reviewSpoiler}, #{reviewStar}, #{review_contents_type})
+>>>>>>> branch 'main' of https://github.com/suddl/Omelet.git
 	</insert>
 
 	<delete id="deleteReview">
@@ -47,7 +52,7 @@
 
 	<select id="selectReview" resultType="Review">
 		select review_no,
-		review_kind, review_member, review_content, review_date
+		review_kind, review_member, review_content, #{review_date,jdbcType=DATE}
 		, review_up, review_down, review_work, review_spoiler,
 		review_star,review_contents_type
 		from review where review_no = #{reviewNo}
@@ -77,16 +82,16 @@
 	<select id="selectReviewList" resultType="Review">
 		select * from (select rownum rn, temp.* from (select review_no,
 		review_kind
-		, review_member, review_content, review_date, review_up, review_down
+		, review_member, review_content, #{review_date,jdbcType=DATE}, review_up, review_down
 		, review_work, review_spoiler, review_star from review
 		<if test="review_kind == 1">
-			where review_kind = "1"
+			where review_kind = 1
 		</if>
 		<if test="review_kind == 2">
-			where review_kind = "2"
+			where review_kind = 2
 		</if>
 		<if test="review_kind == 3">
-			where review_kind = "3"
+			where review_kind = 3
 		</if>
 		order by review_no) temp )
 		where rn between #{startRow} and #{endRow}
@@ -94,7 +99,7 @@
 
 	<select id="SelectReviewListOrder" resultType="Review">
 		SELECT
-		review_no, review_kind, review_member,review_content, review_up, review_down,review_work, 
+		review_no, review_kind, review_member,review_content, #{review_date,jdbcType=DATE}, review_up, review_down,review_work, 
 		 review_spoiler, review_star, review_contents_type
 		FROM
 		review

@@ -16,9 +16,9 @@ public interface ReviewMapper {
 	Review selectReview(int reviewNo);
 	Review selectReviewByMemberno(int memberNo, int contentsNo);
 
-	int selectReviewCount();
+	int selectReviewCount(int reviewKind);
 
-	List<Review> selectReviewList(Map<String, Object> map, int reviewKind);
+	List<Review> selectReviewList(Map<String, Object> map);
 
 	List<Review> selectReviewListOrder();
 

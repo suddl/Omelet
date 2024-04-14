@@ -33,7 +33,7 @@
                         <div>
                             <div class="inner-slider">
                                 <div class="inner-wrapper">
-                                
+                                <a href="<c:url value="/review/list?reviewKind=1"/>">
                                 	<article class="d-flex flex-column justify-content-center">
                                 		<div class="d-flex align-items-center">                                		       
                                				<img src="<c:url value="/images/service-05.jpg" />" class="img-fluid rounded-circle" alt="프로필 사진" style="width: 20px; height: 20px;">
@@ -67,7 +67,8 @@
 <!-- 	                                            <i class="fas fa-bookmark"></i> -->
 <!-- 	                                        </button> -->
 	                                    </div>
-                                    </article>                                    
+                                    </article>
+                                    </a>                                   
                                 </div>
                             </div>                            
                         </div>
