@@ -9,11 +9,13 @@ public interface ReviewService {
 	void addReview(Review review);
 
 	void modifyReview(Review review);
+	void modifyRate(int reviewStar, int reviewMember, int reviewKind, int reviewWork);
 
 	void removeReview(int reviewNo);
 
 	Review getReview(int reviewNo); // Review 검색
-
+	Review getReviewByMemberno(int memberNo, int contentsNo);	//회원번호로 검색
+	
 	List<Review> getReviewListOrder();
 
 	Map<String, Object> getReviewList(int pageNum, int reviewKind); // 명대사/짧은글/긴글
@@ -26,5 +28,7 @@ public interface ReviewService {
 	int selectReviewCountTotalTv();
 
 	Map<String, Object> getReviewMemberList(int reviewMember, int pageNum);
+
+	
 	
 }

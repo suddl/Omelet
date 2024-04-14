@@ -34,6 +34,12 @@ public class ActorsServiceImpl implements ActorsService{
 	public List<Actors> getActorsList() {
 		return actorsDAO.selectActorsList();
 	}
+	
+	@Override
+	public List<Actors> getActorsListByContents(int contents) {
+		
+		return actorsDAO.selectActorsListByContents(contents);
+	}
 
 	@Override
 	public Actors getActors(int actorNo) {

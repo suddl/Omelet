@@ -14,12 +14,11 @@ create sequence review_seq;
 */
 
 @Data
-@Builder
 public class Review {
 	private int reviewNo;
 	private int reviewKind;
 	private int reviewMember;
-	private String reviewContent;
+	private int reviewContent;
 	private String reviewDate;
 	private int reviewUp;
 	private int reviewDown;
@@ -28,4 +27,5 @@ public class Review {
 	private int reviewStar;
 	private String memberNickname;
 	private String contentsTname; 
+	private String reviewContentsType;
 }

@@ -25,7 +25,13 @@ public class ReviewServiceImpl implements ReviewService {
 	public void modifyReview(Review review) {
 		reviewDAO.updateReview(review);
 	}
+	
+	@Override
+	public void modifyRate(int reviewStar, int reviewMember, int reviewKind, int reviewWork) {
+		reviewDAO.updateRate(reviewStar, reviewMember, reviewKind, reviewWork);
+	}
 
+	
 	@Override
 	public void removeReview(int reviewNo) {
 		reviewDAO.deleteReview(reviewNo);
@@ -34,6 +40,11 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public Review getReview(int reviewNo) {
 		return reviewDAO.selectReview(reviewNo);
+	}
+	
+	@Override
+	public Review getReviewByMemberno(int memberNo,int contentsNo) {
+		return reviewDAO.selectReviewByMemberno(memberNo,contentsNo);
 	}
 
 	@Override

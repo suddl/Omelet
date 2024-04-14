@@ -24,6 +24,10 @@ public class ActorsDAOImpl implements ActorsDAO{
 		return sqlSession.getMapper(ActorsMapper.class).selectActorsList();
 	}
 	@Override
+	public List<Actors> selectActorsListByContents(int contentsNo){
+		return sqlSession.getMapper(ActorsMapper.class).selectActorsListByContents(contentsNo);
+	}
+	@Override
 	public Actors selectActors(int actorNo) {
 		return sqlSession.getMapper(ActorsMapper.class).selectActors(actorNo);
 	}

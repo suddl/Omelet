@@ -41,12 +41,15 @@ public class ContentsServiceImpl implements ContentsService {
 			throw new ContentsNotFoundException("해당 작품이 존재하지 않습니다.");
 		}
 		String front, url;
-		String img1, img2, img3, poster;
+		String img1, img2, img3, poster, date;
 		front = "https://image.tmdb.org/t/p/original";
 
 		poster = contents.getContentsPoster();
 		contents.setContentsPoster(front + poster);
-
+		
+		date = contents.getContentsStartdate().substring(0,10);
+		contents.setContentsStartdate(date);
+		
 		img1 = contents.getContentsPhoto1();
 		contents.setContentsPhoto1(front + img1);
 		img2 = contents.getContentsPhoto2();
