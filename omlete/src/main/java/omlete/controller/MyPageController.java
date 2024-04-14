@@ -118,7 +118,7 @@ public class MyPageController {
 	    model.addAttribute("pager", map.get("pager"));
 	    model.addAttribute("moonList", map.get("moonList"));
 
-	    return "mypage/mymoon_write";
+	    return "mypage/mymoon_write"; 
 	}
 	
 	// 내가 참여한 이벤트
