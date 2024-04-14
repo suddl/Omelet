@@ -8,6 +8,7 @@ public interface ActorsDAO {
 	 int insertActors(Actors actors);	
 	 //모든 actors 불러오기
 	 List<Actors> selectActorsList(); 
+	 List<Actors> selectActorsListByContents(int contentsNo); 
 	//배우id로 해당 배우정보 불러오기
 	 Actors selectActors(int actorNo);
 }

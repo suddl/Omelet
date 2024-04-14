@@ -29,8 +29,21 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public int updateReview(Review review) {
 		return sqlSession.getMapper(ReviewMapper.class).updateReview(review);
 	}
+	
+	@Override
+	public int updateRate(int reviewStar, int reviewMember, int reviewKind,int reviewWork) {
+		return sqlSession.getMapper(ReviewMapper.class).updateRate(reviewStar, reviewMember, reviewKind,reviewWork);
+	}
+	
+	
 
 	// 리뷰 검색
+	@Override
+	public Review selectReviewByMemberno(int memberNo,int contentsNo) {
+		return sqlSession.getMapper(ReviewMapper.class).selectReviewByMemberno(memberNo,contentsNo);
+	}
+	
+	//회원번호로 리뷰 검색
 	@Override
 	public Review selectReview(int reviewNo) {
 		return sqlSession.getMapper(ReviewMapper.class).selectReview(reviewNo);

@@ -11,8 +11,10 @@ public interface ReviewMapper {
 	int deleteReview(int reviewNo);
 
 	int updateReview(Review review);
+	int updateRate(int reviewStar, int reviewMember, int reviewKind,int reviewWork);
 
 	Review selectReview(int reviewNo);
+	Review selectReviewByMemberno(int memberNo, int contentsNo);
 
 	int selectReviewCount(int reviewKind);
 

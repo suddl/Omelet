@@ -16,4 +16,9 @@
 		select actor_no, actor_name, actor_oname, actor_img from actors where actor_no=#{actorsNo}
 	</select>
 	
+	<select id="selectActorsListByContents" resultType="Actors">
+		SELECT A.ACTOR_NO, A.ACTOR_NAME, A.ACTOR_ONAME, A.ACTOR_IMG FROM ACTORS A JOIN ACTOR_CONTENTS AC ON AC.ACTOR_id = A.ACTOR_NO
+		WHERE AC.actor_CONTENTS_ID = ${contentsNo}
+	</select>
+	
 </mapper>

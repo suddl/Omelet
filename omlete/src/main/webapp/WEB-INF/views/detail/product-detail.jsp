@@ -59,11 +59,11 @@
             <div class="row d-flex align-items-center justify-content-between">
                <div class="col-lg-9 left">
                   <ul>
-                     <li class="nav-overview selected"><a href="#overview">Overview</a></li>
-                     <li class="nav-description"><a href="#description">Description</a></li>
+                     <li class="nav-overview selected"><a href="#overview">영화정보</a></li>
+                     <li class="nav-description"><a href="#description">출연진</a></li>
                      <li class="nav-aboutSeller"><a href="#aboutSeller">About The Seller</a></li>
                      <li class="nav-faq"><a href="#faq">FAQ</a></li>
-                     <li class="nav-reviews"><a href="#reviews">Reviews</a></li>
+                     <li class="nav-reviews"><a href="#reviews">리뷰</a></li>
                   </ul>
                </div>
                <div class="col-lg-3 right">
@@ -106,7 +106,7 @@
                               <span class="star-rating-s15 rate-10">
                               </span>
                            </div>
-                           <span class="total-rating-out-five">5.0</span>
+                           <span class="total-rating-out-five">${review.reviewStar}</span>
                            <span class="total-rating">(36)</span>
                         </span>
                         
@@ -120,43 +120,43 @@
 					    <div class="rating">
 					        <label class="rating__label rating__label--half" for="starhalf">
 					            <input type="radio" id="starhalf" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <span class="star-icon" onclick="onStarClick(0)"></span>
 					        </label>
 					        <label class="rating__label rating__label--full" for="star1">
 					            <input type="radio" id="star1" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <span class="star-icon" onclick="onStarClick(1)"></span>
 					        </label>
 					        <label class="rating__label rating__label--half" for="star1half">
 					            <input type="radio" id="star1half" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <span class="star-icon" onclick="onStarClick(1.5)"></span>
 					        </label>
 					        <label class="rating__label rating__label--full" for="star2">
 					            <input type="radio" id="star2" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <span class="star-icon" onclick="onStarClick(2)"></span>
 					        </label>
 					        <label class="rating__label rating__label--half" for="star2half">
 					            <input type="radio" id="star2half" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <span class="star-icon" onclick="onStarClick(2.5)"></span>
 					        </label>
 					        <label class="rating__label rating__label--full" for="star3">
 					            <input type="radio" id="star3" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <span class="star-icon" onclick="onStarClick(3)"></span>
 					        </label>
 					        <label class="rating__label rating__label--half" for="star3half">
-					            <input type="radio" id="star3half" class="rating__input" name="rating" checked>
-					            <span class="star-icon"></span>
+					            <input type="radio" id="star3half"  class="rating__input" name="rating" checked>
+					            <span class="star-icon" onclick="onStarClick(3.5)"></span>
 					        </label>
 					        <label class="rating__label rating__label--full" for="star4">
 					            <input type="radio" id="star4" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <span class="star-icon" onclick="onStarClick(4)"></span>
 					        </label>
 					        <label class="rating__label rating__label--half" for="star4half">
-					            <input type="radio" id="star4half" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <input for="" type="radio" id="star4half" class="rating__input" name="rating" value="">
+					            <span class="star-icon" onclick="onStarClick(4.5)" ></span>
 					        </label>
 					        <label class="rating__label rating__label--full" for="star5">
 					            <input type="radio" id="star5" class="rating__input" name="rating" value="">
-					            <span class="star-icon"></span>
+					            <span class="star-icon" onclick="onStarClick(5)" ></span>
 					        </label>
 					    </div>
 					  </div>
@@ -208,13 +208,13 @@
                      <li class="metadata-attribute">
                         <p>등급</p>
                         <ul>
-                           <li><img src="images/12ages.svg" style="width:20px">${contents.contentsRating}세</li>
+                           <li>${contents.contentsRating}</li>
                         </ul>
                      </li>
                      <li class="metadata-attribute">
                         <p>개봉일</p>
                         <ul>
-                           <li>${contents.contentsStartdate}년</li>
+                           <li>${contents.contentsStartdate}</li>
                         </ul>
                      </li>
                      <li class="metadata-attribute">
@@ -236,65 +236,34 @@
                         </ul>
                      </li>
                   </ul>
-                  <h3 id="aboutSeller">제작/출연</h3>
+                  <h3 id="aboutSeller">출연</h3>
                   <div class="profile-card">
                      <div class="user-profile-image d-flex">
+                     <c:forEach var="actors" items="${actor }">
                        <div class="profile-info"> 
                         <label class="profile-pict" for="profile_image">
                         <img
-                           src="images/s2.png"
+                           src="https://image.tmdb.org/t/p/original${actors.actorImg }"
                            class="profile-pict-img img-fluid" alt="">
                         </label>
                         <div class="right">
                            <div class="profile-name">
                               <span class="user-status">
-                              <a href="#" class="seller-link">톰 홀랜드</a>
+                                <c:choose>
+								    <c:when test="${empty actors.actorName}">
+								        <a href="#" class="seller-link">${actors.actorOname}</a>
+								    </c:when>
+								    <c:otherwise>
+								        <a href="#" class="seller-link">${actors.actorName}</a>
+								    </c:otherwise>
+								</c:choose>
                               </span>
                            </div>
                         </div>
                        </div>
-                       <div class="profile-info"> 
-                        <label class="profile-pict" for="profile_image">
-                        <img
-                           src="images/s2_1.png"
-                           class="profile-pict-img img-fluid" alt="">
-                        </label>
-                        <div class="right">
-                           <div class="profile-name">
-                              <span class="user-status">
-                              <a href="#" class="seller-link">토비 맥과이어</a>
-                              </span>
-                           </div>
-                        </div>
-                       </div>
-                       <div class="profile-info">
-                        <label class="profile-pict" for="profile_image">
-                        <img
-                           src="images/s2.png"
-                           class="profile-pict-img img-fluid" alt="">
-                        </label>
-                        <div class="right">
-                           <div class="profile-name">
-                              <span class="user-status">
-                              <a href="#" class="seller-link">${contents.contentsDirector}</a>
-                              </span>
-                           </div>
-                        </div>
-                       </div>
-                       <div class="profile-info">
-                        <label class="profile-pict" for="profile_image">
-                        <img
-                           src="images/s2.png"
-                           class="profile-pict-img img-fluid" alt="">
-                        </label>
-                        <div class="right">
-                           <div class="profile-name">
-                              <span class="user-status">
-                              <a href="#" class="seller-link">${contents.contentsStaff}</a>
-                              </span>
-                           </div>
-                        </div>
-                       </div>
+                      </c:forEach> 
+                       
+                       
                      </div>
                      <div class="stats-desc">
                         <ul class="user-stats">
@@ -648,6 +617,7 @@
       <!-- Custom -->
       <script src="js/custom.js"></script>
       <script type="text/javascript">
+      	
 		const rateWrap = document.querySelectorAll('.rating'),
 			label = document.querySelectorAll('.rating .rating__label'),
 			input = document.querySelectorAll('.rating .rating__input'),
@@ -655,12 +625,17 @@
 			opacityHover = '0.5';
 		
 		let stars = document.querySelectorAll('.rating .star-icon');
-		
+		let rating = 0;
 		checkedRate();
+		
+		if (loginMember) {
+		    rating = ${review.reviewStar}; // review.reviewStar는 서버에서 받아온 초기 별점 값입니다.
+		}
 		
 		
 		rateWrap.forEach(wrap => {
 			wrap.addEventListener('mouseenter', () => {
+				if (!loginMember) return; 
 		    	stars = wrap.querySelectorAll('.star-icon');
 		
 		    	stars.forEach((starIcon, idx) => {
@@ -714,9 +689,14 @@
 		//선택된 라디오버튼 이하 인덱스는 별점 active
 		function checkedRate() {
 			let checkedRadio = document.querySelectorAll('.rating input[type="radio"]:checked');
-		
+
 		
 			initStars();
+			
+			/* for (let i = 0; i < rating; i++) {
+		        stars[i].classList.add('filled');
+		    } */
+			
 			checkedRadio.forEach(radio => {
 		    	let previousSiblings = prevAll(radio);
 		
@@ -737,6 +717,8 @@
 		        	return radioSiblings;
 		    	}
 			});
+			
+			
 		}
 		
 		//별점 초기화 (0)
@@ -744,6 +726,40 @@
 			for (let i = 0; i < stars.length; i++) {
 		    	stars[i].classList.remove('filled');
 			}
+		}
+
+		
+		function onStarClick(ratingValue) {
+		    // 클릭된 별의 값을 서버에 전송
+		    submitRating(ratingValue);
+		    console.error("starValue:", ratingValue);
+		}
+
+		// 서버로 별점을 전송하는 함수
+		function submitRating(ratingValue) {
+		    // 전송할 데이터를 준비합니다
+
+		    var data = ratingValue;
+		    var contentsNo = ${contents.contentsNo};
+		    
+		    console.error("contentsNo:", contentsNo);
+			$.ajax({
+	            method: "post", 
+	            url: "<c:url value="/detail/rate"/>", 
+	            data: { "data": data, "contentsNo": contentsNo}, 
+	            dataType: "text",
+	            success: function(response) {
+	            	if (response == "ok") {
+	                	console.error("보내따~~~~~ ");
+	
+	                }else{
+	                	console.error("안됬따~~~~~ ");
+	                }
+	            },
+	            error: function() {
+	                console.error("서버 오류: ");
+	            }
+        	});
 		}
 	
 	</script>

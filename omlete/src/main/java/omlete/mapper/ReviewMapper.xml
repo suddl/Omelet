@@ -7,8 +7,13 @@
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review values(#{reviewNo}, #{reviewKind}, #{reviewMember}
+<<<<<<< HEAD
+		, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown},#{reviewWork}
+		, #{reviewSpoiler}, #{reviewStar}, #{reviewContentsType})
+=======
 		, #{reviewContent}, sysdate, #{reviewUp}, #{reviewDown},#{reviewWork}
 		, #{reviewSpoiler}, #{reviewStar}, #{review_contents_type})
+>>>>>>> branch 'main' of https://github.com/suddl/Omelet.git
 	</insert>
 
 	<delete id="deleteReview">
@@ -36,6 +41,14 @@
 		</set>
 		where review_no = #{reviewNo}
 	</update>
+	
+	<update id="updateRate">
+		update review
+		<set>
+			review_star =  #{param1}
+		</set>
+		where review_member =  #{param2} and review_kind =  #{param3} and review_work =  #{param4}
+	</update>
 
 	<select id="selectReview" resultType="Review">
 		select review_no,
@@ -43,6 +56,14 @@
 		, review_up, review_down, review_work, review_spoiler,
 		review_star,review_contents_type
 		from review where review_no = #{reviewNo}
+	</select>
+	
+	<select id="selectReviewByMemberno" resultType="Review">
+		select review_no,
+		review_kind, review_member, review_content, review_date
+		, review_up, review_down, review_work, review_spoiler,
+		review_star,review_contents_type
+		from review where review_member = #{param1} and review_work = #{param2}
 	</select>
 
 	<select id="selectReviewCount" resultType="int">
