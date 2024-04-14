@@ -29,6 +29,6 @@ public interface MemberService {
 	//관리자 페이지
 	List<Member> getMemberList();
 	List<Member> getReportedMemberList();
-	void modifyMeberStatus(int memberStatus);
+	void modifyMemberStatus(int memberNo, int memberStatus);
 	
 }

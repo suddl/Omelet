@@ -24,5 +24,5 @@ public interface MemberDAO {
 	//관리자 페이지
 	List<Member> selectMemberList();
 	List<Member> selectReportedMemberList();
-	int updateMeberStatus(int memberStatus);
+	int updateMemberStatus(int memberNo, int memberStatus);
 }

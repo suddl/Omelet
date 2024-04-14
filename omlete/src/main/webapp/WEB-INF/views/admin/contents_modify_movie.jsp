@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,7 +99,7 @@
                         <div class="card-header py-3"></div>                    
                         <div class="card-body" style= "height: 1000px;">
                         <div class="table-responsive">
-                         <form action="<c:url value="/admin/contents_modify_movie"/>" method="post" enctype="multipart/form-data">
+                        <form action="<c:url value='/admin/contents_modify_movie/${contents.contentsNo}'/>" method="post" enctype="multipart/form-data">
 							<table id="contentsModifyTable">
 									<tr>
 										<td>
@@ -126,36 +127,6 @@
 										<th>예고편/트레일러</th>
 										<td>
 											<input type="url" name="contentsTrailer" id="trailer" value="${empty contents ? '' : contents.contentsTrailer}" size="30">
-										</td>
-									</tr>
-									<tr>
-										<th>포스터</th>
-										<td>
-											<input type="file" name="file1" id="poster" required>
-										</td>
-									</tr>
-									<tr>
-										<th>스틸컷1</th>
-										<td>
-											<input type="file" name="file2" id="photo1">
-										</td>
-									</tr>
-									<tr>
-										<th>스틸컷2</th>
-										<td>
-											<input type="file" name="file3" id="photo2">
-										</td>
-									</tr>
-									<tr>
-										<th>스틸컷3</th>
-										<td>
-											<input type="file" name="file4" id="photo3">
-										</td>
-									</tr>
-									<tr>
-										<th>출연진</th>
-										<td>
-											<input type="text" name="actorName" id="actorName" value="${empty actors ? '' : actors.actorName}" size="30" required>
 										</td>
 									</tr>
 									<tr>
@@ -214,13 +185,13 @@
 									<tr>
 										<th>개봉일</th>
 										<td>
-											<input type="text" name="contentsStartdate" id="contentsStartdate" value="${empty contents ? '' : contents.contentsStartdate}" size="15" required>
+											<input type="text" name="contentsStartdate" id="contentsStartdate" value="${empty contents ? '' : fn:substring(contents.contentsStartdate, 0, 10)}" size="15" required>
 										</td>
 									</tr>
 									<tr>
 										<th>종영일</th>
 										<td>
-											<input type="text" name="contentsEnddate" id="contentsEnddate" value="${empty contents ? '' : contents.contentsEnddate}" size="15">
+											<input type="text" name="contentsEnddate" id="contentsEnddate" value="${empty contents ? '' : fn:substring(contents.contentsEnddate, 0, 10)}" size="15">
 										</td>
 									</tr>							
 									<tr>
@@ -282,7 +253,5 @@
             </div>
         </div>
     </div>
-	
-
 </body>
 </html>

@@ -23,5 +23,5 @@ public interface MemberMapper {
 	//관리자 페이지
 	List<Member> selectMemberList();
 	List<Member> selectReportedMemberList();
-	int updateMeberStatus(int memberStatus);
+	int updateMemberStatus(@Param("memberNo") int memberNo, @Param("memberStatus") int memberStatus);
 }

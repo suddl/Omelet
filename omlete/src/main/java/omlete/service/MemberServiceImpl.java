@@ -156,9 +156,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	
+	@Transactional
 	@Override
-	public void modifyMeberStatus(int memberStatus) {
-		memberDAO.updateMeberStatus(memberStatus);
+	public void modifyMemberStatus(int memberNo, int memberStatus) {
+		memberDAO.updateMemberStatus(memberNo, memberStatus);
 	}
 	
 	@Override

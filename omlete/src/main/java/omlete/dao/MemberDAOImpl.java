@@ -68,10 +68,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<Member> selectReportedMemberList() {
 		return sqlSession.getMapper(MemberMapper.class).selectReportedMemberList();
 	}
-
+ 
 	@Override
-	public int updateMeberStatus(int memberStatus) {
-		return sqlSession.getMapper(MemberMapper.class).updateMeberStatus(memberStatus);
+	public int updateMemberStatus(int memberNo, int memberStatus) {
+		return sqlSession.getMapper(MemberMapper.class).updateMemberStatus(memberNo, memberStatus);
 	}
 
 	@Override
