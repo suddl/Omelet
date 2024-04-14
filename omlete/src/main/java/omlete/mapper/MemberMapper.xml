@@ -88,12 +88,12 @@
 		select member_no, member_id, member_name, member_phone, member_email, member_level, member_status, member_point, member_report, member_nickname
 		from member where member_report>=20 order by member_no
 	</select>
-	
+		
 	<update id="updateMemberStatus">
 	    UPDATE member
 	    <set>
-	        <if test="memberStatus != null and memberStatus != ''">
-	            member_status = #{memberStatus}
+	        <if test="memberStatus != null">
+	            member_status = #{memberStatus, jdbcType=INTEGER}
 	        </if>
 	    </set>
 	    WHERE member_no = #{memberNo}

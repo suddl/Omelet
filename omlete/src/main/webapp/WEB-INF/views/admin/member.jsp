@@ -96,7 +96,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <form id="statusUpdateForm" action="<c:url value='/admin/updateMemberStatuses'/>" method="post">
+                            <form id="statusUpdateForm" action="<c:url value='/admin/updateMemberStatus'/>" method="post">
 							<table id="memberTable" border="1">
 								<thead>
 									<tr style="width: 600px;">
@@ -116,32 +116,30 @@
 									</tr>
 								</thead>							
 								<c:forEach var="member" items="${memberList}">
-								<tbody>								  
-						             <tr>
-						             	<td><input type="checkbox"></td> <!-- 각 행의 첫 번째 셀에 체크박스 추가 -->
-								        <td>${member.memberNo}</td>
-								        <td>${member.memberId}</td>
-								        <td>${member.memberName}</td>					 
-							            <td>${member.memberPhone}</td>
-						                <td>${member.memberEmail}</td>
-							            <td>${member.memberLevel}</td>
-                                        <td>
-							            <select name="memberStatus">
-							                <option value="0" ${member.memberStatus == 0 ? 'selected' : ''}>0</option>
-							                <option value="1" ${member.memberStatus == 1 ? 'selected' : ''}>1</option>
-							                <option value="9" ${member.memberStatus == 9 ? 'selected' : ''}>9</option>
-							            </select>
-							            <input type="hidden" name="memberNo" value="${member.memberNo}"/>
-                                        </td>				
-					   	                <td>${member.memberPoint}</td>				
-							            <td>${member.memberReport}</td>				
-							            <td>${member.memberNickname}</td>				
-								      </tr>
-								 </tbody>
-								 </c:forEach>
-								 </table>
-								 <button type="submit">저장</button>
-								 </form>										
+								    <form action="<c:url value='/admin/updateMemberStatus'/>" method="post">
+								        <tr>
+								            <td><input type="checkbox"></td>
+								            <td>${member.memberNo}</td>
+								            <td>${member.memberId}</td>
+								            <td>${member.memberName}</td>
+								            <td>${member.memberPhone}</td>
+								            <td>${member.memberEmail}</td>
+								            <td>${member.memberLevel}</td>
+								            <td>
+								                <select name="memberStatus">
+								                    <option value="0" ${member.memberStatus == 0 ? 'selected' : ''}>0</option>
+								                    <option value="1" ${member.memberStatus == 1 ? 'selected' : ''}>1</option>
+								                    <option value="9" ${member.memberStatus == 9 ? 'selected' : ''}>9</option>
+								                </select>
+								                <input type="hidden" name="memberNo" value="${member.memberNo}"/>
+								            </td>
+								            <td>${member.memberPoint}</td>
+								            <td>${member.memberReport}</td>
+								            <td>${member.memberNickname}</td>
+								            <td><button type="submit">변경 저장</button></td>
+								        </tr>
+								    </form>
+								</c:forEach>									
                             </div>
                         </div>
                     </div>
@@ -182,7 +180,51 @@
         </div>
     </div>
     <script>
+    // 개별 체크박스 이벤트 처리
+    $("input[type=checkbox]").click(function() {
+        if (!$(this).prop('checked')) {
+            $("#selectAll").prop('checked', false);
+        }
+    });
+    
+    // 체크된 항목의 contentsNo 가져오기
+	function getCheckedContentsNo() {
+	    var checkboxes = document.querySelectorAll('input[type="checkbox"][name="contentsNo"]');
+	    var checkedContentsNoArray = [];
+	
+	    checkboxes.forEach(function(checkbox) {
+	        if (checkbox.checked) {
+	            var contentsNo = checkbox.value; // value 속성에서 contentsNo 값을 가져옵니다.
+	            checkedContentsNoArray.push(contentsNo);
+	            console.log("Checked contentsNo: " + contentsNo); // 체크된 contentsNo 확인하기
+	        }
+	    });
+	    return checkedContentsNoArray;
+	}
 
+    // 양식 제출 시 선택된 회원의 상태를 업데이트
+    $("#statusUpdateForm").submit(function(event) {
+        event.preventDefault(); // 기본 제출 동작 방지
+
+        var form = $(this);
+        var formData = form.serialize(); // 폼 데이터 직렬화
+
+        $.ajax({
+            type: "POST",
+            url: form.attr('action'),
+            data: formData,
+            success: function(response) {
+                // 성공 시 동작
+                alert('회원 상태가 업데이트되었습니다.');
+                // 페이지 새로고침 등 원하는 동작 추가
+            },
+            error: function(xhr, status, error) {
+                // 오류 발생 시 동작
+                alert('오류가 발생했습니다.');
+                console.error(xhr.responseText);
+            }
+        });
+    });
     </script>
 
 </body>

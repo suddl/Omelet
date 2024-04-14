@@ -37,6 +37,8 @@ import omlete.dto.Member;
 import omlete.dto.Review;
 import omlete.service.ContentsService;
 import omlete.service.MemberService;
+import omlete.service.MoonService;
+import omlete.service.NoticeService;
 import omlete.service.ReviewService;
  
 @Controller
@@ -46,22 +48,54 @@ public class AdminController {
     
 	private final MemberService memberService;
     private final ContentsService contentsService;
+    private final NoticeService noticeService;
+    private final MoonService moonService;
     @Autowired
     private WebApplicationContext context;
     //private ReviewService reviewService;
     
+    //로그인
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String adminLogin() {
+		return "admin/login";
+		
+	}
+	
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";	
+	}
+	
+	   // 로그인 처리
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@ModelAttribute Member member, HttpSession session){
+        // 로그인 처리 로직
+        Member loginMember = memberService.loginAuth(member);
+        
+        // 로그인 성공 시
+        if (loginMember != null) {
+            session.setAttribute("loginMember", loginMember);
+            session.setAttribute("memberStatus", loginMember.getMemberStatus()); // memberStatus를 세션에 저장
+            return "redirect:/admin/index"; // 성공 시 메인 페이지로 리다이렉트
+        } else {
+            // 로그인 실패 시
+            return "redirect:/login"; // 다시 로그인 페이지로 리다이렉트 또는 오류 메시지 출력 등
+        }
+    }
+
     // 관리자 메인 페이지 이동
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    //public String adminMain(HttpSession session) { 
-    public String adminMain() {
-    	/*
-    	Integer memberStatus = (Integer)session.getAttribute("memberStatus");
+    public String adminMain(HttpSession session) { 
+        Integer memberStatus = (Integer) session.getAttribute("memberStatus");
         if(memberStatus == null || memberStatus != 9) {
-            return "exception.BadRequestException";
+            return "admin/login"; // 관리자가 아닌 경우 로그인 페이지로 리다이렉트
+        } else {    
+            return "admin/index"; // 관리자인 경우 관리자 메인 페이지로 이동
         }
-        */
-        return "admin/index";
     }
+
     /*
     //작품 관리
     @RequestMapping(value = "/contents", method = RequestMethod.GET)
@@ -121,13 +155,22 @@ public class AdminController {
             return "admin/index";
         }
     }
-
-    // 작품 수정(TV)
+    
+    //작품 수정(TV)
     @RequestMapping(value = "/contents_modify_tv", method = RequestMethod.GET)
-    public String tvModify(@RequestParam("contentsNo") int contentsNo, Model m) {
-        m.addAttribute("contents", contentsService.getContents(contentsNo));
-        return "admin/contents_modify_tv";
+    public String tvModify(@RequestParam(value = "contentsNo", required = false) Integer contentsNo, Model m) {
+    	if (contentsNo != null) {
+    		// contentsNo가 null이 아닌 경우에만 실행될 코드 작성
+    		m.addAttribute("contents", contentsService.getContents(contentsNo));
+    		return "admin/contents_modify_tv";
+    	} else {
+    		// contentsNo가 null인 경우에 대한 처리
+    		// 예를 들어, 다른 페이지로 리다이렉트하거나 오류 메시지를 반환하는 등의 처리를 수행할 수 있습니다.
+    		return "admin/index";
+    	}
     }
+
+
     
     // 작품 추가(영화)
     @RequestMapping(value = "/contents_add_movie", method = RequestMethod.POST)
@@ -270,28 +313,20 @@ public class AdminController {
         existingContents.setContentsRuntime(updatedContents.getContentsRuntime());
         existingContents.setContentsTagline(updatedContents.getContentsTagline());
     }  
-    
-    //작품 삭제(TV)
-    @RequestMapping(value = "/contents_remove_tv", method = RequestMethod.DELETE)
-    public String contentsRemoveTV(@RequestParam int contentsNo) {
-    	Contents contents=contentsService.getContents(contentsNo);
-    	String uploadDirectory = context.getServletContext().getRealPath("/WEB-INF/upload");
-    	//서버 디렉토리에 저장된 게시글의 파일 삭제 처리
-    	File file = new File(uploadDirectory, Integer.toString(contents.getContentsNo()));
-    	if (file.exists()) {
-    		file.delete(); // 파일 삭제
-    	}
-    	
-    	contentsService.removeContents(contentsNo);
-    	return "redirect:/admin/contents_tv";		
-    }
-    
- // 작품 삭제(영화)
+
+    // 작품 삭제(영화)
     @RequestMapping(value = "/contents_remove_movie")
     public String contentsRemove(@RequestParam(value = "contentsNo") Integer contentsNo) {
         // contentsNo에 해당하는 작품을 삭제하는 로직을 추가합니다.
         contentsService.removeContents(contentsNo);
         return "redirect:/admin/contents_movie";
+    }
+    // 작품 삭제(TV)
+    @RequestMapping(value = "/contents_remove_tv")
+    public String contentsRemoveTV(@RequestParam(value = "contentsNo") Integer contentsNo) {
+    	// contentsNo에 해당하는 작품을 삭제하는 로직을 추가합니다.
+    	contentsService.removeContents(contentsNo);
+    	return "redirect:/admin/contents_tv";
     }
     
     //회원 관리
@@ -306,21 +341,75 @@ public class AdminController {
         }
         return "admin/member";
     }
-
-  //회원 상태 변경
-    @RequestMapping(value = "/updateMemberStatuses", method = RequestMethod.POST)
+    // 회원 상태 변경
+    @RequestMapping(value = "/updateMemberStatus", method = RequestMethod.POST)
     public String updateMemberStatus(@RequestParam("memberNo") int memberNo, @RequestParam("memberStatus") int memberStatus, RedirectAttributes redirectAttributes) {
-        memberService.modifyMemberStatus(memberNo, memberStatus); // 오타 수정 및 메서드명 변경
+        memberService.modifyMemberStatus(memberNo, memberStatus); // 회원 상태 업데이트
         redirectAttributes.addFlashAttribute("successMessage", "회원 상태가 업데이트되었습니다.");
         return "redirect:/admin/member";
     }
+	 //공지사항
+	 @RequestMapping("/noticeList")
+	    public String noticeList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+	        Map<String, Object> map = noticeService.getNoticeList(pageNum);
+
+	        model.addAttribute("pager", map.get("pager"));
+	        model.addAttribute("noticeList", map.get("noticeList"));
+
+	        return "admin/notice_view";
+	 }
+	 
+	 //공지사항 상세 
+	 @RequestMapping(value = "/noticeView", method=RequestMethod.GET)
+	 public String noticeDetail(@RequestParam int noticeNo, Model model) {
+		 // 뷰에 전달할 데이터
+		 model.addAttribute("data", noticeService.getNotice(noticeNo));
+		 
+		 return "admin/notice";
+	 }
+	 
+	 //이벤트
+	 @RequestMapping("/eventList")
+	    public String eventList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+	        Map<String, Object> map = noticeService.getNoticeList(pageNum);
+
+	        model.addAttribute("pager", map.get("pager"));
+	        model.addAttribute("noticeList", map.get("noticeList"));
+
+	        return "admin/event";
+	 }
+	 
+	 //이벤트 상세 
+	 @RequestMapping(value = "/eventView", method=RequestMethod.GET)
+	 public String eventDetail(@RequestParam int noticeNo, Model model) {
+		 // 뷰에 전달할 데이터
+		 model.addAttribute("data", noticeService.getNotice(noticeNo));
+		 
+		 return "admin/eventView";
+	 }
+	 
+	 //문의사항
+	 @RequestMapping("/moonList")
+	    public String moonList(@RequestParam(defaultValue = "1") int pageNum, Model model) {
+	        Map<String, Object> map = moonService.getMoonList(pageNum);
+
+	        model.addAttribute("pager", map.get("pager"));
+	        model.addAttribute("moonList", map.get("moonList"));
+
+	        return "admin/moon_view";
+	 }
+	 
+	 //이벤트 상세 
+	 @RequestMapping(value = "/moonView", method=RequestMethod.GET)
+	 public String moonDetail(@RequestParam int moonNo, Model model) {
+		 // 뷰에 전달할 데이터
+		 model.addAttribute("data", moonService.getMoon(moonNo));
+		 
+		 return "admin/inquiry";
+	 } 
 }
     /*
-    // 공지사항으로 이동
-    @RequestMapping(value = "/notice ", method = RequestMethod.GET)
-    public String notice(HttpSession session) {
-        return "notice";
-    }
+
     
     // 공지사항 글쓰기
     @RequestMapping(value = "/notice_write", method = RequestMethod.GET)

@@ -51,15 +51,15 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">              
-                        <a class="collapse-item" href="<c:url value= "/notice/notice"/>">공지사항</a>                    
-                        <a class="collapse-item" href="<c:url value= "/notice/event"/>">이벤트</a>
+                        <a class="collapse-item" href="<c:url value= "/admin/noticeList"/>">공지사항</a>                    
+                        <a class="collapse-item" href="<c:url value= "/admin/eventList"/>">이벤트</a>
                     </div>
                 </div>
             </li>
 			<hr class="sidebar-divider">
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value= "/moon/moon_view"/>">
+                <a class="nav-link" href="<c:url value= "/admin/moonList"/>">
                     <i class="fas fa-question-circle"></i>
                     <span>1:1 문의</span></a>
             </li>
@@ -72,7 +72,7 @@
             </li>
 			<hr class="sidebar-divider">
 			<li class="nav-item">
-                <a class="nav-link" href="<c:url value= "/omlete/"/>">
+                <a class="nav-link" href="<c:url value="/"/>">
                     <i class="fas fa-home"></i>
                     <span>메인 페이지</span></a>
             </li>
