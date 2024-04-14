@@ -23,13 +23,14 @@ public class MoonServiceImpl implements MoonService {
 		String title = moon.getMoonTitle();
 		String content = moon.getMoonContent();
 		title = title.replace("<", "&lt;");
-		title = title.replace("<", "&lt;");
+		title = title.replace(">", "&gt;");
 		
-		title = title.replace(" ", "&nbsp;&nbsp;");
+		title = title.replace(" ", "&nbsp;");
 		
 		content = content.replace("\n", "<br>");
 		moon.setMoonTitle(title);
 		moon.setMoonContent(content);
+		
 		moonDAO.insertMoon(moon);
 	}
 
