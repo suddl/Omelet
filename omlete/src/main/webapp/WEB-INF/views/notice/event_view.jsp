@@ -46,7 +46,7 @@
                         </div>
                      </div>
                      <div class="overflow-hidden border-top d-flex align-items-center p-4">
-                        <a class="font-weight-bold d-block" href="<c:url value="/board/inquiry"/>"> 1:1 상담작성 하러가기 </a>
+                        <a class="font-weight-bold d-block" href="<c:url value="/board/moonWrite"/>"> 1:1 상담작성 하러가기 </a>
                         <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
                      </div>
                   </div>
@@ -57,7 +57,7 @@
                      	<i><img src="<c:url value="/images/board/questions.png"/>" height="50"></i>
                         <div class="ml-4">
                            <h5 class="font-weight-normal text-dark mb-3 mt-0">문의사항</h5>
-                           <p class="mb-0 text-muted">문의 답변 확인하세요.
+                           <p class="mb-0 text-muted">기다려주셔서 감사합니다! 문의 답변을 확인해주세요.
                            </p>
                         </div>
                      </div>
@@ -74,7 +74,7 @@
 							<!-- <i class="mdi mdi-lock-outline display-4"></i> -->
 							<div class="ml-4">
 								<h5 class="font-weight-normal text-dark mb-3 mt-0">공지사항</h5>
-								<p class="mb-0 text-muted">궁금증을 해결해 드립니다.</p>
+								<p class="mb-0 text-muted">이용에 불편한점은 없으실까요? 궁금증을 해결해드립니다.</p>
 							</div>
 						</div>
 						<div

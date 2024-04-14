@@ -112,12 +112,12 @@ public class BoardController {
 		 return "moon/answer";
 	 }
 	 
-	 @RequestMapping(value = "/inquiry",method = RequestMethod.GET)
-		public String moonInquiry() {
+	 @RequestMapping(value = "/moonWrite",method = RequestMethod.GET)
+		public String moonWrite() {
 			return "moon/inquiry";
 		}
-	 @RequestMapping(value = "/inquiry", method = RequestMethod.POST)
-		public String moonInquiry(@ModelAttribute Moon moon) {
+	 @RequestMapping(value = "/moonInsert", method = RequestMethod.POST)
+		public String moonInsert(@ModelAttribute Moon moon) {
 		    moonService.addMoon(moon);
 		    return "redirect:/board/moonList"; // 문의 성공후 페이지로 이동
 		}
