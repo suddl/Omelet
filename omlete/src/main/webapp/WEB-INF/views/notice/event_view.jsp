@@ -41,7 +41,7 @@
                         <div class="ml-4">
                            <h5 class="font-weight-normal text-dark mb-3 mt-0">1:1 문의</h5>
                            <p class="mb-0 text-muted">궁금한 점이 있으세요?
-								고객님의 문의사항 해결을 위해 최선을 다하겠습니다.
+								<br>문의사항 해결을 위해 최선을 다하겠습니다.
                            </p>
                         </div>
                      </div>
@@ -57,7 +57,7 @@
                      	<i><img src="<c:url value="/images/board/questions.png"/>" height="50"></i>
                         <div class="ml-4">
                            <h5 class="font-weight-normal text-dark mb-3 mt-0">문의사항</h5>
-                           <p class="mb-0 text-muted">기다려주셔서 감사합니다! 문의 답변을 확인해주세요.
+                           <p class="mb-0 text-muted">기다려주셔서 감사합니다! <br>문의 답변을 확인해주세요.
                            </p>
                         </div>
                      </div>
@@ -74,7 +74,7 @@
 							<!-- <i class="mdi mdi-lock-outline display-4"></i> -->
 							<div class="ml-4">
 								<h5 class="font-weight-normal text-dark mb-3 mt-0">공지사항</h5>
-								<p class="mb-0 text-muted">이용에 불편한점은 없으실까요? 궁금증을 해결해드립니다.</p>
+								<p class="mb-0 text-muted">이용에 불편한점은 없으실까요? <br>궁금증을 해결해드립니다.</p>
 							</div>
 						</div>
 						<div

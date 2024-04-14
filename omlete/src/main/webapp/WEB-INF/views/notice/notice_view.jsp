@@ -38,8 +38,8 @@
 								<i><img src="<c:url value="/images/board/inquiry.png"/>" height="50"></i>
 								<div class="ml-4">
 									<h5 class="font-weight-normal text-dark mb-3 mt-0">1:1 문의</h5>
-									<p class="mb-0 text-muted">궁금한 점이 있으세요?
-									고객님의 문의사항 해결을 위해 최선을 다하겠습니다.
+									<p class="mb-0 text-muted">궁금한 점이 있으세요?<br>
+									문의사항 해결을 위해 최선을 다하겠습니다.
 									</p>
 								</div>
 							</div>
@@ -64,6 +64,7 @@
 	                        <a class="font-weight-bold d-block" href="<c:url value="/board/eventList"/>"> 이벤트 응모 및 결과 </a>
 	                        <i class="mdi mdi-arrow-right ml-auto text-primary"></i>
 	                     </div>
+	                     
 	                  </div>
 	               </div>
 					<div class="col-md-6">
@@ -72,7 +73,7 @@
 	                     	<i><img src="<c:url value="/images/board/questions.png"/>" height="50"></i>
 	                        <div class="ml-4">
 	                           <h5 class="font-weight-normal text-dark mb-3 mt-0">문의사항</h5>
-	                           <p class="mb-0 text-muted">기다려주셔서 감사합니다! 문의 답변을 확인해주세요.
+	                           <p class="mb-0 text-muted">기다려주셔서 감사합니다! <br>문의 답변을 확인해주세요.
 	                           </p>
 	                        </div>
 	                     </div>
