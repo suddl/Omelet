@@ -89,7 +89,7 @@ public class ContentsController {
 		}
 			
 		return true;
-<<<<<<< HEAD
+
 	}	
 
 	@RequestMapping(value = "/rate", method = RequestMethod.POST)
@@ -121,14 +121,13 @@ public class ContentsController {
 	    
 	    return "false";
 	}
-=======
-	}
-	
-	
-	
->>>>>>> branch 'main' of https://github.com/suddl/Omelet.git
-	
-	
-	
-	
+
 }
+	
+	
+
+	
+	
+	
+	
+
