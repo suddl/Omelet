@@ -14,4 +14,7 @@ public interface MoonMapper {
 	int selectMoonCount();
 	//리스트
 	List<Moon> selectMoonList(Map<String, Object> map);
+	
+	// 마이페이지
+	List<Moon> selectMoonMemberList(Map<String, Object> map);
 }

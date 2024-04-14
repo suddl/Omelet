@@ -64,4 +64,24 @@ public class MoonServiceImpl implements MoonService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public Map<String, Object> getMoonMemberList(int moonMember, int pageNum) {
+		int totalSize = moonDAO.selectMoonCount(); // 올바른 메서드 호출로 수정
+	    int pageSize = 8;
+	    int blockSize = 5;
+
+	    Pager pager = new Pager(pageNum, totalSize, pageSize, blockSize);
+
+	    Map<String, Object> pageMap = new HashMap<>();
+	    pageMap.put("startRow", pager.getStartRow());
+	    pageMap.put("endRow", pager.getEndRow());
+	    List<Moon> moonList = moonDAO.selectMoonMemberList(pageMap);
+
+	    Map<String, Object> resultMap = new HashMap<>();
+	    resultMap.put("pager", pager);
+	    resultMap.put("moonList", moonList);
+
+	    return resultMap;
+	}
 }

@@ -14,5 +14,5 @@ public interface MoonService {
 	//리스트 검색
 	Map<String, Object> getMoonList(int pageNum);
 	
-
+	Map<String, Object> getMoonMemberList(int moonMember, int pageNum);
 }

@@ -31,5 +31,10 @@
         	from moon join member on moon_member=member_no order by moon_no desc)
          	moonlist) where rn between #{startRow} and #{endRow}
    </select>
+   
+   <select id="selectMoonMemberList" resultType="Moon">
+      select * from (select rownum rn, moonlist.* from (select moon_no, moon_member, moon_title, moon_content, moon_status, moon_re, moon_date, member_nickname
+        	from moon join member on moon_member=member_no where moon_member=#{moonMember} order by moon_no desc) moonlist) where rn between #{startRow} and #{endRow}
+   </select>
 </mapper>
 

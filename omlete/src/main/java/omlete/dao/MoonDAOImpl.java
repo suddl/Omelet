@@ -34,5 +34,11 @@ public class MoonDAOImpl implements MoonDAO {
 	public List<Moon> selectMoonList(Map<String, Object> map) {
 		return sqlSession.getMapper(MoonMapper.class).selectMoonList(map);
 	}
+	
+	
+	@Override
+	public List<Moon> selectMoonMemberList(Map<String, Object> map) {
+		return sqlSession.getMapper(MoonMapper.class).selectMoonMemberList(map);
+	}
 
 }

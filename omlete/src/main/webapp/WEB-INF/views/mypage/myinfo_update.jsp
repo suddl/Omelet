@@ -37,8 +37,7 @@
                                  <a href="<c:url value="/mypage/profile"/>" class="seller-link">${loginMember.memberName }</a>
                               </div>
                               <div class="oneliner-wrapper">
-                              <!--  -->
-                                 <!-- <small class="oneliner">마이뱃지 대표 칭호</small> -->
+                                 <small class="oneliner">잔여 포인트 : ${loginMember.memberPoint }</small>
                                  <div class="ratings-wrapper">
                                     <!-- <p class="rating-text"><strong>5.0</strong> (1k+ reviews)</p> -->
                                  </div>
