@@ -18,6 +18,7 @@ public interface MemberService {
     void modifyMemberInfo(Member member);
 	void modifyMemberResign(int memberNo);
 	void modifyMemberContents(int memberNo, int memberFavorite1);
+	void modifyMemberPoint(int memberNo, int memberPoint);
 	
 	//비번 아이디 찾기
 	void pwModifyMember(Member member);
@@ -28,6 +29,6 @@ public interface MemberService {
 	//관리자 페이지
 	List<Member> getMemberList();
 	List<Member> getReportedMemberList();
-	void modifyMeberStatus(int memberStatus);
+	void modifyMemberStatus(int memberNo, int memberStatus);
 	
 }

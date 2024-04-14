@@ -94,29 +94,30 @@
             		 	</div>
 	      			    <div class="container">
     	        			<div class="row">
-    	        			<c:forEach var="noticeList" items="${noticeList}">
-			            		<div class="col-md-3">
-            			        	<a href="<c:url value="/board/eventView?noticeNo=${noticeList.noticeNo}" />" >
-                    				<span><img class="img-fluid" src="${pageContext.request.contextPath}/${noticeList.noticeImage}" style="width: 500px"></span>
-                    				</a>
-                    				<div class="inner-slider">
-                        				<div class="inner-wrapper">
-                        					<div class="d-flex align-items-center">
-                              					<span class="seller-name">
-                          					    <a href="<c:url value="/board/eventView?noticeNo=${noticeList.noticeNo}" />" ><span>${noticeList.noticeTitle}</span>
-                              					</a>
-                              					</span>
-                           					</div>
-                           					<div class="footer">
-                            					<td>${noticeList.noticeCount}</td>
-                              					<div class="price">
-                              						<span>${noticeList.noticeDate}<br> ${noticeList.noticeTerm}</br></span>
-                              					</div>
-                           					</div>
-                        				</div>
-                     				</div>
-                  				</div>
-                  				</c:forEach>
+		   	        			<c:forEach var="notice" items="${noticeList2}">
+								    <div class="col-md-3">
+								        <a href="<c:url value='/board/eventView?noticeNo=${notice.noticeNo}' />">
+								            <span><img class="img-fluid" src="${pageContext.request.contextPath}/${notice.noticeImage}" style="width: 500px;"></span>
+								        </a>
+								        <div class="inner-slider">
+								            <div class="inner-wrapper">
+								                <div class="d-flex align-items-center">
+								                    <span class="seller-name">
+								                        <a href="<c:url value='/board/eventView?noticeNo=${notice.noticeNo}' />">
+								                            <span>${notice.noticeTitle}</span>
+								                        </a>
+								                    </span>
+								                </div>
+								                <div class="footer">
+								                    <td>${notice.noticeCount}</td>
+								                    <div class="price">
+								                        <span>${notice.noticeDate}<br>${notice.noticeTerm}</br></span>
+								                    </div>
+								                </div>
+								            </div>
+								        </div>
+								    </div>
+								</c:forEach>
 	            			</div>
     			        </div>
 			            <div class="footer-pagination text-center">

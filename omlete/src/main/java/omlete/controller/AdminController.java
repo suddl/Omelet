@@ -1,25 +1,37 @@
 package omlete.controller;
 
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withBadRequest;
+
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fasterxml.jackson.annotation.JacksonInject.Value;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import omlete.dto.Contents;
 import omlete.dto.Member;
 import omlete.dto.Review;
@@ -40,7 +52,7 @@ public class AdminController {
     
     // 관리자 메인 페이지 이동
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    //public String adminMain(HttpSession session) {
+    //public String adminMain(HttpSession session) { 
     public String adminMain() {
     	/*
     	Integer memberStatus = (Integer)session.getAttribute("memberStatus");
@@ -96,18 +108,25 @@ public class AdminController {
     	return "admin/contents_add_tv";
     }
     
-    //작품 수정(영화)
+ // 작품 수정(영화)
     @RequestMapping(value = "/contents_modify_movie", method = RequestMethod.GET)
-	public String movieModify(@RequestParam("contentsNo") int contentsNo, Model m) {
-    	m.addAttribute("contents", contentsService.getContents(contentsNo));
-		return "admin/contents_modify_movie";
-	}
-    
-    //작품 수정(TV)
+    public String movieModify(@RequestParam(value = "contentsNo", required = false) Integer contentsNo, Model m) {
+        if (contentsNo != null) {
+            // contentsNo가 null이 아닌 경우에만 실행될 코드 작성
+            m.addAttribute("contents", contentsService.getContents(contentsNo));
+            return "admin/contents_modify_movie";
+        } else {
+            // contentsNo가 null인 경우에 대한 처리
+            // 예를 들어, 다른 페이지로 리다이렉트하거나 오류 메시지를 반환하는 등의 처리를 수행할 수 있습니다.
+            return "admin/index";
+        }
+    }
+
+    // 작품 수정(TV)
     @RequestMapping(value = "/contents_modify_tv", method = RequestMethod.GET)
     public String tvModify(@RequestParam("contentsNo") int contentsNo, Model m) {
-    	m.addAttribute("contents", contentsService.getContents(contentsNo));
-    	return "admin/contents_modify_tv";
+        m.addAttribute("contents", contentsService.getContents(contentsNo));
+        return "admin/contents_modify_tv";
     }
     
     // 작품 추가(영화)
@@ -188,99 +207,69 @@ public class AdminController {
     	return "redirect:/admin/contents_tv";
 	}
     
-    //작품 수정
-    @RequestMapping(value = "/contents_modify_movie", method = RequestMethod.POST)
-    public String modifyMovie(@ModelAttribute Contents contents,@RequestParam int contentsNo, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
-    		, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,  Model m ) throws IllegalStateException, IOException {
-    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/movie");
+ // 작품 수정 (영화)
+    @RequestMapping(value = "/contents_modify_movie/{contentsNo}", method = RequestMethod.POST)
+    public String modifyMovie(@ModelAttribute Contents updatedContents, @PathVariable("contentsNo") Integer contentsNo,
+                              Model m, RedirectAttributes redirectAttributes) {
+        try {
+            Contents existingContents = contentsService.getContents(contentsNo);
+            if (existingContents == null) {
+                redirectAttributes.addFlashAttribute("errorMessage", "수정할 작품을 찾을 수 없습니다.");
+                return "redirect:/admin/contents_movie";
+            }
 
-    	
-   		if(!file1.isEmpty()) {
-   			String contentsName=UUID.randomUUID().toString()+"_"+file1.getOriginalFilename();
-   			File file=new File(uploadDirectory, contentsName);
-   			file1.transferTo(file);
-   			contents.setContentsPoster(contentsName);
-   		}
-   		
-   		if(!file2.isEmpty()) {
-   			String contentsName=UUID.randomUUID().toString()+"_"+file2.getOriginalFilename();
-   			File file=new File(uploadDirectory, contentsName);
-   			file2.transferTo(file);
-   			contents.setContentsPhoto1(contentsName);
-   		}
-   		
-   		if(!file3.isEmpty()) {
-   			String contentsName=UUID.randomUUID().toString()+"_"+file3.getOriginalFilename();
-   			File file=new File(uploadDirectory, contentsName);
-   			file3.transferTo(file);
-   			contents.setContentsPhoto2(contentsName);
-   		}
-   		
-   		if(!file4.isEmpty()) {
-   			String contentsName=UUID.randomUUID().toString()+"_"+file4.getOriginalFilename();
-   			File file=new File(uploadDirectory, contentsName);
-   			file4.transferTo(file);
-   			contents.setContentsPhoto3(contentsName);
-  		}
-        
-   		contentsService.modifyContents(contents);
-    	
-    	return "redirect:/admin/contents_movie";
-	}
+            updateContents(existingContents, updatedContents);
 
-    //작품 수정(TV)
-    @RequestMapping(value = "/contents_modify_tv", method = RequestMethod.POST)
-    public String modifyTV(@ModelAttribute Contents contents, @RequestParam int contentsNo, @RequestParam MultipartFile file1, @RequestParam MultipartFile file2
-    		, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,  Model m ) throws IllegalStateException, IOException {
-    	String uploadDirectory=context.getServletContext().getRealPath("/resources/images/tv");
-    	
-   		if(!file1.isEmpty()) {
-   			String contentsName=UUID.randomUUID().toString()+"_"+file1.getOriginalFilename();
-   			File file=new File(uploadDirectory, contentsName);
-   			file1.transferTo(file);
-   			contents.setContentsPoster(contentsName);
-   		}
-   		
-   		if(!file2.isEmpty()) {
-   			String contentsName=UUID.randomUUID().toString()+"_"+file2.getOriginalFilename();
-   			File file=new File(uploadDirectory, contentsName);
-   			file2.transferTo(file);
-   			contents.setContentsPhoto1(contentsName);
-   		}
-   		
-   		if(!file3.isEmpty()) {
-   			String contentsName=UUID.randomUUID().toString()+"_"+file3.getOriginalFilename();
-   			File file=new File(uploadDirectory, contentsName);
-   			file3.transferTo(file);
-   			contents.setContentsPhoto2(contentsName);
-   		}
-   		
-   		if(!file4.isEmpty()) {
-   			String contentsName=UUID.randomUUID().toString()+"_"+file4.getOriginalFilename();
-   			File file=new File(uploadDirectory, contentsName);
-   			file4.transferTo(file);
-   			contents.setContentsPhoto3(contentsName);
-  		}
-        
-   		contentsService.modifyContents(contents);
-    	
-    	return "redirect:/admin/contents_tv";
-	}
-    
-    //작품 삭제(영화)
-    @RequestMapping(value = "/contents_remove_movie", method = RequestMethod.DELETE)
-    public String contentsRemoveMovie(@RequestParam int contentsNo) {
-		Contents contents=contentsService.getContents(contentsNo);
-		String uploadDirectory = context.getServletContext().getRealPath("/WEB-INF/upload");
-		//서버 디렉토리에 저장된 게시글의 파일 삭제 처리
-		File file = new File(uploadDirectory, Integer.toString(contents.getContentsNo()));
-	    if (file.exists()) {
-	        file.delete(); // 파일 삭제
-	    }
-		
-		contentsService.removeContents(contentsNo);
-		return "redirect:/admin/contents_movie";		
+            contentsService.modifyContents(existingContents);
+            redirectAttributes.addFlashAttribute("successMessage", "작품이 성공적으로 수정되었습니다.");
+            return "redirect:/admin/contents_movie";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "작품 수정 중 오류가 발생했습니다: " + e.getMessage());
+            return "redirect:/admin/contents_movie";
+        }
     }
+
+ // 작품 수정 (TV)
+    @RequestMapping(value = "/contents_modify_tv", method = RequestMethod.POST)
+    public String modifyTV(@ModelAttribute Contents updatedContents,
+                           Model m, RedirectAttributes redirectAttributes) {
+        try {
+            Contents existingContents = contentsService.getContents(updatedContents.getContentsNo());
+            if (existingContents == null) {
+                redirectAttributes.addFlashAttribute("errorMessage", "수정할 TV 컨텐츠를 찾을 수 없습니다.");
+                return "redirect:/admin/contents_tv";
+            }
+
+            updateContents(existingContents, updatedContents);
+
+            contentsService.modifyContents(existingContents);
+            redirectAttributes.addFlashAttribute("successMessage", "TV 컨텐츠가 성공적으로 수정되었습니다.");
+            return "redirect:/admin/contents_tv";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "TV 컨텐츠 수정 중 오류가 발생했습니다: " + e.getMessage());
+            return "redirect:/admin/contents_tv";
+        }
+    }
+
+    private void updateContents(Contents existingContents, Contents updatedContents) {
+        existingContents.setContentsType(updatedContents.getContentsType());
+        existingContents.setContentsOname(updatedContents.getContentsOname());
+        existingContents.setContentsTname(updatedContents.getContentsTname());
+        existingContents.setContentsTrailer(updatedContents.getContentsTrailer());
+        existingContents.setContentsStaff(updatedContents.getContentsStaff());
+        existingContents.setContentsOverview(updatedContents.getContentsOverview());
+        existingContents.setContentsRating(updatedContents.getContentsRating());
+        existingContents.setContentsGenre(updatedContents.getContentsGenre());
+        existingContents.setContentsNetwork(updatedContents.getContentsNetwork());
+        existingContents.setContentsCountries(updatedContents.getContentsCountries());
+        existingContents.setContentsDirector(updatedContents.getContentsDirector());
+        existingContents.setContentsStartdate(updatedContents.getContentsStartdate());
+        existingContents.setContentsEnddate(updatedContents.getContentsEnddate());
+        existingContents.setContentsEpisodes(updatedContents.getContentsEpisodes());
+        existingContents.setContentsSeasons(updatedContents.getContentsSeasons());
+        existingContents.setContentsRuntime(updatedContents.getContentsRuntime());
+        existingContents.setContentsTagline(updatedContents.getContentsTagline());
+    }  
     
     //작품 삭제(TV)
     @RequestMapping(value = "/contents_remove_tv", method = RequestMethod.DELETE)
@@ -297,6 +286,14 @@ public class AdminController {
     	return "redirect:/admin/contents_tv";		
     }
     
+ // 작품 삭제(영화)
+    @RequestMapping(value = "/contents_remove_movie")
+    public String contentsRemove(@RequestParam(value = "contentsNo") Integer contentsNo) {
+        // contentsNo에 해당하는 작품을 삭제하는 로직을 추가합니다.
+        contentsService.removeContents(contentsNo);
+        return "redirect:/admin/contents_movie";
+    }
+    
     //회원 관리
     @RequestMapping(value = "/member", method = RequestMethod.GET)
     public String memberList(Model m) {
@@ -310,10 +307,11 @@ public class AdminController {
         return "admin/member";
     }
 
-    //회원 상태 변경
-    @RequestMapping(value = "/member", method = RequestMethod.POST)
-    public String modifyMemberStatus(@RequestParam int memberStatus, HttpSession session, Model m) {
-        memberService.modifyMeberStatus(memberStatus);   	
+  //회원 상태 변경
+    @RequestMapping(value = "/updateMemberStatuses", method = RequestMethod.POST)
+    public String updateMemberStatus(@RequestParam("memberNo") int memberNo, @RequestParam("memberStatus") int memberStatus, RedirectAttributes redirectAttributes) {
+        memberService.modifyMemberStatus(memberNo, memberStatus); // 오타 수정 및 메서드명 변경
+        redirectAttributes.addFlashAttribute("successMessage", "회원 상태가 업데이트되었습니다.");
         return "redirect:/admin/member";
     }
 }

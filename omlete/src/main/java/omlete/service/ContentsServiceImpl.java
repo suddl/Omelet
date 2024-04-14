@@ -62,7 +62,7 @@ public class ContentsServiceImpl implements ContentsService {
 		return contentsDAO.selectContentsListByType(contentsType);
 	}
 
-	@Override
+	@Override 
 	public int getContentsCountByGenre(String contentsGenre) {
 		int contentsCount = contentsDAO.selectContentsCountByGenre(contentsGenre);
 		return contentsCount;
@@ -76,7 +76,7 @@ public class ContentsServiceImpl implements ContentsService {
 
 	@Override
 	public void modifyContents(Contents contents) {
-		contentsDAO.updateContents(contents);
+		contentsDAO.updateContents(contents);  
 	}
 
 	@Override

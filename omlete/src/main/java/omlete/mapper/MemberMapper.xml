@@ -74,6 +74,10 @@
 	    UPDATE member set member_favorite1 = #{memberFavorite1} WHERE member_no = #{memberNo}
 	</update>
 	
+	<update id="updateMemberPoint">
+		update member set member_point=#{memberPoint} where member_no=#{memberNo}
+	</update>
+	
 	<!-- 관리자 페이지 -->
 	<select id="selectMemberList" resultType="Member">
 		select member_no, member_id, member_name, member_phone, member_email, member_level, member_status, member_point, member_report, member_nickname
@@ -86,11 +90,12 @@
 	</select>
 	
 	<update id="updateMemberStatus">
-		update member
-		<set>
-			<if test="memberStatus!=null and memberStatus!=''">
-				member_status=#{memberStatus}
-			</if>
-		</set>
+	    UPDATE member
+	    <set>
+	        <if test="memberStatus != null and memberStatus != ''">
+	            member_status = #{memberStatus}
+	        </if>
+	    </set>
+	    WHERE member_no = #{memberNo}
 	</update>
 </mapper>

@@ -12,7 +12,7 @@ public interface MoonService {
 	//상세보기
 	public Moon getMoon(int moonNo);
 	//리스트 검색
-	Map<String, Object>getMoonList(int pageNum);
+	Map<String, Object> getMoonList(int pageNum);
 	
 
 }

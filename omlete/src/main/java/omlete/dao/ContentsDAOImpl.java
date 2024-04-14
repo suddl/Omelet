@@ -53,10 +53,10 @@ public class ContentsDAOImpl implements ContentsDAO {
 		return sqlSession.getMapper(ContentsMapper.class).selectContentsCountByType(contentsType);
 	}
 
-	@Override
-	public int updateContents(Contents contents) {
+	@Override 
+	public int updateContents(Contents contents) { 
 		return sqlSession.getMapper(ContentsMapper.class).updateContents(contents);
-	}
+	} 
 
 	@Override
 	public int deleteContents(int contentsNo) {

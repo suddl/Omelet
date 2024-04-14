@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="omlete.mapper.EventUserMapper">
+    <insert id="insertEventUser">
+        insert into event_user values(#{eventNo}, 0 ,#{eventMember})
+    </insert>
+    
+    <select id="selectEventUserList">
+    	select distinct event_no, event_status, event_member, notice_title, notice_image from event_user join notice on event_no=notice_no where event_member=#{eventMember}
+    </select>
+    
+    <!-- 
+    <select id="selectEventUserList">
+    	select event_no, event_status, event_member, notice_title, notice_image from event_user join notice on event_no=notice_no where event_member=#{eventMember}
+    </select>
+     -->
+</mapper>

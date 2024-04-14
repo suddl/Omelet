@@ -18,6 +18,8 @@ public interface NoticeMapper {
 	int selectNoticeCount();
 	//게시글 검색
 	Notice selectNotice(int noticeNo);
-	//리스트
+	//문의리스트
 	List<Notice> selectNoticeList(Map<String, Object> map);
+	//이벤트리스트
+	List<Notice> selectNoticeList2(Map<String, Object> map);
 }

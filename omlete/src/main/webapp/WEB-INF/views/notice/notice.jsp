@@ -26,7 +26,7 @@
                      
 						<h3 class="listTit">
 							<span class="cateIcon">
-								<span>${data.noticeStatus}</span>
+								<span>${data.noticeStatus == 1 ? '[공지]' : data.noticeStatus == 9? '[이벤트]' : ''}</span>
 							</span>
 							<span class="subject">
 								${data.noticeTitle}
@@ -39,7 +39,7 @@
 						</div>
 						<div class="get-started1">
 							<div class="content">
-								<a href="client_notice.html" class="c-btn c-fill-color-btn">목록</a>
+								<a class="c-btn c-fill-color-btn" href="<c:url value="/board/noticeList"/>">목록</a>
 							</div>
 						</div>
 						<div class="btnWrap">

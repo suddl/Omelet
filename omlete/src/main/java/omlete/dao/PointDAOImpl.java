@@ -17,4 +17,6 @@ public class PointDAOImpl implements PointDAO {
 		return sqlSession.getMapper(PointMapper.class).insertPoint(point);
 	}
 
+	
+
 }

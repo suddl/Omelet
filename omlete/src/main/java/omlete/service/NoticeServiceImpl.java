@@ -24,12 +24,12 @@ public class NoticeServiceImpl implements NoticeService {
         return noticeDAO.selectNotice(noticeNo);
     }
 	
-	
+	/*
 	//전체 목록
     @Override
     public Map<String, Object> getNoticeList(int pageNum) {
         int totalSize = noticeDAO.selectNoticeCount();
-        int pageSize = 5;
+        int pageSize = 8;
         int blockSize = 5;
 
         Pager pager = new Pager(pageNum, totalSize, pageSize, blockSize);
@@ -47,6 +47,58 @@ public class NoticeServiceImpl implements NoticeService {
 
         return resultMap;
     }
+    */
+	//공지 목록
+	@Override
+	public Map<String, Object> getNoticeList(int pageNum) {
+	    int totalSize = noticeDAO.selectNoticeCount();
+	    int pageSize = 8;
+	    int blockSize = 5;
+
+	    Pager pager = new Pager(pageNum, totalSize, pageSize, blockSize);
+
+	    Map<String, Object> pageMap = new HashMap<>();
+	    pageMap.put("startRow", pager.getStartRow());
+	    pageMap.put("endRow", pager.getEndRow());
+
+	    // NoticeDAO에서 notice_status가 1인 항목만 가져오도록 요청
+	    List<Notice> noticeList = noticeDAO.selectNoticeList(pageMap);
+
+	    // 요청 처리 메소드에게 반환될 처리결과가 저장된 Map 객체 생성
+	    // => 요청 처리 메소드는 반환받은 Map 객체를 뷰에게 제공하여 출력 처리
+	    Map<String, Object> resultMap = new HashMap<>();
+	    resultMap.put("pager", pager);
+	    resultMap.put("noticeList", noticeList);
+
+	    return resultMap;
+	}
+	// 이벤트 목록
+	@Override
+	public Map<String, Object> getNoticeList2(int pageNum) {
+	    int totalSize = noticeDAO.selectNoticeCount();
+	    int pageSize = 8;
+	    int blockSize = 5;
+
+	    Pager pager = new Pager(pageNum, totalSize, pageSize, blockSize);
+
+	    Map<String, Object> pageMap = new HashMap<String, Object>();
+	    pageMap.put("startRow", pager.getStartRow());
+	    pageMap.put("endRow", pager.getEndRow());
+
+	    // NoticeDAO에서 notice_status가 9인 항목만 가져오도록 요청
+	    List<Notice> noticeList2 = noticeDAO.selectNoticeList2(pageMap);
+
+	    // 요청 처리 메소드에게 반환될 처리결과가 저장된 Map 객체 생성
+	    // => 요청 처리 메소드는 반환받은 Map 객체를 뷰에게 제공하여 출력 처리
+	    Map<String, Object> resultMap = new HashMap<String, Object>();
+	    resultMap.put("pager", pager);
+	    resultMap.put("noticeList2", noticeList2);
+
+	    return resultMap;
+	}
+	
+	
+	
 
 	@Override
 	public void addNotice(Notice notice) {

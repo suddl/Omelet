@@ -18,9 +18,10 @@ public interface MemberMapper {
 	int updateMemberInfo(Member member);
 	int updateMemberResign(int memberNo);
 	int updateMemberContents(@Param("memberNo") int memberNo, @Param("memberFavorite1") int memberFavorite1);
+	int updateMemberPoint(@Param("memberNo") int memberNo, @Param("memberPoint") int memberPoint);
 	
 	//관리자 페이지
 	List<Member> selectMemberList();
 	List<Member> selectReportedMemberList();
-	int updateMeberStatus(int memberStatus);
+	int updateMemberStatus(@Param("memberNo") int memberNo, @Param("memberStatus") int memberStatus);
 }

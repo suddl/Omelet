@@ -96,6 +96,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <form id="statusUpdateForm" action="<c:url value='/admin/updateMemberStatuses'/>" method="post">
 							<table id="memberTable" border="1">
 								<thead>
 									<tr style="width: 600px;">
@@ -125,11 +126,12 @@
 						                <td>${member.memberEmail}</td>
 							            <td>${member.memberLevel}</td>
                                         <td>
-                                        	<select name="memberStatus">
-                                            	<option value="0" ${member.memberStatus == 0 ? 'selected' : ''}>0</option>
-                                                <option value="1" ${member.memberStatus == 1 ? 'selected' : ''}>1</option>
-                                                <option value="9" ${member.memberStatus == 9 ? 'selected' : ''}>9</option>
-                                            </select>
+							            <select name="memberStatus">
+							                <option value="0" ${member.memberStatus == 0 ? 'selected' : ''}>0</option>
+							                <option value="1" ${member.memberStatus == 1 ? 'selected' : ''}>1</option>
+							                <option value="9" ${member.memberStatus == 9 ? 'selected' : ''}>9</option>
+							            </select>
+							            <input type="hidden" name="memberNo" value="${member.memberNo}"/>
                                         </td>				
 					   	                <td>${member.memberPoint}</td>				
 							            <td>${member.memberReport}</td>				
@@ -137,7 +139,9 @@
 								      </tr>
 								 </tbody>
 								 </c:forEach>
-								 </table>										
+								 </table>
+								 <button type="submit">저장</button>
+								 </form>										
                             </div>
                         </div>
                     </div>
@@ -178,26 +182,7 @@
         </div>
     </div>
     <script>
-    $(document).ready(function(){
-        $('.updateStatusBtn').click(function(){
-            var memberId = $(this).data('member-id');
-            var newStatus = $(this).closest('tr').find('.memberStatus').val();
-            
-            $.ajax({
-                type: "POST",
-                url: "/admin/member",
-                data: { memberId: memberId, newStatus: memberStatus },
-                success: function(response){
-                    // 상태 업데이트 성공 시 해당 행의 상태 업데이트
-                    $(this).closest('tr').find('.memberStatus').val(newStatus);
-                    alert('회원 상태가 업데이트되었습니다.');
-                },
-                error: function(xhr, status, error) {
-                    alert('오류가 발생했습니다. 다시 시도해주세요.');
-                }
-            });
-        });
-    });
+
     </script>
 
 </body>

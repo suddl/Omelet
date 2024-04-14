@@ -39,10 +39,15 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public Notice selectNotice(int noticeNo) {
 		return sqlSession.getMapper(NoticeMapper.class).selectNotice(noticeNo);
 	}
-	//리스트
+	//문의리스트
 	@Override
 	public List<Notice> selectNoticeList(Map<String, Object> map) {
 		return sqlSession.getMapper(NoticeMapper.class).selectNoticeList(map);
+	}
+	//이벤트리스트
+	@Override
+	public List<Notice> selectNoticeList2(Map<String, Object> map) {
+		return sqlSession.getMapper(NoticeMapper.class).selectNoticeList2(map);
 	}
 	//조회
 	@Override

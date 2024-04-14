@@ -12,7 +12,7 @@
 	
 	
 	<!-- 글번호를 전달받아 moon 게시글 검색 -->
-	<select id="selectMoon" resultType="moon">
+	<select id="selectMoon" resultType="Moon">
     select * from (select rownum rn, moonlist.* from (select moon_no, moon_member, moon_title, moon_content, 
         moon_status, moon_re, moon_date, member_nickname
             from moon join member on moon_member=member_no)
@@ -21,11 +21,11 @@
 	
 	<!-- moon 게시글 총개수 -->	
 	<select id="selectMoonCount" resultType="int">
-		select count(*) from moon
+    	SELECT COUNT(*) FROM moon
 	</select>
 	
 	<!-- 최신글순으로 정렬하여 원하는 글범위의 moon list 검색 -->
-	<select id="selectMoonList" resultType="moon">
+	<select id="selectMoonList" resultType="Moon">
       select * from (select rownum rn, moonlist.* from (select moon_no, moon_member, moon_title, moon_content, 
 	  	moon_status, moon_re, moon_date, member_nickname
         	from moon join member on moon_member=member_no order by moon_no desc)

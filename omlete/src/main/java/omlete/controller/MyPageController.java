@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Contents;
 import omlete.dto.Member;
+import omlete.exception.ContentsNotFoundException;
 import omlete.service.ContentsService;
+import omlete.service.EventUserService;
 import omlete.service.MemberService;
 
 
@@ -25,27 +27,24 @@ import omlete.service.MemberService;
 public class MyPageController {
 	private final MemberService memberService;
 	private final ContentsService contentsService;
+	private final EventUserService eventUserService;
 	
 	// 마이페이지 메인화면
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String profile(Model model, HttpSession session) {
 	    Member loginMember = (Member) session.getAttribute("loginMember");
 	    if (loginMember != null) {
-	        Integer memberFavorite1 = loginMember.getMemberFavorite1(); // int 대신 Integer 사용
-	        if (memberFavorite1 != null) { // memberFavorite1이 null이 아닐 때만 처리
-	            Contents favoriteContent = contentsService.getContents(memberFavorite1); 
-	            if (favoriteContent != null) { // getContents의 반환값이 null이 아닐 때만 처리
-	                model.addAttribute("favoriteContent", favoriteContent);
-	            } else {
-	                // favoriteContent가 null이면 이동할 페이지를 반환하도록 처리
-	                return "login/myfavorite"; // 예시로 대체 페이지로 이동하도록 설정
-	            }
+	        int memberFavorite1 = loginMember.getMemberFavorite1(); 
+	        Contents favoriteContent = null;
+	        try {
+	            favoriteContent = contentsService.getContents(memberFavorite1); 
+	        } catch (ContentsNotFoundException e) {
+	        	return "login/myfavorite";
 	        }
+	        model.addAttribute("favoriteContent", favoriteContent); 
 	    }
-	    // 나머지 경우에는 기본적으로 마이페이지로 이동
 	    return "mypage/profile";
-	}
-	
+	}	
 	// 내 정보 수정
 	@RequestMapping(value = "/updateInfo", method = RequestMethod.GET)
 	public String updateInfo() {
@@ -104,8 +103,16 @@ public class MyPageController {
 		return "mypage/mymoon_write";
 	}
 	
+	// 내가 참여한 이벤트
 	@RequestMapping(value = "/myevent")
-	public String myEvent() {
+	public String myEvent(@ModelAttribute Member member, HttpSession session, Model model) {
+		Member loginMember=(Member)session.getAttribute("loginMember");
+		if(loginMember.getMemberNo()==member.getMemberNo()) {
+			session.setAttribute("loginMember", memberService.getMemberNo(member.getMemberNo()));
+		}
+		
+		model.addAttribute("eventUserList", eventUserService.getEventUserList(loginMember.getMemberNo()));
+		
 		return "mypage/myevent";
 	}
 	

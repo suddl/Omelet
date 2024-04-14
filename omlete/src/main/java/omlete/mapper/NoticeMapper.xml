@@ -69,10 +69,37 @@
 	</select>
 	
 	<!-- 최신글순으로 정렬하여 원하는 글범위의 notice list 검색 -->
+	<!-- 
 	<select id="selectNoticeList" resultType="Notice">
 		select * from (select rownum rn, noticelist.* from (select notice_no,notice_title,notice_content,
 		notice_count,notice_date,notice_status,notice_term,notice_image
 			from Notice order by notice_no desc) noticelist) where rn between #{startRow} and #{endRow}
 	</select>
+	 -->
+	 <!-- 공지리스트 -->
+	<select id="selectNoticeList" resultType="Notice">
+    SELECT * FROM (
+        SELECT rownum rn, noticelist.*
+        FROM (
+            SELECT notice_no, notice_title, notice_content, notice_count, notice_date, notice_status, notice_term, notice_image
+            FROM Notice
+            WHERE notice_status = 1
+            ORDER BY notice_no DESC
+        ) noticelist
+    ) WHERE rn BETWEEN #{startRow} AND #{endRow}
+</select>
+
+ <!-- 이벤트리스트 -->
+	<select id="selectNoticeList2" resultType="Notice">
+    SELECT * FROM (
+        SELECT rownum rn, noticelist2.*
+        FROM (
+            SELECT notice_no, notice_title, notice_content, notice_count, notice_date, notice_status, notice_term, notice_image
+            FROM Notice
+            WHERE notice_status = 9
+            ORDER BY notice_no DESC
+        ) noticelist2
+    ) WHERE rn BETWEEN #{startRow} AND #{endRow}
+</select>
 	 
 </mapper>
