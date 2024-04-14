@@ -106,7 +106,8 @@ public class ApiServiceImpl implements ApiService{
 		}
 		return list;
 	}
-
+	
+	@Override
 	public String setMovieActor(String mid) {
 		// 인증키 (개인이 받아와야함)
     	String key = "2f619d605e8a65b90a65eceaec054524";
@@ -200,6 +201,96 @@ public class ApiServiceImpl implements ApiService{
     	}
 		return "success";
 	
+	}
+
+	@Override
+	public String setTvActor(String mid) {
+		// 인증키 (개인이 받아와야함)
+    	String key = "2f619d605e8a65b90a65eceaec054524";
+
+    	// 파싱한 데이터를 저장할 변수
+    	String actresult = "";
+    	String result1 = "";
+
+    	Actors act;
+    	ActorContents actC;
+
+    	int a=0;
+    	try {
+        		//받은 mid에 대한 영화 상세정보 보여줌
+        		URL url1 = new URL("https://api.themoviedb.org/3/tv/"+mid+"/aggregate_credits?api_key="
+        				+ key );
+            	
+            	BufferedReader bf1;
+
+        		bf1 = new BufferedReader(new InputStreamReader(url1.openStream(), "UTF-8"));
+
+        		result1 = bf1.readLine();
+
+            	JSONParser jsonParser1 = new JSONParser();
+            	JSONObject jsonObject1 = (JSONObject)jsonParser1.parse(result1);
+            	                    	
+            	JSONArray cast = (JSONArray) jsonObject1.get("cast");                 	
+            	
+            	a=0;
+            	for(int k=0; k<cast.size(); k++) {
+            		actC=new ActorContents();
+        			act=new Actors();
+        			
+            		JSONObject castlist=(JSONObject)cast.get(k);
+            		
+            		URL acturl = new URL("https://api.themoviedb.org/3/person/"+castlist.get("id")+"?api_key="
+            				+ key );
+            		
+            		BufferedReader actbf;
+
+            		actbf = new BufferedReader(new InputStreamReader(acturl.openStream(), "UTF-8"));
+
+            		actresult = actbf.readLine();   		
+            		
+                	JSONParser actjsonParser = new JSONParser();
+                	JSONObject actjsonObject = (JSONObject)actjsonParser.parse(actresult);
+            		JSONArray also_known_as = (JSONArray) actjsonObject.get("also_known_as");
+
+            		if(castlist.get("known_for_department").equals("Acting")) {
+          		
+            			for(int an=0;an<also_known_as.size();an++) {
+            				if(((String) also_known_as.get(an)).matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
+            					act.setActorName(String.valueOf(also_known_as.get(an)));
+            					break;
+            				}           				         			       
+	
+            			}  
+  			
+            		} 
+        			a++;
+           	
+            		act.setActorNo(Integer.parseInt(String.valueOf(castlist.get("id"))));
+        			act.setActorOname(String.valueOf(castlist.get("name")));
+        			act.setActorImg(String.valueOf(castlist.get("profile_path")));
+        			
+        			actC.setActorContentsId(Integer.parseInt(mid));
+        			actC.setActorId(Integer.parseInt(String.valueOf(castlist.get("id"))));
+
+        			
+        			try {
+        				actorsService.addActors(act);
+        			}catch(ExistsActorsException e){
+        				e.printStackTrace();
+        			}
+        			actorCService.addActorContents(actC);
+
+            		if(a==3) {
+        				break;
+        			}
+            		  
+            	}
+
+
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+		return "success";
 	}
 
 	

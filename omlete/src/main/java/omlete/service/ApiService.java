@@ -11,4 +11,5 @@ public interface ApiService {
 	//api에서 드라마id를 검색해서 List에 저장
 	List<String> getTvmid(int page); 
 	String setMovieActor(String mid);
+	String setTvActor(String mid);
 }
