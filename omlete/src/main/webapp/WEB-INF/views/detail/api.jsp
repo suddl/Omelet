@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>${data}</h3>
+<h2 stlye="color:red">정보가 등록되었습니다.</h2>
 
 </body>
 </html>

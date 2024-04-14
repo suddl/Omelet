@@ -156,7 +156,7 @@ public class APIController {
 	        	}
 	        	
 	        	//영화 사진 가져오기
-	    		URL imgurl = new URL("https://api.themoviedb.org/3/movie/"+mid+"/images?api_key="
+	    		URL imgurl = new URL("https://api.themoviedb.org/3/movie/"+mid.get(i)+"/images?api_key="
 	    				+ key);
 	    		
 	    		BufferedReader imgbf;
@@ -169,15 +169,19 @@ public class APIController {
 	        	JSONObject imgjsonObject = (JSONObject)imgjsonParser.parse(imgresult);
 	        	JSONArray backdrops = (JSONArray) imgjsonObject.get("backdrops");
 	        	//영화 이미지 불러오기
-	        	for(int o=0; o<3; o++) {
-	        		JSONObject imgp=(JSONObject) backdrops.get(o);
+	        	for(int o=0; o<3; o++) {	        		
 	        		
-	        		if(o==0) {
-	        			vo.setContentsPhoto1(String.valueOf(imgp.get("file_path")));
-	        		}else if(o==1) {
-	        			vo.setContentsPhoto2(String.valueOf(imgp.get("file_path")));
-	        		}else if(o==2) {
-	        			vo.setContentsPhoto3(String.valueOf(imgp.get("file_path")));
+	        		if (backdrops.size() > 0) {
+	        		    JSONObject imgp1 = (JSONObject) backdrops.get(0);
+	        		    vo.setContentsPhoto1(String.valueOf(imgp1.get("file_path")));
+	        		}
+	        		if (backdrops.size() > 1) {
+	        		    JSONObject imgp2 = (JSONObject) backdrops.get(1);
+	        		    vo.setContentsPhoto2(String.valueOf(imgp2.get("file_path")));
+	        		}
+	        		if (backdrops.size() > 2) {
+	        		    JSONObject imgp3 = (JSONObject) backdrops.get(2);
+	        		    vo.setContentsPhoto3(String.valueOf(imgp3.get("file_path")));
 	        		}
 
 	        	}
@@ -374,14 +378,18 @@ public class APIController {
 	        	JSONArray backdrops = (JSONArray) imgjsonObject.get("backdrops");
 	        	//영화 이미지 불러오기
 	        	for(int o=0; o<3; o++) {
-	        		JSONObject imgp=(JSONObject) backdrops.get(o);
 	        		
-	        		if(o==0) {
-	        			vo.setContentsPhoto1(String.valueOf(imgp.get("file_path")));
-	        		}else if(o==1) {
-	        			vo.setContentsPhoto2(String.valueOf(imgp.get("file_path")));
-	        		}else if(o==2) {
-	        			vo.setContentsPhoto3(String.valueOf(imgp.get("file_path")));
+	        		if (backdrops.size() > 0) {
+	        		    JSONObject imgp1 = (JSONObject) backdrops.get(0);
+	        		    vo.setContentsPhoto1(String.valueOf(imgp1.get("file_path")));
+	        		}
+	        		if (backdrops.size() > 1) {
+	        		    JSONObject imgp2 = (JSONObject) backdrops.get(1);
+	        		    vo.setContentsPhoto2(String.valueOf(imgp2.get("file_path")));
+	        		}
+	        		if (backdrops.size() > 2) {
+	        		    JSONObject imgp3 = (JSONObject) backdrops.get(2);
+	        		    vo.setContentsPhoto3(String.valueOf(imgp3.get("file_path")));
 	        		}
 
 	        	}
