@@ -9,9 +9,8 @@
     	select distinct event_no, event_status, event_member, notice_title, notice_image from event_user join notice on event_no=notice_no where event_member=#{eventMember}
     </select>
     
-    <!-- 
-    <select id="selectEventUserList">
-    	select event_no, event_status, event_member, notice_title, notice_image from event_user join notice on event_no=notice_no where event_member=#{eventMember}
+    <select id="selectEventUserRecordList">
+    	select event_no, event_status, event_member, point_status,point_date,point_extent,point_content from event_user 
+    	join point on event_member=point_member where event_member=#{eventMember} order by point_date desc
     </select>
-     -->
 </mapper>

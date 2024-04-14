@@ -25,4 +25,9 @@ public class EventUserServiceImpl implements EventUserService {
 		return eventUserDAO.selectEventUserList(memberId);
 	}
 
+	@Override
+	public List<EventUser> getEventUserRecordList(int memberId) {
+		return eventUserDAO.selectEventUserRecordList(memberId);
+	}
+
 }

@@ -45,32 +45,36 @@
                <div class="col-lg-9 right">
                   <div class="box shadow-sm rounded bg-white mb-3">
                      <div class="box-title border-bottom p-3">
-                        <h6 class="m-0">이벤트신청 내역</h6>
+                        <h6 class="m-0">이벤트신청 내역(최신순, 20개)</h6>
                      </div>
-                     
-                     <div class="box-body p-0">
-                        <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
-                           <div class="dropdown-list-image mr-3 d-flex align-items-center bg-danger justify-content-center rounded-circle text-white">DRM</div>
-                           <div class="font-weight-bold mr-3">
-                              <div class="text-truncate">파묘 시사회 이벤트에 참여 했습니다.</div>
-                              <div class="small">포인트 50 차감!</div>
-                           </div>
-                           <span class="ml-auto mb-auto">
-                              <div class="btn-group">
-                                 <button type="button" class="btn btn-light btn-sm rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 <i class="mdi mdi-dots-vertical"></i>
-                                 </button>
-                                 <div class="dropdown-menu dropdown-menu-right" style="">
-                                    <button class="dropdown-item" type="button"><i class="mdi mdi-delete"></i> Delete</button>
-                                    <button class="dropdown-item" type="button"><i class="mdi mdi-close"></i> Turn Off</button>
-                                 </div>
-                              </div>
-                              <br>
-                              <div class="text-right text-muted pt-1">3d</div>
-                           </span>
-                        </div>
-                     </div>
-                     
+                     <c:forEach var="record" items="${eventUserRecordList}" varStatus="outerLoop">
+					    <c:forEach var="event" items="${eventUserList}" varStatus="innerLoop">
+					        <c:if test="${innerLoop.index le 19}">
+					            <div class="box-body p-0">
+					                <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
+					                    <div class="font-weight-bold mr-3">
+					                        <div class="text-truncate">[${event.noticeTitle}]에 참여 했습니다.</div>
+					                        <div class="small">${record.pointContent} : 포인트 ${record.pointExtent } 차감!</div>
+					                    </div>
+					                    <span class="ml-auto mb-auto">
+					                        <!-- 
+					                        <div class="btn-group">
+					                            <button type="button" class="btn btn-light btn-sm rounded" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					                                <i class="mdi mdi-dots-vertical"></i>
+					                            </button>
+					                            <div class="dropdown-menu dropdown-menu-right" style="">
+					                                <button class="dropdown-item" type="button"><i class="mdi mdi-delete"></i> Delete</button>
+					                                <button class="dropdown-item" type="button"><i class="mdi mdi-close"></i> Turn Off</button>
+					                            </div>
+					                        </div>
+					                        -->
+					                        <br>
+					                    </span>
+					                </div>
+					            </div>
+					        </c:if>
+					    </c:forEach>
+					</c:forEach>
                   </div>
                </div>
             </div>
