@@ -113,6 +113,14 @@ td {
                      <a id="choishinchoose" type="button" href="">최신</a> X
                    </li>
                    --%>
+                   
+                   <%-- 사용해보기
+                   		<c:choose>
+                   			<c:otherwise>
+                   			</c:otherwise>
+                   		</c:choose>
+                   --%>
+                   
                    <li id="reviewchoose" style="margin: 0px 8px 0px 0px">
                      <a id="choishinchoose" type="button" href="<c:url value="/review/list?reviewKind=1"/>">명대사</a>
                    </li>
@@ -125,6 +133,12 @@ td {
                  </ul>
                </div>
             </div>
+            
+            <%-- 리뷰 리스트들 사용하기
+            <c:forEach var="review" items="${reviewList }">
+            </c:forEach>
+            --%>
+                    
             <div id="qa_write">
 			<div style="display: flex; justify-content: center; margin-bottom: 20px;">
 				<table class="table_review">
@@ -162,12 +176,18 @@ td {
 					</tr>
 					<tr>
 						<div class="interaction-icons d-flex align-items-center">
+							<button type="button" id="upBtn">
+								<img style="height: 20px; width: 20px;" class="like"
+									src="<c:url value="/images/like_or_hate/thumbs-up-regular.svg"/>">
+									<i class="fas fa-thumbs-up"></i><span>${reviewUp }</span>
+							</button>
                             <button type="button" class="btn btn-outline-primary mr-2">
-                                <i class="fas fa-thumbs-up"></i><span>${reviewUp }</span>
                             </button>
-                            <button type="button" class="btn btn-outline-danger mr-2">
-                                <i class="fas fa-thumbs-down"></i><span>${reviewDown }</span>
-                            </button>
+                            <button type="button" id="downBtn">
+								<img style="height: 20px; width: 20px;" alt="hate"
+									src="<c:url value="/images/like_or_hate/thumbs-down-regular.svg"/>">
+								<i class="fas fa-thumbs-down"></i><span>${reviewDown }</span>
+							</button>
                             <button type="button" id="jjimBtn">
                  		  		<c:choose>
                  		  			<c:when test="${member.memberId == null }">
@@ -248,19 +268,49 @@ td {
          --%>
       </div>
       <script type="text/javascript">
-      //좋아요 눌렀을 때
-      $("#upBtn").click(function() {
-    	  
-      });
-      
-      
+     
+      <%-- //좋아요 눌렀을 때 id 와 title 변경하기, url 부분들 바꾸기 --%> 
       $("img").filter(".btn btn-outline-danger mr-2").click(function() {
     		var productNum = $(this).attr("id");
     		var title = $(this).attr("title");
     		
     		<%-- 로그인 하지 않았을 시 로그인 페이지로 이동--%>
     		if(${empty(loginMember)}) {
-    			location.href="<%=request.getContextPath()%>/main_page/main.jsp?group=login_page&worker=client_login";
+    			location.href="/login/login";
+    		} else {
+    			<%-- 로그인 시 좋아요 눌렀을 시 동작되는 ajax--%>
+    			$.ajax({
+    				type: "get",
+    			    url : "<%=request.getContextPath()%>/main_page/main_like_action.jsp?productNum="+productNum+"&title="+title,
+    			    dataType : "xml",
+    			    success:function(xmlDoc){
+    			    	var code = $(xmlDoc).find("code").text();
+    			    	if(code=="success"){
+    			    		var titleName = $(xmlDoc).find("title").text();
+    			    		$("#"+productNum).attr("src", "<%=request.getContextPath()%>/images/icon/heart-red.png")
+    			    		$("#"+productNum).attr("title", titleName);
+    			    	} else{
+    			    		var titleName = $(xmlDoc).find("title").text();
+    			    		$("#"+productNum).attr("src", "<%=request.getContextPath()%>/images/icon/heart-black.png")
+    			    		$("#"+productNum).attr("title", titleName);
+    			    	}
+    			    },
+    			    error:function(xhr){
+    			    	alert("[에러] = "+xhr.status);
+    			    }
+    			});
+    		}    		
+    	})
+     
+    	
+    <%-- //싫어요 눌렀을 때 id 와 title 변경하기, url 부분들 바꾸기 --%> 
+      $("img").filter(".btn btn-outline-danger mr-2").click(function() {
+    		var productNum = $(this).attr("id");
+    		var title = $(this).attr("title");
+    		
+    		<%-- 로그인 하지 않았을 시 로그인 페이지로 이동--%>
+    		if(${empty(loginMember)}) {
+    			location.href="/login/login";
     		} else {
     			<%-- 로그인 시 좋아요 눌렀을 시 동작되는 ajax--%>
     			$.ajax({
