@@ -54,6 +54,12 @@
 		delete from contents where contents_no=#{contentsNo}
 	</delete>
 	
+	<select id="selectContentsTitleByTname" resultType="String">
+        SELECT contents_tname
+        FROM contents
+        WHERE contents_tname = #{contentsTname}
+    </select>
+	
 	
 	
 	

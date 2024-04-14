@@ -46,5 +46,13 @@ public interface ContentsDAO {
 
 	// 찜한 영화 가져오기
 	List<Contents> getFavoriteMovies(Member loginUser);
+	
+	
+	
+	
+	
+	
+	//리뷰 작성 시 제목 받아오기
+	String selectContentsTitleByTname(String contentsTname);
 
 }

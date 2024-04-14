@@ -1,7 +1,9 @@
 package omlete.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /*
 review_date는 sysdate 입니다.
@@ -15,6 +17,8 @@ create sequence review_seq;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Review {
 	private int reviewNo;
 	private int reviewKind;

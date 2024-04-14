@@ -88,4 +88,15 @@ public class ContentsDAOImpl implements ContentsDAO {
 		return sqlSession.getMapper(ContentsMapper.class).selectFavoriteContentsByUser(loginUser.getMemberNo());
 	}
 
+	
+	
+	
+
+	
+	//리뷰 작성 시 제목 받아오기
+	@Override
+	public 	String selectContentsTitleByTname(String contentsTname) {
+		return sqlSession.getMapper(ContentsMapper.class).selectContentsTitleByTname(contentsTname);
+	}
+
 }
