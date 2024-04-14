@@ -40,22 +40,11 @@
                               <div class="location-dropdown">
                                  <i class="icofont-location-arrow"></i>
                            		 <label>문의제목<span class="text-danger">*</span></label>
-                                 <select class="custom-select form-control border-0 shadow-sm form-control-lg">
-                                    <option> </option>
-                                    <option> 로그임/계정관리 </option>
-                                    <option> 이벤트 </option>
-                                    <option> 신고 </option>
-                                    <option> 탈퇴 </option>
-                                    <option>사용문의</option>
-                                    <option> 기타 </option>
-                                 </select>
+                           <input type="text" class="form-control" required>
                               </div>
                            </div>
                         </div>
                   </div>
-               
-               
-               
                   <div class="row">
                      <div class="control-group form-group col-lg-4 col-md-4">
                         <div class="controls">
@@ -73,7 +62,7 @@
                         <textarea rows="10" cols="100" class="form-control"></textarea>
                      </div>
                   </div>
-                  <button type="submit" class="btn btn-success">제출</button>
+                  <button type="submit" class="btn btn-success" id="moonBtn">제출</button>
                </form>
             </div>
          </div>

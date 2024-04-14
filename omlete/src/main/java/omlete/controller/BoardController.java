@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Member;
+import omlete.dto.Moon;
 import omlete.dto.Point;
 import omlete.service.EventUserService;
 import omlete.service.MemberService;
@@ -114,5 +115,10 @@ public class BoardController {
 	 @RequestMapping(value = "/inquiry",method = RequestMethod.GET)
 		public String moonInquiry() {
 			return "moon/inquiry";
+		}
+	 @RequestMapping(value = "/inquiry", method = RequestMethod.POST)
+		public String moonInquiry(@ModelAttribute Moon moon) {
+		    moonService.addMoon(moon);
+		    return "redirect:/board/moonList"; // 문의 성공후 페이지로 이동
 		}
 }

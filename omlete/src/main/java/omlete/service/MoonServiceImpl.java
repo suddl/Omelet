@@ -19,8 +19,18 @@ public class MoonServiceImpl implements MoonService {
 	//추가
 	@Transactional
 	@Override
-	public void addMoon(Moon moonNo) {
-		moonDAO.insertMoon(moonNo);
+	public void addMoon(Moon moon) {
+		String title = moon.getMoonTitle();
+		String content = moon.getMoonContent();
+		title = title.replace("<", "&lt;");
+		title = title.replace("<", "&lt;");
+		
+		title = title.replace(" ", "&nbsp;&nbsp;");
+		
+		content = content.replace("\n", "<br>");
+		moon.setMoonTitle(title);
+		moon.setMoonContent(content);
+		moonDAO.insertMoon(moon);
 	}
 
 	//리스트 없으면 예외처리
