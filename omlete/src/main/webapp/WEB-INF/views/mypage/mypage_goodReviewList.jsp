@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -207,6 +208,70 @@
                   </div>
                </div>
             </div>
+            <div class="footer-pagination text-center">
+	            	  	<nav aria-label="Page navigation example">
+	               			<ul class="pagination">
+				            <!-- 이전 -->
+				           <div class="footer-pagination text-center">
+							    <nav aria-label="Page navigation example">
+							        <ul class="pagination">
+							            <!-- 이전 -->
+							            <c:choose>
+							                <c:when test="${pager.startPage > pager.blockSize }">
+							                    <li class="page-item">
+							                        <a class="page-link" aria-label="Previous" href="<c:url value="/mypage/writeMoon"/>?pageNum=${pager.prevPage}">
+							                            <span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+							                        </a>	
+							                    </li>
+							                </c:when>
+							                <c:otherwise>
+							                    <li class="page-item">
+							                        <a class="page-link" aria-label="Previous" href="?pageNum=${pager.prevPage}">
+							                            <span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+							                        </a>	
+							                    </li>
+							                </c:otherwise>
+							            </c:choose>
+							            
+							            <!-- 페이지 번호 목록 -->
+							            <c:forEach var="i" begin="${pager.startPage}" end="${pager.endPage}" step="1">
+							                <c:choose>
+							                    <c:when test="${pager.pageNum != i}">
+							                        <li class="page-item">
+							                            <a class="page-link" href="?pageNum=${i}">${i}</a>
+							                        </li>
+							                    </c:when>
+							                    <c:otherwise>
+							                        <li class="page-item active">
+							                            <a class="page-link" href="?pageNum=${i}">${i}</a>
+							                        </li>
+							                    </c:otherwise>
+							                </c:choose>
+							            </c:forEach>
+							            
+							            <!-- 다음 -->
+							            <c:choose>
+							                <c:when test="${pager.endPage < pager.totalPage}">
+							                    <li class="page-item">
+							                        <a class="page-link" aria-label="Next" href="?pageNum=${pager.nextPage}">
+							                            <span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+							                        </a>
+							                    </li>
+							                </c:when>
+							                <c:otherwise>
+							                    <li class="page-item">
+							                        <a class="page-link" aria-label="Next" href="?pageNum=${pager.nextPage}">
+							                            <span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+							                        </a>
+							                    </li>
+							                </c:otherwise>
+							            </c:choose>
+							        </ul>
+							    </nav>
+							</div>
+				        </ul>
+	    			</nav>
+				</div>
          </div>
       </div>
 </body>

@@ -34,7 +34,6 @@ public class MainController {
 
 		model.addAttribute("latestMovies", contentsService.getLatestMovieList());
 		model.addAttribute("popularMovies", contentsService.getPopularMovieList());
-		model.addAttribute("latestReviews", reviewService.getLatestReviewList());
 
 		if (CollectionUtils.isNotEmpty(favoriteMovies)) {
 			model.addAttribute("favoriteMovies", favoriteMovies);

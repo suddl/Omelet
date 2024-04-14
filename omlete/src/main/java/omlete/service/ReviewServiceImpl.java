@@ -86,9 +86,24 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Review> getLatestReviewList() {
-		
-		return reviewDAO.selectLatestReviewList();
+	public Map<String, Object> getReviewMemberList(int reviewMember, int pageNum) {
+		int totalSize = reviewDAO.selectReviewCountMemberReview(reviewMember);
+	    int pageSize = 8;
+	    int blockSize = 5;
+
+	    Pager pager = new Pager(pageNum, totalSize, pageSize, blockSize);
+
+	    Map<String, Object> pageMap = new HashMap<>();
+	    pageMap.put("reviewMember", reviewMember); 
+	    pageMap.put("startRow", pager.getStartRow());
+	    pageMap.put("endRow", pager.getEndRow());
+	    List<Review> reviewList = reviewDAO.selectReviewMemberList(pageMap);
+	    
+	    Map<String, Object> resultMap = new HashMap<>();
+	    resultMap.put("pager", pager);
+	    resultMap.put("reviewList", reviewList);
+
+	    return resultMap;
 	}
 
 }

@@ -7,8 +7,7 @@
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review values(#{reviewNo}, #{reviewKind}, #{reviewMember}
-		, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown},
-		#{reviewWork}
+		, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown},#{reviewWork}
 		, #{reviewSpoiler}, #{reviewStar}, #{review_contents_type})
 	</insert>
 
@@ -38,7 +37,7 @@
 		where review_no = #{reviewNo}
 	</update>
 
-	<select id="selectReview" resultType="review">
+	<select id="selectReview" resultType="Review">
 		select review_no,
 		review_kind, review_member, review_content, review_date
 		, review_up, review_down, review_work, review_spoiler,
@@ -79,7 +78,8 @@
 
 	<select id="SelectReviewListOrder" resultType="Review">
 		SELECT
-		*
+		review_no, review_kind, review_member,review_content, review_up, review_down,review_work, 
+		 review_spoiler, review_star, review_contents_type
 		FROM
 		review
 		ORDER BY
@@ -87,16 +87,13 @@
 	</select>
 
 
-
-
-
-
 	<!-- ================================================================================================================= -->
+	 
 	<select id="selectReviewCountMember" resultType="int">
 		select count(*)
-		from review where member_no=#{memberNo}
+		from review where review_member = #{reviewMember}
 	</select>
-
+	 
 	<select id="selectReviewCountTotalMovie" resultType="int">
 		select
 		count(*) from review where review_contents_type='영화'
@@ -107,12 +104,15 @@
 		from review where review_contents_type='TV'
 	</select>
 	
-	<select id="selectLatestReviewList" resultType="Review">
-		SELECT
-			*
-		FROM
-			REVIEW
-		ORDER BY
-			REVIEW_DATE DESC
+	
+	<select id="selectReviewMemberList">
+		 select * from (select rownum rn, reviewMember.* from (select review_no, review_kind, review_member,review_content, review_up, review_down,review_work, 
+		 review_spoiler, review_star, review_contents_type, review_date,member_nickname,contents_tname from review join member on review_member=member_no 
+         join contents on review_work=contents_no where review_member=#{reviewMember} order by review_date desc) reviewMember) 
+		 where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectReviewCountMemberReview" resultType="int">
+		select count(*) from review where review_member = #{reviewMember}
 	</select>
 </mapper>

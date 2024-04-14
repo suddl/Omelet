@@ -25,5 +25,5 @@ public interface ReviewService {
 
 	int selectReviewCountTotalTv();
 
-	List<Review> getLatestReviewList();
+	Map<String, Object> getReviewMemberList(int reviewMember, int pageNum);
 }
