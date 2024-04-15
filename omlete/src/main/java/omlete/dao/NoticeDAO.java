@@ -15,10 +15,10 @@ public interface NoticeDAO {
 	int deleteNotice(int noticeNo);
 	//총개수
 	int selectNoticeCount();
-	//조회수
-	void increaseViewcnt(int noticeNo) throws Exception;
 	//게시글검색
 	Notice selectNotice(int noticeNo);
+	//조회수
+	void increaseViewcnt(int noticeNo);
 	//문의리스트
 	List<Notice> selectNoticeList(Map<String, Object> map);
 	//이벤트리스트

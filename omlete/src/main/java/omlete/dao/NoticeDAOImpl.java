@@ -29,15 +29,15 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public int deleteNotice(int noticeNo) {
 		return sqlSession.getMapper(NoticeMapper.class).deleteNotice(noticeNo);
 	}
-	//총개수
-	@Override
-	public int selectNoticeCount() {
-		return sqlSession.getMapper(NoticeMapper.class).selectNoticeCount();
-	}
 	//게시글 검색
 	@Override
 	public Notice selectNotice(int noticeNo) {
 		return sqlSession.getMapper(NoticeMapper.class).selectNotice(noticeNo);
+	}
+	//총개수
+	@Override
+	public int selectNoticeCount() {
+		return sqlSession.getMapper(NoticeMapper.class).selectNoticeCount();
 	}
 	//문의리스트
 	@Override
@@ -51,7 +51,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	}
 	//조회
 	@Override
-	public void increaseViewcnt(int noticeNo) throws Exception {
-		sqlSession.update("board.increaseViewcnt", noticeNo);
+	public void increaseViewcnt(int noticeNo) {
+	    sqlSession.update("omlete.dao.NoticeMapper.increaseViewcnt", noticeNo);
 	}
 }

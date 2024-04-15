@@ -25,6 +25,6 @@ public interface NoticeService {
 	//이벤트리스트검색
 	Map<String, Object> getNoticeList2(int pageNum);
 	//조회수 증가
-	public void increaseViewcnt(int noticeNo, HttpSession session) throws Exception;
+	public void increaseViewcnt(int noticeNo, HttpSession session);
 	
 }
