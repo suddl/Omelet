@@ -8,9 +8,9 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12 text-center">
-                  <h1 class="mt-0 mb-3 text-white">공지사항</h1>
-               </div>
-            </div>
+                  <h1 class="mt-0 mb-3 text-white">공지사항 <a href="notice_write.jsp" class="btn btn-primary ml-3">글쓰기</a> </h1>
+                          
+              </div>
          </div>
       </section>
       <div class="py-5">

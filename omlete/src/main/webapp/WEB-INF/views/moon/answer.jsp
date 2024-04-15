@@ -62,7 +62,7 @@
                   <div class="control-group form-group">
                      <div class="controls">
                         <label>답변 내용 <span class="text-danger">*</span></label>
-                           <textarea rows="10" cols="100" class="form-control">${data.moonRe}</textarea>
+                           <span rows="10" cols="100" class="form-control">${data.moonRe}</span>
                      </div>
                   </div>
                  <button type="button" class="btn btn-success" onclick="redirectToMoonList()">확인</button>

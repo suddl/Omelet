@@ -33,21 +33,17 @@ public class ReviewController {
 	
 	
 	// 내가 작성한 리뷰
-		@RequestMapping(value = "/writeReview")
-		public String myWriteReview(@RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
-			Member loginMember = (Member) session.getAttribute("loginMember");
-		    Map<String, Object> map = reviewService.getReviewMemberList(loginMember.getMemberNo(), pageNum);
+	@RequestMapping(value = "/writeReview")
+	public String myWriteReview(@RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
+		Member loginMember = (Member) session.getAttribute("loginMember");
+	    Map<String, Object> map = reviewService.getReviewMemberList(loginMember.getMemberNo(), pageNum);
 
-		    model.addAttribute("pager", map.get("pager"));
-		    model.addAttribute("reviewList", map.get("reviewList"));
-		    model.addAttribute("reviewCount", reviewService.getMemberReviewCount(loginMember.getMemberNo()));
-			
-			return "mypage/mypage_writeReviewList";
-		}
-	
-	
-	
-	
+	    model.addAttribute("pager", map.get("pager"));
+	    model.addAttribute("reviewList", map.get("reviewList"));
+	    model.addAttribute("reviewCount", reviewService.getMemberReviewCount(loginMember.getMemberNo()));
+		
+		return "mypage/mypage_writeReviewList";
+	}
 	
 	@RequestMapping("/review_list_short")
 	public String reviewShort() {

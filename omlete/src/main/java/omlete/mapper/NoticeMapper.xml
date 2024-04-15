@@ -59,8 +59,9 @@
 	</select>
 	<!-- 게시글 조회수 증가 -->
 	<update id="increaseViewcnt">
-		update notice set notice_count = notice_count +1
-		where notice_no = #{noticeNo} 
+    update notice
+    set notice_count = notice_count + 1
+    where notice_no = #{noticeNo}
 	</update>
 	
 	<!-- notice 게시글 총개수 -->	

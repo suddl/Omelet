@@ -140,7 +140,7 @@
                               <div class="card bg-light border-0 h-100">
                                   <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                       <c:choose>
-	                                      <c:when test="${meberReviewCount >=200 }">
+	                                      <c:when test="${reviewCount >=200 }">
 		                                      <div>
 		                                         <img src="<c:url value="/images/badge/reviewKingBadge.png"/>" class="mybadgeImg">
 		                                      </div>
@@ -162,7 +162,7 @@
                               <div class="card bg-light border-0 h-100">
                                   <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                   	  <c:choose>
-	                                      <c:when test="${memberTotalMovieReview >=100 }">
+	                                      <c:when test="${reviewCountMovie >=100 }">
 		                                      <div>
 		                                          <img src="<c:url value="/images/badge/movieKingBadge.png"/>" class="mybadgeImg">
 		                                      </div>
@@ -183,7 +183,7 @@
                               <div class="card bg-light border-0 h-100">
                                   <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                   	  <c:choose>
-	                                      <c:when test="${memberTotalMovieReview >=200 }">
+	                                      <c:when test="${reviewCountTv >=200 }">
 		                                      <div>
 		                                          <img src="<c:url value="/images/badge/harrypotterBadge.png"/>" class="mybadgeImg">
 		                                      </div>

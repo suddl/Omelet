@@ -89,7 +89,7 @@
 			            	내정보
 			            </a>
 			        </li>
-		         	<c:if test="${loginMember.memberStatus == 9} }">
+		         	<c:if test="${loginMember.memberStatus == 9}">
 			         	<li class="nav-item dropdown no-arrow no-caret dropdown-user">
 		            		<!-- 관리자 페이지 생기면 연결하기 -->
 					        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"

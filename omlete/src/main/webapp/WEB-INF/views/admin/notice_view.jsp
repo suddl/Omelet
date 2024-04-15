@@ -87,9 +87,9 @@
 	               <!-- Main Content -->
 	               <div class="col-md-12">
 	                  <div id="syncing">
-	                     <!-- Title -->
+	                     <!-- Title -->	         
 	                     <div class="mb-3 mt-4">
-	                        <h4 class="font-weight-semi-bold">공지사항</h4>
+	                        <a href="<c:url value="/admin/notice_write"/>">공지사항</a>                   	                                 
 	                     </div>
 	                     <%-- 게시글 목록 출력 --%>
 	                     <%-- <p class="listLength">총 <strong class="num">${fileBoard.noticeNo}</strong>개</p> --%>
@@ -120,6 +120,7 @@
 							</div>
 	                  </div>
 	                  <div class="footer-pagination text-center">
+
 	            	  	<nav aria-label="Page navigation example">
 	               			<ul class="pagination">
 				            <!-- 이전 -->
