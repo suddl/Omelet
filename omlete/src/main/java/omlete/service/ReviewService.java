@@ -9,7 +9,7 @@ public interface ReviewService {
 	void addReview(Review review);
 
 	void modifyReview(Review review);
-	void modifyRate(int reviewStar, int reviewMember, int reviewKind, int reviewWork);
+	void modifyRate(float data, int reviewMember, int reviewKind, int reviewWork);
 
 	void removeReview(int reviewNo);
 

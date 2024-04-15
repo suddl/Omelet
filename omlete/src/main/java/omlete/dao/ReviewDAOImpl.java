@@ -31,7 +31,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 	
 	@Override
-	public int updateRate(int reviewStar, int reviewMember, int reviewKind,int reviewWork) {
+	public int updateRate(float reviewStar, int reviewMember, int reviewKind,int reviewWork) {
 		return sqlSession.getMapper(ReviewMapper.class).updateRate(reviewStar, reviewMember, reviewKind,reviewWork);
 	}
 	

@@ -27,7 +27,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 	
 	@Override
-	public void modifyRate(int reviewStar, int reviewMember, int reviewKind, int reviewWork) {
+	public void modifyRate(float reviewStar, int reviewMember, int reviewKind, int reviewWork) {
 		reviewDAO.updateRate(reviewStar, reviewMember, reviewKind, reviewWork);
 	}
 

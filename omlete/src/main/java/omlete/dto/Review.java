@@ -27,7 +27,7 @@ public class Review {
 	private int reviewDown;
 	private int reviewWork; 
 	private int reviewSpoiler;
-	private int reviewStar;
+	private float reviewStar;
 	private String memberNickname;
 	private String contentsTname; 
 	private String reviewContentsType;
