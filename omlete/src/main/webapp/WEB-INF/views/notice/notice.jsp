@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
    <body>
@@ -31,7 +32,7 @@
 							<span class="subject">
 								${data.noticeTitle}
 							</span>
-							<span class="date">${data.noticeDate}</span>
+							<span class="date">${fn:substring(data.noticeDate, 0, 10)}</span>
 						</h3>
 						<div class="listCont">
 							<p style="margin-top: 0pt; margin-bottom: 0pt; margin-left: 0in; font-family: Dotum, 돋움; text-indent: 0in;">
@@ -47,26 +48,6 @@
 							<a href="/kr/ko/NtcList.do?schKey=ttl&amp;schText=" class="btnType3">목록</a>
 						</span> -->
 						</div>
-							<ul class="listNav">
-								<li><span class="tit">이전</span> <a
-									href="/kr/ko/NtcView.do?seq=8779&amp;schKey=ttl&amp;schText=&amp;pageNo=1">
-										<span class="cateIcon"> <span>이벤트 공지</span>
-
-									</span> <span class="subject">당첨자 안내 - 3/14(목) 3월 멤버십세일 오프닝 라이브</span>
-								</a> <span class="date">2024-03-21</span></li>
-								<li class="current"><span class="tit">현재</span> <span
-									class="cateIcon"> <span>이벤트 공지</span>
-
-								</span> <span class="subject">콜라겐 크림 럭키드로우 이벤트 당첨자 발표</span> <span
-									class="date">2024-03-13</span></li>
-								<li><span class="tit">다음</span> <a
-									href="/kr/ko/NtcView.do?seq=8776&amp;schKey=ttl&amp;schText=&amp;pageNo=1">
-										<span class="cateIcon"> <span>이벤트 공지</span>
-
-									</span> <span class="subject">[당첨자 안내] 그린카 제휴 프로모션 댓글 이벤트 당첨자
-											공지</span>
-								</a> <span class="date">2024-03-08</span></li>
-							</ul>
 						</section>
 						</div>
 		        	  </div> 

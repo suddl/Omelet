@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
                 <div class="col-md-12 text-center">
                     <h1 class="mt-0 mb-3 text-white">${data.noticeTitle}</h1>
                     <div class="breadcrumbs">
-                        <p class="mb-0 text-white"><span class="text-success">${data.noticeDate}까지</span></p>
+                        <p class="mb-0 text-white"><span class="text-success">${fn:substring(data.noticeDate, 0, 10)}까지</span></p>
                     </div>
                 </div>
             </div>
