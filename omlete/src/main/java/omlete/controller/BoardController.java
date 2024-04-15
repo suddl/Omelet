@@ -121,19 +121,24 @@ public class BoardController {
 	        return "moon/moon_view";
 	 }
 	 
-	 //문의 상세 
-	 @RequestMapping(value = "/moonView", method=RequestMethod.GET)
-	 public String moonDetail(@RequestParam int moonNo, Model model) {
+	//문의 상세 
+	@RequestMapping(value = "/moonView", method=RequestMethod.GET)
+	public String moonDetail(@RequestParam int moonNo, Model model) {
 		 // 뷰에 전달할 데이터
-		 model.addAttribute("data", moonService.getMoon(moonNo));
-		 
-		 return "moon/answer";
-	 }
+		model.addAttribute("data", moonService.getMoon(moonNo));
 	 
-	 @RequestMapping(value = "/moonWrite",method = RequestMethod.GET)
-		public String moonWrite() {
-			return "moon/inquiry";
-		}
+	return "moon/answer";
+	}
+	 
+	@RequestMapping(value = "/moonWrite",method = RequestMethod.GET)
+	public String moonWrite(HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		if (loginMember != null) {	
+			 return "moon/inquiry";
+		}   
+		    return "redirect:/login/member";
+	}
+	
 	 @RequestMapping(value = "/moonWrite", method = RequestMethod.POST)
 		public String moonInsert(@ModelAttribute Moon moon, HttpSession session, Model model) {
 		 	Member loginMember=(Member)session.getAttribute("loginMember");
