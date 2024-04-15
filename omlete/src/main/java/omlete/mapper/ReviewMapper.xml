@@ -94,7 +94,7 @@
 		where rn between #{startRow} and #{endRow}
 	</select>
 
-	<select id="SelectReviewListOrder" resultType="Review">
+	<select id="selectReviewListOrder" resultType="Review">
 		SELECT
 		review_no, review_kind, review_member, review_content, #{review_date,jdbcType=DATE}, review_up, review_down,review_work, 
 		 review_spoiler, review_star, review_contents_type
