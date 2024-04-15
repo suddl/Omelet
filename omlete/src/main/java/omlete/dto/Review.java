@@ -28,5 +28,6 @@ public class Review {
 	private float reviewStar;
 	private String memberNickname;
 	private String contentsTname; 
+	private String contentsPoster; 
 	private String reviewContentsType;
 }

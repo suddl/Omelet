@@ -78,6 +78,7 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Override
 	public List<Review> getReviewListOrder() {
+		
 		return reviewDAO.selectReviewListOrder();
 	}
 	

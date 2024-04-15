@@ -76,27 +76,29 @@
                     --%>
                     
                     <div class="view recent-slider recommended-slider">
+                    <c:forEach var="review" items="${reviewList }">
                         <div>
-                            <div class="inner-slider">
+             				<div class="inner-slider">
                                 <div class="inner-wrapper">
                                 <a href="<c:url value="/review/list?reviewKind=1"/>">
                                 	<article class="d-flex flex-column justify-content-center">
                                 		<div class="d-flex align-items-center">                                		       
-                               				<img src="<c:url value="/images/service-05.jpg" />" class="img-fluid rounded-circle" alt="프로필 사진" style="width: 20px; height: 20px;">
-                               				<div class="ml-2">
-                               					user-id-01230
-                               				</div>                             			
+                               				
+                               				                           			
                                 		</div>                                		
                                 		<div class="d-flex align-items-center">
 										    <div class="my-2 review-title-img-wrapper">
-										    	<img src="<c:url value="/images/service-05.jpg" />" alt="영화 포스터" style="width: 60px; height: 100px;">
+										    	<img src="<c:url value="https://image.tmdb.org/t/p/original${review.contentsPoster }" />" alt="영화 포스터" style="width: 60px; height: 100px;">
 										    </div>
 										    <div class="my-2 mx-1">
+										    <div class="ml-2">
+                               					${review.memberNickname }
+                               				</div>  
 											    <div class="my-2 review-title clamp-text-1">
-											    	더 뉴크 파이날 : 레볼루션
+											    	${review.contentsTname }
 											    </div>
 											    <div class="my-2 review-contents clamp-text-3">
-											        이 영화는 보지는 않았지만 정말 재밌다고 소문이 자자하더군요. 저도 보진 않을 거지만 정말 재밌다고 하니까 꼭 보시고 추천인 ID : nayana 부탁드립니다. 새해 복 많이 받으세요.
+											        ${review.reviewContent }
 										        </div>
 									   		</div>									    
 										</div>
@@ -120,176 +122,9 @@
                         </div>
                         
                         
-                        <div>
-                            <div class="inner-slider">
-                                <div class="inner-wrapper">
-                                
-                                	<article class="d-flex flex-column justify-content-center">
-                                		<div class="d-flex align-items-center">                                		       
-                               				<img src="<c:url value="/images/service-05.jpg" />" class="img-fluid rounded-circle" alt="프로필 사진" style="width: 20px; height: 20px;">
-                               				<div class="ml-2">
-                               					user-id-01230
-                               				</div>                             			
-                                		</div>                                		
-                                		<div class="d-flex align-items-center">
-										    <div class="my-2 review-title-img-wrapper">
-										    	<img src="<c:url value="/images/service-05.jpg" />" alt="영화 포스터" style="width: 60px; height: 100px;">
-										    </div>
-										    <div class="my-2 mx-1">
-											    <div class="my-2 review-title clamp-text-1">
-											    	더 뉴크
-											    </div>
-											    <div class="my-2 review-contents clamp-text-3">
-											        저도 보진 않을 거지만 정말 재밌다고 하니까 꼭 보시고 추천인 ID : nayana 부탁드립니다. 새해 복 많이 받으세요.
-										        </div>
-									   		</div>									    
-										</div>
-										<hr class="hr-3"/>                                 
-	                                    <!-- 좋아요, 싫어요, 찜하기 버튼 -->
-	                                    <div class="interaction-icons d-flex align-items-center">
-	                                        <button type="button" class="btn btn-outline-primary mr-2">
-	                                            <i class="fas fa-thumbs-up"></i><span>10</span>
-	                                        </button>
-	                                        <button type="button" class="btn btn-outline-danger mr-2">
-	                                            <i class="fas fa-thumbs-down"></i><span>12</span>
-	                                        </button>
-<!-- 	                                        <button type="button" class="btn btn-outline-secondary"> -->
-<!-- 	                                            <i class="fas fa-bookmark"></i> -->
-<!-- 	                                        </button> -->
-	                                    </div>
-                                    </article>                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="inner-slider">
-                                <div class="inner-wrapper">
-                                
-                                	<article class="d-flex flex-column justify-content-center">
-                                		<div class="d-flex align-items-center">                                		       
-                               				<img src="<c:url value="/images/service-05.jpg" />" class="img-fluid rounded-circle" alt="프로필 사진" style="width: 20px; height: 20px;">
-                               				<div class="ml-2">
-                               					user-id-01230
-                               				</div>                             			
-                                		</div>                                		
-                                		<div class="d-flex align-items-center">
-										    <div class="my-2 review-title-img-wrapper">
-										    	<img src="<c:url value="/images/service-05.jpg" />" alt="영화 포스터" style="width: 60px; height: 100px;">
-										    </div>
-										    <div class="my-2 mx-1">
-											    <div class="my-2 review-title clamp-text-1">
-											    	더 헐크
-											    </div>
-											    <div class="my-2 review-contents clamp-text-3">
-											        꼭 보시고 추천인 ID : nayana 부탁드립니다. 새해 복 많이 받으세요.
-										        </div>
-									   		</div>									    
-										</div>
-										<hr class="hr-3"/>                                 
-	                                    <!-- 좋아요, 싫어요, 찜하기 버튼 -->
-	                                    <div class="interaction-icons d-flex align-items-center">
-	                                        <button type="button" class="btn btn-outline-primary mr-2">
-	                                            <i class="fas fa-thumbs-up"></i><span>10</span>
-	                                        </button>
-	                                        <button type="button" class="btn btn-outline-danger mr-2">
-	                                            <i class="fas fa-thumbs-down"></i><span>12</span>
-	                                        </button>
-<!-- 	                                        <button type="button" class="btn btn-outline-secondary"> -->
-<!-- 	                                            <i class="fas fa-bookmark"></i> -->
-<!-- 	                                        </button> -->
-	                                    </div>
-                                    </article>                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="inner-slider">
-                                <div class="inner-wrapper">
-                                
-                                	<article class="d-flex flex-column justify-content-center">
-                                		<div class="d-flex align-items-center">                                		       
-                               				<img src="<c:url value="/images/service-05.jpg" />" class="img-fluid rounded-circle" alt="프로필 사진" style="width: 20px; height: 20px;">
-                               				<div class="ml-2">
-                               					user-id-01230
-                               				</div>                             			
-                                		</div>                                		
-                                		<div class="d-flex align-items-center">
-										    <div class="my-2 review-title-img-wrapper">
-										    	<img src="<c:url value="/images/service-05.jpg" />" alt="영화 포스터" style="width: 60px; height: 100px;">
-										    </div>
-										    <div class="my-2 mx-1">
-											    <div class="my-2 review-title clamp-text-1">
-											    	더 녹크턴
-											    </div>
-											    <div class="my-2 review-contents clamp-text-3">
-											       녹턴 궁 켯누;;
-										        </div>
-									   		</div>									    
-										</div>
-										<hr class="hr-3"/>                                 
-	                                    <!-- 좋아요, 싫어요, 찜하기 버튼 -->
-	                                    <div class="interaction-icons d-flex align-items-center">
-	                                        <button type="button" class="btn btn-outline-primary mr-2">
-	                                            <i class="fas fa-thumbs-up"></i><span>10</span>
-	                                        </button>
-	                                        <button type="button" class="btn btn-outline-danger mr-2">
-	                                            <i class="fas fa-thumbs-down"></i><span>12</span>
-	                                        </button>
-<!-- 	                                        <button type="button" class="btn btn-outline-secondary"> -->
-<!-- 	                                            <i class="fas fa-bookmark"></i> -->
-<!-- 	                                        </button> -->
-	                                    </div>
-                                    </article>                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="inner-slider">
-                                <div class="inner-wrapper">
-                                
-                                	<article class="d-flex flex-column justify-content-center">
-                                		<div class="d-flex align-items-center">                                		       
-                               				<img src="<c:url value="/images/service-05.jpg" />" class="img-fluid rounded-circle" alt="프로필 사진" style="width: 20px; height: 20px;">
-                               				<div class="ml-2">
-                               					user-id-01230
-                               				</div>                             			
-                                		</div>                                		
-                                		<div class="d-flex align-items-center">
-										    <div class="my-2 review-title-img-wrapper">
-										    	<img src="<c:url value="/images/service-05.jpg" />" alt="영화 포스터" style="width: 60px; height: 100px;">
-										    </div>
-										    <div class="my-2 mx-1">
-											    <div class="my-2 review-title clamp-text-1">
-											    	더 벡크
-											    </div>
-											    <div class="my-2 review-contents clamp-text-3">
-											        당신도 벡크를 아세요?
-										        </div>
-									   		</div>									    
-										</div>
-										<hr class="hr-3"/>                                 
-	                                    <!-- 좋아요, 싫어요, 찜하기 버튼 -->
-	                                    <div class="interaction-icons d-flex align-items-center">
-	                                        <button type="button" class="btn btn-outline-primary mr-2">
-	                                            <i class="fas fa-thumbs-up"></i><span>10</span>
-	                                        </button>
-	                                        <button type="button" class="btn btn-outline-danger mr-2">
-	                                            <i class="fas fa-thumbs-down"></i><span>12</span>
-	                                        </button>
-<!-- 	                                        <button type="button" class="btn btn-outline-secondary"> -->
-<!-- 	                                            <i class="fas fa-bookmark"></i> -->
-<!-- 	                                        </button> -->
-	                                    </div>
-                                    </article>                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
+                     </c:forEach>
                     </div>
+                     
                 </div>
             </div>
         </div>

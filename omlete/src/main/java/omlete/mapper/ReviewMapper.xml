@@ -96,10 +96,10 @@
 
 	<select id="selectReviewListOrder" resultType="Review">
 		SELECT
-		review_no, review_kind, review_member, review_content, #{review_date,jdbcType=DATE}, review_up, review_down,review_work, 
-		 review_spoiler, review_star, review_contents_type
+		r.review_no, r.review_kind, r.review_member, r.review_content, r.review_date, r.review_up, r.review_down,r.review_work, 
+		 r.review_spoiler, r.review_star, r.review_contents_type, c.CONTENTS_TNAME, c.CONTENTS_POSTER,m.MEMBER_NICKNAME
 		FROM
-		review
+		review r join contents c on r.review_work=c.contents_no join member m on r.review_member=m.MEMBER_no
 		ORDER BY
 		review_no
 	</select>
