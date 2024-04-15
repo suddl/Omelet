@@ -137,7 +137,11 @@ public class MyPageController {
 	
 	// 마이뱃지 목록
 	@RequestMapping(value = "/mybadge")
-	public String myBadge() {
+	public String myBadge(HttpSession session, Model model) {
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		model.addAttribute("reviewCount", reviewService.getMemberReviewCount(loginMember.getMemberNo()));
+		model.addAttribute("reviewCountMovie", reviewService.selectReviewCountTotalMovie(loginMember.getMemberNo()));
+		model.addAttribute("reviewCountTv", reviewService.selectReviewCountTotalTv(loginMember.getMemberNo()));
 		return "mypage/badge";
 	}
 	

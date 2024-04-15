@@ -92,14 +92,14 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int selectReviewCountTotalMovie() {
-		int memberTotalMovieReview=reviewDAO.selectReviewCountTotalMovie();
+	public int selectReviewCountTotalMovie(int reviewMember) {
+		int memberTotalMovieReview=reviewDAO.selectReviewCountTotalMovie(reviewMember);
 		return memberTotalMovieReview;
 	}
 
 	@Override
-	public int selectReviewCountTotalTv() {
-		int memberTotalTVReview=reviewDAO.selectReviewCountTotalTv();
+	public int selectReviewCountTotalTv(int reviewMember) {
+		int memberTotalTVReview=reviewDAO.selectReviewCountTotalTv(reviewMember);
 		return memberTotalTVReview;
 	}
 

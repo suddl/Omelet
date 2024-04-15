@@ -26,9 +26,9 @@ public interface ReviewService {
 	// 마이페이지
 	int getMemberReviewCount(int reviewMember);
 
-	int selectReviewCountTotalMovie();
+	int selectReviewCountTotalMovie(int reviewMember);
 
-	int selectReviewCountTotalTv();
+	int selectReviewCountTotalTv(int reviewMember);
 
 	Map<String, Object> getReviewMemberList(int reviewMember, int pageNum);
 

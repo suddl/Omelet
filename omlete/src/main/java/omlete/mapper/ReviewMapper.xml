@@ -113,13 +113,12 @@
 	</select>
 	 
 	<select id="selectReviewCountTotalMovie" resultType="int">
-		select
-		count(*) from review where review_contents_type='영화'
+		select count(*) from review where review_contents_type='영화' and review_member=#{reviewMember}
 	</select>
 
 	<select id="selectReviewCountTotalTv" resultType="int">
 		select count(*)
-		from review where review_contents_type='TV'
+		from review where review_contents_type='TV' and review_member=#{reviewMember}
 	</select>
 	
 	
