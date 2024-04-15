@@ -7,7 +7,7 @@
 		<selectKey resultType="int" keyProperty="moonNo" order="BEFORE">
 			select moon_seq.nextval from dual
 		</selectKey>
-		insert into moon values(#{moonNo},#{moonMember},#{moonTitle},#{moonContent},#{moonStatus},#{moonRe}, to_date(#{moonDate},'RR/MM/DD'))		
+		insert into moon values(#{moonNo},#{moonMember},#{moonTitle},#{moonContent},#{moonStatus},#{moonRe}, sysdate)		
 	</insert>
 	
 	

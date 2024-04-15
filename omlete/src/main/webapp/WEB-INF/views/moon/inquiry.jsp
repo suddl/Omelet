@@ -29,6 +29,7 @@
                     <h2>문의 등록</h2>
                 </div>
                 <form class="col-lg-12 col-md-12" name="sentMessage" method="post">
+                  <input type="hidden" name="moonMember" value="${loginMember.memberNo }">
                     <div class="homepage-search-form">
                         <div class="form-row">
                             <div class="col-lg-3 col-md-3 col-sm-12 form-group">
@@ -68,7 +69,7 @@ $(document).ready(function() {
             return false;
         }
         // 폼의 action을 "/board/moonInsert"로 설정
-        document.forms["sentMessage"].action = "/board/moonInsert";
+        document.forms["sentMessage"].action = "<c:url value="/board/moonWrite"/>";
         document.forms["sentMessage"].submit();
     });
 });

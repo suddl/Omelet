@@ -1,5 +1,6 @@
 package omlete.controller;
 
+
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -116,8 +117,10 @@ public class BoardController {
 		public String moonWrite() {
 			return "moon/inquiry";
 		}
-	 @RequestMapping(value = "/moonInsert", method = RequestMethod.POST)
-		public String moonInsert(@ModelAttribute Moon moon) {
+	 @RequestMapping(value = "/moonWrite", method = RequestMethod.POST)
+		public String moonInsert(@ModelAttribute Moon moon, HttpSession session, Model model) {
+		 	Member loginMember=(Member)session.getAttribute("loginMember");
+		 	model.addAttribute("loginMember", loginMember);
 		    moonService.addMoon(moon);
 		    return "redirect:/board/moonList"; // 문의 성공후 페이지로 이동
 		}
