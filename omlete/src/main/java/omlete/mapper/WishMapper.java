@@ -5,4 +5,6 @@ import omlete.dto.Wish;
 public interface WishMapper {
 	int insertWishContents(Wish wish); // 찜하기
 	int deleteWishContents(int wishNo); // 찜삭제
+	
+	Wish getWish(int contentsNo, int memberNo) ;
 }

@@ -31,7 +31,7 @@ public class MainController {
 		if (loginUser != null) {
 			favoriteMovies = contentsService.getFavoriteMovies(loginUser);
 		}
-
+		model.addAttribute("reviewList", reviewService.getReviewListOrder());
 		model.addAttribute("latestMovies", contentsService.getLatestMovieList());
 		model.addAttribute("popularMovies", contentsService.getPopularMovieList());
 
@@ -53,7 +53,7 @@ public class MainController {
 		 * 
 		 * //model.addAttribute("reviewListOrder", reviewService.getReviewListOrder());
 		 */
-
+		
 		model.addAttribute("movieList", contentsService.getMovieList());
 		model.addAttribute("movieListD", contentsService.getContentsListByOrder("DESC"));
 		model.addAttribute("movieListA", contentsService.getContentsListByOrder("ASC"));

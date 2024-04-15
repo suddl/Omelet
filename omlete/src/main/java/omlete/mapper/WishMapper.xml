@@ -2,10 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="omlete.mapper.WishMapper">
 	<insert id="insertWishContents">
+		<selectKey resultType="int" keyProperty="wishNo" order="BEFORE" >
+		    select wish_seq.nextval from dual
+		</selectKey>
 		insert into wish values(#{wishNo}, #{wishClientNo}, #{wishContentsNo})
 	</insert>
 	
 	<delete id="deleteWishContents">
 		delete from wish where wish_no=#{wishNo}
 	</delete>
+	
+	<select id="getWish" resultType="Wish">
+		select WISH_NO, WISH_CLIENT_NO, WISH_CONTENTS_NO from wish where WISH_CLIENT_NO = ${param1} and WISH_CONTENTS_NO = ${param2}
+	</select>
 </mapper>

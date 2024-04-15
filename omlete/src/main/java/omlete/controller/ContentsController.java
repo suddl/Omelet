@@ -70,16 +70,17 @@ public class ContentsController {
 	
 	//찜하기 기능
 	@RequestMapping(value = "/wish")
-	public boolean wishContents(@RequestParam("contentsNo") int contentsNo, HttpSession session) {	
+	public String wishContents(@RequestParam("contentsNo") int contentsNo, HttpSession session) {	
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		
 		if(loginMember == null) {
-			return false;				
+			
+			return "redirect:/login/member";				
 		}
 		
 		
 			
-		return true;
+		return "ok";
 
 	}	
 

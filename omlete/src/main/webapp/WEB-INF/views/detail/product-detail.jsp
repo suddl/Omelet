@@ -263,7 +263,15 @@
                         <ul class="user-stats">
                            <li>개봉일<strong>${contents.contentsStartdate}</strong></li>
                            <li>총 시간<strong>${contents.contentsRuntime}분</strong></li>
-                           <li>Avg. Response Time<strong>1 hour</strong></li>
+                           <li>
+                           <c:choose>
+								<c:when test="${empty contents.contentsEnddate}">
+								</c:when>
+								<c:otherwise>
+									<h3>${contents.contentsEnddate}</h3>
+								</c:otherwise>
+							</c:choose>	
+                           </li>
                         </ul>
                         <article class="seller-desc">
                            <div class="inner">
