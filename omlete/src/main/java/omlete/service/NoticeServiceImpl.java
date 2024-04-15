@@ -124,14 +124,13 @@ public class NoticeServiceImpl implements NoticeService {
 		return 0;
 	}
 	//게시글 조회수 증가
-	
 	@Override
-	public void increaseViewcnt(int noticeNo, HttpSession session) throws Exception {
+	public void increaseViewcnt(int noticeNo, HttpSession session) {
 	    long update_time = 0;
 	    
 	    // 이전 조회 시간을 가져옴
-	    if (session.getAttribute("update_time") != null) {
-	        update_time = (long) session.getAttribute("update_time");
+	    if (session.getAttribute("update_time_"+noticeNo) != null) {
+	        update_time = (long) session.getAttribute("update_time_"+noticeNo);
 	    }
 	    
 	    long current_time = System.currentTimeMillis();
@@ -142,7 +141,7 @@ public class NoticeServiceImpl implements NoticeService {
 	        noticeDAO.increaseViewcnt(noticeNo);
 	        
 	        // 세션에 현재 시간 저장
-	        session.setAttribute("update_time", current_time);
+	        session.setAttribute("update_time_"+noticeNo, current_time);
 	    }
 	    
 	}

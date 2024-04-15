@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lombok.RequiredArgsConstructor;
 import omlete.dto.Member;
 import omlete.dto.Moon;
+import omlete.dto.Notice;
 import omlete.dto.Point;
 import omlete.service.EventUserService;
 import omlete.service.MemberService;
@@ -46,13 +47,29 @@ public class BoardController {
 
 	        return "notice/notice_view";
 	 }
-	 //공지사항 상세 
 	 @RequestMapping(value = "/noticeView", method=RequestMethod.GET)
-	 public String noticeDetail(@RequestParam int noticeNo, Model model) {
-		 // 뷰에 전달할 데이터
-		 model.addAttribute("data", noticeService.getNotice(noticeNo));
-		 
-		 return "notice/notice";
+	 public String noticeDetail(@RequestParam int noticeNo, Model model, HttpSession session) {
+	     // 공지사항 조회
+	     Notice notice = noticeService.getNotice(noticeNo);
+	     
+	     // 공지사항이 존재하는 경우에만 처리
+	     if (notice != null) {
+	         // 뷰에 전달할 데이터
+	         model.addAttribute("data", notice);
+	         
+	         try {
+	             // 공지사항 조회수 증가
+	             noticeService.increaseViewcnt(noticeNo, session);
+	         } catch (Exception e) {
+	             // 예외 발생 시 로깅하고 무시
+	             e.printStackTrace();
+	         }
+	         
+	         return "notice/notice";
+	     } else {
+	         // 공지사항이 존재하지 않는 경우 에러 페이지로 이동하도록 처리
+	         return "errorPage"; // 존재하지 않는 공지사항 에러 페이지의 경로를 적절히 수정해주세요
+	     }
 	 }
 	 
 	//이벤트
