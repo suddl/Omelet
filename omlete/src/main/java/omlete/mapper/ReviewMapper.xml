@@ -51,7 +51,7 @@
 		select review_no,
 		review_kind, review_member, review_content, #{review_date,jdbcType=DATE}
 		, review_up, review_down, review_work, review_spoiler,
-		review_star,review_contents_type
+		review_star, review_contents_type
 		from review where review_no = #{reviewNo}
 	</select>
 	
@@ -59,7 +59,7 @@
 		select review_no,
 		review_kind, review_member, review_content, review_date
 		, review_up, review_down, review_work, review_spoiler,
-		review_star,review_contents_type
+		review_star, review_contents_type
 		from review where review_member = #{param1} and review_work = #{param2}
 	</select>
 
@@ -79,24 +79,26 @@
 	<select id="selectReviewList" resultType="Review">
 		select * from (select rownum rn, temp.* from (select review_no,
 		review_kind
-		, review_member, review_content, #{review_date,jdbcType=DATE}, review_up, review_down
+		, review_member, review_content, review_date, review_up, review_down
 		, review_work, review_spoiler, review_star from review
-		<if test="review_kind == 1">
-			where review_kind = 1
-		</if>
-		<if test="review_kind == 2">
-			where review_kind = 2
-		</if>
-		<if test="review_kind == 3">
-			where review_kind = 3
-		</if>
+		 <where>
+                <if test="review_kind == 1">
+                    review_kind = 1
+                </if>
+                <if test="review_kind == 2">
+                    review_kind = 2
+                </if>
+                <if test="review_kind == 3">
+                    review_kind = 3
+                </if>
+            </where>
 		order by review_no) temp )
 		where rn between #{startRow} and #{endRow}
 	</select>
 
 	<select id="SelectReviewListOrder" resultType="Review">
 		SELECT
-		review_no, review_kind, review_member,review_content, #{review_date,jdbcType=DATE}, review_up, review_down,review_work, 
+		review_no, review_kind, review_member, review_content, #{review_date,jdbcType=DATE}, review_up, review_down,review_work, 
 		 review_spoiler, review_star, review_contents_type
 		FROM
 		review
@@ -124,7 +126,7 @@
 	
 	
 	<select id="selectReviewMemberList">
-		 select * from (select rownum rn, reviewMember.* from (select review_no, review_kind, review_member,review_content, review_up, review_down,review_work, 
+		 select * from (select rownum rn, reviewMember.* from (select review_no, review_kind, review_member, review_content, review_up, review_down,review_work, 
 		 review_spoiler, review_star, review_contents_type, review_date,member_nickname,contents_tname from review join member on review_member=member_no 
          join contents on review_work=contents_no where review_member=#{reviewMember} order by review_date desc) reviewMember) 
 		 where rn between #{startRow} and #{endRow}

@@ -43,7 +43,7 @@
                     <div class="control-group form-group">
                         <div class="controls">
                             <label for="moonContent">문의 내용 <span class="text-danger">*</span></label>
-                            <textarea rows="10" cols="100" class="form-control" id="moonContent" name="moonContent" required></textarea>
+                            <textarea rows="10" cols="100" class="form-control" id="moonContent" name="moonContent" style = "width = 300px;"></textarea>
                         </div>
                     </div>
                     <button type="button" class="btn btn-success" id="btnUpdate">제출</button>
