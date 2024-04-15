@@ -24,8 +24,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.annotation.JacksonInject.Value;
@@ -34,6 +37,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import omlete.dto.Contents;
 import omlete.dto.Member;
+import omlete.dto.Moon;
+import omlete.dto.Notice;
 import omlete.dto.Review;
 import omlete.service.ContentsService;
 import omlete.service.EventUserService;
@@ -75,20 +80,14 @@ public class AdminController {
         // 로그인 처리 로직
         Member loginMember = memberService.loginAuth(member);
         
-        // 로그인 성공 시
-        if (loginMember != null) {
-            session.setAttribute("loginMember", loginMember);
-            session.setAttribute("memberStatus", loginMember.getMemberStatus()); // memberStatus를 세션에 저장
-            return "redirect:/admin/index"; // 성공 시 메인 페이지로 리다이렉트
-        } else {
-            // 로그인 실패 시
-            return "redirect:/login"; // 다시 로그인 페이지로 리다이렉트 또는 오류 메시지 출력 등
-        }
+        session.setAttribute("loginMember", loginMember);
+        session.setAttribute("memberStatus", loginMember.getMemberStatus()); // memberStatus를 세션에 저장
+        return "redirect:/admin/index"; // 성공 시 메인 페이지로 리다이렉트
     }
 
     // 관리자 메인 페이지 이동
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String adminMain(HttpSession session) { 
+    public String adminMain(HttpSession session) {
         Integer memberStatus = (Integer) session.getAttribute("memberStatus");
         if(memberStatus == null || memberStatus != 9) {
             return "admin/login"; // 관리자가 아닌 경우 로그인 페이지로 리다이렉트
@@ -377,7 +376,7 @@ public class AdminController {
 	        model.addAttribute("pager", map.get("pager"));
 	        model.addAttribute("noticeList", map.get("noticeList"));
 
-	        return "admin/event";
+	        return "admin/event_view";
 	 }
 	 
 	 //이벤트 상세 
@@ -386,7 +385,7 @@ public class AdminController {
 		 // 뷰에 전달할 데이터
 		 model.addAttribute("data", noticeService.getNotice(noticeNo));
 		 
-		 return "admin/eventView";
+		 return "admin/event";
 	 }
 	 
 	 //문의사항
@@ -409,23 +408,75 @@ public class AdminController {
 		 return "admin/inquiry";
 	 } 
 	 
-}
-    /*
+	 @RequestMapping(value = "/answer",method = RequestMethod.GET)
+		public String answerWrite() {
+			return "admin/answer";
+		}
+	 	 
+	    // 공지사항 글쓰기 페이지 요청 (GET)
+	    @RequestMapping(value = "/notice_write", method = RequestMethod.GET)
+	    public String writeNotice(HttpSession session) {
+	        Integer memberStatus = (Integer) session.getAttribute("memberStatus");
+	        if (memberStatus == null || memberStatus != 9) {
+	            return "admin/login"; // 관리자가 아닌 경우 로그인 페이지로 리다이렉트
+	        } else {
+	            return "admin/notice_write"; // 관리자인 경우 공지사항 작성 페이지로 이동
+	        }
+	    }
 
-    
-    // 공지사항 글쓰기
-    @RequestMapping(value = "/notice_write", method = RequestMethod.GET)
-    public String writeNotice() {
-        return "notice_write";
-    }
-    
-    // 공지사항 글쓰기(예외)
-    @RequestMapping(value = "/notice_write", method = RequestMethod.POST)
-    public String writeNoticeException(@RequestParam int memberStatus) {
-        memberService.getMemberStatus(memberStatus);
-        return "redirect:/login/login";
-    }
-    
+	    // 공지사항 글쓰기 요청 처리 (POST)
+	    @RequestMapping(value = "/notice_write", method = RequestMethod.POST)
+	    public String writeNotice(@ModelAttribute Notice notice, 
+	                              @RequestParam("notice_image") MultipartFile file,
+	                              Model model) {
+	        if (!file.isEmpty()) {
+	            try {
+	                String filename = file.getOriginalFilename();
+	                // 파일 저장 로직 (예: 파일 시스템 또는 데이터베이스에 저장)
+	                // 예: file.transferTo(new File("/path/" + filename));
+	                notice.setNoticeImage(filename); // Notice 객체에 파일 이름 설정
+	            } catch (Exception e) {
+	                model.addAttribute("errorMessage", "파일 업로드 실패: " + e.getMessage());
+	                return "error";  // 에러 페이지로 리다이렉트
+	            }
+	        }
+	        // 추가적인 처리 로직 (예: 데이터베이스에 notice 정보 저장)
+	        
+	        model.addAttribute("message", "공지사항이 성공적으로 등록되었습니다.");
+	        return "redirect:/admin/notice_view"; // 성공 시 공지사항 목록 페이지로 리다이렉트
+	    }
+	    
+	    // 공지사항 수정 페이지 요청 처리 (GET)
+	    @RequestMapping(value = "/notice_modify", method = RequestMethod.GET)
+	    public String modifyNoticeForm(@RequestParam("id") Long noticeId, Model model) {
+	        // 데이터베이스에서 공지사항 ID에 해당하는 데이터를 불러옴
+	        // 예: Notice notice = noticeService.findById(noticeId);
+	        // model.addAttribute("notice", notice);
+	        
+	        return "admin/notice_modify"; // 수정 페이지로 리다이렉트
+	    }
+
+	    // 공지사항 수정 요청 처리 (POST)
+	    @RequestMapping(value = "/notice_modify", method = RequestMethod.POST)
+	    public String modifyNotice(@ModelAttribute Notice notice, @RequestParam("notice_image") MultipartFile file, Model model) { 
+	        if (!file.isEmpty()) {
+	            try {
+	                String filename = file.getOriginalFilename();
+	                // 파일을 새로운 위치에 저장
+	                // 예: file.transferTo(new File("/path/" + filename));
+	                notice.setNoticeImage(filename); // 파일 이름 업데이트
+	            } catch (Exception e) {
+	                model.addAttribute("errorMessage", "파일 업로드 실패: " + e.getMessage());
+	                return "error"; // 에러 페이지로 리다이렉트
+	            }
+	        }
+	        model.addAttribute("message", "공지사항이 성공적으로 수정되었습니다.");
+	        return "redirect:/admin/notice_view"; // 성공 시 공지사항 목록 페이지로 리다이렉트
+		    }
+		}
+
+
+	            /*
     //이벤트로 이동
     @RequestMapping(value = "/event", method = RequestMethod.GET)
     public String event(HttpSession session) {
@@ -445,11 +496,6 @@ public class AdminController {
     	return "redirect:/login/login";
     }
     
-    //1대1 문의로 이동
-    @RequestMapping(value = "/moon_view", method = RequestMethod.GET)
-    public String inquiry(HttpSession session) {
-    	return "moon_view";
-    }
     
     //1대1 문의 답변하기
     @RequestMapping(value = "/answer", method = RequestMethod.POST)

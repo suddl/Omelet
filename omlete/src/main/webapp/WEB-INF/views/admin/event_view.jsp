@@ -97,7 +97,7 @@
     	        			<c:forEach var="noticeList" items="${noticeList}">
 			            		<div class="col-md-3">
             			        	<a href="<c:url value="/board/eventView?noticeNo=${noticeList.noticeNo}" />" >
-                    				<span><img class="img-fluid" src="${pageContext.request.contextPath}/${noticeList.noticeImage}" style="width: 500px"></span>
+                    				<span><img class="img-fluid" src="${noticeList.noticeImage}" style="width: 500px"></span>
                     				</a>
                     				<div class="inner-slider">
                         				<div class="inner-wrapper">
