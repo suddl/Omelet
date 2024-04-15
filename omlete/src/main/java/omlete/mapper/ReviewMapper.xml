@@ -7,10 +7,8 @@
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review values(#{reviewNo}, #{reviewKind}, #{reviewMember}
-		, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown},#{reviewWork}
-		, #{reviewSpoiler}, #{reviewStar}, #{reviewContentsType})
 		, #{reviewContent}, sysdate, #{reviewUp}, #{reviewDown},#{reviewWork}
-		, #{reviewSpoiler}, #{reviewStar}, #{review_contents_type})
+		, #{reviewSpoiler}, #{reviewStar}, #{reviewContentsType})
 	</insert>
 
 	<delete id="deleteReview">
