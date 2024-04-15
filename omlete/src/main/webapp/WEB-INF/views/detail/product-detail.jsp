@@ -50,6 +50,9 @@
 	    
 	     margin-left: 10px;
 	}
+	.profile-info{
+		text-align: center;
+	}
    </style>
  
    </head>
@@ -201,20 +204,28 @@
                      </div>
                   </div>
                   <div id="description" class="description">
-                     <h3>줄거리</h3>
-                     <p>${contents.contentsOverview}</p>
+                     
+                     <c:choose>
+						<c:when test="${empty contents.contentsTagline}">
+						</c:when>
+						<c:otherwise>
+							<h3>${contents.contentsTagline}</h3>
+						</c:otherwise>
+					</c:choose>		    
+                    <p>${contents.contentsOverview}</p>
                   </div>
                   <ul class="metadata">
                      <li class="metadata-attribute">
                         <p>등급</p>
                         <ul>
-                           <li>${contents.contentsRating}</li>
-                        </ul>
-                     </li>
-                     <li class="metadata-attribute">
-                        <p>개봉일</p>
-                        <ul>
-                           <li>${contents.contentsStartdate}</li>
+                        <c:choose>
+                           <c:when test="${empty contents.contentsRating}">
+                           <li>-</li>
+                           </c:when>
+                           <c:otherwise>
+							<li>${contents.contentsRating}</li>
+						   </c:otherwise>
+						</c:choose>
                         </ul>
                      </li>
                      <li class="metadata-attribute">
@@ -229,17 +240,29 @@
                            <li>${contents.contentsCountries}</li>
                         </ul>
                      </li>
-                     <li class="metadata-attribute">
-                        <p>총시간</p>
-                        <ul>
-                           <li>${contents.contentsRuntime}</li>
-                        </ul>
-                     </li>
                   </ul>
-                  <h3 id="aboutSeller">출연</h3>
+                     <div class="stats-desc">
+                        <ul class="user-stats">
+                           <li>개봉일<strong>${contents.contentsStartdate}</strong></li>
+                           <li>총 시간<strong>${contents.contentsRuntime}분</strong></li>
+                           <li>Avg. Response Time<strong>1 hour</strong></li>
+                        </ul>
+                        <article class="seller-desc">
+                           <div class="inner">
+                              <h3 id="aboutSeller" >제작</h3>
+                              <div class="profile-name">               
+									<span class="user-status"><a class="seller-link" style="font-size:20px">${contents.contentsDirector}</a></span>
+                           	  </div> 
+                           	  <div class="profile-name">               
+                           	  <span class="user-status"><a class="seller-link" style="font-size:20px">${contents.contentsStaff}</a></span>
+                           	 </div>
+                           </div>
+                        </article>
+                     </div>
+                     <h3 id="aboutSeller">출연</h3>
                   <div class="profile-card">
                      <div class="user-profile-image d-flex">
-                     <c:forEach var="actors" items="${actor }">
+                     <c:forEach var="actors" items="${actor}">
                        <div class="profile-info"> 
                         <label class="profile-pict" for="profile_image">
                         <img
@@ -262,103 +285,10 @@
                         </div>
                        </div>
                       </c:forEach> 
-                       
-                       
-                     </div>
-                     <div class="stats-desc">
-                        <ul class="user-stats">
-                           <li>From<strong>India</strong></li>
-                           <li>Member since<strong>Sep 2018</strong></li>
-                           <li>Avg. Response Time<strong>1 hour</strong></li>
-                        </ul>
-                        <article class="seller-desc">
-                           <div class="inner">- Wireframes for mobile apps &amp; Website <br />
-                              - Flowcharts for the whole system <br />
-                              - Mobile app prototypes, interactive UI designs <br />
-                              - UI for social media postings <br />
-                              - Design an app to achieve a business objective (web or mobile). <br />
-                              - Design or re-design a website to grow revenue, close more sales and generate more leads.
-                              <br />
-                              - Optimize their existing website with a conversion rate audit and strategy. <br />
-                              - Design a high converting landing page. <br />
-                              <span>Excellent communication and availability.
-                              Reach me any time during our project on Whatsapp, Skype, Text or any other
-                              messenger.</span>
-                           </div>
-                        </article>
                      </div>
                   </div>
-                  <div id="faq" class="faq">
-                     <h3>FAQ</h3>
-                     <div class="accordion" id="accordionExample">
-                        <div class="card">
-                           <div class="card-header" id="headingOne">
-                              <h2 class="mb-0">
-                                 <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                 Collapsible Group Item #1
-                                 </button>
-                              </h2>
-                           </div>
-                           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                              data-parent="#accordionExample">
-                              <div class="card-body">
-                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                 squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                 nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                 single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                 beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                                 vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                 you probably haven't heard of them accusamus labore sustainable VHS.
-                              </div>
-                           </div>
-                        </div>
-                        <div class="card">
-                           <div class="card-header" id="headingTwo">
-                              <h2 class="mb-0">
-                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                 Collapsible Group Item #2
-                                 </button>
-                              </h2>
-                           </div>
-                           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                              data-parent="#accordionExample">
-                              <div class="card-body">
-                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                 squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                 nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                 single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                 beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                                 vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                 you probably haven't heard of them accusamus labore sustainable VHS.
-                              </div>
-                           </div>
-                        </div>
-                        <div class="card">
-                           <div class="card-header" id="headingThree">
-                              <h2 class="mb-0">
-                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                 Collapsible Group Item #3
-                                 </button>
-                              </h2>
-                           </div>
-                           <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                              data-parent="#accordionExample">
-                              <div class="card-body">
-                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                 squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                 nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                 single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                 beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                                 vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                 you probably haven't heard of them accusamus labore sustainable VHS.
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  
+                 
                   <div id="reviews" class="review-section">
                      <div class="d-flex align-items-center justify-content-between mb-4">
                         <h4 class="m-0"> 37 Reviews </h4>
@@ -488,7 +418,7 @@
                               </div>
                               <div class="right">
                                  <h4>
-                                    Askbootstrap
+                                    HappyCat
                                     <span class="gig-rating text-body-2">
                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15"
                                           height="15">
@@ -508,8 +438,8 @@
                                  </div>
                                  <div class="review-description">
                                     <p>
-                                       The process was smooth, after providing the required info,
-                                       Pragyesh sent me an outstanding packet of wireframes. Thank you a lot!
+                                       작품성이 좋고, 재미면에서도 훌륭합니다.
+                                       다른사람들에게도 추천하고 싶어요!!
                                     </p>
                                  </div>
                                  <span class="publish py-3 d-inline-block w-100">Published 4 weeks ago</span>
@@ -523,7 +453,7 @@
                                              </path>
                                           </svg>
                                        </span>
-                                       <span class="thumb-title">Helpful</span>
+                                       <span class="thumb-title">좋아요</span>
                                     </div>
                                     <div class="helpful-thumb text-body-2 ml-3">
                                        <span class="fit-icon thumbs-icon">
@@ -534,7 +464,7 @@
                                              </path>
                                           </svg>
                                        </span>
-                                       <span class="thumb-title">Not Helpful</span>
+                                       <span class="thumb-title">싫어요</span>
                                     </div>
                                  </div>
                                  <div class="response-item mt-4 d-flex">
@@ -547,7 +477,7 @@
                                     </div>
                                     <div class="right">
                                        <h4>
-                                          Gurdeep Osahan
+                                          야생곰발바닥
                                           <span class="gig-rating text-body-2">
                                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15"
                                                 height="15">
@@ -555,7 +485,7 @@
                                                    d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z">
                                                 </path>
                                              </svg>
-                                             5.0
+                                             3.5
                                           </span>
                                        </h4>
                                        <div class="country d-flex align-items-center">
@@ -567,11 +497,11 @@
                                        </div>
                                        <div class="review-description">
                                           <p>
-                                             The process was smooth, after providing the required info,
-                                             Pragyesh sent me an outstanding packet of wireframes. Thank you a lot!
+                                             뭐 나쁘지는 않네요. 영화관 가서 보기에는 아까운 느낌이 들지만
+                                             쿠폰을 쓰거나 ott에서 보면 괜찮다고 생각해요
                                           </p>
                                        </div>
-                                       <span class="publish py-3 d-inline-block w-100">Published 4 weeks ago</span>
+                                       <span class="publish py-3 d-inline-block w-100">Published 1 weeks ago</span>
                                     </div>
                                  </div>
                               </div>
@@ -580,19 +510,16 @@
                      </ul>
                   </div>
                   <div class="tags">
-                     <h3>Related tags</h3>
+                     <h3>태그</h3>
                      <ul class="d-flex">
                         <li>
-                           <a href="#">Mobile Ui</a>
+                           <a href="#">추천</a>
                         </li>
                         <li>
-                           <a href="#">UI/UX</a>
+                           <a href="#">종류</a>
                         </li>
                         <li>
-                           <a href="#">Prototype</a>
-                        </li>
-                        <li>
-                           <a href="#">Wireframes</a>
+                           <a href="#">장르</a>
                         </li>
                      </ul>
                   </div>
