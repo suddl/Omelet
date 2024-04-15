@@ -1,7 +1,6 @@
 package omlete.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,12 +15,8 @@ create sequence review_seq;
 */
 
 @Data
-<<<<<<< HEAD
-=======
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
->>>>>>> branch 'main' of https://github.com/suddl/Omelet.git
 public class Review {
 	private int reviewNo;
 	private int reviewKind;

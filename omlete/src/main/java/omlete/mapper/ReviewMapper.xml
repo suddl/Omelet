@@ -7,13 +7,10 @@
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review values(#{reviewNo}, #{reviewKind}, #{reviewMember}
-<<<<<<< HEAD
 		, #{reviewContent}, #{reviewDate}, #{reviewUp}, #{reviewDown},#{reviewWork}
 		, #{reviewSpoiler}, #{reviewStar}, #{reviewContentsType})
-=======
 		, #{reviewContent}, sysdate, #{reviewUp}, #{reviewDown},#{reviewWork}
 		, #{reviewSpoiler}, #{reviewStar}, #{review_contents_type})
->>>>>>> branch 'main' of https://github.com/suddl/Omelet.git
 	</insert>
 
 	<delete id="deleteReview">
