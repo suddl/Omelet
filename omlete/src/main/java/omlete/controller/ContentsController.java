@@ -35,6 +35,7 @@ public class ContentsController {
 	private final ReviewService reviewService;
 	private final ActorContentsService acService;
 	private final ActorsService actorService;
+	//private final WishService wishService;
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(Model m, int no, HttpSession session) {
@@ -56,11 +57,12 @@ public class ContentsController {
 	}
 	
 	//리뷰쓰기 버튼을 누르면 리뷰 작성 페이지로 이동
-	@RequestMapping(value = "/writeReview")
-	public String writeReview(HttpSession session) {	
+	@RequestMapping(value = "/writeReview" , method = RequestMethod.GET)
+	public String writeReview(Model m,HttpSession session,int no) {	
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		
-	    if (loginMember != null) {	      
+	    if (loginMember != null) {	   
+	    	m.addAttribute("contentsNo", no);
 	    	return "review/review_write";
 	    }
 	    return "redirect:/login/member";
@@ -68,14 +70,14 @@ public class ContentsController {
 	
 	//찜하기 기능
 	@RequestMapping(value = "/wish")
-	public boolean wishContents(HttpServletRequest request, HttpServletResponse response, Object handler) {	
-		HttpSession session=request.getSession();
-			
-		Member loginMember=(Member)session.getAttribute("loginMember");
-		System.out.println(loginMember);
+	public boolean wishContents(@RequestParam("contentsNo") int contentsNo, HttpSession session) {	
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		
 		if(loginMember == null) {
 			return false;				
 		}
+		
+		
 			
 		return true;
 

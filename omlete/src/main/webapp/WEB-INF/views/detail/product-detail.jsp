@@ -64,18 +64,32 @@
                   <ul>
                      <li class="nav-overview selected"><a href="#overview">영화정보</a></li>
                      <li class="nav-description"><a href="#description">출연진</a></li>
-                     <li class="nav-aboutSeller"><a href="#aboutSeller">About The Seller</a></li>
-                     <li class="nav-faq"><a href="#faq">FAQ</a></li>
                      <li class="nav-reviews"><a href="#reviews">리뷰</a></li>
                   </ul>
                </div>
                <div class="col-lg-3 right">
                   <ul class="d-flex align-items-center justify-content-end">
                      <li>
-                        <button>
-                        <i class="fa fa-heart" aria-hidden="true"></i>
-                        Save
-                        </button>
+                     <c:if test="${result != null}">
+
+					    <a class="like"> 
+					    <c:if test="${result.check == 0}">
+							<button>
+	                        <i class="fa fa-heart" aria-hidden="true"></i>
+	                        SaveX
+	                        </button>
+						  
+						</c:if> 
+						
+					    <c:if test="${result.check == 1}">
+					        <button>
+	                        <i class="fa fa-heart" aria-hidden="true"></i>
+	                        SaveO
+	                        </button>
+						</c:if>
+						</a>
+					</c:if>
+                        
                      </li>
                      <li>
                         <span class="collect-count">138</span>
@@ -168,9 +182,9 @@
 					    
 					  </div>
 					  <div class="b-con">
-                      <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">한줄리뷰</button></a>
-                      <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">장문리뷰</button></a>
-                      <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">명대사리뷰</button></a>
+                      <a href="<c:url value="/detail/writeReview"/>?no=${contents.contentsNo}"><button class="c-btn c-fill-color-btn">한줄리뷰</button></a>
+                      <a href="<c:url value="/detail/writeReview"/>?no=${contents.contentsNo}"><button class="c-btn c-fill-color-btn">장문리뷰</button></a>
+                      <a href="<c:url value="/detail/writeReview"/>?no=${contents.contentsNo}"><button class="c-btn c-fill-color-btn">명대사리뷰</button></a>
                   	  </div>
                   </div>
                   <div class="slider mt-4">
@@ -682,6 +696,49 @@
 	            }
         	});
 		}
+		
+		$(document).ready(function() {
+			 $(".like").on("click", function(){
+				
+			 	$.ajax({
+			 		url : "/detail/wish",
+			 		type: 'GET',
+			 		data: {'contentsNo': contentsNo},
+			 		success:function(data){
+					
+			 			if(data==1){
+			 				like2 = true;
+			 				alert("상품 찜 하셨습니다.");
+			 				$('#like').attr("src","${pageContext.request.contextPath }/resources/img/core-img/heart-fill.svg");
+			 				var result = confirm('찜목록으로 이동하시겠습니까?');
+			 				if (result) {
+			 					//yes
+			 	 				//찜 리스트 페이지 생성 후 -> 찜리스트 페이지 이동으로 변경 
+			 					location.href='/mypage/likeListAll '; 
+			 					
+			 	 			} 
+			 				
+			 			}
+			 			else if(data == -1){
+			 				alert("로그인이 필요한 서비스입니다. ");
+			 				
+			 				
+			 			} 		 			
+			 			else {
+			 				like2 =false;
+			 				alert("상품 찜 취소하셨습니다. ");
+			 				$('#like').attr("src","${pageContext.request.contextPath }/resources/img/core-img/heart.svg");
+			 			}
+			 			
+			 		},
+			 		error:function(error){
+			 			console.log(error);
+			 		}
+					
+					
+			 	});
+			 });
+		}); 
 	
 	</script>
    </body>
