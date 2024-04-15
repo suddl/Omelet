@@ -37,18 +37,24 @@
             <div class="content">
                 <h2>응모시 자동으로 50포인트가 차감</h2>
                 <p>당첨 시, 동반1인까지 관람가능합니다.</p>
-                <p>${loginMember.memberName }님의 잔여 포인트 : ${loginMember.memberPoint }</p>
-                 <c:choose>
-                    <c:when test="${loginMember.memberPoint >= 50}">
-                        <form action="<c:url value="/board/applyEvent"/>" method="post" onclick="showConfirmation()">
-                            <input type="hidden" name="noticeNo" value="${data.noticeNo}">
-                            <button type="submit" class="c-btn c-fill-color-btn">응모하기</button>
-                        </form>
-                    </c:when>
-                    <c:otherwise>
-                        <p>포인트가 부족하여 신청할 수 없습니다.</p>
-                    </c:otherwise>
-                </c:choose>
+	            <c:if test="${not empty sessionScope['loginMember']}">
+	                <p>${loginMember.memberName}님의 잔여 포인트 : ${loginMember.memberPoint }</p>
+	                <c:choose>
+	                    <c:when test="${loginMember.memberPoint >= 50}">
+	                        <form action="<c:url value="/board/applyEvent"/>" method="post" onclick="showConfirmation()">
+	                            <input type="hidden" name="noticeNo" value="${data.noticeNo}">
+	                            <button type="submit" class="c-btn c-fill-color-btn">응모하기</button>
+	                        </form>
+	                    </c:when>
+	                    <c:otherwise>
+	                        <p>포인트가 부족하여 신청할 수 없습니다.</p>
+	                    </c:otherwise>
+	                </c:choose>
+	            </c:if>
+	            <c:if test="${empty sessionScope['loginMember']}">
+	                <p>로그인이 필요합니다.</p>
+	                <a href="<c:url value="/login"/>">로그인하러 가기</a>
+	            </c:if>
             </div>
         </div>
     </div>

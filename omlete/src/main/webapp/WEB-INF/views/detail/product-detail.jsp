@@ -161,7 +161,11 @@
 					            <input type="radio" id="star5" class="rating__input" name="rating" value="">
 					            <span class="star-icon" onclick="onStarClick(5)" ></span>
 					        </label>
+					      
+					        	
+					        
 					    </div>
+					    
 					  </div>
 					  <div class="b-con">
                       <a href="<c:url value="/detail/writeReview"/>"><button class="c-btn c-fill-color-btn">한줄리뷰</button></a>
@@ -528,21 +532,7 @@
             </div>
          </div>
       </div>
-      <!-- Bootstrap core JavaScript -->
-      <script src="vendor/jquery/jquery.min.js"></script>
-      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- Contact form JavaScript -->
-      <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-      <script src="js/jqBootstrapValidation.js"></script>
-      <script src="js/contact_me.js"></script>
-      <!-- Slick -->
-      <script src="vendor/slick-master/slick/slick.js" type="text/javascript" charset="utf-8"></script>
-      <!-- lightgallery -->
-      <script src="vendor/lightgallery-master/dist/js/lightgallery-all.min.js"></script>
-      <!-- select2 Js -->
-      <script src="vendor/select2/js/select2.min.js"></script>
-      <!-- Custom -->
-      <script src="js/custom.js"></script>
+     
       <script type="text/javascript">
       	
 		const rateWrap = document.querySelectorAll('.rating'),
@@ -556,9 +546,18 @@
 		checkedRate();
 		
 		if (loginMember) {
-		    rating = ${review.reviewStar}; // review.reviewStar는 서버에서 받아온 초기 별점 값입니다.
+		    rating = "${review.reviewStar}"; // review.reviewStar는 서버에서 받아온 초기 별점 값입니다.
+		    if(rating !== null && rating !== undefined && rating !== ''){
+		    	document.addEventListener('DOMContentLoaded', function() {
+					console.error("rating: "+rating);
+				    // 페이지가 로드되면서 rating 값이 있을 경우 별점 채우기
+				    if (rating > 0) {
+				    	filledRate(rating, labelLength);
+				    }
+				});
+		    }
+    
 		}
-		
 		
 		rateWrap.forEach(wrap => {
 			wrap.addEventListener('mouseenter', () => {
@@ -617,12 +616,7 @@
 		function checkedRate() {
 			let checkedRadio = document.querySelectorAll('.rating input[type="radio"]:checked');
 
-		
 			initStars();
-			
-			/* for (let i = 0; i < rating; i++) {
-		        stars[i].classList.add('filled');
-		    } */
 			
 			checkedRadio.forEach(radio => {
 		    	let previousSiblings = prevAll(radio);

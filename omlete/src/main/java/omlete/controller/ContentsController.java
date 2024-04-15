@@ -83,11 +83,11 @@ public class ContentsController {
 
 	@RequestMapping(value = "/rate", method = RequestMethod.POST)
 	@ResponseBody
-	public String rate(@RequestParam("data") int data, @RequestParam("contentsNo") int contentsNo, HttpSession session) {
+	public String rate(@RequestParam("data") float data, @RequestParam("contentsNo") int contentsNo, HttpSession session) {
 		Review review = new Review();
 		
 		Member loginMember = (Member) session.getAttribute("loginMember");
-		System.out.println("data="+data);
+		
 	    if (loginMember != null) {	  
 	    	review = reviewService.getReviewByMemberno(loginMember.getMemberNo(), contentsNo);
 	    	if(review!=null) {

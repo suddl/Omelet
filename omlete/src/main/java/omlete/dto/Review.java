@@ -15,8 +15,6 @@ create sequence review_seq;
 */
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Review {
 	private int reviewNo;
 	private int reviewKind;
