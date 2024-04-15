@@ -125,25 +125,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 	//게시글 조회수 증가
 	@Override
-	public void increaseViewcnt(int noticeNo, HttpSession session) {
-	    long update_time = 0;
-	    
-	    // 이전 조회 시간을 가져옴
-	    if (session.getAttribute("update_time_"+noticeNo) != null) {
-	        update_time = (long) session.getAttribute("update_time_"+noticeNo);
-	    }
-	    
-	    long current_time = System.currentTimeMillis();
-	    
-	    // 일정 시간이 경과한 경우에만 조회수를 증가시킴
-	    if (current_time - update_time > 5 * 1000) {
-	        // 조회수 증가
-	        noticeDAO.increaseViewcnt(noticeNo);
-	        
-	        // 세션에 현재 시간 저장
-	        session.setAttribute("update_time_"+noticeNo, current_time);
-	    }
-	    
+	public void increaseViewcnt(int noticeNo) {
+	    noticeDAO.increaseViewcnt(noticeNo);
 	}
 
 

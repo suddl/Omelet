@@ -48,7 +48,7 @@ public class BoardController {
 	        return "notice/notice_view";
 	 }
 	 @RequestMapping(value = "/noticeView", method=RequestMethod.GET)
-	 public String noticeDetail(@RequestParam int noticeNo, Model model, HttpSession session) {
+	 public String noticeDetail(@RequestParam int noticeNo, Model model) {
 	     // 공지사항 조회
 	     Notice notice = noticeService.getNotice(noticeNo);
 	     
@@ -57,13 +57,8 @@ public class BoardController {
 	         // 뷰에 전달할 데이터
 	         model.addAttribute("data", notice);
 	         
-	         try {
 	             // 공지사항 조회수 증가
-	             noticeService.increaseViewcnt(noticeNo, session);
-	         } catch (Exception e) {
-	             // 예외 발생 시 로깅하고 무시
-	             e.printStackTrace();
-	         }
+	             noticeService.increaseViewcnt(noticeNo);
 	         
 	         return "notice/notice";
 	     } else {
@@ -86,10 +81,22 @@ public class BoardController {
 	 //이벤트 상세 
 	 @RequestMapping(value = "/eventView", method=RequestMethod.GET)
 	 public String eventDetail(@RequestParam int noticeNo, Model model) {
-		 // 뷰에 전달할 데이터
-		 model.addAttribute("data", noticeService.getNotice(noticeNo));
+		 Notice notice = noticeService.getNotice(noticeNo);
 		 
-		 return "notice/event";
+		 if (notice != null) {
+			 
+			 model.addAttribute("data", notice);
+			 
+			 noticeService.increaseViewcnt(noticeNo);
+			 
+			 return "notice/event";
+		 } else {
+			return "errorPage";
+		}
+		 
+		 // 뷰에 전달할 데이터
+		 //model.addAttribute("data", noticeService.getNotice(noticeNo));
+		 
 	 }
 	 
 	@RequestMapping(value = "/applyEvent", method = RequestMethod.POST)

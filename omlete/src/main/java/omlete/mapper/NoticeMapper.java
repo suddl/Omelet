@@ -15,7 +15,7 @@ public interface NoticeMapper {
 	//총개수
 	int selectNoticeCount();
 	//조회수 증가
-	void increaseViewcnt(int noticeNo);
+	int increaseViewcnt(int noticeNo);
 	//게시글 검색
 	Notice selectNotice(int noticeNo);
 	//문의리스트

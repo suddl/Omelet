@@ -49,9 +49,10 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public List<Notice> selectNoticeList2(Map<String, Object> map) {
 		return sqlSession.getMapper(NoticeMapper.class).selectNoticeList2(map);
 	}
+
 	//조회
 	@Override
-	public void increaseViewcnt(int noticeNo) {
-	    sqlSession.update("omlete.dao.NoticeMapper.increaseViewcnt", noticeNo);
+	public int increaseViewcnt(int noticeNo) {
+		return sqlSession.getMapper(NoticeMapper.class).increaseViewcnt(noticeNo);
 	}
 }
